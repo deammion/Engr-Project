@@ -22,13 +22,13 @@ One page overall introduction including sections 1.1 and 1.2.
 ### Client
 Company: RedShield
 
-Contact: Kirk Jackson
-Email: 	Kirk Jackson <kirk@pageofwords.com>
-Address:
-    RedShield
-    Level 12
-    RedShield House
-    79 Boulcott St
+Contact: Kirk Jackson <br>
+Email: 	Kirk Jackson <kirk@pageofwords.com> <br>
+Address: <br>
+    RedShield <br>
+    Level 12 <br>
+    RedShield House <br>
+    79 Boulcott St <br>
 
 ### 1.1 Purpose
 
