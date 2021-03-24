@@ -20,8 +20,15 @@ All team members are expected to contribute equally to the document and list the
 One page overall introduction including sections 1.1 and 1.2.
 
 ### Client
+Company: RedShield
 
-Identify the client and their contact details
+Contact: Kirk Jackson
+Email: 	Kirk Jackson <kirk@pageofwords.com>
+Address:
+    RedShield
+    Level 12
+    RedShield House
+    79 Boulcott St
 
 ### 1.1 Purpose
 
