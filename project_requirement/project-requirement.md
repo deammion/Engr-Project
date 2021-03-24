@@ -25,7 +25,7 @@ Identify the client and their contact details
 
 ### 1.1 Purpose
 
-One sentence describing the purpose of the system (9.5.1)
+This project is to help RedShield develop the next generation of shielding technology that will be used to protect millions of people around the world.
 
 ### 1.2 Scope
 
