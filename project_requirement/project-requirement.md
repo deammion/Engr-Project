@@ -23,7 +23,7 @@ One page overall introduction including sections 1.1 and 1.2.
 Company: RedShield
 
 Contact: Kirk Jackson <br>
-Email: 	Kirk Jackson <kirk@pageofwords.com> <br>
+Email: 	kirk@redshield.co <br>
 Address: <br>
     RedShield <br>
     Level 12 <br>
@@ -168,13 +168,22 @@ see 9.5.19.
 
 Identify dates for key project deliverables: 
 
-1. architectural prototype
-1. minimum viable product
-1. further releases
+|  Project Deliverables  | Date     |
+| ---------------------- |  ------  |
+| Architectural Prototype|          |
+| Minimum Viable Product |          |
+| Further Releases       |          |
+| Final Project          |          |
 
 (1 page).
 
 ### 5.2 Budget
+
+| Item  | Amount     |
+| ----- |  --------  |
+|       |            |
+
+We do not require a budget for this project as we will be working online with free software
 
 Present a budget for the project (table), and justify each budget item (one paragraph per item, one page overall). 
 
@@ -201,12 +210,17 @@ Also document in this section any additional discussions with the School Safety 
 
 Safety Plans may be required for some projects, depending on project requirements. Safety Plan templates are available on the course Health & Safety page. Two questions all teams must answer are:
 
-**Do project requirements involve anything that can cause serious harm or death?**  
+Do project requirements involve anything that can cause serious harm or death?
+Our project requirements does not involve anything that can cause us serious harm or death. 
+
 Examples: building/modifying devices using voltages > 60 V, chemicals, large moving machinery, flying devices, bodies of water.
 
 If so, you will have to write a separate Safety Plan as part of project requirements, and the Safety Plan must be referenced in this section. For health and safety risks involving serious harm or death, you must first contact the School Safety Officer and Course Coordinator first to discuss the Safety Plan and project requirements.
 
 **Do project requirements involve anything that can cause harm or injury?**  
+- tripping over cables
+- not having enough breaks
+- eye strain 
 Examples: building/modifying things with voltages <= 60V, small moving machinery, wearable devices.
 
 If so, you will have to write a separate Safety Plan as part of project requirements, and the Safety Plan must be referenced in this section. For health and safety risks involving harm or injury, you should write a draft of the Safety Plan before contacting the School Safety Officer and Course Coordinator to discuss the Safety Plan and project requirements.
@@ -230,7 +244,7 @@ One page glossary _as required_.
 | Contributors  | Sections     |
 | ------        |  ----------  |
 |    Dylan      |              |
-|    Isabella   |              |
+|    Isabella   | 1.1, 5.4.1, 5.2   |
 |    Damien     |              |
 |    James      |              |
 |    Jaya       |              |
