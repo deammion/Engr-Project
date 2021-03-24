@@ -227,14 +227,15 @@ One page glossary _as required_.
 
 ## 7. Contributions
 
-| Section | Contributors |
-| ------  |  ----------  |
-|    1    |              |
-|    2    |              |
-|    3    |              |
-|    4    |              |
-|    5    |              |
-|    6    |              |
+| Contributors  | Sections     |
+| ------        |  ----------  |
+|    Dylan      |              |
+|    Isabella   |              |
+|    Damien     |              |
+|    James      |              |
+|    Jaya       |              |
+|    Nathan     |              |
+|    Timothy    |              |
 
 ---
 
