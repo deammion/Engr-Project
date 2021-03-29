@@ -32,7 +32,7 @@ Address: <br>
 
 ### 1.1 Purpose
 
-This project is to help RedShield develop the next generation of shielding technology that will be used to protect millions of people around the world.
+This project is to create a working demonstration of a program that can insert nonce tags, to enable CSP for websites which may not use it, to prevent XSS attacks.
 
 ### 1.2 Scope
 
