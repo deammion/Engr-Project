@@ -34,7 +34,7 @@ Address: <br>
 
 This project is to create a working demonstration of a program that can insert nonce tags, to enable CSP for websites which may not use it, to prevent XSS attacks.
 
-The Purpose of this project is to create a working prototype of a stand alone program capable of a reading, interpepting, and analyising HTTP source  code with the intended purpose of encrypting script (</script>) tags using nonce.
+The Purpose of this project is to create a working prototype of a stand alone program capable of a reading, interpepting, and analyising HTTP source  code with the intended purpose of encrypting script tags using nonce.
 
 ### 1.2 Scope
 
