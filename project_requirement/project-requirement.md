@@ -34,9 +34,13 @@ Address: <br>
 
 This project is to create a working demonstration of a program that can insert nonce tags, to enable CSP for websites which may not use it, to prevent XSS attacks.
 
+The Purpose of this project is to create a working prototype of a stand alone program capable of a reading, interpepting, and analyising HTTP source  code with the intended purpose of encrypting script (</script>) tags using nonce.
+
 ### 1.2 Scope
 
 We will start by implementing a MITM proxy, using Python, to keep track of HTTP responses and use that as a basis to filter through what is an appropriate and not appropriate script tag. This will be done with an algorithm that will help to implement script fingerprinting using nonce for non-variable, and not in-line script tags. Python unit test will be used to ensure the validity of the program we create. 
+
+The scope of this project is to create a MITM (Man In The Middle) proxy capable of reading and interperting HTTPS source code. The program will then be able to identify all standard script tags sent by the host website, and encrypt said script tags using nonce encoding, with the intented purpose of preventing XSS (cross site script) attacks.
 
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
@@ -229,6 +233,8 @@ If a safety plan is required, list in this section the date the School Safety of
 
 _If the project is purely software and requires no contact risks involving physical harm, then state "Project requirements do not involve risk of death, serious harm, harm or injury." in this section._
 
+Project requirements do not involve risk of death, serious harm, harm, or injury.
+
 
 ## 6. Appendices
 ### 6.1 Assumptions and dependencies 
@@ -245,7 +251,7 @@ One page glossary _as required_.
 | ------        |  ----------  |
 |    Dylan      |              |
 |    Isabella   | 1.1, 5.4.1, 5.2   |
-|    Damien     |              |
+|    Damien     | 1.1, 1.2     |
 |    James      |              |
 |    Jaya       |              |
 |    Nathan     |              |
