@@ -36,7 +36,7 @@ This project is to create a working demonstration of a program that can insert n
 
 ### 1.2 Scope
 
-One paragraph describing the scope of the system (9.5.2)
+We will start by implementing a MITM proxy, using Python, to keep track of HTTP responses and use that as a basis to filter through what is an appropriate and not appropriate script tag. This will be done with an algorithm that will help to implement script fingerprinting using nonce for non-variable, and not in-line script tags. Python unit test will be used to ensure the validity of the program we create. 
 
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
