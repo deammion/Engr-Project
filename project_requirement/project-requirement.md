@@ -314,7 +314,32 @@ The Client is local, and has indicated they can travel to Victoria University of
 
 Identify the ten most important project risks to achieving project goals: their type, likelihood, impact, and mitigation strategies (3 pages).
 
-If the project will involve any work outside the ECS laboratories, i.e. off-campus activities, these should be included in the following section.
+If the project will involve any work outside the ECS laboratories, i.e. off-campus activities, these should be included in the following section.<br>
+
+| Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
+| ---------|  ------  | ------------ | -------- | ---------- |
+|          |          |              |          |            |
+
+| Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
+| ---------|  ------  | ------------ | -------- | ---------- |
+|Code being deleted |Technical |  Likely | Moderate-Significant (depending on amount/importance)| Use Gitlab |
+
+| Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
+| ---------|  ------  | ------------ | -------- | ---------- |
+|Code being overwritten | Technical |  Very Likely | Moderate| Mattermost to notify others of commitments and if code is overwritten, use gitlab to restore it |
+
+| Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
+| ---------|  ------  | ------------ | -------- | ---------- |
+|Team member unable to contribute for unforeseen reasons |Teamwork |  Possible | Moderate-Significant(depending on project stage)| Keep good documentation of what is done so others can pick up tasks without too much hassle |
+
+| Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
+| ---------|  ------  | ------------ | -------- | ---------- |
+|Team member has other commitments which cause them to not be available  |Teamwork |  Very Likely  |Minor| Keep good documentation of what is done so others can pick up tasks without too much hassle and ensure no one is out of the loop |
+
+| Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
+| ---------|  ------  | ------------ | -------- | ---------- |
+|Team member has not done their specified work| Teamwork |Possible| Significant | Regularly meet up and contact team members to ensure everyone is on track  |
+
 
 ### 5.4 Health and Safety
 
@@ -376,7 +401,7 @@ One page glossary _as required_.
 |    Isabella   | 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3  |
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 5.4    |
 |    James      |              |
-|    Jaya       |1.3.4, 3.8, 6.1
+|    Jaya       |1.3.4, 3.8, 5.3, 6.1 |
 |    Nathan     |              |
 |    Timothy    |              |
 
