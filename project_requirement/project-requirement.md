@@ -82,7 +82,7 @@ One page identifying the main classes of users and their characteristics (9.5.5)
 
 #### 1.3.4 Limitations
 
-One page on the limitations on the product (9.5.6)
+One page on the limitations on the product (9.5.6)<br>
 A limitation for our program is that during the collection phase, it will be assumed that websites are already clean. So that any scripts on that page which are often present will be deemed as safe. However, this means if a page isn’t initially clea we could be incorrectly deeming a script tag as safe.
 
 Another limitation is that this will only be able to run on certain browsers such as Edge, Chrome and Firefox because strict CSP is not enabled for other web browsers. 
@@ -167,7 +167,9 @@ Write a short natural language description of the top nonfunctional requirements
 
 ### 3.8 Physical and Environmental Requirements 
 
-For systems with hardware components, identify the physical characteristics of that hardware (9.4.10) and environment conditions in which it must operate (9.4.11).  Depending on the project, this section may be from one page up to 5 pages.
+For systems with hardware components, identify the physical characteristics of that hardware (9.4.10) and environment conditions in which it must operate (9.4.11).  Depending on the project, this section may be from one page up to 5 pages.<br>
+
+This project is a software-based project therefore this means that there will be no physical requirements. However, in order to complete this project, we will need access to a computer. This computer must not only have python installed but also be able to run python 3 or higher.    
 
 ### 3.9 Supporting information
 
