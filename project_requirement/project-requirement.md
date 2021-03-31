@@ -299,13 +299,16 @@ Identify dates for key project deliverables:
 
 ### 5.2 Budget
 
-| Item  | Amount     |
-| ----- |  --------  |
-|       |            |
+| Item     | Amount |
+| -------- |  ----- |
+| Software |  nil   |
+| Hardware |  nil   |
+| Travel   |  nil   |
 
-We do not require a budget for this project as we will be working online with free software
+This project does not require a budget as it makes use of open source programs such as MITM. Accessing this can be done using personal computers or the computers available at Victoria University of Wellington.<br>
 
-Present a budget for the project (table), and justify each budget item (one paragraph per item, one page overall). 
+The Client is local, and has indicated they can travel to Victoria University of Wellington for meetings.<br>
+
 
 ### 5.3 Risks 
 
@@ -371,7 +374,7 @@ One page glossary _as required_.
 | ------        |  ----------  |
 |    Dylan      |              |
 |    Isabella   | 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3  |
-|    Damien     | 1.1, 1.2     |
+|    Damien     | 1.1, 1.2, 3.7, 5.4    |
 |    James      |              |
 |    Jaya       |1.3.4, 3.8, 6.1
 |    Nathan     |              |
