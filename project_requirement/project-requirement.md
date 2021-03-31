@@ -49,6 +49,7 @@ One page defining the system's relationship to other related products
 (9.5.3. but not the subsections in the standard.)
 
 > **9.5.3 Product perspective** <br>
+
 The program which we produce will get used as a demo to help Red Shield develop a similar solution with their Red Core Shielding technology. However, we do not need to directly access or use any of the components of the Red Core Shielding technology, nor do we need to code in elixir, which is what the Red Core Shielding technology is written in as Red Shield will handle the transition from our code to theirs.
 
 Our system will be related to any websites which will be using our program. However, this relation will not interfere with the website and its functions. We will make sure that our program will not interfere in any way with the website's function, unless an unsafe XSS tag is notified and added. 
