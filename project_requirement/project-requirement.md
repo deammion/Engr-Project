@@ -100,6 +100,20 @@ See 9.5.10. for most systems this will be around one page.
 
 This is typically the longest subsection in the document. List up to fifty use cases (in order of priority for development), and for at least top ten focal use cases, write a short goal statement and use case body (up to seven pages).  Identify the use cases that comprise a minimum viable product.
 
+| Phases    | Explanation     |
+| --------- |  -------------  |
+|Collection |                 |
+|Real       |                 |
+
+
+| 1                           |
+| --------- |  -------------  |
+|Phase      |   Collection    |
+|System     |   * Parses the HTML of the site  |
+|           |   * New script tags are found  |
+|Goal       |   * Program notes new script tag
+                * Calculates initial percentage |
+
 ### 3.3 Usability Requirements
 
 See 9.5.12. for most systems this will be around one page.
