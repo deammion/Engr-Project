@@ -248,7 +248,11 @@ Project requirements do not involve risk of death, serious harm, harm, or injury
 ## 6. Appendices
 ### 6.1 Assumptions and dependencies 
 
-One page on assumptions and dependencies (9.5.7).
+One page on assumptions and dependencies (9.5.7).<br>
+We are assuming that during the collection phase, the websites scanned will be clean. 
+We are assuming that anyone using our program is using either Edge, Chrome or FireFox.
+A dependency is that the browsers used must be either Edge, Chrome or FireFox.
+
 
 ### 6.2 Acronyms and abbreviations
 
@@ -262,7 +266,7 @@ One page glossary _as required_.
 |    Isabella   | 1.1, 5.4.1, 5.2   |
 |    Damien     | 1.1, 1.2     |
 |    James      |              |
-|    Jaya       |              |
+|    Jaya       |1.3.4, 3.8, 6.1
 |    Nathan     |              |
 |    Timothy    |              |
 
