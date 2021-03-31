@@ -105,14 +105,86 @@ This is typically the longest subsection in the document. List up to fifty use c
 |Collection |                 |
 |Real       |                 |
 
-
-| 1                           |
+| 1         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
 |System     |   * Parses the HTML of the site  |
 |           |   * New script tags are found  |
-|Goal       |   * Program notes new script tag
-                * Calculates initial percentage |
+|Goal       |   * Program notes new script  |
+|           |   * Calculates initial percentage |
+
+| 2         |                 |
+| --------- |  -------------  |
+|Phase      |   Collection    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Previously found script tags are found again |
+|Goal       |   * Script tags percentages increase |
+
+| 3         |                 |
+| --------- |  -------------  |
+|Phase      |   Collection    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Previously found script tags does not appear |
+|Goal       |   * Script tags percentages decreases |
+
+| 4         |                 |
+| --------- |  -------------  |
+|Phase      |   Collection    |
+|System     |   * Parses the HTML of the site  |
+|           |   * No script tags are found |
+|Goal       |   * Nothing happens  |
+
+| 5         |                 |
+| --------- |  -------------  |
+|Phase      |   Real    |
+|System     |   * Parses the HTML of the site  |
+|           |   * No script tags are found |
+|Goal       |   * No nonces are added  |
+
+| 6         |                 |
+| --------- |  -------------  |
+|Phase      |   Real    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Script tag with high percentages are found |
+|Goal       |   * Nonces added to these script tags  |
+
+| 7         |                 |
+| --------- |  -------------  |
+|Phase      |   Real    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Script tag with low percentages are found |
+|Goal       |   * Nonces added to these script tags  |
+
+| 8         |                 |
+| --------- |  -------------  |
+|Phase      |   Real    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Script tag which hasn’t been registered before |
+|Goal       |   * Nonces not added to these script tags  |
+|           |   * Reported on report-uri.com |
+
+| 9         |                 |
+| --------- |  -------------  |
+|Phase      |   Real    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Found script tag which has a high percentage and script tag which hasn’t been registered before |
+|Goal       |   * Nonces added to these script tags with high percentages   |
+|           |   * Nonces not added to script tags which aren’t registered |
+|           |   * Report non registered script tags on report-uri.com |
+
+| 10        |                 |
+| --------- |  -------------  |
+|Phase      |   Real    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Found inline script tag |
+|Goal       |   * Nonce is added and script is ignored  |
+
+| 11        |                 |
+| --------- |  -------------  |
+|Phase      |   Collection    |
+|System     |   * Parses the HTML of the site  |
+|           |   * Found inline script tag |
+|Goal       |   * Script tags percentage increases  |
 
 ### 3.3 Usability Requirements
 
@@ -277,7 +349,7 @@ One page glossary _as required_.
 | Contributors  | Sections     |
 | ------        |  ----------  |
 |    Dylan      |              |
-|    Isabella   | 1.1, 5.4.1, 5.2   |
+|    Isabella   | 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3  |
 |    Damien     | 1.1, 1.2     |
 |    James      |              |
 |    Jaya       |1.3.4, 3.8, 6.1
