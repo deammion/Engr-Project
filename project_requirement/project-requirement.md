@@ -111,6 +111,8 @@ See 9.5.12. for most systems this will be around one page.
 > **9.5.12 Usability requirements**<br>
 > Define usability (quality in use) requirements. Usability requirements and objectives for the software system include measurable effectiveness, efficiency, and satisfaction criteria in specific contexts of use.
 
+The goal is to design a proxy program which adheres to appreciate expectations and specifications to create additional security features for web applications. Fulfilling the usability requirements ensures that certain XSS inserted to the website is prevented from executing and safe script tags are applied to prevent websites from breaking due to the security. 
+
 ### 3.4 Performance requirements
 
 See 9.5.13. for most systems this will be around one page. Hardware projects also see section 9.4.6.
