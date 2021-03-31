@@ -32,15 +32,11 @@ Address: <br>
 
 ### 1.1 Purpose
 
-This project is to create a working demonstration of a program that can insert nonce tags, to enable CSP for websites which may not use it, to prevent XSS attacks.
-
-The Purpose of this project is to create a working prototype of a stand alone program capable of a reading, interpepting, and analyising HTTP source  code with the intended purpose of encrypting script tags using nonce.
+The Purpose of this project is to create a working prototype of a stand alone program capable of a reading, interpepting, and analyising HTTP source code with the intended purpose of preventing XSS, using nonce tags.
 
 ### 1.2 Scope
 
-We will start by implementing a MITM proxy, using Python, to keep track of HTTP responses and use that as a basis to filter through what is an appropriate and not appropriate script tag. This will be done with an algorithm that will help to implement script fingerprinting using nonce for non-variable, and not in-line script tags. Python unit test will be used to ensure the validity of the program we create. 
-
-The scope of this project is to create a MITM (Man In The Middle) proxy capable of reading and interperting HTTPS source code. The program will then be able to identify all standard script tags sent by the host website, and encrypt said script tags using nonce encoding, with the intented purpose of preventing XSS (cross site script) attacks.
+The scope of this project is to create a MITM proxy capable of reading and interperting HTTP responses to determine what script tags are safe and unsafe. This program will implement script fingerprinting using nonce for non-variable, and non-inline script tags, to prevent XSS attacks. Python unit test will be used to ensure the validity of the program we create. 
 
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
