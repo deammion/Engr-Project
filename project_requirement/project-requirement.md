@@ -78,6 +78,10 @@ One page identifying the main classes of users and their characteristics (9.5.5)
 #### 1.3.4 Limitations
 
 One page on the limitations on the product (9.5.6)
+A limitation for our program is that during the collection phase, it will be assumed that websites are already clean. So that any scripts on that page which are often present will be deemed as safe. However, this means if a page isn’t initially clea we could be incorrectly deeming a script tag as safe.
+
+Another limitation is that this will only be able to run on certain browsers such as Edge, Chrome and Firefox because strict CSP is not enabled for other web browsers. 
+
 
 ## 2. References
 
