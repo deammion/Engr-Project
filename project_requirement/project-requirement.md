@@ -246,6 +246,27 @@ Present the systemic (aka nonfunctional) requirements of the product (see ISO/IE
 List up to twenty systemic requirements / attributes.
 Write a short natural language description of the top nonfunctional requirements (approx. five pages).
 
+The nonfunctional requirements of this project are as follows (in descending order of priority): Security, Reliability, Performance, Scalability, Maintainability, and Usability.<br>
+
+Security: <br>
+The main purpose of this project is to increase internet browser security by implementing CSP on all outgoing HTTP requests sent by the host server; security is the top priority.  As such the project will need to produce a program that can perform such implementation without compromising security of both the end user and the host server.<br>
+The program/proxy must also be able to operate without exposing itself to attack. Since the program has a read functionality used to train the system on what to apply the CSP too. The program needs security measures to prevent the possibility of this being exploited. Since exploiting this part of the program would result in ineffective application of the CSP.<br>
+
+Reliability:<br>
+The project needs to produce a program capable of running independently as it is implemented by use of a proxy server. Since the proxy is remote to the host and end user reliability is also a top priority as neither the end user or host server have access to the program. Meaning if problems arise due to the use of said program external intervention is required to initiate recover. <br>
+Since external intervention or termination of the proxy is required if the program malfunctions then the project becomes null and void. So the program needs to be as robust as possible as failure can cause the host server to lose business, traffic etc, depending on the host site. Failure could potentially result in a security risk depending on the severity of the failure and if the program is the only CSP the host server is operating.<br>
+
+Performance and Scalability:<br>
+The program needs to be able to operate in such a way that it can handle a single request at once with limited interference/lag between the host server and the end user. If the program is unable to handle a single request without hindering normal use of the host website, the host server may see the program as more of a nuisance than a necessary security measure. Further on from this the program potentially needs to be able to handle multiple requests at once, with the same amount of limited interference. If the program is unable to handle such requests this will lead to downgraded performance.<br>
+Downgraded performance or limited scalability could result in loss of business, traffic to the host server. If this were to occur it could become a case of functionality over security resulting in the program being abandoned. <br>
+
+Maintainability:<br>
+As the program is to be designed in such a manner that it operates on a proxy server it can be considered to be an independent system. Meaning the end user and host server cannot and do not interact with the program. The program operates between the two independently of the others. As such maintainability of the program by the end user of the HTTP request and the host server is a null issue.<br>
+However, the program may still require maintenance as HTTP continues to change and become increasingly complex. The program needs to be built in a way that will allow for updates and regular patching if it is deemed necessary. <br>
+
+Usability:
+
+
 
 ### 3.8 Physical and Environmental Requirements 
 
