@@ -46,9 +46,9 @@ One page defining the system's relationship to other related products
 
 > **9.5.3 Product perspective** <br>
 
-The program which we produce will get used as a demo to help Red Shield develop a similar solution with their Red Core Shielding technology. However, we do not need to directly access or use any of the components of the Red Core Shielding technology, nor do we need to code in elixir, which is what the Red Core Shielding technology is written in as Red Shield will handle the transition from our code to theirs.
+The project will produce a proxy program that will be demonstrated to Red Shield which will assist with the development of a similar solution to CPS (Content Security Policy), their Red Core Shielding technology. The project does not need to directly access or use any of the components of the Red Core Shielding technology, nor does it need to written in elixir, which is the native coding language used by Red Core Shielding technology. Red Shield will handle the conversion from python to elixir, once the project is completed.
 
-Our system will be related to any websites which will be using our program. However, this relation will not interfere with the website and its functions. We will make sure that our program will not interfere in any way with the website's function, unless an unsafe XSS tag is notified and added. 
+The project will produce a system which will relate to any host server implementing the proxy program. This relation will not interfere with the host server or its standard functionality. The project team will ensure that the produced program does not interfere in any way with the host server’s functionality, with exception of an unsafe XSS tag being tagged, notified and added.
 
 > Define the system's relationship to other related products. 
 > 
@@ -374,7 +374,7 @@ One page glossary _as required_.
 | ------        |  ----------  |
 |    Dylan      |              |
 |    Isabella   | 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3  |
-|    Damien     | 1.1, 1.2, 3.7, 5.4    |
+|    Damien     | 1.1, 1.2,1.3.1, 3.7, 5.4    |
 |    James      |              |
 |    Jaya       |1.3.4, 3.8, 6.1
 |    Nathan     |              |
