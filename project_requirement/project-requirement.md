@@ -318,7 +318,6 @@ If the project will involve any work outside the ECS laboratories, i.e. off-camp
 
 | Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
 | ---------|  ------  | ------------ | -------- | ---------- |
-|          |          |              |          |            |
 |Code being deleted |Technical |  Likely | Moderate-Significant (depending on amount/importance)| Use Gitlab |
 |Code being overwritten | Technical |  Very Likely | Moderate| Mattermost to notify others of commitments and if code is overwritten, use gitlab to restore it |
 |Team member unable to contribute for unforeseen reasons |Teamwork |  Possible | Moderate-Significant(depending on project stage)| Keep good documentation of what is done so others can pick up tasks without too much hassle |
@@ -328,7 +327,7 @@ If the project will involve any work outside the ECS laboratories, i.e. off-camp
 |Misunderstanding about the project requirements| Requirements |Likely| Moderate | Ensure constant communication with the client and clear up any uncertainties promptly |
 |Changes to project requirements| Requirements | Possible | Significant | Ensure there is a clear understanding of what is required from the team from the beginning and ensure constant communication with client |
 |Bugs within code go undetected| Technical |Very Likely| Significant | Create tests for the program, to test different aspects of it and minimize the number of errors that go undectected |
-|Team members burning out| eamwork |Likely| Significant | Ensure everyone is communicating with each other so the team knows if someone is doing too much work and ensure all work is evenly divided |
+|Team members burning out| Teamwork |Likely| Significant | Ensure everyone is communicating with each other so the team knows if someone is doing too much work and ensure all work is evenly divided |
 
 
 ### 5.4 Health and Safety
