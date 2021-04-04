@@ -247,29 +247,51 @@ List up to twenty systemic requirements / attributes.
 Write a short natural language description of the top nonfunctional requirements (approx. five pages).
 
 The nonfunctional requirements of this project are as follows (in descending order of priority): Security, Data integrity, Reliability, Performance, Scalability, Maintainability, and Usability.<br>
+<br>
 Security:<br>
+<br>
 The main purpose of this project is to increase internet browser security by implementing CSP on all outgoing HTTP requests sent by the host server; security is the top priority.  As such the project will need to produce a program that can perform such implementation without compromising security of both the end user and the host server.<br>
+<br>
 The program/proxy must also be able to operate without exposing itself to attack. Since the program has a read functionality used to train the system on what to apply the CSP too. The program needs security measures to prevent the possibility of this being exploited. Since exploiting this part of the program would result in ineffective application of the CSP.<br>
+<br>
 During the reading stage of the programs lifecycle it will need to operate in a way that is secure. If the reading stage can be exploited it could be possible for an attacker to intercept the incoming HTTP requests and train the system to ignore malicious code or input any code the attack deems fit. If unsecure the attacker could gain the ability to edit more than the script tags. If the program can be exploited in such a way it could lead to an increased possibility of attacks occurring, instead of preventing them.<br>
+<br>
 During the reading stage the system stores and reads outgoing HTTPS, if not stored properly, or accessible to any outside user this could lead to attackers being able to access this data. The program needs to ensure these files are not accessible. If accessible this could also result in further attacks or privacy breaches.<br>
+<br>
 Since the program operates as a proxy during each stage of its life cycle the program must also prevent the possibility of exploitation during the encoding stage. If an exploit is discovered there could be potential for an attack to add malicious code to every request processed by the program. Such exploits would once again lead to an increased possibility of attacks affecting any end user of the website.<br>
+<br>
 Data integrity:<br>
+<br>
 The purpose of the program is to read and encrypt HTTP requests. Since it operates on a proxy the program and the project team need to ensure that the data is encrypted correctly. Ensuring the data sent from the host server is preserved to prevent incorrect or unreadable HTTP responses being sent is essential. If the system can not ensure this then it could result in unreadable HTTP responses sent to the end user.<br> 
+<br>
 This is one of the highest priorities with this program, as if it can not ensure data integrity then the project team has failed, and the program will be deemed unusable.<br>
+<br>
 Reliability:<br>
+<br>
 The project needs to produce a program capable of running independently as it is implemented by use of a proxy server. Since the proxy is remote to the host and end user reliability is also a top priority as neither the end user or host server have access to the program. Meaning if problems arise due to the use of said program external intervention is required to initiate recover.<br> 
+<br>
 Since external intervention or termination of the proxy is required if the program malfunctions then the project becomes null and void. So the program needs to be as robust as possible as failure can cause the host server to lose business, traffic etc, depending on the host site. Failure could potentially result in a security risk depending on the severity of the failure and if the program is the only CSP the host server is operating.<br>
+<br>
 Performance:<br>
+<br>
 The program needs to be able to operate in such a way that it can handle a single request at once with limited interference/lag between the host server and the end user. If the program is unable to handle a single request without hindering normal use of the host website, the host server may see the program as more of a nuisance than a necessary security measure.<br> 
+<br>
 Downgraded performance could result in loss of business/traffic to the host server. If this were to occur it could become a case of functionality over security resulting in the program being abandoned. If this were to occur it means the project has failed.<br>
+<br>
 Scalability:<br>
+<br>
 This program will potentially need to be able to handle multiple requests at once, with the same amount of limited interference. If the program is unable to handle such requests this will lead to downgraded performance. As Stated above, this could lead to the proxy being abandoned in favour of performance over security.<br> 
+<br>
 Maintainability:<br>
-As the program is to be designed in such a manner that it operates on a proxy server it can be considered to be an independent system. Meaning the end user and host server cannot and do not interact with the program. The program operates between the two independently of the others. As such maintainability of the program by the end user of the HTTP request and the host server is a null issue.
+<br>
+As the program is to be designed in such a manner that it operates on a proxy server it can be considered to be an independent system. Meaning the end user and host server cannot and do not interact with the program. The program operates between the two independently of the others. As such maintainability of the program by the end user of the HTTP request and the host server is a null issue.<br>
+<br>
 However, the program may still require maintenance as HTTP continues to change and become increasingly complex. The program needs to be built in a way that will allow for updates and regular patching if it is deemed necessary. Or the program needs to be designed in such a way that it can account for the increasing complexity.<br>
+<br>
 Handling these changes are outside the scope of this project, as the scope only pertains to the script tags of an HTTP request. Thus, this level of maintainability is not a priority of this project. So the program needs to be designed to be not only functional but also easy to understand, modify and patch if redshield (or anyone else if the program goes open source).<br> 
+<br>
 Usability:<br>
-
+<br>
 
 
 
