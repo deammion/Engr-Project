@@ -436,7 +436,12 @@ A dependency is that the browsers used must be either Edge, Chrome or FireFox.
 
 ### 6.2 Acronyms and abbreviations
 
-One page glossary _as required_.
+CSP - Content Security Policy
+MITM  - Man In The Middle
+DOM - Document Object Model
+HTML - Hyper-Text Markup Language
+HTTP - Hyper-Text Transfer Protocol
+XSS - Cross Site Scripting
 
 ## 7. Contributions
 
