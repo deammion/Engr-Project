@@ -13,7 +13,7 @@ All team members are expected to contribute equally to the document and list the
 <div style="page-break-after: always;"></div>
 
 # ENGR 301 Project *NN* Project Proposal and Requirements Document
-#### Author list, a comma-separated list of the names of each member of the team.
+#### Isabella Tomaz Ketley, Jaya Narayan, Timothy McDermott, Dylan Simpson, Damien Tamasese, Nathan Wong, James Houlihan
 
 ## 1. Introduction
 
@@ -390,7 +390,7 @@ Document here project requirements for Health and Safety. All teams must state i
 
 Also document in this section any additional discussions with the School Safety Officer regarding Health and Safety risks. Give any further information on relevant health and safety regulations, risks, and mitigations, etc.
 
-<br>Occupational Overuse</br>
+#### Occupational Overuse
 
 To manage occupational overuse, team members will ensure that they take regular breaks away from their devices to ensure they are doing different tasks. Furthermore, realistic deadlines will be set for tasks and the team will practice good time management to prevent overuse in order to meet deadlines. 
 
