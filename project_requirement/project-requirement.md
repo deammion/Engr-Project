@@ -390,6 +390,15 @@ Document here project requirements for Health and Safety. All teams must state i
 
 Also document in this section any additional discussions with the School Safety Officer regarding Health and Safety risks. Give any further information on relevant health and safety regulations, risks, and mitigations, etc.
 
+<br>Occupational Overuse</br>
+
+To manage occupational overuse, team members will ensure that they take regular breaks away from their devices to ensure they are doing different tasks. Furthermore, realistic deadlines will be set for tasks and the team will practice good time management to prevent overuse in order to meet deadlines. 
+
+Additionally, team members will have ergonomic workspaces so that any required equipment will be nearby and easily accessible. This will also encompass ensuring desks are at the correct height to encourage correct posture and reduce straining. Correct postures will be promoted and ensured for all team members and the team will use comfortable chairs which if possible, will have back support. This will reduce straining and incorrect postures in a work environment, mitigating occupational overuse and its potential symptoms. 
+
+https://www.southerncross.co.nz/group/medical-library/occupational-overuse-syndrome-oos
+
+
 
 #### 5.4.1 Safety Plans
 
@@ -413,7 +422,7 @@ One page glossary _as required_.
 | Contributors  | Sections     |
 | ------        |  ----------  |
 |    Dylan      |              |
-|    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4.1  |
+|    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1  |
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 5.4    |
 |    James      |              |
 |    Jaya       |1.3.4, 3.8, 5.3, 6.1 |
