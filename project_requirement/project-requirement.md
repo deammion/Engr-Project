@@ -283,36 +283,37 @@ Since the program operates as a proxy during each stage of its life cycle the pr
 <br>
 Data integrity:<br>
 <br>
-The purpose of the program is to read and encrypt HTTP requests. Since it operates on a proxy the program and the project team need to ensure that the data is encrypted correctly. Ensuring the data sent from the host server is preserved to prevent incorrect or unreadable HTTP responses being sent is essential. If the system can not ensure this then it could result in unreadable HTTP responses sent to the end user.<br> 
-<br>
+The purpose of the program is to read and encrypt HTTP requests. Since it operates on a proxy the program and the project team need to ensure that the data is encrypted correctly. Ensuring the data sent from the host server is preserved to prevent incorrect or unreadable HTTP responses being sent is essential. If the system can not ensure this then it could result in unreadable HTTP responses sent to the end user.<br>
+<br> 
 This is one of the highest priorities with this program, as if it can not ensure data integrity then the project team has failed, and the program will be deemed unusable.<br>
 <br>
 Reliability:<br>
 <br>
-The project needs to produce a program capable of running independently as it is implemented by use of a proxy server. Since the proxy is remote to the host and end user reliability is also a top priority as neither the end user or host server have access to the program. Meaning if problems arise due to the use of said program external intervention is required to initiate recover.<br> 
+The project needs to produce a program capable of running independently as it is implemented by use of a proxy server. Since the proxy is remote to the host and end user reliability is also a top priority as neither the end user or host server have access to the program. Meaning if problems arise due to the use of said program external intervention is required to initiate recover.<br>
 <br>
 Since external intervention or termination of the proxy is required if the program malfunctions then the project becomes null and void. So the program needs to be as robust as possible as failure can cause the host server to lose business, traffic etc, depending on the host site. Failure could potentially result in a security risk depending on the severity of the failure and if the program is the only CSP the host server is operating.<br>
 <br>
 Performance:<br>
 <br>
-The program needs to be able to operate in such a way that it can handle a single request at once with limited interference/lag between the host server and the end user. If the program is unable to handle a single request without hindering normal use of the host website, the host server may see the program as more of a nuisance than a necessary security measure.<br> 
-<br>
+The program needs to be able to operate in such a way that it can handle a single request at once with limited interference/lag between the host server and the end user. If the program is unable to handle a single request without hindering normal use of the host website, the host server may see the program as more of a nuisance than a necessary security measure.<br>
+<br> 
 Downgraded performance could result in loss of business/traffic to the host server. If this were to occur it could become a case of functionality over security resulting in the program being abandoned. If this were to occur it means the project has failed.<br>
 <br>
 Scalability:<br>
 <br>
-This program will potentially need to be able to handle multiple requests at once, with the same amount of limited interference. If the program is unable to handle such requests this will lead to downgraded performance. As Stated above, this could lead to the proxy being abandoned in favour of performance over security.<br> 
-<br>
+This program will potentially need to be able to handle multiple requests at once, with the same amount of limited interference. If the program is unable to handle such requests this will lead to downgraded performance. As Stated above, this could lead to the proxy being abandoned in favour of performance over security.<br>
+<br> 
 Maintainability:<br>
 <br>
 As the program is to be designed in such a manner that it operates on a proxy server it can be considered to be an independent system. Meaning the end user and host server cannot and do not interact with the program. The program operates between the two independently of the others. As such maintainability of the program by the end user of the HTTP request and the host server is a null issue.<br>
 <br>
 However, the program may still require maintenance as HTTP continues to change and become increasingly complex. The program needs to be built in a way that will allow for updates and regular patching if it is deemed necessary. Or the program needs to be designed in such a way that it can account for the increasing complexity.<br>
 <br>
-Handling these changes are outside the scope of this project, as the scope only pertains to the script tags of an HTTP request. Thus, this level of maintainability is not a priority of this project. So the program needs to be designed to be not only functional but also easy to understand, modify and patch if redshield (or anyone else if the program goes open source).<br> 
-<br>
+Handling these changes are outside the scope of this project, as the scope only pertains only to the script tags of an HTTP request. Thus, this level of maintainability is not a priority of this project. So the program needs to be designed to be not only functional but also easy to understand, modify and patch if Redshield sees the need. <br>
+<br> 
 Usability:<br>
 <br>
+Due to the nature of the program being run in as a proxy, Usability by the end user and the  host server owner is null. However, the program still needs to be easy to use by the client Redshield. As such the program needs to be easy to set up, initiate, and switch between modes. <br>
 
 
 
@@ -423,7 +424,7 @@ One page glossary _as required_.
 | ------        |  ----------  |
 |    Dylan      |              |
 |    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1  |
-|    Damien     | 1.1, 1.2,1.3.1, 3.7, 5.4    |
+|    Damien     | 1.1, 1.2,1.3.1, 3.7, 5.2    |
 |    James      |              |
 |    Jaya       |1.3.4, 3.8, 5.3, 6.1 |
 |    Nathan     |              |
