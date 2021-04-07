@@ -260,6 +260,102 @@ See 9.5.13. for most systems this will be around one page. Hardware projects als
 
 ### 3.5 Logical database requirements
 
+Click on image below to access current plantuml diagram. 
+
+```plantuml
+
+@startuml
+
+package "Proxy"{
+
+    entity MITM_IMPLEMENTATION
+
+    entity Incoming_Response
+
+    Class saveResponse{
+        String responseText
+        parseResponse()
+        saveToFile()
+    }
+
+    Class modifyResponse{
+
+        object flow.request.scheme
+        flow.request.port
+        http.HTTPResponse.make
+
+        response()
+    }
+
+    MITM_IMPLEMENTATION - Incoming_Response : Implementation allows\nfor following actions
+    Incoming_Response  "1" - "1" saveResponse : saves every \nHTTPS response
+    Incoming_Response "1" -- "1" modifyResponse : modifies responses\n deemed safe\nby Application
+
+}
+
+package "FileStore" <<database>> {
+
+    entity HTTPResponseSaveData
+
+    entity scriptTagSaveData
+
+    saveResponse -- HTTPResponseSaveData : Saves to file system\n
+}
+
+package "Application : Collection Phase" {
+
+    entity Shield {
+
+    }
+
+    class parseResponse{
+        Object : parsedResponse()
+
+    }
+
+    class HTMLStatement{
+        String statement
+        checkScriptSaftey()
+        changeBodyPartInjured()
+    }
+
+    class TagRisk {
+        int TagRiskNumber
+        String statement
+        setTagRisk()
+        editTagRisk()
+    }
+    HTTPResponseSaveData - parseResponse : loads saved Responses\nand parses them >
+    TagRisk "1" - "1" scriptTagSaveData : > set Tag risk \n or \n edit Tag risk \n and store info
+    Shield - HTMLStatement : < Shield gets \nindividual \nstatements
+    Shield -- TagRisk : Assigns chance script tag is dangerous  >
+    
+    parseResponse "1" - "Many" HTMLStatement : Main application \nrequests parsed data >
+    
+}
+
+package "Application : Real Phase" {
+
+    class RealShield{
+        int TagRiskNumber
+        String script
+        parseResponse()
+        
+    }
+
+    class determineSaftey {
+        object trueFalseMessage
+        sendMessage()
+    }
+    RealShield - Incoming_Response : Sends incoming response
+    RealShield - determineSaftey : > Passes incomming response
+    determineSaftey - modifyResponse :  Sends safe \n not safe message >
+
+}
+
+@enduml
+```
+
 See 9.5.14. for most systems, a focus on d) and e) is appropriate, such as an object-oriented domain analysis. You should provide an overview domain model (e.g.  a UML class diagram of approximately ten classes) and write a brief description of the responsibilities of each class in the model (3 pages).
 
 You should use right tools, preferabley PlantUML, to draw your URL diagrams which can be easily embedded into a Mardown file (PlantUML is also supported by GitLab and Foswiki).
