@@ -120,9 +120,16 @@ This class of users include anyone trying to attack a webpage with XSS that has 
 #### 1.3.4 Limitations
 
 One page on the limitations on the product (9.5.6)<br>
-A limitation for our program is that during the collection phase, it will be assumed that websites are already clean. So that any scripts on that page which are often present will be deemed as safe. However, this means if a page isn’t initially clea we could be incorrectly deeming a script tag as safe.
 
-Another limitation is that this will only be able to run on certain browsers such as Edge, Chrome and Firefox because strict CSP is not enabled for other web browsers. 
+* **Browsers**:
+   * The number of browsers the program can successfully run on is limited. This program is limited to Edge, Chrome and FireFox because strict CPS is not enabled for other web browsers.<br>
+
+<br>
+
+* **Collection Phase**:
+  * During the collection phase the program is limited as it will be assumed that websites are already clean. Therefore, any scripts on that page which are often present will be deemed to be safe. However, if a page is not initially clean the program could be incorrectly considering a script tag as being safe. 
+
+ 
 
 
 ## 2. References
