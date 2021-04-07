@@ -240,22 +240,20 @@ The goal is to design a proxy program which adheres to appreciate expectations a
 
 See 9.5.13. for most systems this will be around one page. Hardware projects also see section 9.4.6.
 
-> **9.5.13 Performance requirements** <br>
-> Specify both the static and the dynamic numerical requirements placed on the software or on human interaction with the software as a whole. 
-> 
-> Static numerical requirements may include the following:
-> 
-> a) The number of terminals to be supported;  
-> b) The number of simultaneous users to be supported;  
-> c) Amount and type of information to be handled.
-> 
-> Static numerical requirements are sometimes identified under a separate section entitled Capacity.
-> 
-> Dynamic numerical requirements may include, for example, the numbers of transactions and tasks and the amount of data to be processed within certain time periods for both normal and peak workload conditions. The performance requirements should be stated in measurable terms.
-> 
->  For example, "_95 % of the transactions shall be processed in less than 1 second._" rather than, "An operator shall not have to wait for the transaction to complete."
-> 
-> NOTE Numerical limits applied to one specific function are normally specified as part of the processing subparagraph description of that function.
+ **9.5.13 Performance requirements** <br>
+The performance requirements section will discuss how a system will perform once it is in use. In order for the performance of a system to be deemed successful, the system must adhere to a set of specific requirements. Furthermore, this section will comprehensively outline what a user should expect when interacting with the system. <br>
+ 
+The number of simultaneous users that the system can support during the collection phase is 1. However, during the real phase the system is able to support >1 (multiple) users.<br>
+The system should load 98% of the HTML in less than 1 second. <br> 
+If delays are experienced 87% of the HTML should load in 2 seconds.<br>
+The system should not affect the user end of the website. Therefore, this means that if users use any website with our proxy and program enabled, they should not experience any changes in how they are able to utilize the websites. However, if a script tag is considered unsafe the system will affect users as the unsafe script tag will not run hence changing what the website should do. <br>
+The program should have 100% functionality if users use Edge, Chrome or FireFox as browsers.<br>
+During the collection phase the program should be able to identify which script tags contained within the HTML are safe. This will be achieved by the program scanning through websites that are clean. <br>
+The program should insert nonce tags in script tags during the real phase to indicate which script tags are deemed safe.<br>
+The program should be able to notify if script tags in a webpage are not safe. This will be achieved by collecting and reporting unsafe script tags in ‘report-uri.com’.<br> 
+The program should be able to support data encryption handling HTTP requests to maintain data integrity.<br> 
+The program should be able to manage a single request at once without there being significant disruption in between the host server and the users. <br>
+As the nonce is a pseudo-random value intended for one time use. The program should ensure that at every request the nonce changes.<br>
 
 
 ### 3.5 Logical database requirements
