@@ -260,101 +260,10 @@ See 9.5.13. for most systems this will be around one page. Hardware projects als
 
 ### 3.5 Logical database requirements
 
-Click on image below to access current plantuml diagram. 
-
-```plantuml
-
-@startuml
-
-package "Proxy"{
-
-    entity MITM_IMPLEMENTATION
-
-    entity Incoming_Response
-
-    Class saveResponse{
-        String responseText
-        parseResponse()
-        saveToFile()
-    }
-
-    Class modifyResponse{
-
-        object flow.request.scheme
-        flow.request.port
-        http.HTTPResponse.make
-
-        response()
-    }
-
-    MITM_IMPLEMENTATION - Incoming_Response : Implementation allows\nfor following actions
-    Incoming_Response  "1" - "1" saveResponse : saves every \nHTTPS response
-    Incoming_Response "1" -- "1" modifyResponse : modifies responses\n deemed safe\nby Application
-
-}
-
-package "FileStore" <<database>> {
-
-    entity HTTPResponseSaveData
-
-    entity scriptTagSaveData
-
-    saveResponse -- HTTPResponseSaveData : Saves to file system\n
-}
-
-package "Application : Collection Phase" {
-
-    entity Shield {
-
-    }
-
-    class parseResponse{
-        Object : parsedResponse()
-
-    }
-
-    class HTMLStatement{
-        String statement
-        checkScriptSaftey()
-        changeBodyPartInjured()
-    }
-
-    class TagRisk {
-        int TagRiskNumber
-        String statement
-        setTagRisk()
-        editTagRisk()
-    }
-    HTTPResponseSaveData - parseResponse : loads saved Responses\nand parses them >
-    TagRisk "1" - "1" scriptTagSaveData : > set Tag risk \n or \n edit Tag risk \n and store info
-    Shield - HTMLStatement : < Shield gets \nindividual \nstatements
-    Shield -- TagRisk : Assigns chance script tag is dangerous  >
-    
-    parseResponse "1" - "Many" HTMLStatement : Main application \nrequests parsed data >
-    
-}
-
-package "Application : Real Phase" {
-
-    class RealShield{
-        int TagRiskNumber
-        String script
-        parseResponse()
-        
-    }
-
-    class determineSaftey {
-        object trueFalseMessage
-        sendMessage()
-    }
-    RealShield - Incoming_Response : Sends incoming response
-    RealShield - determineSaftey : > Passes incomming response
-    determineSaftey - modifyResponse :  Sends safe \n not safe message >
-
-}
-
-@enduml
-```
+#### Class Diagram ####
+![alternative text](http://www.plantuml.com/plantuml/svg/bLLFR_is3BtxKn0vROS4sFM78cZNjLY0kWrY7mCKYiKaQcp94-MkHj7lFih_LRSebeDXa-BZ8_d4N9CJrbL57aMbo2xYXB3OMlDMBzwZ2FY7sYbNGxn9u-TDl7suY-yUqvjqy_GO-3SwCuNIf-STKcaqOUkzpGKHa7Z5tluUGVTBdEK0i9qZnJSt-4fXQGZvxVV1xf5ISw_otlWnpLCOgOxrc6a8CuSNp1mSS_Flok8_5P9RKNR60liZeQyqTkHoTgvS_PscsnvuLOWBZk1T0I6Zhne6otcRu1TiYZ9d9je9fum6aJCJskkZiN0q_iDtIMJUIGtq70GMVomOdPz1hndSVnBWAzeQzjfNaGo4lm5hi5gmiA4CrnWKqe31H44YqvUSweXxVQZXfYnpbJNLHD77H5X-Reap5XTmTIM54mT1k5v3ABLfgnEc_nSV30vGPbNfKd4AlK7bNC1NE5o2VoLm1exC1gWcXyLU1pmd1N30BGy1i-PZUsR2YqzyaxF2NB9nElxC2pAKyQZyfrQElrg_77K-X-0gueV42TSeP7PvgFSC3bPrTacQ3YNYwB1crD4dz0d_DBBU2kis-gMoADa_IygztIcwm9XFQTTR7wlYWFPd9eIkYvXGGAa-MJ_yy-jXBSC6SiDo8sIxJoJiHWaABTkZ18vlDQmzPiztl1npvJ3asXFrPy7wmwndO_sJcOPcduIyUa7nvVGP-j4lmoanw5NlEg4Z3bPQgbSbAv7pnz0g2a2MFM6Elo5I9qtDn3BiU8DZDef0-YbQKn5qXKQpbTdN70jTBsRiOg6ud8d8zxhRVDH94lpjxD6_lnex57buAJe1UKTRr_-HaA_ov_-0kLmbEhI5qjWg7ju_BtvdAxmNEM6CH5p7HADQThP0ZYF_RvPsme44glC4ApK8dd7pWjioQUoYP-6pYELy3NVf_SRrojJ6jUz5MmgicxrxpOUg8lyF)
+#### State Diagram ####
+![alternative text](http://www.plantuml.com/plantuml/svg/hLN1QXin4BtxAqIWq1O2FGV793I75Xh7h1Tw27iGwx6pH5vj9JcD2VttQfyiUTPoQWpD8MZUl3Sp6hriRgoJnctMQZJo9qTYPlJhzhPspGk9jz58-9_7pvMul9o8dx9nJRiAO61VxB2Ftyfozkb2I1jPOZos2sMe9bzfCe662mkodMujCMM4XhHV6x9km08Y-1Xzjjnsv9lMJxgfVKEaup0OFvAGY04oiR6u4ey0hnDKvUmu02S3gGQR-RvgjI6C78uyEPSlT2UTH3e6XolZWdkzeAklMYcgNQDRwFPXnYn8Ad3wGrXLd19tO1E58tzWm741ICG9KIX5IEs7w1VIDnUMNAbZeiebc6b01XJMnmlkEYTVZFv4b-v9AFAs7smmzvH-nnWC09mmayOcIURHGHRh722dB7wl3SrhqtJEbXfArCXXBhhJBVMWVmUmMJoml0clQGjQowRrsSpxACrlcsl0or1myodx9ulbVj3IYOduKhrVWK-UIQ-Z5ByuixUKLFL6IKT5OvyVbgLSMT2EuD6Td0hkaV6FFZVNefmloB-1oNAmA3CRujrMfSgCTW06uhbkC__3RkOylvbt3LUST9p9BPUhmCpXm3xBTKV8-PR_rUsaGuFwm9xr4zNFS1hRZfLBUZ1JxVXI-9wJ2bjEqQb7dVkwdWVHxipJKzroHWhZqwK-k70Q4haK8HTqs8C_EjgAGk9VvqIyVgXo0UkLQyRGG1GvNd7RTMhhPNMynH0HsTyUFlWtr2usQ_KN)
 
 See 9.5.14. for most systems, a focus on d) and e) is appropriate, such as an object-oriented domain analysis. You should provide an overview domain model (e.g.  a UML class diagram of approximately ten classes) and write a brief description of the responsibilities of each class in the model (3 pages).
 
