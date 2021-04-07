@@ -302,6 +302,20 @@ see 9.5.15 and 9.5.16. for most systems, this will be around one page.
 > 
 > For example, this could specify the requirement for software to trace processing activity. Such traces are needed for some applications to meet minimum regulatory or financial standards. An audit trace requirement may, for example, state that all changes to a payroll database shall be recorded in a trace file with before and after values.
 
+**Use of Python**<br>
+The software for this project will be written in python code which is an unfamiliar programming language to most team members as previous courses have focused on Java. This will be a major constraint as team members will have to learn python during this project which will likely slow development progress.  
+
+**Skill levels**<br>
+Team members will have different experiences and specialties in software development and cybersecurity. This will be a constraint on the development process as many team members have limited knowledge about nonce tags, XSS and HTML parsing.   
+
+**Timeframe and deadlines**<br>
+Timeframes and deadlines will be a major constraint on this project as unexpected events are bound to occur that will affect deadlines such as bugs and code deletion. Other courses that team members take can be an issue if there are overlapping deadlines. There is also the chance that team members cannot access campus resources (labs, meeting rooms etc.) due to the COVID-19 pandemic.
+
+**Performance Expectations**<br>
+Performance expectations can be a hindrance as the expectations set by team members before the development process begins may not be met at the conclusion of the project.
+This relates to each member of the team as other commitments that team members have will hinder the development process as members will be unable to give 100% of their time/effort to the project.  
+
+
 ### 3.7 Nonfunctional system attributes
 
 Present the systemic (aka nonfunctional) requirements of the product (see ISO/IEC 25010).
