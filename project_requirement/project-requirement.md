@@ -558,9 +558,15 @@ Project requirements do not involve risk of death, serious harm, harm or injury.
 ### 6.1 Assumptions and dependencies 
 
 One page on assumptions and dependencies (9.5.7).<br>
-We are assuming that during the collection phase, the websites scanned will be clean. 
-We are assuming that anyone using our program is using either Edge, Chrome or FireFox.
-A dependency is that the browsers used must be either Edge, Chrome or FireFox.
+
+
+Below is a list of assumptions and dependencies for this project:<br>
+
+It is assumed that during the collection phase, the websites scanned will be clean <br>
+It is assumed that users of this program will have access to either of the following browsers, Edge, Chrome or FireFox<br>
+It is assumed that users have access to a technological device (i.e., computer, cellular phone, tablet)<br>
+It is assumed that users have access to internet to run this program<br>
+A dependency is that the browsers used must either be Edge, Chrome or FireFox <br>
 
 
 ### 6.2 Acronyms and abbreviations
