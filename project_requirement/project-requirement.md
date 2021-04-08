@@ -420,6 +420,19 @@ To verify that the project satisfies it’s required functions in a reliable and
 
 For the minimum viable product, only the cases outlined in section 3.2 relating to this will be tested against. Once the minimum viable product has been attained, then the cases outlined in the extension section of 3.2 will be tested against to verify the programs extended behaviour.
 
+### 4.6 Design constraints
+
+**Use of Python**<br>
+To verify that this project remains in python, team members will go learn what they need to about the language in context to the project, will use an IDE that supports Python, and will make sure their code follows Python coding standards.   
+
+**Skill levels**<br>
+To verify that each team member has the required skill level, they will learn what they need to about the concepts involved in this project and will make an effort to ask for assistance when needed.   
+
+**Timeframe and deadlines**<br>
+To verify that project deadlines are met, weekly meetings will be held to review and assess progress made by team members. During the development progress, scope will be evaluated. 
+
+**Performance Expectations**<br>
+To verify that team members are contributing equally to this project, each member must commit at least 8 hours per week to the project. Contributions of each team member will primarily be tracked by their commits to the project’s Gitlab with communications on the project’s Mattermost also being assessed.       
 
 ## 5. Development schedule.
 
