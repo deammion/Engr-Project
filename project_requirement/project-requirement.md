@@ -349,7 +349,7 @@ Write a short natural language description of the top nonfunctional requirements
 
 The nonfunctional requirements of this project are as follows (in descending order of priority): Security, Data integrity, Reliability, Performance, Scalability, Maintainability, and Usability.<br>
 <br>
-Security:<br>
+**Security:**<br>
 <br>
 The main purpose of this project is to increase internet browser security by implementing CSP on all outgoing HTTP requests sent by the host server; security is the top priority.  As such the project will need to produce a program that can perform such implementation without compromising security of both the end user and the host server.<br>
 <br>
@@ -361,13 +361,13 @@ During the reading stage the system stores and reads outgoing HTTPS, if not stor
 <br>
 Since the program operates as a proxy during each stage of its life cycle the program must also prevent the possibility of exploitation during the encoding stage. If an exploit is discovered there could be potential for an attack to add malicious code to every request processed by the program. Such exploits would once again lead to an increased possibility of attacks affecting any end user of the website.<br>
 <br>
-Data integrity:<br>
+**Data integrity:**<br>
 <br>
 The purpose of the program is to read and encrypt HTTP responses from the host websites server. Since it operates on a proxy the program and the project team need to ensure that the data is encrypted correctly. Ensuring the data sent from the host server is preserved to prevent incorrect or unreadable HTTP responses being sent is essential. If the system can not ensure this then it could result in unreadable HTTP responses sent to the end user.<br> 
 <br>
 This is one of the highest priorities with this program, failure to ensure data integrity will result in the host website becoming essentially inaccessible to the end user. If the program cannot maintain data integrity then it is deemed a failure.<br>
 <br>
-Reliability:<br>
+**Reliability:**<br>
 <br>
 The project needs to produce a program capable of running independently as it is implemented by use of a proxy server. Since the proxy is remote to the host and end user reliability is also a top priority as neither the end user or host server have access to the program. Meaning if problems arise due to the use of said program external intervention is required to initiate recover.<br>
 <br>
@@ -375,19 +375,19 @@ Since external intervention or termination of the proxy is required if the progr
 <br>
 Reliability will be determined by the programs ability to not only encode the correct script tags sent in the HTTP response from the host server, but also maintain data integrity. By correctly identifying which script tags to encode the program can be as reliable.<br>
 <br>
-Performance:<br>
+**Performance:**<br>
 <br>
 The program needs to be able to operate in such a way that it can handle a single request at once with limited interference/lag between the host server and the end user. If the program is unable to handle a single request without hindering normal use of the host website, the owner of the host server may see the program as more of a nuisance than a necessary security measure, especially when the program will need to handle multiple requests at once.<br>
 <br>
 If the program is unable to adhere to the performance requirements stated above this could result in loss of business/traffic to the host server. If this were to occur it could become a case of functionality over security resulting in the program being abandoned. If the program is unable to meet these performance requirements then the project has failed.<br>
 <br>
-Scalability:<br>
+**Scalability:**<br>
 <br>
 This program will potentially need to be able to handle multiple requests at once, with the same amount of limited interference. Scalability is supplemental to performance since if the program is unable to handle a single HTTP request with acceptable latency, then scalability will also be affected. So by meeting the above performance requirements, scalability will be the next non-functional requirement the project team can address.<br> 
 <br>
 Ensuring the program can operate at the same efficiency whilst handling multiple requests is paramount to ensuring performance capabilities are maintained.  If the program is unable to handle such requests this will lead to downgraded performance. As Stated above, this could lead to the proxy being abandoned in favour of performance over security.<br> 
 <br>
-Maintainability:<br>
+**Maintainability:**<br>
 <br>
 As the program is to be designed in such a manner that it operates on a proxy server it can be considered to be an independent system. Meaning the end user and the owner of the host server cannot and do not interact with the program. The program operates between the two independently of the others. As such maintainability of the program by the end user and host server of the HTTP requests are a null issue.<br>
 
@@ -395,7 +395,7 @@ However, the program may still require maintenance as HTTP continues to change a
 
 Handling some of these changes may be outside the scope of this project, as the scope pertains only to the script tags of an HTTP request. Thus, this level of maintainability is not a priority of this project. However, the program needs to be designed to be not only functional but also easy to understand, modify and patch if Redshield sees the need.<br>
 
-Usability:<br>
+**Usability:**<br>
 
 Due to the nature of the program being run in as a proxy, Usability by the end user and the  host server owner is null. However, the program still needs to be easy to use by the client Redshield. As such the program needs to be easy to set up, initiate, and switch between modes. Usability is ranked low as if all other criteria are met then usability will be met as well. Following this logic, if the program can maintain performance, ensure security and data integrity then the program, since it operates independently, would meet usability requirements.<br>
 
@@ -436,7 +436,7 @@ To verify that team members are contributing equally to this project, each membe
 
 ### 4.7 Nonfunctional system attributes
 
-Security:<br>
+**Security:**<br>
 
 Verification of the read stage, can be obtained by asserting the HTML responses are coming from the correct IP.<br>
 
@@ -444,27 +444,27 @@ During the read stage the program will store collected HTML responses from the h
 
 During the operational stage the program needs to ensure nonce tags are applied to the correct script tags (those deemed safe by the program), and report correctly those deemed unsafe by the program. This will be verified during the testing phase of the project, ensuring the program can identify the correct script tags.<br>
 
-Data integrity:<br>
+**Data integrity:**<br>
 
 As stated above, data integrity can be verified by use of hashing. Ensuring the outgoing and incoming data matches.<br>
 
-Reliability:<br>
+**Reliability:**<br>
 
 Reliability will be verified by the programs ability to ensure data integrity, security and performance.<br>
 
-Performance:<br>
+**Performance:**<br>
 
 Performance will be verified relative to the guidelines set in section 3.4<br>
 
-Scalability:<br>
+**Scalability:**<br>
 
 Scalability will be verified relative to the guidelines set in section 3.4<br>
 
-Maintainability:<br>
+**Maintainability:**<br>
 
 Maintainability will be verified by use of standard coding practice (use of java docs, commenting, appropriate classes and methods) to ensure the program is able to be used and maintained by the client.<br>
 
-Usability:<br>
+**Usability:**<br>
 
 Usability can be verified, by how well the program meets the above requirements. <br>
 
