@@ -12,7 +12,7 @@ All team members are expected to contribute equally to the document and list the
 
 <div style="page-break-after: always;"></div>
 
-# ENGR 301 Project *NN* Project Proposal and Requirements Document
+# ENGR 301 Project *14* Project Proposal and Requirements Document
 #### Isabella Tomaz Ketley, Jaya Narayan, Timothy McDermott, Dylan Simpson, Damien Tamasese, Nathan Wong, James Houlihan
 
 ## 1. Introduction
@@ -148,10 +148,12 @@ See 9.5.10. for most systems this will be around one page.
 
 This is typically the longest subsection in the document. List up to fifty use cases (in order of priority for development), and for at least top ten focal use cases, write a short goal statement and use case body (up to seven pages).  Identify the use cases that comprise a minimum viable product.
 
+#### Use Cases for the Minimum Viable Product:
+
 | Phases    | Explanation     |
 | --------- |  -------------  |
-|Collection |                 |
-|Real       |                 |
+|Collection |  This is the phase where the program receives multiple versions of a web application HTTP response and parses the HTTP using DOM. Each time the program parses the HTML, it will search for script tags and store any it finds, along with its probability of occurring. If the script tag has been stored previously, the program will increase the probability that the tag has appeared. |
+|Real       | This is the phase where the program takes a HTTP response, gets the HTML code. The program then searches through the code to add nonce tags to the trusted script tags. To determine which script tags are trusted, the program uses the probability that the script tag occurs which is calculated in the collection phase. |
 
 | 1         |                 |
 | --------- |  -------------  |
@@ -233,6 +235,29 @@ This is typically the longest subsection in the document. List up to fifty use c
 |System     |   * Parses the HTML of the site  |
 |           |   * Found inline script tag |
 |Goal       |   * Script tags percentage increases  |
+
+#### Use Cases for Extensions of the Product:
+
+| 1         |                 |
+| --------- |  -------------  |
+|Phase      |   Real          |
+|System     |   * Parses the HTML of the site  |
+|           |   * Untrusted script tag found within a trusted script tag |
+|Goal       |   * Add a nonce tag to the outside script tag and ensure the untrusted script tag does not run  |
+
+| 2         |                 |
+| --------- |  -------------  |
+|Phase      |   Real          |
+|System     |   * Parses the HTML of the site  |
+|           |   * Untrusted script tag found within a untrusted script tag |
+|Goal       |   * Ensure no nonce tags and added and neither tags are executed  |
+
+| 3         |                 |
+| --------- |  -------------  |
+|Phase      |   Real          |
+|System     |   * Parses the HTML of the site  |
+|           |   * Found inline script tag |
+|Goal       |   * Determine whether the script tag is trusted or not and if it is trusted, add a nonce tag  |
 
 ### 3.3 Usability Requirements
 
