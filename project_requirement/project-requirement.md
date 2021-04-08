@@ -343,10 +343,6 @@ This relates to each member of the team as other commitments that team members h
 
 ### 3.7 Nonfunctional system attributes
 
-Present the systemic (aka nonfunctional) requirements of the product (see ISO/IEC 25010).
-List up to twenty systemic requirements / attributes.
-Write a short natural language description of the top nonfunctional requirements (approx. five pages).
-
 The nonfunctional requirements of this project are as follows (in descending order of priority): Security, Data integrity, Reliability, Performance, Scalability, Maintainability, and Usability.<br>
 <br>
 **Security:**<br>
