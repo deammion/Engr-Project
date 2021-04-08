@@ -48,32 +48,17 @@ The scope of this project is to create a MITM proxy capable of reading and inter
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
 
-One page defining the system's relationship to other related products
-(9.5.3. but not the subsections in the standard.)
-
-> **9.5.3 Product perspective** <br>
-
 The project will produce a proxy program that will be demonstrated to Red Shield which will assist with the development of a similar solution to CPS (Content Security Policy), their Red Core Shielding technology. The project does not need to directly access or use any of the components of the Red Core Shielding technology, nor does it need to written in elixir, which is the native coding language used by Red Core Shielding technology. Red Shield will handle the conversion from python to elixir, once the project is completed.
 
-The project will produce a system which will relate to any host server implementing the proxy program. This relation will not interfere with the host server or its standard functionality. The project team will ensure that the produced program does not interfere in any way with the host server’s functionality, with exception of an unsafe XSS tag being tagged, notified and added.
+The product's only interaction is with the HTTP requests and responses sent between the host server and the end user via the use of a MITM proxy. The product will not nor can it interact directly with either of these. The product's only purpose is to intercept the HTTP responses sent by the host server. 
 
-> Define the system's relationship to other related products. 
-> 
-> If the product is an element of a larger system, then relate the requirements of that larger system to the functionality of the product covered by the software requirements specification.
-> 
-> If the product is an element of a larger system, then identify the interfaces between the product covered by the software requirements specification and the larger system of which the product is an element. 
->
-> A block diagram showing the major elements of the larger system, interconnections, and external interfaces can be helpful.
-> 
-> Describe how the software operates within the following constraints:  
-a) System interfaces;  
-b) User interfaces;  
-c) Hardware interfaces;  
-d) Software interfaces;  
-e) Communications interfaces;  
-f) Memory;  
-g) Operations;  
-h) Site adaptation requirements.
+The program (including the proxy) will be implemented and initiated by the client, Redshield, to collect and store these HTTP responses to train the program to eventually be able to read and identify safe and unsafe script tags in the HTML. The product will function in two stages. The first stage being the read stage and the second being the operational stage.
+
+During the first stage the program will store any HTTP responses sent by the host server to a local machine of the client. This data is then interpreted by the program so it can learn what a standard HTML response from the host server looks like. In doing so the program will then identify what it can consider a ‘safe’ script tag. 
+
+During the operational stage the program will continue to intercept the HTTP responses from the host server, read and interpret this response and mark all ‘safe’ script tags with a nonce tag and send it to the end user. This is the program's main purpose, automation of CSP in regards to scripting to prevent XSS attacks.
+
+Any ‘unsafe’ script the program identifies will recorded and reported via the use of report-url.com
 
 #### 1.3.2 Product functions
 
