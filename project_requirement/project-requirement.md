@@ -432,7 +432,42 @@ To verify that each team member has the required skill level, they will learn wh
 To verify that project deadlines are met, weekly meetings will be held to review and assess progress made by team members. During the development progress, scope will be evaluated. 
 
 **Performance Expectations**<br>
-To verify that team members are contributing equally to this project, each member must commit at least 8 hours per week to the project. Contributions of each team member will primarily be tracked by their commits to the project’s Gitlab with communications on the project’s Mattermost also being assessed.       
+To verify that team members are contributing equally to this project, each member must commit at least 8 hours per week to the project. Contributions of each team member will primarily be tracked by their commits to the project’s Gitlab with communications on the project’s Mattermost also being assessed. 
+
+### 4.7 Nonfunctional system attributes
+
+Security:<br>
+
+Verification of the read stage, can be obtained by asserting the HTML responses are coming from the correct IP.<br>
+
+During the read stage the program will store collected HTML responses from the host website. To ensure security is maintained, these collected files will need to be inaccessible to external users of the program.<br>
+
+During the operational stage the program needs to ensure nonce tags are applied to the correct script tags (those deemed safe by the program), and report correctly those deemed unsafe by the program. This will be verified during the testing phase of the project, ensuring the program can identify the correct script tags.<br>
+
+Data integrity:<br>
+
+As stated above, data integrity can be verified by use of hashing. Ensuring the outgoing and incoming data matches.<br>
+
+Reliability:<br>
+
+Reliability will be verified by the programs ability to ensure data integrity, security and performance.<br>
+
+Performance:<br>
+
+Performance will be verified relative to the guidelines set in section 3.4<br>
+
+Scalability:<br>
+
+Scalability will be verified relative to the guidelines set in section 3.4<br>
+
+Maintainability:<br>
+
+Maintainability will be verified by use of standard coding practice (use of java docs, commenting, appropriate classes and methods) to ensure the program is able to be used and maintained by the client.<br>
+
+Usability:<br>
+
+Usability can be verified, by how well the program meets the above requirements. <br>
+
 
 ## 5. Development schedule.
 
@@ -543,7 +578,7 @@ XSS - Cross Site Scripting
 | ------        |  ----------  |
 |    Dylan      |              |
 |    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1  |
-|    Damien     | 1.1, 1.2,1.3.1, 3.7, 5.2    |
+|    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2    |
 |    James      |              |
 |    Jaya       |1.3.4, 3.8, 5.3, 6.1 |
 |    Nathan     |              |
