@@ -481,6 +481,17 @@ Additionally, team members will have ergonomic workspaces so that any required e
 
 https://www.southerncross.co.nz/group/medical-library/occupational-overuse-syndrome-oos
 
+#### Cable Management
+
+Unmanaged cables are a safety risk as team members or nearby people can get caught on them or trip on them. In order to manage this risk, all team members will ensure that any cables they use will be kept underneath their desk, mitigating the possibility of someone getting caught on it. Furthermore, all cables which are not being used will be stored away in a cupboard or bag to further mitigate the risk unmanaged cables pose. 
+
+#### Health and Safety at External Workplaces
+
+The project does not require any work or testing to be held off-campus. However, there is a possibility that some meetings will be held at Red Shield’s office. In order to receive a Health and Safety induction for this external workplace, team members will get in contact with the client to arrange this, prior to any work being done at the clients' office. 
+
+#### Human or Animal Test Subjects
+
+This project does not include any human or animal subjects. This is because all testing can and will be done by the team, using different web applications. 
 
 
 #### 5.4.1 Safety Plans
