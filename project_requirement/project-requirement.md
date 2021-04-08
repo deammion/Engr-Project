@@ -390,14 +390,14 @@ Ensuring the program can operate at the same efficiency whilst handling multiple
 Maintainability:<br>
 <br>
 As the program is to be designed in such a manner that it operates on a proxy server it can be considered to be an independent system. Meaning the end user and the owner of the host server cannot and do not interact with the program. The program operates between the two independently of the others. As such maintainability of the program by the end user and host server of the HTTP requests are a null issue.<br>
-<br>
+
 However, the program may still require maintenance as HTTP continues to change and become increasingly complex. The program needs to be built in a way that will allow for updates and regular patching if it is deemed necessary. Or the program needs to be designed in such a way that it can account for the increasing complexity.<br>
-<br>
+
 Handling some of these changes may be outside the scope of this project, as the scope pertains only to the script tags of an HTTP request. Thus, this level of maintainability is not a priority of this project. However, the program needs to be designed to be not only functional but also easy to understand, modify and patch if Redshield sees the need.<br>
-<br>
+
 Usability:<br>
-<br>
-Due to the nature of the program being run in as a proxy, Usability by the end user and the  host server owner is null. However, the program still needs to be easy to use by the client Redshield. As such the program needs to be easy to set up, initiate, and switch between modes. Usability is ranked low as if all other criteria are met then usability will be met as well. Following this logic, if the program can maintain performance, ensure security and data integrity then the program, since its operators independently would meet usability requirements.<br>
+
+Due to the nature of the program being run in as a proxy, Usability by the end user and the  host server owner is null. However, the program still needs to be easy to use by the client Redshield. As such the program needs to be easy to set up, initiate, and switch between modes. Usability is ranked low as if all other criteria are met then usability will be met as well. Following this logic, if the program can maintain performance, ensure security and data integrity then the program, since it operates independently, would meet usability requirements.<br>
 
 ### 3.8 Physical and Environmental Requirements 
 
