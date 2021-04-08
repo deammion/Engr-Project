@@ -413,6 +413,14 @@ see 9.5.19.
 
 3 pages outlining how you will verify that the product meets the most important specific requirements. The format of this section should parallel section 3 of your document (see 9.5.18). Wherever possible (especially systemic requirements) you should indicate testable acceptance criteria.
 
+
+### 3.2 Functions
+
+To verify that the project satisfies it’s required functions in a reliable and complete way, a combination of continuous integration testing, automated testing and manual testing will be done. Each case specified in section 3.2 will be manually tested to ensure that when the specified system input has happened, the outcome will be what the specified goal states. This will allow any case to be tested, to ensure there are no issues and validate that the product meets its specifications laid out in section 3.2. Any unexpected behaviour of the program will be logged as an issue to be fixed. Furthermore, automated tests will be added to test for a range of different inputs, including invalid and no input.
+
+For the minimum viable product, only the cases outlined in section 3.2 relating to this will be tested against. Once the minimum viable product has been attained, then the cases outlined in the extension section of 3.2 will be tested against to verify the programs extended behaviour.
+
+
 ## 5. Development schedule.
 
 ### 5.1 Schedule
