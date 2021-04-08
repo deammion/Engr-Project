@@ -543,11 +543,11 @@ One page on assumptions and dependencies (9.5.7).<br>
 
 Below is a list of assumptions and dependencies for this project:<br>
 
-It is assumed that during the collection phase, the websites scanned will be clean <br>
-It is assumed that users of this program will have access to either of the following browsers, Edge, Chrome or FireFox<br>
-It is assumed that users have access to a technological device (i.e., computer, cellular phone, tablet)<br>
-It is assumed that users have access to internet to run this program<br>
-A dependency is that the browsers used must either be Edge, Chrome or FireFox <br>
+* It is assumed that during the collection phase, the websites scanned will be clean. <br>
+* It is assumed that users of this program will have access to either of the following browsers, Edge, Chrome or FireFox.<br>
+* It is assumed that users have access to a technological device (i.e., computer, cellular phone, tablet).<br>
+* It is assumed that users have access to internet to run this program.<br>
+* A dependency is that the browsers used must either be Edge, Chrome or FireFox. <br>
 
 
 ### 6.2 Acronyms and abbreviations
@@ -567,7 +567,7 @@ XSS - Cross Site Scripting
 |    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1  |
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2    |
 |    James      |              |
-|    Jaya       |1.3.4, 3.8, 5.3, 6.1 |
+|    Jaya       |1.3.4, 3.4, 3.8, 5.3, 6.1 |
 |    Nathan     |              |
 |    Timothy    |              |
 
