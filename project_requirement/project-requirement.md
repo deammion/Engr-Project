@@ -403,7 +403,7 @@ Due to the nature of the program being run in as a proxy, Usability by the end u
 
 For systems with hardware components, identify the physical characteristics of that hardware (9.4.10) and environment conditions in which it must operate (9.4.11).  Depending on the project, this section may be from one page up to 5 pages.<br>
 
-This project is a software-based project therefore this means that there will be no physical requirements. However, in order to complete this project, we will need access to a computer. This computer must not only have python installed but also be able to run python 3 or higher.    
+Due to the fact that this project is a solely software-based project there are no physical or environmental requirements involved. The only requirement this project has is that there must be access to a computer to run the program. Furthermore, the computer must have python installed on it. It is vital that the computer is able to run python version 3.0 or higher. <br>  
 
 ### 3.9 Supporting information
 
