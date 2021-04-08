@@ -449,6 +449,9 @@ Maintainability will be verified by use of standard coding practice (use of java
 
 Usability can be verified, by how well the program meets the above requirements. <br>
 
+### 4.8 Physical and Environmental Requirements <br>
+
+This project is a solely software-based project and as stated in section 3.8 this means that there are no physical or environmental requirements involved. Hence, the physical or environmental requirements cannot be verified as this project does not have any. The only requirement for this project is to have a computer. This computer must also be able run python version 3.0 or higher. In order to verify that the project fulfils this requirement access to computer laboratories will be given. The computers in the laboratories are Dell Monitors therefore python version 3.0 can be run on these monitors as they are compatible with python.  <br>
 
 ## 5. Development schedule.
 
@@ -567,7 +570,7 @@ XSS - Cross Site Scripting
 |    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1  |
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2    |
 |    James      |              |
-|    Jaya       |1.3.4, 3.4, 3.8, 5.3, 6.1 |
+|    Jaya       |1.3.4, 3.4, 3.8, 4.8, 5.3, 6.1 |
 |    Nathan     |              |
 |    Timothy    |              |
 
