@@ -390,6 +390,8 @@ Due to the fact that this project is a solely software-based project there are n
 
 see 9.5.19. 
 
+The project currently needs no supporting infomation 
+
 ## 4. Verification
 
 3 pages outlining how you will verify that the product meets the most important specific requirements. The format of this section should parallel section 3 of your document (see 9.5.18). Wherever possible (especially systemic requirements) you should indicate testable acceptance criteria.
