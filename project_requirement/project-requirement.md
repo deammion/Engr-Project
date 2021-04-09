@@ -48,11 +48,11 @@ The scope of this project is to create a MITM proxy capable of reading and inter
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
 
-The project will produce a proxy program that will be demonstrated to Red Shield which will assist with the development of a similar solution to CPS (Content Security Policy), their Red Core Shielding technology. The project does not need to directly access or use any of the components of the Red Core Shielding technology, nor does it need to written in elixir, which is the native coding language used by Red Core Shielding technology. Red Shield will handle the conversion from python to elixir, once the project is completed.
+The project will produce a proxy program that will be demonstrated to Red Shield which will assist with the development of their Red Core Shielding technology. The project does not need to directly access or use any of the components of the Red Core Shielding technology, nor does it need to be written in elixir, which is the native coding language used by Red Core Shielding technology. Red Shield will handle the conversion from python to elixir, once the project is completed.
 
-The product's only interaction is with the HTTP requests and responses sent between the host server and the end user via the use of a MITM proxy. The product will not nor can it interact directly with either of these. The product's only purpose is to intercept the HTTP responses sent by the host server. 
+The project will produce a system which will relate to any host server implementing the proxy program. This relation will not interfere with the host server or its standard functionality. The project team will ensure that the produced program does not interfere in any way with the host server’s functionality, with the exception of an unsafe XSS tag being tagged, notified and added. 
 
-The program (including the proxy) will be implemented and initiated by the client, Redshield, to collect and store these HTTP responses to train the program to eventually be able to read and identify safe and unsafe script tags in the HTML. The product will function in two stages. The first stage being the read stage and the second being the operational stage.
+The product will function in two stages. The first stage being the collection stage and the second being the operational stage.
 
 During the first stage the program will store any HTTP responses sent by the host server to a local machine of the client. This data is then interpreted by the program so it can learn what a standard HTML response from the host server looks like. In doing so the program will then identify what it can consider a ‘safe’ script tag. 
 
