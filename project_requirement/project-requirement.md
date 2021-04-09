@@ -473,10 +473,10 @@ Identify dates for key project deliverables:
 
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
-| Architectural Prototype|          |
-| Minimum Viable Product |          |
-| Further Releases       |          |
-| Final Project          |          |
+| Architectural Prototype|   Friday 7th May (Project Architecture and Design Document due)     |
+| Minimum Viable Product |   Monday 16th August  (Trimester 2 mid-tri break begins)    |
+| Further Releases       |   Friday 8th October  (Trimester 2 and full-year teaching period ends)    |
+| Final Project          |   Saturday 6th November (End-year assessment period ends)      |
 
 (1 page).
 
