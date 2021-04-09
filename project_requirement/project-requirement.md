@@ -594,7 +594,7 @@ XSS - Cross Site Scripting
 |    James      | 1.3.3, 3.6, 3.9, 4.6, 5.1             |
 |    Jaya       |1.3.4, 3.4, 3.8, 4.8, 5.3, 6.1 |
 |    Nathan     |              |
-|    Timothy    |              |
+|    Timothy    |4.1, 4.3, 4.4, 4.6, 4.7|
 
 ---
 
