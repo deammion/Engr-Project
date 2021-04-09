@@ -221,6 +221,19 @@ This is typically the longest subsection in the document. List up to fifty use c
 |           |   * Found inline script tag |
 |Goal       |   * Script tags percentage increases  |
 
+| 12        |                 |
+| --------- |  -------------  |
+|Phase      |   Collection    |
+|System     |   * No HTML in the input  |
+|Goal       |   * Nothing happens  |
+
+| 13        |                 |
+| --------- |  -------------  |
+|Phase      |   Operational    |
+|System     |   * No HTML in the input  |
+|Goal       |   * Nothing happens  |
+
+
 #### Use Cases for Extensions of the Product:
 
 | 1         |                 |
@@ -397,7 +410,7 @@ The project currently needs no supporting infomation
 3 pages outlining how you will verify that the product meets the most important specific requirements. The format of this section should parallel section 3 of your document (see 9.5.18). Wherever possible (especially systemic requirements) you should indicate testable acceptance criteria.
 
 
-### 3.2 Functions
+### 4.2 Functions
 
 To verify that the project satisfies it’s required functions in a reliable and complete way, a combination of continuous integration testing, automated testing and manual testing will be done. Each case specified in section 3.2 will be manually tested to ensure that when the specified system input has happened, the outcome will be what the specified goal states. This will allow any case to be tested, to ensure there are no issues and validate that the product meets its specifications laid out in section 3.2. Any unexpected behaviour of the program will be logged as an issue to be fixed. Furthermore, automated tests will be added to test for a range of different inputs, including invalid and no input.
 
