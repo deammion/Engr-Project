@@ -478,6 +478,7 @@ Identify dates for key project deliverables:
 | Further Releases       |   Friday 8th October  (Trimester 2 and full-year teaching period ends)    |
 | Final Project          |   Saturday 6th November (End-year assessment period ends)      |
 
+Dates are subject to change as project continues
 (1 page).
 
 ### 5.2 Budget
@@ -581,7 +582,7 @@ XSS - Cross Site Scripting
 |    Dylan      |              |
 |    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1  |
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2    |
-|    James      | 1.3.3, 3.6, 3.9, 4.6,              |
+|    James      | 1.3.3, 3.6, 3.9, 4.6, 5.1             |
 |    Jaya       |1.3.4, 3.4, 3.8, 4.8, 5.3, 6.1 |
 |    Nathan     |              |
 |    Timothy    |              |
