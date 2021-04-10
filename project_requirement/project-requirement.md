@@ -301,6 +301,94 @@ The performance requirements section will discuss how a system will perform once
 #### State Diagram ####
 ![alternative text](http://www.plantuml.com/plantuml/svg/hLN1QXin4BtxAqIWq1O2FGV793I75Xh7h1Tw27iGwx6pH5vj9JcD2VttQfyiUTPoQWpD8MZUl3Sp6hriRgoJnctMQZJo9qTYPlJhzhPspGk9jz58-9_7pvMul9o8dx9nJRiAO61VxB2Ftyfozkb2I1jPOZos2sMe9bzfCe662mkodMujCMM4XhHV6x9km08Y-1Xzjjnsv9lMJxgfVKEaup0OFvAGY04oiR6u4ey0hnDKvUmu02S3gGQR-RvgjI6C78uyEPSlT2UTH3e6XolZWdkzeAklMYcgNQDRwFPXnYn8Ad3wGrXLd19tO1E58tzWm741ICG9KIX5IEs7w1VIDnUMNAbZeiebc6b01XJMnmlkEYTVZFv4b-v9AFAs7smmzvH-nnWC09mmayOcIURHGHRh722dB7wl3SrhqtJEbXfArCXXBhhJBVMWVmUmMJoml0clQGjQowRrsSpxACrlcsl0or1myodx9ulbVj3IYOduKhrVWK-UIQ-Z5ByuixUKLFL6IKT5OvyVbgLSMT2EuD6Td0hkaV6FFZVNefmloB-1oNAmA3CRujrMfSgCTW06uhbkC__3RkOylvbt3LUST9p9BPUhmCpXm3xBTKV8-PR_rUsaGuFwm9xr4zNFS1hRZfLBUZ1JxVXI-9wJ2bjEqQb7dVkwdWVHxipJKzroHWhZqwK-k70Q4haK8HTqs8C_EjgAGk9VvqIyVgXo0UkLQyRGG1GvNd7RTMhhPNMynH0HsTyUFlWtr2usQ_KN)
 
+| 1         |                 |
+| --------- |  -------------  |
+|Class      |   Main          |
+|Package    |   * Proxy       |
+|           |   *             |
+|Description|   * This is the main class, the relationship between entity Proxy_Activated represents the main being activated to beging the entire program  |
+|Respsosibility |   * To run the entire program logic, call methods as required |
+
+| 2         |                 |
+| --------- |  -------------  |
+|Class      |   IncommingHTTP |
+|Package    |   * Proxy       |
+|           |   *             |
+|Description|   * To send all the incomming HTTP messages to.  |
+|Respsosibility |   * To recieve HTTP Responses and Requests, if a response is found then the class should call saveResponse  |
+
+| 3         |                 |
+| --------- |  -------------  |
+|Class      |   saveResponse |
+|Package    |   * Proxy       |
+|           |   *             |
+|Description|   * To take a response message and get the content of the message.  |
+|Respsosibility |   * To recieve HTTP Requests, if a response is found then the class should open the a file to write to and write the content of the HTTP response to the file  |
+
+| 4         |                 |
+| --------- |  -------------  |
+|Class      |   modifyRespose |
+|Package    |   * Proxy       |
+|           |   *             |
+|Description|   * To take a response message and get the apply a nonce tag to the message where a approved script tag appears.  |
+|Respsosibility |   * To make modification to response messages so that specified scripts are allowed to run |
+
+| 5         |                 |
+| --------- |  -------------  |
+|Class      |   Shield |
+|Package    |   * Application : Collection Phase       |
+|           |   *             |
+|Description|   * Class to co-ordinate the entire Collection phase  |
+|Respsosibility | * To keep track of the script tags and co-ordinate the running of the collections phase  |
+
+| 6         |                 |
+| --------- |  -------------  |
+|Class      |   HTMLStatement |
+|Package    |   * Application : Collection Phase       |
+|           |   *             |
+|Description|   * class to run actions on the statement being examined by the program  |
+|Respsosibility | * Contain the currentStatement as a string and use the getCurrentTags to go through a script tag with the other classes that this class requires.  |
+
+| 7         |                 |
+| --------- |  -------------  |
+|Class      |   frequency |
+|Package    |   * Application : Collection Phase       |
+|           |   *             |
+|Description|   * class to keep tabs on how many times a script tag has appear |
+|Respsosibility | * contain the times that a script tag has appeared and updates and retrieves them.  |
+
+| 8         |                 |
+| --------- |  -------------  |
+|Class      |   scriptTag |
+|Package    |   * Application : Collection Phase       |
+|           |   *             |
+|Description|   * class to keep track of script tag content |
+|Respsosibility | * contain the content of a script tag.  |
+
+| 9         |                 |
+| --------- |  -------------  |
+|Class      |   safteyRating |
+|Package    |   * Application : Collection Phase       |
+|           |   *             |
+|Description|   * class to work out the saftey rating of a script tag |
+|Respsosibility | * contain the saftey rating which should start at 0 for a script, and then gets modified   |
+
+| 10         |                 |
+| --------- |  -------------  |
+|Class      |   parseResponse |
+|Package    |   * Application : Collection Phase       |
+|           |   *             |
+|Description|   * class to parse the HTTPResponse using DOM parsing |
+|Respsosibility | * Contains the methods for parsing responses using dom methods   |
+
+| 11         |                 |
+| --------- |  -------------  |
+|Class      |   HTTPResponse |
+|Package    |   * Application : Collection Phase       |
+|           |   *             |
+|Description|   * class to get responses from the File Storage system. |
+|Respsosibility | * Contains the methods for parsing responses using dom methods   |
+
 See 9.5.14. for most systems, a focus on d) and e) is appropriate, such as an object-oriented domain analysis. You should provide an overview domain model (e.g.  a UML class diagram of approximately ten classes) and write a brief description of the responsibilities of each class in the model (3 pages).
 
 You should use right tools, preferabley PlantUML, to draw your URL diagrams which can be easily embedded into a Mardown file (PlantUML is also supported by GitLab and Foswiki).
