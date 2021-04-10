@@ -152,6 +152,26 @@ References to other documents or standards. Follow the IEEE Citation  Reference 
 20 pages outlining the requirements of the system. You should apportion these pages across the following subsections to focus on the most important parts of your product.
 
 ### 3.1 External interfaces
+Collection:
+
+Input:
+
+- HTML, and this is where it increases the percentage, any scripts found in this phase will be deemed as safe. Will only be unsafe if a script occurs 0 times.
+
+- All scripts are collected and sorted into ‘safe scripts’ and ‘unsafe scripts’.
+Output:
+
+- The exact same HTMl without even adding any nonces tags - and after changing the percentage
+
+Operational:
+Input:
+
+- HTML Responses stored from the collection phase. Scripts are compared between ones appearing in the web application against the ones that appeared during the collections phase.
+Output:
+- Scripts that are found to be safe have nonce tags attached to them, allowing them to run.
+- Any scripts that are deemed unsafe are collected and reported in a ‘report-uri.com’ document.
+
+
 
 See 9.5.10. for most systems this will be around one page. 
 
