@@ -78,7 +78,7 @@ Track all HTML scripts present from that request.
 Adjust weighting of safe scripts.  
 Repeat.  
  
-The second phase of our program is the real phase. In this, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the page where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be collected and reported in ‘report-uri.com’.  
+The second phase of our program is the real phase. In this, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the HTTP response where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be collected and reported in ‘report-uri.com’.  
  
 Both phases of this program will only check for non-variable and non-inline script tags.  
  
@@ -92,13 +92,13 @@ One page identifying the main classes of users and their characteristics (9.5.5)
 This class of users include the owners of any website that enabled our proxy and program. With our proxy and program enabled, these users would experience no change in how people use their website, and their data will be protected from attacks that involve XSS. 
 
 **Average Web Page Surfer**<br>
-This class of users include anyone who accesses a webpage that has our proxy and program enabled. With our proxy and program enabled, these users would experience no changes in how they are able to use the webpage unless they are inputting script tags (which would class them as a hacker user).   
+This class of users include anyone who accesses a web application that has the proxy and program enabled. With our proxy and program enabled, these users would experience no changes in how they are able to use the web application unless they are inputting script tags (which would class them as a hacker user).   
 
 **A Red Shield Tester**<br>
-This class of users include anyone from Red Shield who has access to our software. These users would have full access to the code from this project and would be able to test the performance of our software or add features to the code that are not within the scope of this project before implementing the code into their Red Core Shielding technology to be released to Red Shield’s clients. 
+This class of users include anyone from Red Shield who has direct access to the software. These users would have full access to the code from this project and would be able to test the performance of the software or add features to the code that are not within the scope of this project before implementing the code into their Red Core Shielding technology to be released to Red Shield’s clients. 
 
-**A Hacker trying to attack the webpage with XSS**<br>
-This class of users include anyone trying to attack a webpage with XSS that has our proxy and program enabled. With our proxy and program enabled, these users will be unable to attack the webpage through XSS as any script tags that the user implements will not have the nonce tag for the webpage and any script the user has inputted will not run.  
+**A Hacker trying to attack a web application with XSS**<br>
+This class of users include anyone trying to attack a web application with XSS that has the proxy and program enabled. With the proxy and program enabled, these users will be unable to attack the webpage using XSS as the proxy program will prevent unsafe scripting.
 
 #### 1.3.4 Limitations
 
