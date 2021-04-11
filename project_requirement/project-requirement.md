@@ -26,6 +26,7 @@ One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of 
 This project will use CSP nonce tags to determine whether or not script tags should be run on a web application, in order to mitigate XSS attacks. 
 
 ### Client
+
 Company: RedShield
 
 Contact: Kirk Jackson <br>
@@ -140,36 +141,31 @@ This class of users include anyone trying to attack a webpage with XSS that has 
 References to other documents or standards. Follow the IEEE Citation  Reference scheme, available from the [IEEE website](https://www.ieee.org/) (please use the search box). (1 page, longer if required)
 
 ## 3. Specific requirements  
-
-20 pages outlining the requirements of the system. You should apportion these pages across the following subsections to focus on the most important parts of your product.
-
 ### 3.1 External interfaces
+
 Collection:
 
 Input:
 
-- HTML, and this is where it increases the percentage, any scripts found in this phase will be deemed as safe. Will only be unsafe if a script occurs 0 times.
+- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are stored along with their probability of occuring. This is stored as a percentage. Each time the host server is visited in the collection phase, the percentage of each script tag increases or decreases depending on whether they are found in the HTML or not.
 
-- All scripts are collected and sorted into ‘safe scripts’ and ‘unsafe scripts’.
+- All script tags found in this phase are collected and stored along with their percentage and these are deemed as safe.
+
 Output:
 
-- The exact same HTMl without even adding any nonces tags - and after changing the percentage
+- Unmodified HTTP response after changing the percentage of the script tags found.
 
 Operational:
+
 Input:
 
-- HTML Responses stored from the collection phase. Scripts are compared between ones appearing in the web application against the ones that appeared during the collections phase.
+- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are checked against those the program has deemed safe during the collection stage.
+
 Output:
 - Scripts that are found to be safe have nonce tags attached to them, allowing them to run.
 - Any scripts that are deemed unsafe are collected and reported in a ‘report-uri.com’ document.
 
-
-
-See 9.5.10. for most systems this will be around one page. 
-
 ### 3.2 Functions
-
-This is typically the longest subsection in the document. List up to fifty use cases (in order of priority for development), and for at least top ten focal use cases, write a short goal statement and use case body (up to seven pages).  Identify the use cases that comprise a minimum viable product.
 
 #### Use Cases for the Minimum Viable Product:
 
@@ -184,7 +180,7 @@ This is typically the longest subsection in the document. List up to fifty use c
 |System     |   * Parses the HTML of the site  |
 |           |   * New script tags are found  |
 |Goal       |   * Program notes new script  |
-|           |   * Calculates initial percentage |
+|           |   * Calculates initial probability of script tag occuring, which is stored as a percentage. |
 
 | 2         |                 |
 | --------- |  -------------  |
@@ -205,7 +201,7 @@ This is typically the longest subsection in the document. List up to fifty use c
 |Phase      |   Collection    |
 |System     |   * Parses the HTML of the site  |
 |           |   * No script tags are found |
-|Goal       |   * Nothing happens  |
+|Goal       |   * Script tags percentages decreases  |
 
 | 5         |                 |
 | --------- |  -------------  |
@@ -218,14 +214,14 @@ This is typically the longest subsection in the document. List up to fifty use c
 | --------- |  -------------  |
 |Phase      |   Real    |
 |System     |   * Parses the HTML of the site  |
-|           |   * Script tag with high percentages are found |
+|           |   * Script tag(s) with high percentages are found |
 |Goal       |   * Nonces added to these script tags  |
 
 | 7         |                 |
 | --------- |  -------------  |
 |Phase      |   Real    |
 |System     |   * Parses the HTML of the site  |
-|           |   * Script tag with low percentages are found |
+|           |   * Script tag(s) with low percentages are found |
 |Goal       |   * Nonces added to these script tags  |
 
 | 8         |                 |
@@ -240,7 +236,8 @@ This is typically the longest subsection in the document. List up to fifty use c
 | --------- |  -------------  |
 |Phase      |   Real    |
 |System     |   * Parses the HTML of the site  |
-|           |   * Found script tag which has a high percentage and script tag which hasn’t been registered before |
+|           |   * Found script tag which has a high percentage 
+|           |    * Found a script tag which hasn’t been registered before |
 |Goal       |   * Nonces added to these script tags with high percentages   |
 |           |   * Nonces not added to script tags which aren’t registered |
 |           |   * Report non registered script tags on report-uri.com |
@@ -270,7 +267,6 @@ This is typically the longest subsection in the document. List up to fifty use c
 |Phase      |   Operational    |
 |System     |   * No HTML in the input  |
 |Goal       |   * Nothing happens  |
-
 
 #### Use Cases for Extensions of the Product:
 
@@ -303,10 +299,6 @@ There are no usability requirements for users of the program as the program will
 
 ### 3.4 Performance requirements
 
-See 9.5.13. for most systems this will be around one page. Hardware projects also see section 9.4.6.
-
- **9.5.13 Performance requirements** <br>
-
 The performance requirements section will discuss how a system will perform once it is in use. In order for the performance of a system to be deemed successful, the system must adhere to a set of specific requirements. Furthermore, this section will comprehensively outline what a user should expect when interacting with the system. <br>
  
 * The number of simultaneous users that the system can support during the collection phase is 1. However, during the real phase the system is able to support >1 (multiple) users.<br>
@@ -329,7 +321,7 @@ The performance requirements section will discuss how a system will perform once
 
 * The program should be able to manage a single request at once without there being significant disruption in between the host server and the users. <br>
 
-* As the nonce is a pseudo-random value intended for one time use. The program should ensure that at every request the nonce changes.<br>
+* As the nonce is a pseudo-random value intended for one time use, the program should ensure that at every request the nonce changes.<br>
 
 
 ### 3.5 Logical database requirements
@@ -427,40 +419,20 @@ The performance requirements section will discuss how a system will perform once
 |Description|   * class to get responses from the File Storage system. |
 |Respsosibility | * Contains the methods for parsing responses using dom methods   |
 
-See 9.5.14. for most systems, a focus on d) and e) is appropriate, such as an object-oriented domain analysis. You should provide an overview domain model (e.g.  a UML class diagram of approximately ten classes) and write a brief description of the responsibilities of each class in the model (3 pages).
-
-You should use right tools, preferabley PlantUML, to draw your URL diagrams which can be easily embedded into a Mardown file (PlantUML is also supported by GitLab and Foswiki).
-
 ### 3.6 Design constraints
 
-see 9.5.15 and 9.5.16. for most systems, this will be around one page.
-
-> 9.5.15 Design constraints<br>
-> Specify constraints on the system design imposed by external standards, regulatory requirements, or project limitations.
-> 
-> 9.5.16 Standards compliance<br>
-> Specify the requirements derived from existing standards or regulations, including:
-> 
-> a) Report format;<br>
-> b) Data naming;<br>
-> c) Accounting procedures;<br>
-> d) Audit tracing.
-> 
-> For example, this could specify the requirement for software to trace processing activity. Such traces are needed for some applications to meet minimum regulatory or financial standards. An audit trace requirement may, for example, state that all changes to a payroll database shall be recorded in a trace file with before and after values.
-
 **Use of Python**<br>
-The software for this project will be written in python code which is an unfamiliar programming language to most team members as previous courses have focused on Java. This will be a major constraint as team members will have to learn python during this project which will likely slow development progress.  
+The software for this project will be written in python code which is an unfamiliar programming language to most team members as most of their previous coding experience has been focused on Java. This will be a major constraint as team members will have to learn python during this project which will likely slow development progress.    
 
 **Skill levels**<br>
 Team members will have different experiences and specialties in software development and cybersecurity. This will be a constraint on the development process as many team members have limited knowledge about nonce tags, XSS and HTML parsing.   
 
 **Timeframe and deadlines**<br>
-Timeframes and deadlines will be a major constraint on this project as unexpected events are bound to occur that will affect deadlines such as bugs and code deletion. Other courses that team members take can be an issue if there are overlapping deadlines. There is also the chance that team members cannot access campus resources (labs, meeting rooms etc.) due to the COVID-19 pandemic.
+Timeframes and deadlines will be a major constraint on this project as unexpected events are bound to occur that will affect deadlines such as bugs and code deletion. Other commitments, such as other courses that team members take or team members jobs, can be an issue if there are overlapping deadlines. There is also the chance that team members cannot access campus resources (labs, meeting rooms etc.) due to the COVID-19 pandemic.
 
 **Performance Expectations**<br>
 Performance expectations can be a hindrance as the expectations set by team members before the development process begins may not be met at the conclusion of the project.
 This relates to each member of the team as other commitments that team members have will hinder the development process as members will be unable to give 100% of their time/effort to the project.  
-
 
 ### 3.7 Nonfunctional system attributes
 
@@ -518,9 +490,7 @@ Due to the nature of the program being run in as a proxy, Usability by the end u
 
 ### 3.8 Physical and Environmental Requirements 
 
-For systems with hardware components, identify the physical characteristics of that hardware (9.4.10) and environment conditions in which it must operate (9.4.11).  Depending on the project, this section may be from one page up to 5 pages.<br>
-
-Due to the fact that this project is a solely software-based project there are no physical or environmental requirements involved. The only requirement this project has is that there must be access to a computer to run the program. Furthermore, the computer must have python installed on it. It is vital that the computer is able to run python version 3.0 or higher. <br>  
+Due to the fact that this project is solely a software-based project there are no physical or environmental requirements involved. The only requirement this project has is that there must be access to a computer to run the program. Furthermore, the computer must have python installed on it. It is vital that the computer is able to run python version 3.0 or higher. <br>  
 
 ### 3.9 Supporting information
 
@@ -529,9 +499,6 @@ see 9.5.19.
 The project currently needs no supporting infomation 
 
 ## 4. Verification
-
-3 pages outlining how you will verify that the product meets the most important specific requirements. The format of this section should parallel section 3 of your document (see 9.5.18). Wherever possible (especially systemic requirements) you should indicate testable acceptance criteria.
-
 ### 4.1 Verifying External interfaces
 
 | Aspect        | Input                     | Output                                                                                            | Metrics                                                                       | Criteria                                                                                                                                                                                             |
@@ -539,22 +506,23 @@ The project currently needs no supporting infomation
 | Collection:   | HTML.                     | HTML. The exact same HTML without any alterations or additions. No added nonces.                  | Matching Hashes.                                                              | Ensuring outgoing data matches the data received can be accomplished by hashing incoming and outgoing data and comparing the hashes to verify the integrity of the data after processing.            |
 | MITM Proxy:   | Web Application Data/HTML | HTML Responses                                                                                    | HTML response follows a valid pattern.                                        | -                                                                                                                                                                                                    |
 | DOM Parsing:  | Sanitised HTML Response.  | Document Object Model                                                                             | Unit tests passing.  Batch testing passing. No errors thrown on sample data.  | Unit testing can be used for limited testing.  Batch testing against a larger dataset with robust exception handling and reporting for failed conversions to catch bugs before reaching production.  |
-| Operational:  | HTML.                     | Altered HTML. Input HTML with added safe script tags and add nonce tags, and then run as normal.  | Changed Hash                                                                  | Processing can be validated by checking if an input was classified as dangerous or not, then checking if the hash was changed during processing.                                                     |
+| Operational:  | HTML.                     | Altered HTML. Input HTML with added safe script tags and add nonce tags, and then run as normal.  | Changed Hash                                                                  | Processing can be validated by checking if an input was classified as unsafe or not, then checking if the hash was changed during processing.                                                     |
 | Report URI    | Unsafe Script             | HTTP Response. Unsafe scripts are reported to a Report URI service.                               | HTTP response indicating reception.                                           | Reception of a script sent to a Report URI service can be verified by listening for HTTP response codes from the services.                                                                           |
 
 ### 4.2 Functions
 
-To verify that the project satisfies it’s required functions in a reliable and complete way, a combination of continuous integration testing, automated testing and manual testing will be done. Each case specified in section 3.2 will be manually tested to ensure that when the specified system input has happened, the outcome will be what the specified goal states. This will allow any case to be tested, to ensure there are no issues and validate that the product meets its specifications laid out in section 3.2. Any unexpected behaviour of the program will be logged as an issue to be fixed. Furthermore, automated tests will be added to test for a range of different inputs, including invalid and no input.
+To verify that the project satisfies it’s required functions in a reliable and complete way, a combination of continuous integration testing, automated testing and manual testing will be done. Each case specified in section 3.2 will be manually tested to ensure that when the specified system input has happened, the outcome will be what the specified goal states. This will allow any case to be tested, to ensure there are no issues and validate that the product meets the specifications laid out in section 3.2. Any unexpected behaviour of the program will be logged as an issue to be fixed. Furthermore, automated tests will be added to test for a range of different inputs, including invalid and no input.
 
 For the minimum viable product, only the cases outlined in section 3.2 relating to this will be tested against. Once the minimum viable product has been attained, then the cases outlined in the extension section of 3.2 will be tested against to verify the programs extended behaviour.
 
 ### 4.3 Usability Requirements
+
 | Aspect                 | Description                                                        | Criteria                                                                                              |
 |------------------------|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Removal unsafe scripts | Unsafe scripts are prevented from reaching the client              | XSS is prevented.                                                                                     |
 | Website functionality  | The functionality of the website is not adversely affected by the  | Safe fallback versions of a site can be reached if script tags are removed or prevented from running. |
 
-### 4.4
+### 4.4 Performance requirements
 
 | Aspect                                                               | Function        | Metrics                                                                                  | Criteria                                                                                                                                                                                             |
 |----------------------------------------------------------------------|-----------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -572,17 +540,15 @@ For the minimum viable product, only the cases outlined in section 3.2 relating 
 | Nonce reuse                                                          | Operational     | The nonce should change for every script and be used only as a one time value.           | Nonce tags will be rendered invalid after they are used for the first time.                                                                                                                          |
 | Nonce generation                                                     | Operational     | The generation process of the nonce should not be reversible or replicable.              | Secure methods for generation will be used on the server side, nonce generation will never be assigned to the client.                                                                                |
 
-### 4.6 Design constraints
+### 4.5 Logical database requirements
 
 ## 4.6 Design constraints
-| Aspect                    | Limiting Factor                                               | Countermeasures                                                                                                                                                                                                                                                                                                                                | Criteria                                                                                                                                                                                      |
+| Aspect                    | Limiting Factor                                               | Countermeasures                                                                                                                                                                                                                                                                                                                              | Criteria                                                                                                                                                                                      |
 |---------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Python                    | Unfamiliar language                                           | Following best practices.  Peer programming and code review.  Objective approach to constructive criticism and advice from team members.                                                                                                                                                                                                       | Code is written with consideration of its Big O cost and security.  Comments and consistent variable names are used.  Recommendations or requests from other team members are taken on mored. |
 | Skill                     | Individual ability                                            | Each team member will undertake a conscious effort to conduct necessary research and development in order to build the skills and knowledge required to meet the criteria of the project.  Peer programming and review.                                                                                                                        | Discussion on mattermost when help is needed.  Individual research.                                                                                                                           |
 | Timeframes and Deadlines  | Limited time, short sprint cycles.                            | Weekly meetings and assessment of progress and forecasted timelines. Frequent assessment of scope of work assigned to individuals.                                                                                                                                                                                                             | Attendance of weekly meetings and labs where workloads can be assessed and evaluated against deadlines.                                                                                       |
 | Individual contributions. | Unbalanced workloads and/or inequitable distribution of work. | Specified expectations for work hours; any additional work above the eight hours is at the discretion of an individual.  Frequent opportunity to discuss workload if a member consistently has to work on the project more than expected.  Contributions will be tracked through their commits to Gitlab and communication through mattermost. | Eight hours of time dedicated to the project each week including labs.                                                                                                                        |
-
-### 4.7 Nonfunctional system attributes
 
 ## 4.7 Nonfunctional system attributes
 
@@ -598,7 +564,7 @@ For the minimum viable product, only the cases outlined in section 3.2 relating 
 
 ### 4.8 Physical and Environmental Requirements <br>
 
-This project is a solely software-based project and as stated in section 3.8 this means that there are no physical or environmental requirements involved. Hence, the physical or environmental requirements cannot be verified as this project does not have any. The only requirement for this project is to have a computer. This computer must also be able run python version 3.0 or higher. In order to verify that the project fulfils this requirement access to computer laboratories will be given. The computers in the laboratories are Dell Monitors therefore python version 3.0 can be run on these monitors as they are compatible with python.  <br>
+This project is solely a software-based project and as stated in section 3.8 this means that there are no physical or environmental requirements involved. Hence, the physical or environmental requirements cannot be verified as this project does not have any. The only requirement for this project is to have a computer. This computer must also be able run python version 3.0 or higher. In order to verify that the project fulfils this requirement access to computer laboratories will be given. The computers in the laboratories are Dell Monitors therefore python version 3.0 can be run on these monitors as they are compatible with python.  <br>
 
 ## 5. Development schedule.
 
@@ -614,7 +580,6 @@ Identify dates for key project deliverables:
 | Final Project          |   Saturday 6th November (End-year assessment period ends)      |
 
 Dates are subject to change as project continues
-(1 page).
 
 ### 5.2 Budget
 
@@ -627,7 +592,6 @@ Dates are subject to change as project continues
 This project does not require a budget as it makes use of open source programs such as MITM. Accessing this can be done using personal computers or the computers available at Victoria University of Wellington.<br>
 
 The Client is local, and has indicated they can travel to Victoria University of Wellington for meetings.<br>
-
 
 ### 5.3 Risks 
 
@@ -645,25 +609,14 @@ If the project will involve any work outside the ECS laboratories, i.e. off-camp
 |COVID Lockdown|  |Very Likely| Significant | Ensure everyone is able to connect online and all work is online |
 |Misunderstanding about the project requirements| Requirements |Likely| Moderate | Ensure constant communication with the client and clear up any uncertainties promptly |
 |Changes to project requirements| Requirements | Possible | Significant | Ensure there is a clear understanding of what is required from the team from the beginning and ensure constant communication with client |
-|Bugs within code go undetected| Technical |Very Likely| Significant | Create tests for the program, to test different aspects of it and minimize the number of errors that go undectected |
+|Bugs within code go undetected| Technical |Very Likely| Significant | Create tests for the program, to test different aspects of it and minimize the number of errors that go undetected |
 |Team members burning out| Teamwork |Likely| Significant | Ensure everyone is communicating with each other so the team knows if someone is doing too much work and ensure all work is evenly divided |
 
 
 ### 5.4 Health and Safety
-
-Document here project requirements for Health and Safety. All teams must state in this section:
-
-1. How teams will manage computer-related risks such as Occupational Over Use, Cable management, etc.  
-
-2. Whether project work requires work or testing at any external (off-campus) workplaces/sites. If so, state the team's plans for receiving a Health and Safety induction for the external workplaces/sites. If the team has already received such an induction, state the date it was received. 
-
-3. Whether project work requires the team test with human or animal subjects? If so, explain why there is no option but for the team to perform this testing, and state the team's plans for receiving Ethics Approval _prior_ to testing.
-
-Also document in this section any additional discussions with the School Safety Officer regarding Health and Safety risks. Give any further information on relevant health and safety regulations, risks, and mitigations, etc.
-
 #### Occupational Overuse
 
-To manage occupational overuse, team members will ensure that they take regular breaks away from their devices to ensure they are doing different tasks. Furthermore, realistic deadlines will be set for tasks and the team will practice good time management to prevent overuse in order to meet deadlines. 
+To manage occupational overuse, team members will ensure that they take regular breaks away from their devices. Furthermore, realistic deadlines will be set for tasks and the team will practice good time management to prevent overuse in order to meet deadlines. 
 
 Additionally, team members will have ergonomic workspaces so that any required equipment will be nearby and easily accessible. This will also encompass ensuring desks are at the correct height to encourage correct posture and reduce straining. Correct postures will be promoted and ensured for all team members and the team will use comfortable chairs which if possible, will have back support. This will reduce straining and incorrect postures in a work environment, mitigating occupational overuse and its potential symptoms. 
 
@@ -671,7 +624,7 @@ https://www.southerncross.co.nz/group/medical-library/occupational-overuse-syndr
 
 #### Cable Management
 
-Unmanaged cables are a safety risk as team members or nearby people can get caught on them or trip on them. In order to manage this risk, all team members will ensure that any cables they use will be kept underneath their desk, mitigating the possibility of someone getting caught on it. Furthermore, all cables which are not being used will be stored away in a cupboard or bag to further mitigate the risk unmanaged cables pose. 
+Unmanaged cables are a safety risk as team members or nearby people can get caught on them and/or trip on them. In order to manage this risk, all team members will ensure that any cables they use will be kept underneath their desk, mitigating the possibility of someone getting caught on it. Furthermore, all cables which are not being used will be stored away in a cupboard or bag to further mitigate the risk unmanaged cables pose. 
 
 #### Health and Safety at External Workplaces
 
@@ -680,7 +633,6 @@ The project does not require any work or testing to be held off-campus. However,
 #### Human or Animal Test Subjects
 
 This project does not include any human or animal subjects. This is because all testing can and will be done by the team, using different web applications. 
-
 
 #### 5.4.1 Safety Plans
 
@@ -694,7 +646,7 @@ One page on assumptions and dependencies (9.5.7).<br>
 
 Below is a list of assumptions and dependencies for this project:<br>
 
-* It is assumed that during the collection phase, the websites scanned will be clean. <br>
+* It is assumed that during the collection phase, the websites used will be clean. <br>
 * It is assumed that users of this program will have access to either of the following browsers, Edge, Chrome or FireFox.<br>
 * It is assumed that users have access to a technological device (i.e., computer, cellular phone, tablet).<br>
 * It is assumed that users have access to internet to run this program.<br>
@@ -715,8 +667,8 @@ XSS - Cross Site Scripting
 | Contributors  | Sections     |
 | ------        |  ----------  |
 |    Dylan      | 1.3.2, 3.5, 6.2             |
-|    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1  |
-|    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2    |
+|    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1, proofreading and grammar  |
+|    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2, proofreading and grammar    |
 |    James      | 1.3.3, 3.6, 3.9, 4.6, 5.1             |
 |    Jaya       |1.3.4, 3.4, 3.8, 4.8, 5.3, 6.1 |
 |    Nathan     |              |
