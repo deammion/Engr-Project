@@ -17,14 +17,13 @@ All team members are expected to contribute equally to the document and list the
 
 ## 1. Introduction
 
-Web applications are accessed and used everywhere thus keeping web applications secure is getting increasingly difficult. There are many vulnerabilities web applications can have and ensuring all of these are patched can be very difficult. These days, all it takes is for an attacker to exploit a single vulnerability and a whole website or user account could be compromised.  
+Web applications are accessed and used everywhere therefore ensuring web application security is becoming increasingly difficult. There are many vulnerabilities web applications are susceptible too and ensuring all of these are secured against or can be very difficult. These days, all it takes is for an attacker to exploit a single vulnerability, to compromise a whole website or user accounts.  
 
-XSS is one of the most common web application vulnerabilities that occurs whenever an application does not validate or escape untrusted data [1]. An XSS vulnerability can cause an attacker to be able to execute scripts in a user’s browser, access a user’s cookies, and could even result in an attacker compromising a user’s account [1]. Furthermore an XSS attack can have huge consequences which is why it is important to defend against this.
+XSS is one of the most common vulnerabilities that occurs whenever a web application trusts, or does not validate untrusted data. [1]. A XSS vulnerability can allow an attacker to execute scripts in an end user’s browser, access a user’s cookies, and could even result in an attacker compromising a user’s account [1]. Furthermore an XSS attack can have huge consequences which is why implementing appropriate security measures are vital.
 
-One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security which can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one time use hence the nonce changes at every request to ensure an attacker cannot guess the value of it [4]. If an application contains script tags in the HTTP, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags which have the nonce tag, with the correct nonce value will be executed and run [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
+One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security which can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one time use meaning the nonce changes with each HTTP request to ensure an attacker cannot obtain the value of it [4]. If an application contains script tags in the HTTP, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags which have the nonce tag, with the correct nonce value will be executed and run [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
 
 This project will use CSP nonce tags to determine whether or not script tags should be run on a web application, in order to mitigate XSS attacks. 
-
 
 ### Client
 Company: RedShield
@@ -100,11 +99,7 @@ This class of users include anyone from Red Shield who has access to our softwar
 **A Hacker trying to attack the webpage with XSS**<br>
 This class of users include anyone trying to attack a webpage with XSS that has our proxy and program enabled. With our proxy and program enabled, these users will be unable to attack the webpage through XSS as any script tags that the user implements will not have the nonce tag for the webpage and any script the user has inputted will not run.  
 
-
-
 #### 1.3.4 Limitations
-
-One page on the limitations on the product (9.5.6)<br>
 
 * **Browsers**:
    * The number of browsers the program can successfully run on is limited. This program is limited to Edge, Chrome and FireFox because strict CPS is not enabled for other web browsers.<br>
@@ -113,9 +108,6 @@ One page on the limitations on the product (9.5.6)<br>
 
 * **Collection Phase**:
   * During the collection phase the program is limited as it will be assumed that websites are already clean. Therefore, any scripts on that page which are often present will be deemed to be safe. However, if a page is not initially clean the program could be incorrectly considering a script tag as being safe. 
-
- 
-
 
 ## 2. References
 
