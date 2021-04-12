@@ -462,7 +462,7 @@ The project needs to produce a program capable of running independently as it is
 <br>
 Since external intervention or termination of the proxy is required, if the program malfunctions then the project becomes null and void. Therefore, the program needs to be as robust as possible as failure can cause the host server to lose business, traffic etc, depending on the host site. Failure could potentially result in a security risk depending on the severity of the failure, if the program is the only CSP or security protocol the host server is operating.<br>
 <br>
-Reliability will be determined by the program's ability to not only encode the correct script tags sent in the HTML response from the host server, but also maintain data integrity. By correctly identifying which script tags to encode the program can be as reliable.<br>
+Reliability will be determined by the program's ability to not only encode the correct script tags sent in the HTML response from the host server, but also maintain data integrity. By correctly identifying which script tags to encode the program can be deemed as reliable.<br>
 <br>
 **Performance:**<br>
 <br>
