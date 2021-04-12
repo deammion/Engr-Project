@@ -646,7 +646,7 @@ One page on assumptions and dependencies (9.5.7).<br>
 
 Below is a list of assumptions and dependencies for this project:<br>
 
-* It is assumed that during the collection phase, the websites used will be clean. <br>
+* It is assumed that during the collection phase, the websites scanned (HTMLs being parsed) will be clean. <br>
 * It is assumed that users of this program will have access to either of the following browsers, Edge, Chrome or FireFox.<br>
 * It is assumed that users have access to a technological device (i.e., computer, cellular phone, tablet).<br>
 * It is assumed that users have access to internet to run this program.<br>
