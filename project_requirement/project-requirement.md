@@ -564,7 +564,7 @@ For the minimum viable product, only the cases outlined in section 3.2 relating 
 
 ### 4.8 Physical and Environmental Requirements <br>
 
-This project is solely a software-based project and as stated in section 3.8 this means that there are no physical or environmental requirements involved. Hence, the physical or environmental requirements cannot be verified as this project does not have any. The only requirement for this project is to have a computer. This computer must also be able run python version 3.0 or higher. In order to verify that the project fulfils this requirement access to computer laboratories will be given. The computers in the laboratories are Dell Monitors therefore python version 3.0 can be run on these monitors as they are compatible with python.  <br>
+This project is solely a software-based project and as stated in section 3.8 this means that there are no physical or environmental requirements involved. Hence, the physical or environmental requirements cannot be verified as this project does not have any. The only requirement for this project is to have access to a computer. This computer must also be able run python version 3.0 or higher. In order to verify that the project fulfils this requirement access to computer laboratories will be given. The computers in the laboratories are Dell Monitors therefore python version 3.0 can be run on these monitors as they are compatible with python.  <br>
 
 ## 5. Development schedule.
 
