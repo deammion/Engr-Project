@@ -89,16 +89,17 @@ Lastly, the project will also produce a set of documentation detailing the proce
 One page identifying the main classes of users and their characteristics (9.5.5)
 
 **Website Owner**<br>
-This class of users include the owners of any website that enabled our proxy and program. With our proxy and program enabled, these users would experience no change in how people use their website, and their data will be protected from attacks that involve XSS. 
+This class of users includes the owners of any website that enabled the proxy and program. With the proxy and program enabled, these users would experience no change in how people use their website, and their data will be protected from attacks that involve XSS.
 
 **Average Web Page Surfer**<br>
-This class of users include anyone who accesses a web application that has the proxy and program enabled. With our proxy and program enabled, these users would experience no changes in how they are able to use the web application unless they are inputting script tags (which would class them as a hacker user).   
+This class of users includes anyone who accesses a web application that has the proxy and program enabled. With our proxy and program enabled, these users would experience no changes in how they are able to use the web application unless they are inputting script tags (which would class them as a hacker user).
 
-**A Red Shield Tester**<br>
-This class of users include anyone from Red Shield who has direct access to the software. These users would have full access to the code from this project and would be able to test the performance of the software or add features to the code that are not within the scope of this project before implementing the code into their Red Core Shielding technology to be released to Red Shield’s clients. 
+**Red Shield**<br>
+This class of users includes anyone from Red Shield who has direct access to the software. These users would have full access to the code from this project and would be able to test the performance of ‘our’the software or add features to the code that are not within the scope of this project before implementing the code into their Red Core Shielding technology ‘to be released to Red Shield’s clients(probs not needed big assumption)’.
 
-**A Hacker trying to attack a web application with XSS**<br>
-This class of users include anyone trying to attack a web application with XSS that has the proxy and program enabled. With the proxy and program enabled, these users will be unable to attack the webpage using XSS as the proxy program will prevent unsafe scripting.
+**Hacker**<br>
+This class of users includes anyone trying to attack a web application with XSS that has the proxy and program enabled. With the  proxy and program enabled, these users will be unable to attack the webpage ‘through XSS as any script tags that the user implements will not have the nonce tag for the webpage and any script the user has inputted will not run’ (using XSS, as the proxy program will prevent unsafe scripting).  
+
 
 #### 1.3.4 Limitations
 
