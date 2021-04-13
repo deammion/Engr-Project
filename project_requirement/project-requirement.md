@@ -672,7 +672,7 @@ XSS - Cross Site Scripting
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2, proofreading and grammar    |
 |    James      | 1.3.3, 3.6, 3.9, 4.6, 5.1             |
 |    Jaya       |1.3.4, 3.4, 3.8, 4.8, 5.3, 6.1 |
-|    Nathan     |              |
+|    Nathan     | 2, 3.1, 5, 5.4,             |
 |    Timothy    |4.1, 4.3, 4.4, 4.6, 4.7|
 
 ---
