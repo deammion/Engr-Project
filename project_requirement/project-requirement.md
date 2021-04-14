@@ -144,19 +144,17 @@ References to other documents or standards. Follow the IEEE Citation  Reference 
 ## 3. Specific requirements  
 ### 3.1 External interfaces
 
-Collection:
+Collection Phase:
 
 Input:
 
-- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are stored along with their probability of occuring. This is stored as a percentage. Each time the host server is visited in the collection phase, the percentage of each script tag increases or decreases depending on whether they are found in the HTML or not.
-
-- All script tags found in this phase are collected and stored along with their percentage and these are deemed as safe.
+- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are stored along with their probability of occuring. This is stored as a percentage. Each time the host server is visited in the collection phase, the percentage of each script tag increases or decreases depending on whether they are found in the HTML or not. Higher percentages are more likely to be legitimate scripts that the user wants to run whereas, scripts that have low percentages are more likely to be malicious and not meant to run.
 
 Output:
 
 - Unmodified HTTP response after changing the percentage of the script tags found.
 
-Operational:
+Operational Phase:
 
 Input:
 
@@ -164,7 +162,7 @@ Input:
 
 Output:
 - Scripts that are found to be safe have nonce tags attached to them, allowing them to run.
-- Any scripts that are deemed unsafe are collected and reported in a ‘report-uri.com’ document.
+-  Any scripts that are deemed unsafe are collected and reported to to the report-uri.com application by the website visitors browser.
 
 ### 3.2 Functions
 
