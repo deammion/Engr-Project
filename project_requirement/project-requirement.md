@@ -21,7 +21,7 @@ Web applications are accessed and used everywhere therefore ensuring web applica
 
 XSS is one of the most common vulnerabilities that occurs whenever a web application trusts, or does not validate untrusted data. [1]. A XSS vulnerability can allow an attacker to execute scripts in an end user’s browser, access a user’s cookies, and could even result in an attacker compromising a user’s account [1]. Furthermore an XSS attack can have huge consequences which is why implementing appropriate security measures are vital.
 
-One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security which can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one time use meaning the nonce changes with each HTTP request to ensure an attacker cannot obtain the value of it [4]. If an application contains script tags in the HTTP, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags which have the nonce tag, with the correct nonce value will be executed and run [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
+One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security which can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one time use meaning the nonce changes with each HTTP request to ensure an attacker cannot obtain the value of it [4]. If an application contains script tags in the HTTP response, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags which have the nonce tag, with the correct nonce value will be executed and run [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
 
 This project will use CSP nonce tags to determine whether or not script tags should be run on a web application, in order to mitigate XSS attacks. 
 
@@ -39,18 +39,18 @@ Address: <br>
 
 ### 1.1 Purpose
 
-The Purpose of this project is to create a working prototype of a stand alone program capable of a reading, interpepting, and analyising HTTP source code with the intended purpose of preventing XSS, using nonce tags.
+The Purpose of this project is to create a working prototype of a stand alone program capable of reading, interpreting, and analyzing HTTP source code with the intended purpose of preventing XSS, using nonce tags.
 
 ### 1.2 Scope
 
-The scope of this project is to create a MITM proxy capable of reading and interperting HTTP responses to determine what script tags are safe and unsafe. This program will implement script fingerprinting using nonce for non-variable, and non-inline script tags, to prevent XSS attacks. Python unit test will be used to ensure the validity of the program we create. 
+The scope of this project is to create a proxy module capable of reading and interpreting HTTP responses to determine what script tags are safe and unsafe. This program will implement script fingerprinting for non-variable, and non-inline script tags, to prevent XSS attacks. Python unit tests will be used to ensure the validity of the program we create. 
 
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
 
-The project will produce a proxy program that will be demonstrated to Red Shield which will assist with the development of their Red Core Shielding technology. The project does not need to directly access or use any of the components of the Red Core Shielding technology, nor does it need to be written in elixir, which is the native coding language used by Red Core Shielding technology. Red Shield will handle the conversion from python to elixir, once the project is completed.
+The project will produce a proxy plugin that will be demonstrated to Red Shield which will assist with the development of their Red Core Shielding technology. The project does not need to directly access or use any of the components of the Red Core Shielding technology, nor does it need to be written in elixir, which is the native coding language used by Red Core Shielding technology. Red Shield will handle the conversion from python to elixir, once the project is completed.
 
-The project will produce a system which will interact with any host server implementing the proxy program. This interaction will not interfere with the host server or its standard functionality and the project team will ensure this, with the exception of an unsafe XSS tag being tagged, notified and added. 
+The project will produce a proxy plugin that will intercept requests and responses to a target web application. This interaction will not interfere with the host server or its standard functionality and the project team will ensure this, with the exception of an unsafe XSS tag being tagged, notified and nonces added. 
 
 The product will function in two stages. The first stage being the collection stage and the second being the operational stage.
 
@@ -58,7 +58,7 @@ During the first stage the program will store any HTTP responses sent by the hos
 
 During the operational stage the program will continue to intercept the HTTP responses from the host server, read and interpret this response and mark all ‘safe’ script tags with a nonce tag and send it to the end user. This is the program's main purpose, automation of CSP in regards to scripting to prevent XSS attacks.
 
-Any ‘unsafe’ script the program identifies will recorded and reported via the use of report-url.com
+Any script that is not marked as safe will trigger a browser warning. These will be collected using the third-party tool report-uri.com.
 
 #### 1.3.2 Product functions
 
