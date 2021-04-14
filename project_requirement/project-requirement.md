@@ -148,7 +148,7 @@ Collection Phase:
 
 Input:
 
-- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are stored along with their probability of occuring. This is stored as a percentage. Each time the host server is visited in the collection phase, the percentage of each script tag increases or decreases depending on whether they are found in the HTML or not. Higher percentages are more likely to be legitimate scripts that the user wants to run whereas, scripts that have low percentages are more likely to be malicious and not meant to run.
+- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are stored along with their probability of occuring. This is stored as a percentage. Each time the host server is visited in the collection phase, the program counts how many responses contain a reference to each specific script. Larger quantities of references to specific scripts are more likely to be legitimate scripts that the user wants to run whereas, scripts that have low appearances are more likely to be malicious and not meant to run.
 
 Output:
 
