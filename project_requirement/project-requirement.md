@@ -64,25 +64,37 @@ Any script that is not marked as safe will trigger a browser warning. These will
 
 As discussed above the project will produce a program that will be responsible for blocking XSS attacks by adding CSP protection to web applications. This will be done in the form of adding nonce tags to scripts that are deemed safe to run.  
  
-To be able to do this the project will implement a MITM proxy. This proxy will be responsible for tracking all outgoing HTTP requests from a device and all incoming HTTP responses from the web application. The HTTP responses will get stored in a secure location where the program will scan through the HTML located in the HTTP responses. As of our initial planning, the HTTP requests will not be required in our project. Two CSP headers will be inserted into all HTML responses. One containing a nonce (Content-Security-Policy) and one containing the URL for an externally generated report from report-uri (Content-Security-Policy-Report-Only). 
+To be able to do this the project will use the MITM proxy software, which enables the use of a proxy plugin. This proxy plugin will be placed on infrastructure of the owner of a website which wants to use our protection, or on RedShield's infrastructure. This will allow for the proxy plugin to intercept incoming HTTP request to the web server before they reach the web server, and the HTTP Responses from the web server before they reach the client.  The HTTP responses will get stored in a secure location where the program will scan through the HTML located in the HTTP responses. As of our initial planning, the HTTP requests will not be required in our project. Two CSP headers will be inserted into all HTML responses. One containing a nonce (Content-Security-Policy) and one containing the URL for an externally generated report from report-uri (Content-Security-Policy-Report-Only). 
  
-For the program to be able to differentiate which HTTP responses are safe to add nonce tags to, it will operate in two phases. The first phase of the program is the collection stage. When operating in this phase the program will be busy identifying which script tags are safe to add nonce tags to, and which scripts are not safe to add nonce tags to. This phase will be where the program is using the collected HTTP responses to calculate the chance that content inside an HTML script tag is safe to run. Safe script tags will be defined as tags that appear on the clean page, in the collection phase over a certain threshold. For example, a script tag that appears 80 / 100 times the page is loaded will likely be safe to run. The exact point at which a program is deemed safe to run will be determined at a later stage through testing. The program assumes that web applications will be clean (not containing malicious scripts or modifications)   
- 
-DOM parsing will be the parsing method that will be used on the HTML inside of the collected HTTP responses, and from this determine which script tags are present and how often they are present. Since we will be able to extract each HTML script by itself, the program will be able to store any scripts that appear in a secure location, and then keep a running count of how often that script appears.  
+For the program to be able to differentiate which HTTP responses are safe to add nonce tags to, it will operate in two phases. 
+
+#### Collection Stage
+
+The first phase of the program is the Collection Stage. In this stage the program will identify which script tags are safe to allow to run. DOM parsing will be the parsing method that will be used on the HTML inside of the collected HTTP responses. Then the saftey calculations for scripts will use the parsed HTML from the collected HTTP responses to calculate the chance that content inside each HTML script tag is safe to run. Safe script tags will be defined as tags that appear on a URL path for a website over a certain threashold. For example, a script tag that appears 80 / 100 times the page is loaded will likely be safe to run. The exact point at which a program is deemed safe to run will be determined at a later stage through testing. The program assumes that web applications that go through the Collection Phase will be clean (not containing malicious scripts or modifications) Since we will be able to extract each HTML script by itself, the program will be able to store any scripts that appear in a secure location, and then keep a running count of how often that script appears, alongside which URL path that script appeared on.     
  
 So the overall process in the collections stage will look as below;  
-- Collect HTTP response from web application 
-- Store the HTTP response.  
-- Parse the HTTP response using DOM. 
-- Track all HTML scripts present from that request.  
-- Adjust weighting of safe scripts.  
-- Repeat. 
+Collection phase:
+
+- Collect HTTP request url from the incoming request
+- Collect HTTP response from the web application 
+- Store the HTTP response  
+- Parse the HTTP response using the HTML DOM 
+- Record the incidences of external scripts present in the response
+
+Analysis phase:
+
+- For each HTTP request url and path:
+- Look at the ratio of responses that contain a reference to an external script
+- Apply a threshold score to determine if this is a common script
+- Record that script as being 'safe' for this url and path
  
-The second phase of our program is the operational phase. In this phase, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the HTTP response where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be collected and reported in ‘report-uri.com’.  
+#### Operational Phase
+
+The second phase of our program is the operational phase. In this phase, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the HTTP response where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be left in the HTML response unmodified, and the web browser will prevent their execution and report an error to report-uri.com.  
  
-Both phases of this program will only check for non-variable and non-inline script tags.  
+The main objective of this phase is to be on the look out for external scripts and prevent them from running, as the scripts that appeared during the collection phase should all be allowed scripts. While the basic product will not search for non-variable and non-inline script tags, it has been identified as an ideal extension for the program.   
  
-Lastly, the project will also produce a set of documentation detailing the process for setting up the MITM proxy as well as how to run our program on different devices.
+Lastly, the project will also produce a set of documentation detailing the process for setting up the MITM proxy as well as how to run our program on different devices, how the threashold for safe tags is set and how to modify this, as well as instructions on how to run the unit tests that will be provided to show that our software does operate as intented.
 
 #### 1.3.3 User characteristics   
 
@@ -378,7 +390,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
 |Description|   * Class to keep tabs on how many times a script tag has occurred. |
-|Responsibility | * Contains the times that a script tag has occurred and updates and retrieves them.  |
+|Responsibility | Contains the number of times that a script tag has appeared and updates and retrieves this information. |
 
 | 8         |                 |
 | --------- |  -------------  |
