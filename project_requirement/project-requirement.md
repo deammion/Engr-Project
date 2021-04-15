@@ -206,64 +206,69 @@ HTTP responses with two CSP Headers attached: Content-Security-Policy and Conten
 
 | 5         |                 |
 | --------- |  -------------  |
-|Phase      |   Operational    |
-|System     |   * Parses the HTML of the page  |
-|           |   * No script tags are found |
-|Goal       |   * No nonces are added  |
+|Phase      |   Collection    |
+|System     |   * Script tag found has a high occurance count  |
+|Goal       |   * Script tags is determined as safe for this URL and path  |
 
 | 6         |                 |
 | --------- |  -------------  |
-|Phase      |   Operational    |
-|System     |   * Parses the HTML of the page  |
-|           |   * Script tag(s) with high counts are found |
-|Goal       |   * Nonces added to these script tags  |
+|Phase      |   Collection    |
+|System     |   * Script tag found has a low occurance count  |
+|Goal       |   * Script tags is determined as safe for this URL and path  |
 
 | 7         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
 |System     |   * Parses the HTML of the page  |
-|           |   * Script tag(s) with low counts are found |
-|Goal       |   * Nonces added to these script tags  |
+|           |   * No script tags are found |
+|Goal       |   * No nonces are added  |
 
 | 8         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
 |System     |   * Parses the HTML of the page  |
-|           |   * Script tag which hasn’t been registered before |
-|Goal       |   * Nonces not added to these script tags  |
-|           |   * Reported on report-uri.com |
+|           |   * Script tag(s) which have been previously determined as safe for this URL and path are found |
+|Goal       |   * Nonces added to these script tags  |
 
 | 9         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
 |System     |   * Parses the HTML of the page  |
-|           |   * Found script tag which has a high count 
-|           |    * Found a script tag which hasn’t been registered before |
-|Goal       |   * Nonces added to these script tags with high counts   |
+|           |   * Script tag which hasn’t been registered before is found |
+|Goal       |   * Nonces not added to these script tags  |
+|           |   * Reported on report-uri.com |
+
+| 10         |                 |
+| --------- |  -------------  |
+|Phase      |   Operational    |
+|System     |   * Parses the HTML of the page  |
+|           |   * Script tag(s) which have been previously determined as safe for this URL and path are found
+|           |   * Script tag(s) which haven't been registered before is found |
+|Goal       |   * Nonces added to the script tags deemed as safe   |
 |           |   * Nonces not added to script tags which aren’t registered |
 |           |   * Report non registered script tags on report-uri.com |
-
-| 10        |                 |
-| --------- |  -------------  |
-|Phase      |   Operational     |
-|System     |   * Parses the HTML of the page  |
-|           |   * Found inline script tag |
-|Goal       |   * Nonce is added and script is ignored  |
 
 | 11        |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
 |System     |   * Parses the HTML of the page  |
 |           |   * Found inline script tag |
-|Goal       |   * Script tags percentage increases  |
+|Goal       |   * Script tags count increases  |
 
 | 12        |                 |
+| --------- |  -------------  |
+|Phase      |   Operational     |
+|System     |   * Parses the HTML of the page  |
+|           |   * Found inline script tag |
+|Goal       |   * Nonce is added and script is ignored  |
+
+| 13        |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
 |System     |   * No HTML in the input  |
 |Goal       |   * Nothing happens  |
 
-| 13        |                 |
+| 14        |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
 |System     |   * No HTML in the input  |
