@@ -300,27 +300,20 @@ There are no usability requirements for users of the program as the program will
 
 The performance requirements section will discuss how a system will perform once it is in use. In order for the performance of a system to be deemed successful, the system must adhere to a set of specific requirements. Furthermore, this section will comprehensively outline what a user should expect when interacting with the system. <br>
  
-* The number of simultaneous users that the system can support during the collection phase is 1. However, during the real phase the system is able to support >1 (multiple) users.<br>
+* The number of simultaneous users that the system can support during the collection phase is > 1. During the operational phase the system is also able to support >1 (multiple) users.<br>
 
 * The system should load 98% of the HTML in less than 1 second. <br> 
 
-* If delays are experienced 87% of the HTML should load in 2 seconds.<br>
+* If the system loads 98% of the HTML in < 1 second then with the plugin the system should take 1 second + up to 1000 milliseconds to load. <br> 
 
-* The system should not affect the user end of the website. Therefore, this means that if users use any website with our proxy and program enabled, they should not experience any changes in how they are able to utilize the websites. However, if a script tag is considered unsafe the system will affect users as the unsafe script tag will not run hence changing what the website should do. <br>
+*  The system should not affect the owner of the website. Therefore this means that if an owner deploys our proxy on their website they should not experience any changes in how website visitors use their website. However, if a script tag is considered unsafe the system will affect the owner as it will impact the website visitors of their website. This is because the unsafe script tag will not run hence changing what the website should do.<br>
 
-* The program should have 100% functionality if users use Edge, Chrome or FireFox as browsers.<br>
-
-* During the collection phase the program should be able to identify which script tags contained within the HTML are safe. This will be achieved by the program scanning through websites that are clean. <br>
-
-* The program should insert nonce tags in script tags during the real phase to indicate which script tags are deemed safe.<br>
+* The program should support the client to receive the full benefits of security from CSP being enforced client-side. This will be achieved by ensuring that the only browsers used are  Edge, Chrome or FireFox.<br>
 
 * The program should be able to notify if script tags in a webpage are not safe. This will be achieved by collecting and reporting unsafe script tags in ‘report-uri.com’.<br> 
 
-* The program should be able to support data encryption when handling HTTP requests to maintain data integrity.<br> 
+* The resulting data should be visible to clients (website owners) so they are able to see reports of unsafe script tag removals.<br>
 
-* The program should be able to manage a single request at once without there being significant disruption in between the host server and the users. <br>
-
-* As the nonce is a pseudo-random value intended for one time use, the program should ensure that at every request the nonce changes.<br>
 
 
 ### 3.5 Logical database requirements
