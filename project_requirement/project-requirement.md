@@ -306,6 +306,8 @@ The performance requirements section will discuss how a system will perform once
 
 * If the system loads 98% of the HTML in less than one second then with the plugin the system should take one second plus up to 1000 milliseconds to load. <br> 
 
+* If delays are experienced 87% of the HTML should load in 2 seconds.<br>
+
 *  The system should not affect the owner of the website, except for if an unsafe script tag is found. This means that if an owner deploys our proxy on their website, they should not experience any changes in how website visitors use their website unless a user inputs a script tag in the website. If a script tag is considered unsafe, the system may affect the owner as it will impact their website visitors. This is because the unsafe script tag will not execute and will cause a browser warning, hence changing what the website should do.<br>
 
 * The program should support the client to receive the full benefits of security from CSP being enforced client-side. This will be achieved by ensuring that the only browsers used are Edge, Chrome or Firefox.<br>
