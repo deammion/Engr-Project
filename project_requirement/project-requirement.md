@@ -174,63 +174,63 @@ HTTP responses with two CSP Headers attached: Content-Security-Policy and Conten
 
 | Phases    | Explanation     |
 | --------- |  -------------  |
-|Collection |  This is the phase where the program receives multiple versions of a web application HTTP response and parses the HTTP using DOM. Each time the program parses the HTML, it will search for script tags and store any it finds, along with its probability of occurring. If the script tag has been stored previously, the program will increase the probability that the tag has appeared. |
-|Operational       | This is the phase where the program takes a HTTP response, gets the HTML code. The program then searches through the code to add nonce tags to the trusted script tags. To determine which script tags are trusted, the program uses the probability that the script tag occurs which is calculated in the collection phase. |
+|Collection | This is the phase where the program receives multiple versions of a web application HTTP response and parses the HTTP using DOM. Each time the program parses the HTML, it will search for script tags and store any it finds, along with a count of how many responses contain a reference to this external script. If the script tag has been stored previously, the program will increase this count. |
+|Operational| This is the phase where the program takes a HTTP response, gets the HTML code. The program then searches through the code to add nonce tags to the trusted script tags. To determine which script tags are trusted, the program uses the probability that the script tag occurs which is calculated in the collection phase. |
 
 | 1         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the site  |
-|           |   * New script tags are found  |
+|System     |   * Parses the HTML of the page  |
+|           |   * External script tags are found  |
 |Goal       |   * Program notes new script  |
-|           |   * Calculates initial probability of script tag occuring, which is stored as a percentage. |
+|           |   * Calculates initial count of how many responses contain a reference to this external script tag. |
 
 | 2         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * Previously found script tags are found again |
-|Goal       |   * Script tags percentages increase |
+|Goal       |   * Script tags count increases |
 
 | 3         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * Previously found script tags does not appear |
-|Goal       |   * Script tags percentages decreases |
+|Goal       |   * Script tags count decreases |
 
 | 4         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * No script tags are found |
-|Goal       |   * Script tags percentages decreases  |
+|Goal       |   * Script tags count decreases  |
 
 | 5         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * No script tags are found |
 |Goal       |   * No nonces are added  |
 
 | 6         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the site  |
-|           |   * Script tag(s) with high percentages are found |
+|System     |   * Parses the HTML of the page  |
+|           |   * Script tag(s) with high counts are found |
 |Goal       |   * Nonces added to these script tags  |
 
 | 7         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the site  |
-|           |   * Script tag(s) with low percentages are found |
+|System     |   * Parses the HTML of the page  |
+|           |   * Script tag(s) with low counts are found |
 |Goal       |   * Nonces added to these script tags  |
 
 | 8         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * Script tag which hasn’t been registered before |
 |Goal       |   * Nonces not added to these script tags  |
 |           |   * Reported on report-uri.com |
@@ -238,24 +238,24 @@ HTTP responses with two CSP Headers attached: Content-Security-Policy and Conten
 | 9         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the site  |
-|           |   * Found script tag which has a high percentage 
+|System     |   * Parses the HTML of the page  |
+|           |   * Found script tag which has a high count 
 |           |    * Found a script tag which hasn’t been registered before |
-|Goal       |   * Nonces added to these script tags with high percentages   |
+|Goal       |   * Nonces added to these script tags with high counts   |
 |           |   * Nonces not added to script tags which aren’t registered |
 |           |   * Report non registered script tags on report-uri.com |
 
 | 10        |                 |
 | --------- |  -------------  |
 |Phase      |   Operational     |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * Found inline script tag |
 |Goal       |   * Nonce is added and script is ignored  |
 
 | 11        |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * Found inline script tag |
 |Goal       |   * Script tags percentage increases  |
 
@@ -276,21 +276,14 @@ HTTP responses with two CSP Headers attached: Content-Security-Policy and Conten
 | 1         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational           |
-|System     |   * Parses the HTML of the site  |
-|           |   * Untrusted script tag found within a trusted script tag |
-|Goal       |   * Add a nonce tag to the outside script tag and ensure the untrusted script tag does not run  |
+|System     |   * Parses the HTML of the page  |
+|           |   * Untrusted script tag found within a untrusted script tag |
+|Goal       |   * Ensure no nonce tags and added and neither tags are executed  |
 
 | 2         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational           |
-|System     |   * Parses the HTML of the site  |
-|           |   * Untrusted script tag found within a untrusted script tag |
-|Goal       |   * Ensure no nonce tags and added and neither tags are executed  |
-
-| 3         |                 |
-| --------- |  -------------  |
-|Phase      |   Operational           |
-|System     |   * Parses the HTML of the site  |
+|System     |   * Parses the HTML of the page  |
 |           |   * Found inline script tag |
 |Goal       |   * Determine whether the script tag is trusted or not and if it is trusted, add a nonce tag  |
 
