@@ -19,7 +19,7 @@ All team members are expected to contribute equally to the document and list the
 
 Web applications are accessed and used everywhere therefore ensuring web application security is becoming increasingly difficult. There are many vulnerabilities web applications are susceptible too and ensuring all of these are secured against or can be very difficult. These days, all it takes is for an attacker to exploit a single vulnerability, to compromise a whole website or user accounts.  
 
-XSS is one of the most common vulnerabilities that occurs whenever a web application trusts, or does not validate untrusted data. [1]. A XSS vulnerability can allow an attacker to execute scripts in an end user’s browser, access a user’s cookies, and could even result in an attacker compromising a user’s account [1]. Furthermore an XSS attack can have huge consequences which is why implementing appropriate security measures are vital.
+XSS is one of the most common vulnerabilities that occurs whenever a web application trusts, or does not validate untrusted data. [1]. A XSS vulnerability can allow an attacker to execute scripts in an end user’s browser, access a user’s cookies, and could even result in an attacker compromising a user’s account [1]. Furthermore, an XSS attack can have huge consequences which is why implementing appropriate security measures are vital.
 
 One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security which can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one time use meaning the nonce changes with each HTTP request to ensure an attacker cannot obtain the value of it [4]. If an application contains script tags in the HTTP response, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags which have the nonce tag, with the correct nonce value will be executed and run [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
 
@@ -66,19 +66,19 @@ As discussed above the project will produce a program that will be responsible f
  
 To be able to do this the project will implement a MITM proxy. This proxy will be responsible for tracking all outgoing HTTP requests from a device and all incoming HTTP responses from the web application. The HTTP responses will get stored in a secure location where the program will scan through the HTML located in the HTTP responses. As of our initial planning, the HTTP requests will not be required in our project. Two CSP headers will be inserted into all HTML responses. One containing a nonce (Content-Security-Policy) and one containing the URL for an externally generated report from report-uri (Content-Secuirty-Policy-Report-Only). 
  
-For the program to be able to differentiate which HTTP responses are safe to add nonce tags to it will operate in two phases. The first phase of the program is the collection stage. When operating in this phase the program will be busy identifying which script tags are safe to add nonce tags to, and which scripts are not safe not have nonce tags to. This phase will be where the program is using the collected HTTP responses to calculate the chance that content inside an HTML script tag is safe to run. Safe script tags will be defined as tags that appear on the clean page, in the collection phase over a certain threshold. For example, a script tag that appears 80 / 100 times the page is loaded will likely be safe to run. The exact point at which a program is deemed safe to run will be determined at a later stage through testing. The program assumes that web applications will be clean (not containing malicious scripts or modifications)   
+For the program to be able to differentiate which HTTP responses are safe to add nonce tags to, it will operate in two phases. The first phase of the program is the collection stage. When operating in this phase the program will be busy identifying which script tags are safe to add nonce tags to, and which scripts are not safe not have nonce tags to. This phase will be where the program is using the collected HTTP responses to calculate the chance that content inside an HTML script tag is safe to run. Safe script tags will be defined as tags that appear on the clean page, in the collection phase over a certain threshold. For example, a script tag that appears 80 / 100 times the page is loaded will likely be safe to run. The exact point at which a program is deemed safe to run will be determined at a later stage through testing. The program assumes that web applications will be clean (not containing malicious scripts or modifications)   
  
 DOM parsing will be the parsing method that will be used on the HTML inside of the collected HTTP responses, and from this determine which script tags are present and how often they are present. Since we will be able to extract each HTML script by itself, the program will be able to store any scripts that appear in a secure location, and then keep a running count of how often that script appears.  
  
 So the overall process in the collections stage will look as below;  
-Collect HTTP response from web application 
-Store the HTTP response.  
-Parse the HTTP response using DOM. 
-Track all HTML scripts present from that request.  
-Adjust weighting of safe scripts.  
-Repeat.  
+- Collect HTTP response from web application 
+- Store the HTTP response.  
+- Parse the HTTP response using DOM. 
+- Track all HTML scripts present from that request.  
+- Adjust weighting of safe scripts.  
+- Repeat. 
  
-The second phase of our program is the operational phase. In this, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the HTTP response where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be collected and reported in ‘report-uri.com’.  
+The second phase of our program is the operational phase. In this phase, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the HTTP response where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be collected and reported in ‘report-uri.com’.  
  
 Both phases of this program will only check for non-variable and non-inline script tags.  
  
@@ -173,7 +173,7 @@ HTTP responses with two CSP Headers attached: Content-Security-Policy and Conten
 | Phases    | Explanation     |
 | --------- |  -------------  |
 |Collection | This is the phase where the program receives multiple versions of a web application HTTP response and parses the HTTP using DOM. Each time the program parses the HTML, it will search for script tags and store any it finds, along with a count of how many responses contain a reference to this external script. If the script tag has been stored previously, the program will increase this count. |
-|Operational| This is the phase where the program takes a HTTP response, gets the HTML code. The program then searches through the code to add nonce tags to the trusted script tags. To determine which script tags are trusted, the program uses the probability that the script tag occurs which is calculated in the collection phase. |
+|Operational| This is the phase where the program takes a HTTP response, gets the HTML code. The program then searches through the code to add nonce tags to the trusted script tags. To determine which script tags are trusted, the program uses the amount of references where the script tag occurs, which is calculated in the collection phase. |
 
 | 1         |                 |
 | --------- |  -------------  |
@@ -501,7 +501,7 @@ The project currently needs no supporting information
 
 ### 4.2 Functions
 
-To verify that the project satisfies it’s required functions in a reliable and complete way, a combination of continuous integration testing, automated testing and manual testing will be done. Each case specified in section 3.2 will be manually tested to ensure that when the specified system input has happened, the outcome will be what the specified goal states. This will allow any case to be tested, to ensure there are no issues and validate that the product meets the specifications laid out in section 3.2. Any unexpected behaviour of the program will be logged as an issue to be fixed. Furthermore, automated tests will be added to test for a range of different inputs, including invalid and no input.
+To verify that the project satisfies its required functions in a reliable and complete way, a combination of continuous integration testing, automated testing and manual testing will be done. Each case specified in section 3.2 will be manually tested to ensure that when the specified system input has happened, the outcome will be what the specified goal states. This will allow any case to be tested to ensure there are no issues and validate that the product meets the specifications laid out in section 3.2. Any unexpected behaviour of the program will be logged as an issue to be fixed. Furthermore, automated tests will be added to test for a range of different inputs, including invalid and no input.
 
 For the minimum viable product, only the cases outlined in section 3.2 relating to this will be tested against. Once the minimum viable product has been attained, then the cases outlined in the extension section of 3.2 will be tested against to verify the programs extended behavior.
 
@@ -670,7 +670,7 @@ Below is a list of assumptions and dependencies for this project:<br>
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2, proofreading and grammar    |
 |    James      | 1.3.3, 3.6, 3.9, 4.6, 5.1             |
 |    Jaya       |1.3.4, 3.4, 3.8, 4.8, 5.3, 6.1 |
-|    Nathan     | 2, 3.1, 5, 5.4,             |
+|    Nathan     | 2, 3.1, 5, proofreading and grammar             |
 |    Timothy    |4.1, 4.3, 4.4, 4.5, 4.6, 4.7|
 
 ---
