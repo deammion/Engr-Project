@@ -1,4 +1,3 @@
-
 # ENGR 301: Project Requirements Document
 
 The aim of this document is to specify the requirements of the system your group is to build. The focus of a requirements document is the problem you are attempting to solve:  not a first attempt at a solution to that problem. This document should communicate clearly to the supervisor, client and course coordinator what the system you build is going to do, and what constraints it must meet while doing so.
@@ -89,10 +88,13 @@ Lastly, the project will also produce a set of documentation detailing the proce
 
 One page identifying the main classes of users and their characteristics (9.5.5)
 
+**Application Developer**<br>
+This class of users include the developers of the web application. These users are no longer present or able to change the functionality of the application, hence why this project focuses on implementing CSP using a proxy rather than directly changing the application.
+
 **Website Owner**<br>
 This class of users includes the owners of any website that enabled the proxy and program. With the proxy and program enabled, these users would experience no change in how people use their website, and their data will be protected from attacks that involve XSS.
 
-**Average Web Page Surfer**<br>
+**Website Visitor**<br>
 This class of users includes anyone who accesses a web application that has the proxy and program enabled. With our proxy and program enabled, these users would experience no changes in how they are able to use the web application unless they are inputting script tags (which would class them as a hacker user).
 
 **Red Shield**<br>
@@ -416,7 +418,7 @@ The performance requirements section will discuss how a system will perform once
 ### 3.6 Design constraints
 
 **Use of Python**<br>
-The software for this project will be written in python code which is an unfamiliar programming language to most team members as most of their previous coding experience has been focused on Java. This will be a major constraint as team members will have to learn python during this project which will likely slow development progress.    
+The software for this project will be written in python code which is an unfamiliar programming language to most team members as their previous coding experience has been focused on Java. This will be a major constraint as team members will have to learn python during this project which will likely slow development progress.    
 
 **Skill levels**<br>
 Team members will have different experiences and specialties in software development and cybersecurity. This will be a constraint on the development process as many team members have limited knowledge about nonce tags, XSS and HTML parsing.   
