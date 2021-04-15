@@ -1,10 +1,11 @@
+
 # ENGR 301: Project Requirements Document
 
 The aim of this document is to specify the requirements of the system your group is to build. The focus of a requirements document is the problem you are attempting to solve:  not a first attempt at a solution to that problem. This document should communicate clearly to the supervisor, client and course coordinator what the system you build is going to do, and what constraints it must meet while doing so.
 
 The document should also demonstrate your understanding of the main analysis principles and quality guidelines, and applicable standards, using tools and notations as necessary to communicate the requirements precisely, unambiguously and clearly in a written technical document. Page specifications below are *limits not targets* and refer to the pages in the PDF generated from the markdown. Because the size of your document is necessarily limited, you should ensure that you focus your efforts on those requirements that are most important to completing a successful system: if sections are at their page limit, indicate how many items would be expected in a complete specification. 
 
-The ENGR 301 project proposal and requirements document should be based on the standard ISO/IEC/IEEE 29148:2011(E), primarily sections 8.4 and 9.5, plus section 9.4 for projects involving hardware and ISO 25010 SQuaRE for systemic requirements. While excerpts from the standard have been quoted within the template, to understand what is required it will be necessary to read earlier sections of the standards themselves. A supplementary treatment of requirements gathering in engineering projects may be found in [Requirements in Engineering Projects](https://victoria.rl.talis.com/items/F166DA94-DAD8-FBDB-0785-7A63C9BA3603.html?referrer=%2Flists%2F5886F297-2506-1F17-45D9-7F04CEE284EE.html%23item-F166DA94-DAD8-FBDB-0785-7A63C9BA3603) (Talis). The requirements document should contain the sections listed below, and conform to the formatting rules listed at the end of this brief. 
+The ENGR 301 project proposal and requirements document should be based on the standard ISO/IEC/IEEE 29148:2011(E), primarily sections 8.4 and 9.5, plus section 9.4 for projects involving hardware and ISO 25010 SQUARE for systemic requirements. While excerpts from the standard have been quoted within the template, to understand what is required it will be necessary to read earlier sections of the standards themselves. A supplementary treatment of requirements gathering in engineering projects may be found in [Requirements in Engineering Projects](https://victoria.rl.talis.com/items/F166DA94-DAD8-FBDB-0785-7A63C9BA3603.html?referrer=%2Flists%2F5886F297-2506-1F17-45D9-7F04CEE284EE.html%23item-F166DA94-DAD8-FBDB-0785-7A63C9BA3603) (Talis). The requirements document should contain the sections listed below, and conform to the formatting rules listed at the end of this brief. 
 
 All team members are expected to contribute equally to the document and list their contributions in section 6 of the document. You should work on your document in your team's GitLab repository. While collective contributions are expected to be the exception rather than the rule, if more than one team member has contributed to a particular commit then all those team member IDs should be included in the first line of the git commit message. `git blame`, `git diff`, file histories, etc. will be tools used to assess individual contributions, so everyone is encouraged to contribute individually, commit early and commit often. Any team wishing to separate individually contributed sections into a single file before collation into the single proposal document for submission is welcome to do so.
 
@@ -43,7 +44,7 @@ The Purpose of this project is to create a working prototype of a stand alone pr
 
 ### 1.2 Scope
 
-The scope of this project is to create a proxy module capable of reading and interpreting HTTP responses to determine what script tags are safe and unsafe. This program will implement script fingerprinting for non-variable, and non-inline script tags, to prevent XSS attacks. Python unit tests will be used to ensure the validity of the program we create. 
+The scope of this project is to create a proxy plugin capable of reading and interpreting HTTP responses to determine what script tags are safe and unsafe. This program will implement script fingerprinting for non-variable, and non-inline script tags, to prevent XSS attacks. Python unit tests will be used to ensure the validity of the program we create. 
 
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
@@ -64,7 +65,7 @@ Any script that is not marked as safe will trigger a browser warning. These will
 
 As discussed above the project will produce a program that will be responsible for blocking XSS attacks by adding CSP protection to web applications. This will be done in the form of adding nonce tags to scripts that are deemed safe to run.  
  
-To be able to do this the project will implement a MITM proxy. This proxy will be responsible for tracking all outgoing HTTP requests from a device and all incoming HTTP responses from the web application. The HTTP responses will get stored in a secure location where the program will scan through the HTML located in the HTTP responses. As of our initial planning, the HTTP requests will not be required in our project.  
+To be able to do this the project will implement a MITM proxy. This proxy will be responsible for tracking all outgoing HTTP requests from a device and all incoming HTTP responses from the web application. The HTTP responses will get stored in a secure location where the program will scan through the HTML located in the HTTP responses. As of our initial planning, the HTTP requests will not be required in our project. Two CSP headers will be inserted into all HTML responses. One containing a nonce (Content-Security-Policy) and one containing the URL for an externally generated report from report-uri (Content-Secuirty-Policy-Report-Only). 
  
 For the program to be able to differentiate which HTTP responses are safe to add nonce tags to it will operate in two phases. The first phase of the program is the collection stage. When operating in this phase the program will be busy identifying which script tags are safe to add nonce tags to, and which scripts are not safe not have nonce tags to. This phase will be where the program is using the collected HTTP responses to calculate the chance that content inside an HTML script tag is safe to run. Safe script tags will be defined as tags that appear on the clean page, in the collection phase over a certain threshold. For example, a script tag that appears 80 / 100 times the page is loaded will likely be safe to run. The exact point at which a program is deemed safe to run will be determined at a later stage through testing. The program assumes that web applications will be clean (not containing malicious scripts or modifications)   
  
@@ -78,7 +79,7 @@ Track all HTML scripts present from that request.
 Adjust weighting of safe scripts.  
 Repeat.  
  
-The second phase of our program is the real phase. In this, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the HTTP response where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be collected and reported in ‘report-uri.com’.  
+The second phase of our program is the operational phase. In this, the program will check the scripts that are appearing on web applications, against the scripts that have appeared when running the collections phase. If a safe script is found then the program will insert a nonce tag into the HTML of the HTTP response where that script appears. This nonce tag will validate that the script tag is safe to execute. Any script tags which the program deems are not safe to run, will be collected and reported in ‘report-uri.com’.  
  
 Both phases of this program will only check for non-variable and non-inline script tags.  
  
@@ -95,7 +96,7 @@ This class of users includes the owners of any website that enabled the proxy an
 This class of users includes anyone who accesses a web application that has the proxy and program enabled. With our proxy and program enabled, these users would experience no changes in how they are able to use the web application unless they are inputting script tags (which would class them as a hacker user).
 
 **Red Shield**<br>
-This class of users includes anyone from Red Shield who has direct access to the software. These users would have full access to the code from this project and would be able to test the performance of ‘our’the software or add features to the code that are not within the scope of this project before implementing the code into their Red Core Shielding technology ‘to be released to Red Shield’s clients(probs not needed big assumption)’.
+This class of users includes anyone from Red Shield who has direct access to the software. These users would have full access to the code from this project and would be able to test the performance of our software or add features to the code that are not within the scope of this project before implementing the code into their Red Core Shielding technology.
 
 **Hacker**<br>
 This class of users includes anyone trying to attack a web application with XSS that has the proxy and program enabled. With the  proxy and program enabled, these users will be unable to attack the webpage ‘through XSS as any script tags that the user implements will not have the nonce tag for the webpage and any script the user has inputted will not run’ (using XSS, as the proxy program will prevent unsafe scripting).  
@@ -148,7 +149,7 @@ Collection Phase:
 
 Input:
 
-- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are stored along with their probability of occuring. This is stored as a percentage. Each time the host server is visited in the collection phase, the program counts how many responses contain a reference to each specific script. Larger quantities of references to specific scripts are more likely to be legitimate scripts that the user wants to run whereas, scripts that have low appearances are more likely to be malicious and not meant to run.
+- HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are stored along with their probability of occurring. This is stored as a percentage. Each time the host server is visited in the collection phase, the program counts how many responses contain a reference to each specific script. Larger quantities of references to specific scripts are more likely to be legitimate scripts that the user wants to run whereas, scripts that have low appearances are more likely to be malicious and not meant to run.
 
 Output:
 
@@ -161,8 +162,9 @@ Input:
 - HTTP responses sent from the host server. The HTML is parsed, and all script tags within the HTML are checked against those the program has deemed safe during the collection stage.
 
 Output:
-- Scripts that are found to be safe have nonce tags attached to them, allowing them to run.
--  Any scripts that are deemed unsafe are collected and reported to to the report-uri.com application by the website visitors browser.
+HTTP responses with two CSP Headers attached: Content-Security-Policy and Content-Security-Policy-Report-Only. 
+- Scripts that are found to be safe have nonce tags attached to them, allowing them to run. (Content-Security-Policy)
+- Any scripts that are deemed unsafe are collected and reported to to the report-uri.com application by the website visitors browser. ()
 
 ### 3.2 Functions
 
@@ -171,7 +173,7 @@ Output:
 | Phases    | Explanation     |
 | --------- |  -------------  |
 |Collection |  This is the phase where the program receives multiple versions of a web application HTTP response and parses the HTTP using DOM. Each time the program parses the HTML, it will search for script tags and store any it finds, along with its probability of occurring. If the script tag has been stored previously, the program will increase the probability that the tag has appeared. |
-|Real       | This is the phase where the program takes a HTTP response, gets the HTML code. The program then searches through the code to add nonce tags to the trusted script tags. To determine which script tags are trusted, the program uses the probability that the script tag occurs which is calculated in the collection phase. |
+|Operational       | This is the phase where the program takes a HTTP response, gets the HTML code. The program then searches through the code to add nonce tags to the trusted script tags. To determine which script tags are trusted, the program uses the probability that the script tag occurs which is calculated in the collection phase. |
 
 | 1         |                 |
 | --------- |  -------------  |
@@ -204,28 +206,28 @@ Output:
 
 | 5         |                 |
 | --------- |  -------------  |
-|Phase      |   Real    |
+|Phase      |   Operational    |
 |System     |   * Parses the HTML of the site  |
 |           |   * No script tags are found |
 |Goal       |   * No nonces are added  |
 
 | 6         |                 |
 | --------- |  -------------  |
-|Phase      |   Real    |
+|Phase      |   Operational    |
 |System     |   * Parses the HTML of the site  |
 |           |   * Script tag(s) with high percentages are found |
 |Goal       |   * Nonces added to these script tags  |
 
 | 7         |                 |
 | --------- |  -------------  |
-|Phase      |   Real    |
+|Phase      |   Operational    |
 |System     |   * Parses the HTML of the site  |
 |           |   * Script tag(s) with low percentages are found |
 |Goal       |   * Nonces added to these script tags  |
 
 | 8         |                 |
 | --------- |  -------------  |
-|Phase      |   Real    |
+|Phase      |   Operational    |
 |System     |   * Parses the HTML of the site  |
 |           |   * Script tag which hasn’t been registered before |
 |Goal       |   * Nonces not added to these script tags  |
@@ -233,7 +235,7 @@ Output:
 
 | 9         |                 |
 | --------- |  -------------  |
-|Phase      |   Real    |
+|Phase      |   Operational    |
 |System     |   * Parses the HTML of the site  |
 |           |   * Found script tag which has a high percentage 
 |           |    * Found a script tag which hasn’t been registered before |
@@ -243,7 +245,7 @@ Output:
 
 | 10        |                 |
 | --------- |  -------------  |
-|Phase      |   Real    |
+|Phase      |   Operational     |
 |System     |   * Parses the HTML of the site  |
 |           |   * Found inline script tag |
 |Goal       |   * Nonce is added and script is ignored  |
@@ -271,21 +273,21 @@ Output:
 
 | 1         |                 |
 | --------- |  -------------  |
-|Phase      |   Real          |
+|Phase      |   Operational           |
 |System     |   * Parses the HTML of the site  |
 |           |   * Untrusted script tag found within a trusted script tag |
 |Goal       |   * Add a nonce tag to the outside script tag and ensure the untrusted script tag does not run  |
 
 | 2         |                 |
 | --------- |  -------------  |
-|Phase      |   Real          |
+|Phase      |   Operational           |
 |System     |   * Parses the HTML of the site  |
 |           |   * Untrusted script tag found within a untrusted script tag |
 |Goal       |   * Ensure no nonce tags and added and neither tags are executed  |
 
 | 3         |                 |
 | --------- |  -------------  |
-|Phase      |   Real          |
+|Phase      |   Operational           |
 |System     |   * Parses the HTML of the site  |
 |           |   * Found inline script tag |
 |Goal       |   * Determine whether the script tag is trusted or not and if it is trusted, add a nonce tag  |
@@ -294,7 +296,7 @@ Output:
 
 The goal is to design a proxy program which adheres to appreciate expectations and specifications to create additional security features for web applications. Fulfilling the usability requirements ensures that certain XSS inserted to the website is prevented from executing and safe script tags are applied to prevent websites from breaking due to the security. 
 
-There are no usability requirements for users of the program as the program will not affect the users in any way, unless they enter a script tag into the web application. The proxy parses the HTML, determines which tags to add nonces too and sends the new HTML code to the browser with no effect, or no action needed from the user. Hence the design must be functional and efficient enough to be able to load the correct webpage at a similar time frame to the avergae time it takes for a web page to load. 
+There are no usability requirements for users of the program as the program will not affect the users in any way, unless they enter a script tag into the web application. The proxy parses the HTML, determines which tags to add nonces to and sends the new HTML code to the browser with no effect, or no action needed from the user. Hence the design must be functional and efficient enough to be able to load the correct webpage at a similar time frame to the average time it takes for a web page to load. 
 
 ### 3.4 Performance requirements
 
@@ -308,7 +310,7 @@ The performance requirements section will discuss how a system will perform once
 
 *  The system should not affect the owner of the website. Therefore this means that if an owner deploys our proxy on their website they should not experience any changes in how website visitors use their website. However, if a script tag is considered unsafe the system will affect the owner as it will impact the website visitors of their website. This is because the unsafe script tag will not run hence changing what the website should do.<br>
 
-* The program should support the client to receive the full benefits of security from CSP being enforced client-side. This will be achieved by ensuring that the only browsers used are  Edge, Chrome or FireFox.<br>
+* The program should support the client to receive the full benefits of security from CSP being enforced client-side. This will be achieved by ensuring that the only browsers used are  Edge, Chrome or Firefox.<br>
 
 * The program should be able to notify if script tags in a webpage are not safe. This will be achieved by collecting and reporting unsafe script tags in ‘report-uri.com’.<br> 
 
@@ -328,16 +330,16 @@ The performance requirements section will discuss how a system will perform once
 |Class      |   Main          |
 |Package    |   * Proxy       |
 |           |   *             |
-|Description|   * This is the main class, the relationship between entity Proxy_Activated represents the main being activated to beging the entire program  |
-|Respsosibility |   * To run the entire program logic, call methods as required |
+|Description|   * This is the main class, the relationship between entity Proxy_Activated represents the Main class being activated to begin the entire program  |
+|Responsibility |   * To run the entire program logic, call methods as required |
 
 | 2         |                 |
 | --------- |  -------------  |
 |Class      |   IncommingHTTP |
 |Package    |   * Proxy       |
 |           |   *             |
-|Description|   * To send all the incomming HTTP messages to.  |
-|Respsosibility |   * To recieve HTTP Responses and Requests, if a response is found then the class should call saveResponse  |
+|Description|   * To send all the incoming HTTP messages to.  |
+|Responsibility |   * To receive HTTP Responses and Requests, if a response is found then the class should call saveResponse  |
 
 | 3         |                 |
 | --------- |  -------------  |
@@ -345,7 +347,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Proxy       |
 |           |   *             |
 |Description|   * To take a response message and get the content of the message.  |
-|Respsosibility |   * To recieve HTTP Requests, if a response is found then the class should open the a file to write to and write the content of the HTTP response to the file  |
+|Responsibility |   * To receive HTTP Requests, if a response is found then the class should open the a file to write to and write the content of the HTTP response to the file  |
 
 | 4         |                 |
 | --------- |  -------------  |
@@ -353,7 +355,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Proxy       |
 |           |   *             |
 |Description|   * To take a response message and get the apply a nonce tag to the message where a approved script tag appears.  |
-|Respsosibility |   * To make modification to response messages so that specified scripts are allowed to run |
+|Responsibility |   * To make modification to response messages so that specified scripts are allowed to run |
 
 | 5         |                 |
 | --------- |  -------------  |
@@ -361,7 +363,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
 |Description|   * Class to co-ordinate the entire Collection phase  |
-|Respsosibility | * To keep track of the script tags and co-ordinate the running of the collections phase  |
+|Responsibility | * To keep track of the script tags and co-ordinate the running of the collections phase  |
 
 | 6         |                 |
 | --------- |  -------------  |
@@ -369,7 +371,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
 |Description|   * class to run actions on the statement being examined by the program  |
-|Respsosibility | * Contain the currentStatement as a string and use the getCurrentTags to go through a script tag with the other classes that this class requires.  |
+|Responsibility | * Contain the currentStatement as a string and use the getCurrentTags to go through a script tag with the other classes that this class requires.  |
 
 | 7         |                 |
 | --------- |  -------------  |
@@ -377,7 +379,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
 |Description|   * class to keep tabs on how many times a script tag has appear |
-|Respsosibility | * contain the times that a script tag has appeared and updates and retrieves them.  |
+|Responsibility | * contain the times that a script tag has appeared and updates and retrieves them.  |
 
 | 8         |                 |
 | --------- |  -------------  |
@@ -385,15 +387,15 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
 |Description|   * class to keep track of script tag content |
-|Respsosibility | * contain the content of a script tag.  |
+|Responsibility | * contain the content of a script tag.  |
 
 | 9         |                 |
 | --------- |  -------------  |
-|Class      |   safteyRating |
+|Class      |   safetyRating |
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
-|Description|   * class to work out the saftey rating of a script tag |
-|Respsosibility | * contain the saftey rating which should start at 0 for a script, and then gets modified   |
+|Description|   * class to work out the safety rating of a script tag |
+|Responsibility | * contain the safety rating which should start at 0 for a script, and then gets modified   |
 
 | 10         |                 |
 | --------- |  -------------  |
@@ -401,7 +403,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
 |Description|   * class to parse the HTTPResponse using DOM parsing |
-|Respsosibility | * Contains the methods for parsing responses using dom methods   |
+|Responsibility | * Contains the methods for parsing responses using dom methods   |
 
 | 11         |                 |
 | --------- |  -------------  |
@@ -409,7 +411,7 @@ The performance requirements section will discuss how a system will perform once
 |Package    |   * Application : Collection Phase       |
 |           |   *             |
 |Description|   * class to get responses from the File Storage system. |
-|Respsosibility | * Contains the methods for parsing responses using dom methods   |
+|Responsibility | * Contains the methods for parsing responses using DOM methods   |
 
 ### 3.6 Design constraints
 
@@ -419,8 +421,8 @@ The software for this project will be written in python code which is an unfamil
 **Skill levels**<br>
 Team members will have different experiences and specialties in software development and cybersecurity. This will be a constraint on the development process as many team members have limited knowledge about nonce tags, XSS and HTML parsing.   
 
-**Timeframe and deadlines**<br>
-Timeframes and deadlines will be a major constraint on this project as unexpected events are bound to occur that will affect deadlines such as bugs and code deletion. Other commitments, such as other courses that team members take or team members jobs, can be an issue if there are overlapping deadlines. There is also the chance that team members cannot access campus resources (labs, meeting rooms etc.) due to the COVID-19 pandemic.
+**Time-frame and deadlines**<br>
+Time-frames and deadlines will be a major constraint on this project as unexpected events are bound to occur that will affect deadlines such as bugs and code deletion. Other commitments, such as other courses that team members take or team members jobs, can be an issue if there are overlapping deadlines. There is also the chance that team members cannot access campus resources (labs, meeting rooms etc.) due to the COVID-19 pandemic.
 
 **Performance Expectations**<br>
 Performance expectations can be a hindrance as the expectations set by team members before the development process begins may not be met at the conclusion of the project.
@@ -436,7 +438,7 @@ The main purpose of this project is to increase internet browser security by imp
 <br>
 The program/proxy must also be able to operate without exposing itself to attack. Since the program has a read functionality used to train the system on what to apply the CSP nonce tags to. The program needs security measures to prevent the possibility of this being exploited. Since exploiting this part of the program would result in ineffective application of the CSP.<br>
 <br>
-During the reading stage of the programs lifecycle it will need to operate in a way that is secure. If the reading stage can be exploited it could be possible for an attacker to intercept the incoming HTTP requests and train the system to ignore malicious code or input any code the attacker deems fit. If unsecure the attacker could gain the ability to edit more than the script tags. If the program can be exploited in such a way it could lead to an increased possibility of attacks occurring, instead of preventing them.<br>
+During the reading stage of the programs lifecycle it will need to operate in a way that is secure. If the reading stage can be exploited it could be possible for an attacker to intercept the incoming HTTP requests and train the system to ignore malicious code or input any code the attacker deems fit. If left unsecured the attacker could gain the ability to edit more than the script tags. If the program can be exploited in such a way it could lead to an increased possibility of attacks occurring, instead of preventing them.<br>
 <br>
 During the reading stage the system stores and reads outgoing HTTP requests, and if not stored properly, or accessible to any outside user this could lead to attackers being able to access this data. The program needs to ensure these files are not accessible. If accessible this could also result in further attacks or privacy breaches.<br>
 <br>
@@ -488,7 +490,7 @@ Due to the fact that this project is solely a software-based project there are n
 
 see 9.5.19. 
 
-The project currently needs no supporting infomation 
+The project currently needs no supporting information 
 
 ## 4. Verification
 ### 4.1 Verifying External interfaces
@@ -497,7 +499,7 @@ The project currently needs no supporting infomation
 |---------------|---------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Collection:   | HTML.                     | HTML. The exact same HTML without any alterations or additions. No added nonces.                  | Matching Hashes.                                                              | Ensuring outgoing data matches the data received can be accomplished by hashing incoming and outgoing data and comparing the hashes to verify the integrity of the data after processing.            |
 | MITM Proxy:   | Web Application Data/HTML | HTML Responses                                                                                    | HTML response follows a valid pattern.                                        | -                                                                                                                                                                                                    |
-| DOM Parsing:  | Sanitised HTML Response.  | Document Object Model                                                                             | Unit tests passing.  Batch testing passing. No errors thrown on sample data.  | Unit testing can be used for limited testing.  Batch testing against a larger dataset with robust exception handling and reporting for failed conversions to catch bugs before reaching production.  |
+| DOM Parsing:  | Sanitized HTML Response.  | Document Object Model                                                                             | Unit tests passing.  Batch testing passing. No errors thrown on sample data.  | Unit testing can be used for limited testing.  Batch testing against a larger dataset with robust exception handling and reporting for failed conversions to catch bugs before reaching production.  |
 | Operational:  | HTML.                     | Altered HTML. Input HTML with added safe script tags and add nonce tags, and then run as normal.  | Changed Hash                                                                  | Processing can be validated by checking if an input was classified as unsafe or not, then checking if the hash was changed during processing.                                                     |
 | Report URI    | Unsafe Script             | HTTP Response. Unsafe scripts are reported to a Report URI service.                               | HTTP response indicating reception.                                           | Reception of a script sent to a Report URI service can be verified by listening for HTTP response codes from the services.                                                                           |
 
@@ -505,7 +507,7 @@ The project currently needs no supporting infomation
 
 To verify that the project satisfies it’s required functions in a reliable and complete way, a combination of continuous integration testing, automated testing and manual testing will be done. Each case specified in section 3.2 will be manually tested to ensure that when the specified system input has happened, the outcome will be what the specified goal states. This will allow any case to be tested, to ensure there are no issues and validate that the product meets the specifications laid out in section 3.2. Any unexpected behaviour of the program will be logged as an issue to be fixed. Furthermore, automated tests will be added to test for a range of different inputs, including invalid and no input.
 
-For the minimum viable product, only the cases outlined in section 3.2 relating to this will be tested against. Once the minimum viable product has been attained, then the cases outlined in the extension section of 3.2 will be tested against to verify the programs extended behaviour.
+For the minimum viable product, only the cases outlined in section 3.2 relating to this will be tested against. Once the minimum viable product has been attained, then the cases outlined in the extension section of 3.2 will be tested against to verify the programs extended behavior.
 
 ### 4.3 Usability Requirements
 
@@ -525,7 +527,7 @@ For the minimum viable product, only the cases outlined in section 3.2 relating 
 | Fall Back Loading Speed                                              | HTML Loading    | 87% of HTML loaded within 2 seconds.                                                     | Without limitations the system should be able to load 87% of the data within 2 seconds.                                                                                                              |
 | Unsafe script functionality                                          | Post processing | Performance of the outside website is not adversely affected by the removal of a script. | The program will learn which scripts are used by the website under normal operation, any removed scripts should not be of critical importance to the website.                                        |
 | Complete functionality on standard browsers. (Edge, Chrome, Firefox) | Post processing | The site will complete all intended functions after processing by the program.           | No deprecated or unsupported functions that will affect the output are used. The only functions that will be lost are those that violate the security of a process.                                  |
-| Identification of safe scripts                                       | Collection      | Hostile scripts are not categorised as safe by the program.                              | Sample sites are verified to be clean/secure before being used in collection.                                                                                                                        |
+| Identification of safe scripts                                       | Collection      | Hostile scripts are not categorized as safe by the program.                              | Sample sites are verified to be clean/secure before being used in collection.                                                                                                                        |
 | Nonce tags addition                                                  | Operational     | Nonce tags are added to all scripts deemed safe.                                         | No insecure scripts have nonce tags added. All secure scripts are given nonces.                                                                                                                      |
 | Insecure script notifications.                                       | Operational     | Insecure scripts are collected, processed and reported using Report URI.                 | Redshield is able to view notifications or reports of scripts removed by the program via Report URI.                                                                                                 |
 | Encryption                                                           | Operational     | HTTP request encryption is supported.                                                    | Decrypted data should never be exposed to outside services except when being processed using Report URI. Secure encryption methods should be used and keys should only be stored or used internally. |
@@ -536,7 +538,7 @@ For the minimum viable product, only the cases outlined in section 3.2 relating 
 | Class           | Package                 | Purpose                                                                                                               | Metric                                                                                         | Criteria                                                                                                          |
 |-----------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 | Main            | Proxy                   | Entry point and logical start for program                                                                             | Program runs as intended or exits with proper handling                                         | Class calls logic in correct order and handles errors according to convention                                     |
-| Incomming HTTP  | Proxy                   | Receives all incoming HTTP messages and forwards any messages with responses to save response                         | All messages with responses are passed along while those without are discarded                 | No messages without responses are forwarded and 100% of messages with responses are forwarded                     |
+| Incoming HTTP  | Proxy                   | Receives all incoming HTTP messages and forwards any messages with responses to save response                         | All messages with responses are passed along while those without are discarded                 | No messages without responses are forwarded and 100% of messages with responses are forwarded                     |
 | Save Response   | Proxy                   | Receives a http request with a response from the Incoming HTTP class and writes the content of the response to a file | HTTP Response file(s) are complete records of all incoming HTTP messages which have responses  | All HTTP responses are written to a file when received.                                                           |
 | Modify Response | Proxy                   | Modify a response to include nonce tags for authorized scripts                                                        | All safe scripts are given nonces                                                              | 100% of authorized scripts are given nonces and no known unsafe scripts are.                                      |
 | Shield          | Application: Collection | Track script tags while coordinating the collection phase                                                             | All scripts are tracked against internal metrics                                               | Each script seen during collection is stored correctly tracked against internal attributes (frequency and safety) |
@@ -551,15 +553,15 @@ For the minimum viable product, only the cases outlined in section 3.2 relating 
 | Aspect                    | Limiting Factor                                               | Countermeasures                                                                                                                                                                                                                                                                                                                              | Criteria                                                                                                                                                                                      |
 |---------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Python                    | Unfamiliar language                                           | Following best practices.  Peer programming and code review.  Objective approach to constructive criticism and advice from team members.                                                                                                                                                                                                       | Code is written with consideration of its Big O cost and security.  Comments and consistent variable names are used.  Recommendations or requests from other team members are taken on mored. |
-| Skill                     | Individual ability                                            | Each team member will undertake a conscious effort to conduct necessary research and development in order to build the skills and knowledge required to meet the criteria of the project.  Peer programming and review.                                                                                                                        | Discussion on mattermost when help is needed.  Individual research.                                                                                                                           |
-| Timeframes and Deadlines  | Limited time, short sprint cycles.                            | Weekly meetings and assessment of progress and forecasted timelines. Frequent assessment of scope of work assigned to individuals.                                                                                                                                                                                                             | Attendance of weekly meetings and labs where workloads can be assessed and evaluated against deadlines.                                                                                       |
-| Individual contributions. | Unbalanced workloads and/or inequitable distribution of work. | Specified expectations for work hours; any additional work above the eight hours is at the discretion of an individual.  Frequent opportunity to discuss workload if a member consistently has to work on the project more than expected.  Contributions will be tracked through their commits to Gitlab and communication through mattermost. | Eight hours of time dedicated to the project each week including labs.                                                                                                                        |
+| Skill                     | Individual ability                                            | Each team member will undertake a conscious effort to conduct necessary research and development in order to build the skills and knowledge required to meet the criteria of the project.  Peer programming and review.                                                                                                                        | Discussion on Mattermost when help is needed.  Individual research.                                                                                                                           |
+| Time-frames and Deadlines  | Limited time, short sprint cycles.                            | Weekly meetings and assessment of progress and forecasted timelines. Frequent assessment of scope of work assigned to individuals.                                                                                                                                                                                                             | Attendance of weekly meetings and labs where workloads can be assessed and evaluated against deadlines.                                                                                       |
+| Individual contributions. | Unbalanced workloads and/or inequitable distribution of work. | Specified expectations for work hours; any additional work above the eight hours is at the discretion of an individual.  Frequent opportunity to discuss workload if a member consistently has to work on the project more than expected.  Contributions will be tracked through their commits to Gitlab and communication through Mattermost. | Eight hours of time dedicated to the project each week including labs.                                                                                                                        |
 
 ### 4.7 Nonfunctional system attributes
 
 | Attribute       | Value/Reasoning                                                                                                                                                                                                                                                                                                                                                                                                  | Measurability                                                                                                                                                                                                                                                                                                                                            | Criteria                                                                                                                                                                                                                                                                                                                                                    |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Security        | Security is the highest priority of our program. Any solution to XSS is worthless if the program is vulnerable to other attacks.                                                                                                                                                                                                                                                                                 | Provably insecure scripts can be removed and the secured html passed to the user without risking an XSS attack.  Report URI reports are generated.                                                                                                                                                                                                       | Reduction/Limited increase in surface area vulnerability to attack. Program fails securely. In case of failure the product will deny by default. Secure by design - not obscurity. Any solutions must be secure even if their design is made public.                                                                                                        |
+| Security        | Security is the highest priority of our program. Any solution to XSS is worthless if the program is vulnerable to other attacks.                                                                                                                                                                                                                                                                                 | Provably insecure scripts can be removed and the secured HTML passed to the user without risking an XSS attack.  Report URI reports are generated.                                                                                                                                                                                                       | Reduction/Limited increase in surface area vulnerability to attack. Program fails securely. In case of failure the product will deny by default. Secure by design - not obscurity. Any solutions must be secure even if their design is made public.                                                                                                        |
 | Data Integrity  | As our product will operate as a proxy it is crucial that any data handled will maintain its integrity.                                                                                                                                                                                                                                                                                                          | Hashing data before and after it is processed by the system to be returned.                                                                                                                                                                                                                                                                              | Hashes should match for data before and after processing except when an insecure or unsafe script is removed. Clients should be able to see reports of unsafe script removals.                                                                                                                                                                              |
 | Reliability     | In order to be viable as a product and a solution, the program must be reliable. Otherwise the clients may lose business, be exposed to security risks as well or elect not to use it.                                                                                                                                                                                                                           | Uptime under workload.  Stress testing with high frequency requests for positive and negative cases to assess script tag encoding and data integrity under load.                                                                                                                                                                                         | Reliability will be determined by measuring the ability of the program to handle high frequency requests under realistic environment conditions. This criteria includes the accuracy of under high load which should not be expected to drop.                                                                                                               |
 | Performance     | Similarly to reliability, the program must function with minimal impact on the speed use for end users. This is to prevent users from disconnecting and using an insecure connection as well as prevent loss of customers if used with a business application.                                                                                                                                                   | The average loading time for a full website on a desktop application is 10.3 seconds, while a mobile site takes 27 seconds on average.  Since our solution is remotely hosted it would affect both at a flat rate.  An increase of less than 20% of the average desktop loading time application (2.06 seconds) would be an ideal result. Less than 50%  | A single connection/request between the host and end user can be handled without affecting the normal usage of the website.                                                                                                                                                                                                                                 |
@@ -690,7 +692,7 @@ XSS - Cross Site Scripting
 
 ## Assessment  
 
-The goal of a requirements document is the problem you are attempting to solve:  not a first attempt at a solution to that problem. The most important factor in the assessmernt of the document is how will it meet that goal. The document will be assessed for both presentation and content. 
+The goal of a requirements document is the problem you are attempting to solve:  not a first attempt at a solution to that problem. The most important factor in the assessment of the document is how will it meet that goal. The document will be assessed for both presentation and content. 
 
 The presentation will be based on how easy it is to read, correct spelling, grammar, punctuation, clear diagrams, and so on.
 
