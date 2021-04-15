@@ -86,8 +86,6 @@ Lastly, the project will also produce a set of documentation detailing the proce
 
 #### 1.3.3 User characteristics   
 
-One page identifying the main classes of users and their characteristics (9.5.5)
-
 **Application Developer**<br>
 This class of users include the developers of the web application. These users are no longer present or able to change the functionality of the application, hence why this project focuses on implementing CSP using a proxy rather than directly changing the application.
 
@@ -482,9 +480,7 @@ Due to the nature of the program being run in as a proxy plugin, usability by th
 Due to the fact that this project is solely a software-based project there are no physical or environmental requirements involved. The only requirement this project has is that there must be access to a computer to run the program. Furthermore, the computer must have python installed on it. It is vital that the computer is able to run python version 3.0 or higher. <br>  
 
 ### 3.9 Supporting information
-
-see 9.5.19. 
-
+ 
 The project currently needs no supporting information 
 
 ## 4. Verification
@@ -597,8 +593,6 @@ The Client is local, and has indicated they can travel to Victoria University of
 
 ### 5.3 Risks 
 
-Identify the ten most important project risks to achieving project goals: their type, likelihood, impact, and mitigation strategies (3 pages).
-
 If the project will involve any work outside the ECS laboratories, i.e. off-campus activities, these should be included in the following section.<br>
 
 | Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
@@ -642,9 +636,6 @@ Project requirements do not involve risk of death, serious harm, harm or injury.
 
 ## 6. Appendices
 ### 6.1 Assumptions and dependencies 
-
-One page on assumptions and dependencies (9.5.7).<br>
-
 
 Below is a list of assumptions and dependencies for this project:<br>
 
