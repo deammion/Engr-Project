@@ -185,123 +185,123 @@ Output:
 | 1         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the page  |
-|           |   * External script tags are found  |
-|Goal       |   * Program notes new script  |
-|           |   * Calculates initial count of how many responses contain a reference to this external script tag. |
+|System     |    Parses the HTML of the page  |
+|           |    External script tags are found  |
+|Goal       |    Program notes new script  |
+|           |    Calculates initial count of how many responses contain a reference to this external script tag. |
 
 | 2         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the page  |
-|           |   * Previously found script tags are found again |
-|Goal       |   * Script tags count increases |
+|System     |    Parses the HTML of the page  |
+|           |    Previously found script tags are found again |
+|Goal       |    Script tags count increases |
 
 | 3         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the page  |
-|           |   * Previously found script tag does not appear |
-|Goal       |   * Script tags count decreases |
+|System     |   Parses the HTML of the page  |
+|           |   Previously found script tag does not appear |
+|Goal       |   Script tags count decreases |
 
 | 4         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the page  |
-|           |   * No script tags are found |
-|Goal       |   * The script tags count decreases for all stored tags |
+|System     |   Parses the HTML of the page  |
+|           |   No script tags are found |
+|Goal       |   The script tags count decreases for all stored tags |
 
 | 5         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Script tag found has a high occurrence count  |
-|Goal       |   * Script tag is determined as safe for this URL and path  |
+|System     |   Script tag found has a high occurrence count  |
+|Goal       |   Script tag is determined as safe for this URL and path  |
 
 | 6         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Script tag found has a low occurrence count  |
-|Goal       |   * Script tag is determined as safe for this URL and path  |
+|System     |   Script tag found has a low occurrence count  |
+|Goal       |   Script tag is determined as safe for this URL and path  |
 
 | 7         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the page  |
-|           |   * No script tags are found |
-|Goal       |   * No nonces are added  |
+|System     |   Parses the HTML of the page  |
+|           |   No script tags are found |
+|Goal       |   No nonces are added  |
 
 | 8         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the page  |
-|           |   * Script tag(s) which have been previously determined as safe for this URL and path are found |
-|Goal       |   * Nonces added to these script tags  |
+|System     |   Parses the HTML of the page  |
+|           |   Script tag(s) which have been previously determined as safe for this URL and path are found |
+|Goal       |   Nonces added to these script tags  |
 
 | 9         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the page  |
-|           |   * Script tag which hasn’t been registered before is found |
-|Goal       |   * Nonces not added to this script tag  |
-|           |   * Reported on report-uri.com |
+|System     |   Parses the HTML of the page  |
+|           |   Script tag which hasn’t been registered before is found |
+|Goal       |   Nonces not added to this script tag  |
+|           |   Reported on report-uri.com |
 
 | 10         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * Parses the HTML of the page  |
-|           |   * Script tag(s) which have been previously determined as safe for this URL and path is found
-|           |   * Script tag(s) which haven't been registered before are found |
-|Goal       |   * Nonces added to the script tags deemed as safe   |
-|           |   * Nonces not added to script tags that aren’t registered |
-|           |   * Report non registered script tags on report-uri.com |
+|System     |   Parses the HTML of the page  |
+|           |   Script tag(s) which have been previously determined as safe for this URL and path is found
+|           |   Script tag(s) which haven't been registered before are found |
+|Goal       |   Nonces added to the script tags deemed as safe   |
+|           |   Nonces not added to script tags that aren’t registered |
+|           |   Report non registered script tags on report-uri.com |
 
 | 11        |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Parses the HTML of the page  |
-|           |   * Found inline script tag |
-|Goal       |   * Script tags count increases  |
+|System     |   Parses the HTML of the page  |
+|           |   Found inline script tag |
+|Goal       |   Script tags count increases  |
 
 | 12        |                 |
 | --------- |  -------------  |
 |Phase      |   Operational     |
-|System     |   * Parses the HTML of the page  |
-|           |   * Found inline script tag |
-|Goal       |   * Nonce is added and the script is ignored  |
+|System     |   Parses the HTML of the page  |
+|           |   Found inline script tag |
+|Goal       |   Nonce is added and the script is ignored  |
 
 | 13        |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * No HTML in the input  |
-|Goal       |   * Nothing happens  |
+|System     |   No HTML in the input  |
+|Goal       |   Nothing happens  |
 
 | 14        |                 |
 | --------- |  -------------  |
 |Phase      |   Operational    |
-|System     |   * No HTML in the input  |
-|Goal       |   * Nothing happens  |
+|System     |   No HTML in the input  |
+|Goal       |   Nothing happens  |
 
 #### Use Cases for Extensions of the Product:
 
 | 1         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational           |
-|System     |   * Parses the HTML of the page  |
-|           |   * Untrusted script tag found within an untrusted script tag |
-|Goal       |   * Ensure no nonce tags are added and neither tags are executed  |
+|System     |   Parses the HTML of the page  |
+|           |   Untrusted script tag found within an untrusted script tag |
+|Goal       |   Ensure no nonce tags are added and neither tags are executed  |
 
 | 2         |                 |
 | --------- |  -------------  |
 |Phase      |   Operational           |
-|System     |   * Parses the HTML of the page  |
-|           |   * Found inline script tag |
-|Goal       |   * Determine whether the script tag is trusted or not and if it is trusted, add a nonce tag  |
+|System     |   Parses the HTML of the page  |
+|           |   Found inline script tag |
+|Goal       |   Determine whether the script tag is trusted or not and if it is trusted, add a nonce tag  |
 
 | 3         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
-|System     |   * Script tag found has a low occurrence count |
-|Goal       |   * Script tag is not determined as safe for this URL and path  |
+|System     |   Script tag found has a low occurrence count |
+|Goal       |   Script tag is not determined as safe for this URL and path  |
 
 ### 3.3 Usability Requirements
 
@@ -340,90 +340,90 @@ The performance requirements section will discuss how a system will perform once
 | 1         |                 |
 | --------- |  -------------  |
 |Class      |   Main          |
-|Package    |   * Proxy       |
-|           |   *             |
-|Description|   * This is the main class, the relationship between entity Proxy_Activated represents the Main class is activated to begin the entire program.  |
-|Responsibility |   * To run the entire program logic, and call methods as required. |
+|Package    |   Proxy       |
+|           |                |
+|Description|   This is the main class, the relationship between entity Proxy_Activated represents the Main class is activated to begin the entire program.  |
+|Responsibility |   To run the entire program logic, and call methods as required. |
 
 | 2         |                 |
 | --------- |  -------------  |
 |Class      |   IncommingHTTP |
-|Package    |   * Proxy       |
-|           |   *             |
-|Description|   * To send all the incoming HTTP messages to.  |
-|Responsibility |   * To receive HTTP responses and requests. If a response is found then the class should call saveResponse.  |
+|Package    |   Proxy       |
+|           |               |
+|Description|   To send all the incoming HTTP messages to.  |
+|Responsibility |   To receive HTTP responses and requests. If a response is found then the class should call saveResponse.  |
 
 | 3         |                 |
 | --------- |  -------------  |
 |Class      |   saveResponse |
-|Package    |   * Proxy       |
-|           |   *             |
-|Description|   * To take a response message and get the content of the message.  |
-|Responsibility |   * To receive HTTP requests. If a response is found then the class should open a file to write to and write the content of the HTTP response to the file.  |
+|Package    |   Proxy       |
+|           |               |
+|Description|   To take a response message and get the content of the message.  |
+|Responsibility |   To receive HTTP requests. If a response is found then the class should open a file to write to and write the content of the HTTP response to the file.  |
 
 | 4         |                 |
 | --------- |  -------------  |
 |Class      |   modifyRespose |
-|Package    |   * Proxy       |
-|           |   *             |
-|Description|   * To take a response message, apply CSP headers to it and add a nonce tag to the message where an approved script tag appears.  |
-|Responsibility |   * To make modifications to response messages so that specified scripts are allowed to run. |
+|Package    |   Proxy       |
+|           |               |
+|Description|   To take a response message, apply CSP headers to it and add a nonce tag to the message where an approved script tag appears.  |
+|Responsibility |  To make modifications to response messages so that specified scripts are allowed to run. |
 
 | 5         |                 |
 | --------- |  -------------  |
 |Class      |   Shield |
-|Package    |   * Application: Collection Phase       |
-|           |   *             |
-|Description|   * Class to coordinate the entire Collection phase.  |
-|Responsibility | * To keep track of the script tags and coordinate the running of the collection phase.  |
+|Package    |    Application: Collection Phase       |
+|           |               |
+|Description|    Class to coordinate the entire Collection phase.  |
+|Responsibility |  To keep track of the script tags and coordinate the running of the collection phase.  |
 
 | 6         |                 |
 | --------- |  -------------  |
 |Class      |   HTMLStatement |
-|Package    |   * Application : Collection Phase       |
-|           |   *             |
-|Description|   * Class to run actions on the statement being examined by the program.  |
-|Responsibility | * Contains the currentStatement variable and getCurrentTags method. Uses these to hold information about the current script tag and is accessed by the other classes that are shown as requiring this class.  |
+|Package    |    Application : Collection Phase       |
+|           |                |
+|Description|    Class to run actions on the statement being examined by the program.  |
+|Responsibility |  Contains the currentStatement variable and getCurrentTags method. Uses these to hold information about the current script tag and is accessed by the other classes that are shown as requiring this class.  |
 
 | 7         |                 |
 | --------- |  -------------  |
 |Class      |   frequency |
-|Package    |   * Application: Collection Phase       |
-|           |   *             |
-|Description|   * Class to keep tabs on how many times a script tag has occurred. |
+|Package    |    Application: Collection Phase       |
+|           |                |
+|Description|    Class to keep tabs on how many times a script tag has occurred. |
 |Responsibility | Contains the number of times that a script tag has appeared and updates and retrieves this information. |
 
 | 8         |                 |
 | --------- |  -------------  |
 |Class      |   scriptTag |
-|Package    |   * Application : Collection Phase       |
-|           |   *             |
-|Description|   * Class to keep track of script tag content. |
-|Responsibility | * Contains the contents of a script tag.  |
+|Package    |    Application : Collection Phase       |
+|           |                |
+|Description|    Class to keep track of script tag content. |
+|Responsibility |  Contains the contents of a script tag.  |
 
 | 9         |                 |
 | --------- |  -------------  |
 |Class      |   safetyRating |
-|Package    |   * Application: Collection Phase       |
-|           |   *             |
-|Description|   * Class to work out the safety rating of a script tag. |
-|Responsibility | * Contains the safety rating which should start at 0 for a script, and then gets modified. |
+|Package    |    Application: Collection Phase       |
+|           |                |
+|Description|    Class to work out the safety rating of a script tag. |
+|Responsibility |  Contains the safety rating which should start at 0 for a script, and then gets modified. |
 
 | 10         |                 |
 | --------- |  -------------  |
 |Class      |   parseResponse |
-|Package    |   * Application : Collection Phase       |
-|           |   *             |
-|Description|   * Class to parse the HTTPResponse using DOM parsing. |
-|Responsibility | * Contains the methods for parsing responses using DOM methods.   |
+|Package    |    Application : Collection Phase       |
+|           |                |
+|Description|   Class to parse the HTTPResponse using DOM parsing. |
+|Responsibility |  Contains the methods for parsing responses using DOM methods.   |
 
 | 11         |                 |
 | --------- |  -------------  |
 |Class      |   HTTPResponse |
-|Package    |   * Application : Collection Phase       |
-|           |   *             |
-|Description|   * Class to get responses from the File Storage system. |
-|Responsibility | * Contains the methods for parsing responses using DOM methods.   |
+|Package    |    Application : Collection Phase       |
+|           |                |
+|Description|    Class to get responses from the File Storage system. |
+|Responsibility |  Contains the methods for parsing responses using DOM methods.   |
 
 ### 3.6 Design constraints
 
