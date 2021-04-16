@@ -206,13 +206,13 @@ Output:
 | --------- |  -------------  |
 |Phase      |   Collection    |
 |System     |   * Script tag found has a high occurrence count  |
-|Goal       |   * Script tags are determined as safe for this URL and path  |
+|Goal       |   * Script tag is determined as safe for this URL and path  |
 
 | 6         |                 |
 | --------- |  -------------  |
 |Phase      |   Collection    |
 |System     |   * Script tag found has a low occurrence count  |
-|Goal       |   * Script tags are determined as safe for this URL and path  |
+|Goal       |   * Script tag is determined as safe for this URL and path  |
 
 | 7         |                 |
 | --------- |  -------------  |
@@ -233,7 +233,7 @@ Output:
 |Phase      |   Operational    |
 |System     |   * Parses the HTML of the page  |
 |           |   * Script tag which hasn’t been registered before is found |
-|Goal       |   * Nonces not added to these script tags  |
+|Goal       |   * Nonces not added to this script tag  |
 |           |   * Reported on report-uri.com |
 
 | 10         |                 |
@@ -292,13 +292,13 @@ Output:
 | --------- |  -------------  |
 |Phase      |   Collection    |
 |System     |   * Script tag found has a low occurrence count |
-|Goal       |   * Script tags are not determined as safe for this URL and path  |
+|Goal       |   * Script tag is not determined as safe for this URL and path  |
 
 ### 3.3 Usability Requirements
 
 The goal is to design a proxy plugin that adheres to expectations and specifications to create additional security features for web applications. Fulfilling the usability requirements ensures that certain XSS inserted into the website is prevented from executing and safe script tags are executed to prevent websites from breaking due to the security. 
 
-There are no usability requirements for users of the program as the program will not affect the users in any way unless they enter a script tag into the web application. The proxy parses the HTML, determines which tags to add nonces to and sends the new HTML code to the browser with no effect, or no action needed from the user. Hence the design must be functional and efficient enough to be able to load the correct webpage at a similar time frame to the average time it takes for a webpage to load. 
+There are no usability requirements for users of the program as the program will not affect the users in any way unless they enter a script tag into the web application. The proxy parses the HTML, determines which tags to add nonces to and sends the new HTML code to the browser with no effect, or no action needed from the user. Hence the design must be functional and efficient enough to be able to load the correct webpage at a similar time frame to the average time it takes for an average webpage to load. 
 
 ### 3.4 Performance requirements
 
