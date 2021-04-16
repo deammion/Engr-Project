@@ -1,17 +1,3 @@
-# ENGR 301: Project Requirements Document
-
-The aim of this document is to specify the requirements of the system your group is to build. The focus of a requirements document is the problem you are attempting to solve:  not a first attempt at a solution to that problem. This document should communicate clearly to the supervisor, client and course coordinator what the system you build is going to do, and what constraints it must meet while doing so.
-
-The document should also demonstrate your understanding of the main analysis principles and quality guidelines, and applicable standards, using tools and notations as necessary to communicate the requirements precisely, unambiguously and clearly in a written technical document. Page specifications below are *limits not targets* and refer to the pages in the PDF generated from the markdown. Because the size of your document is necessarily limited, you should ensure that you focus your efforts on those requirements that are most important to completing a successful system: if sections are at their page limit, indicate how many items would be expected in a complete specification. 
-
-The ENGR 301 project proposal and requirements document should be based on the standard ISO/IEC/IEEE 29148:2011(E), primarily sections 8.4 and 9.5, plus section 9.4 for projects involving hardware and ISO 25010 SQUARE for systemic requirements. While excerpts from the standard have been quoted within the template, to understand what is required it will be necessary to read earlier sections of the standards themselves. A supplementary treatment of requirements gathering in engineering projects may be found in [Requirements in Engineering Projects](https://victoria.rl.talis.com/items/F166DA94-DAD8-FBDB-0785-7A63C9BA3603.html?referrer=%2Flists%2F5886F297-2506-1F17-45D9-7F04CEE284EE.html%23item-F166DA94-DAD8-FBDB-0785-7A63C9BA3603) (Talis). The requirements document should contain the sections listed below, and conform to the formatting rules listed at the end of this brief. 
-
-All team members are expected to contribute equally to the document and list their contributions in section 6 of the document. You should work on your document in your team's GitLab repository. While collective contributions are expected to be the exception rather than the rule, if more than one team member has contributed to a particular commit then all those team member IDs should be included in the first line of the git commit message. `git blame`, `git diff`, file histories, etc. will be tools used to assess individual contributions, so everyone is encouraged to contribute individually, commit early and commit often. Any team wishing to separate individually contributed sections into a single file before collation into the single proposal document for submission is welcome to do so.
-
----
-
-<div style="page-break-after: always;"></div>
-
 # ENGR 301 Project *14* Project Proposal and Requirements Document
 #### Isabella Tomaz Ketley, Jaya Narayan, Timothy McDermott, Dylan Simpson, Damien Tamasese, Nathan Wong, James Houlihan
 
@@ -21,7 +7,7 @@ Web applications are accessed and used by everyone everywhere. Therefore, ensuri
 
 XSS is one of the most common vulnerabilities that occurs whenever a web application trusts, or does not validate untrusted data. [1]. An XSS vulnerability can allow an attacker to execute scripts in an end user’s browser, access a user’s cookies, and could even result in an attacker compromising a user’s account [1]. Furthermore, an XSS attack can have huge consequences which is why implementing appropriate security measures are vital.
 
-One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security that can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one-time use meaning the nonce changes with each HTTP request, to ensure an attacker cannot obtain the value of it [4]. If an application contains script tags in the HTTP response, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags that have the nonce tag, with the correct nonce value will be executed and run [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
+One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security that can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one-time use, meaning the nonce changes with each HTTP request [4]. This is to ensure an attacker cannot obtain the value of it. If an application contains script tags in the HTTP response, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags that have the nonce tag, with the correct nonce value will be executed [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
 
 This project will use CSP headers and nonce tags to determine whether or not script tags should be run on a web application, to mitigate XSS attacks.  
 
@@ -68,9 +54,9 @@ To be able to do this the project will use the MITM proxy software, which enable
  
 For the program to be able to differentiate which HTTP responses are safe to add nonce tags to, it will operate in two phases. 
 
-#### Collection Stage
+#### Collection Phase
 
-The first phase of the program is the Collection Stage. In this stage the program will identify which script tags are safe to allow to run. DOM parsing will be the parsing method that will be used on the HTML inside of the collected HTTP responses. Then the saftey calculations for scripts will use the parsed HTML from the collected HTTP responses to calculate the chance that content inside each HTML script tag is safe to run. Safe script tags will be defined as tags that appear on a URL path for a website over a certain threashold. For example, a script tag that appears 80 / 100 times the page is loaded will likely be safe to run. The exact point at which a program is deemed safe to run will be determined at a later stage through testing. The program assumes that web applications that go through the Collection Phase will be clean (not containing malicious scripts or modifications) Since we will be able to extract each HTML script by itself, the program will be able to store any scripts that appear in a secure location, and then keep a running count of how often that script appears, alongside which URL path that script appeared on.     
+The first phase of the program is the collection phase. In this phase the program will identify which script tags are safe to allow to run. DOM parsing will be the parsing method that will be used on the HTML inside of the collected HTTP responses. Then the saftey calculations for scripts will use the parsed HTML from the collected HTTP responses to calculate the chance that content inside each HTML script tag is safe to run. Safe script tags will be defined as tags that appear on a URL path for a website over a certain threashold. For example, a script tag that appears 80 / 100 times the page is loaded will likely be safe to run. The exact point at which a program is deemed safe to run will be determined at a later stage through testing. The program assumes that web applications that go through the collection phase will be clean (not containing malicious scripts or modifications). Since we will be able to extract each HTML script by itself, the program will be able to store any scripts that appear in a secure location, and then keep a running count of how often that script appears, alongside which URL path that script appeared on.     
  
 So the overall process in the collections stage will look as below;  
 Collection phase:
@@ -301,6 +287,12 @@ Output:
 |System     |   * Parses the HTML of the page  |
 |           |   * Found inline script tag |
 |Goal       |   * Determine whether the script tag is trusted or not and if it is trusted, add a nonce tag  |
+
+| 3         |                 |
+| --------- |  -------------  |
+|Phase      |   Collection    |
+|System     |   * Script tag found has a low occurrence count |
+|Goal       |   * Script tags are not determined as safe for this URL and path  |
 
 ### 3.3 Usability Requirements
 
