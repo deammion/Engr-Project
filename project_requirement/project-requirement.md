@@ -670,7 +670,7 @@ Below is a list of assumptions and dependencies for this project:<br>
 | Contributors  | Sections     |
 | ------        |  ----------  |
 |    Dylan      | 1.3.2, 3.5, 6.2             |
-|    Isabella   | 1, 1.1, 1.2, 1.3.1, 5.4.1, 5.2, 3.2, 3.3, 5.3, 5.4, 5.4.1, proofreading and grammar  |
+|    Isabella   | 1, 1.1, 1.2, 1.3.1, 3.2, 3.3, 4.2, 5.2, 5.3, 5.4, 5.4.1, proofreading and grammar  |
 |    Damien     | 1.1, 1.2,1.3.1, 3.7, 4.7, 5.2, proofreading and grammar    |
 |    James      | 1.3.3, 3.6, 3.9, 4.6, 5.1             |
 |    Jaya       |1.3.4, 3.4, 3.8, 4.8, 5.3, 6.1 |
