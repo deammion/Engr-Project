@@ -118,11 +118,15 @@ Schedules must be justified and supported by evidences; they must be either dire
 
 Identify dates for key project deliverables:
 
-1. prototype(s).
-1. first deployment to the client.
-1. further improvements required or specified by the client.
+|  Project Deliverables  | Date     |
+| ---------------------- |  ------  |
+| Architectural Prototype|   Friday 7th May |
+| Minimum Viable Product |   Monday 16th August |
+| Further Releases       |   Friday 8th October |
+| Final Project          |   Saturday 6th November |
 
-(1 page).
+Dates are subject to change as the project continues
+
 
 ### 5.2 Budget and Procurement
 
