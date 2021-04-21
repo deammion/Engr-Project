@@ -176,6 +176,16 @@ One page glossary as required
 
 An one page statement of contributions, including a list of each member of the group and what they contributed to this document.
 
+| Contributors  | Sections    |
+| ------        |  ---------- |
+|    Dylan      |             |
+|    Isabella   |             |
+|    Damien     |             |
+|    James      |             |
+|    Jaya       |             |
+|    Nathan     |             |
+|    Timothy    |             |
+
 ---
 
 ## Formatting Rules 
