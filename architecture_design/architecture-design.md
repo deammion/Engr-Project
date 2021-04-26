@@ -141,14 +141,19 @@ Dates are subject to change as the project continues
 
 #### 5.2.1 Budget
 
-Present a budget for the project (as a table), showing the amount of expenditure the project requires and the date(s) on which it will be incurred. Substantiate each budget item by reference to fulfilment of project goals (one paragraph per item).
+| Item     | Amount |
+| -------- |  ----- |
+| Software |  nil   |
+| Hardware |  nil   |
+| Travel   |  nil   |
 
-(1 page). 
+This project does not require a budget as it makes use of open-source programs such as MITM. Accessing this can be done using personal computers or the computers available at Victoria University of Wellington.<br>
+
+The client is local and has indicated they can travel to Victoria University of Wellington for meetings.<br>
 
 #### 5.2.2 Procurement
 
-Present a table of goods or services that will be required to deliver project goals and specify how they are to be procured (e.g. from the School or from an external organisation). These may be software applications, libraries, training or other infrastructure, including open source software. Justify and substantiate procurement with reference to fulfilment of project goals, one paragraph per item.
-(1 page).
+As Stated in Section 5.2.1, as of writing this document, there is no budget requirements for this project. Therefore, there are no procurement requirements. <br> 
 
 ### 5.3 Risks 
 
