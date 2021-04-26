@@ -29,7 +29,13 @@ All team members are expected to contribute equally to the document and list the
 
 ## 1. Introduction
 
-One page overall introduction including sections 1.1 and 1.2 (ISO/IEC/IEEE 42010:2011(E) clause 5.2)
+Web applications are accessed and used by everyone everywhere. Therefore, ensuring web application security is extremely important, yet it is becoming increasingly difficult. There are many vulnerabilities web applications are susceptible to. The number of potential vulnerabilities makes safeguarding against any exploitation of vulnerabilities very difficult. The exploitation of a single vulnerability may result in an entire website, or user account being compromised.   
+
+XSS is one of the most common vulnerabilities which occurs whenever a web application trusts, or does not validate untrusted data. [1]. An XSS vulnerability can allow an attacker to execute scripts in an end user’s browser, access a user’s cookies, and could even result in an attacker compromising a user’s account [1]. Furthermore, an XSS attack can have huge consequences which are why implementing appropriate security measures are vital.
+
+One way to mitigate the XSS attacks is to use CSP [2]. CSP is an added layer of security that can help protect against different attacks. CSP nonce tags are used to prevent XSS [3]. A nonce is a pseudo-random value intended for one-time use, meaning the nonce changes with each HTTP request [4]. This is to ensure an attacker cannot obtain the value of it. If an application contains script tags in the HTTP response, the nonce value is added as a tag to any trusted script tags within the application. Once the application is run, only script tags that have the correct nonce tag and value will be executed [4]. This ensures that only trusted script tags are allowed to be executed within an application. 
+
+This project will use CSP headers and nonce tags to determine whether or not script tags should be run on a web application, to mitigate XSS attacks.   
 
 ### Client
 
