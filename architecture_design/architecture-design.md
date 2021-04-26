@@ -236,7 +236,7 @@ This project does not include any human or animal subjects. This is because all 
 
 #### 5.4.1 Safety Plans
 
-Safety Plans may be required for some projects, depending on project requirements.
+Project requirements do not involve risk of death, serious harm, harm or injury.
 
 
 ## 6. Appendices
