@@ -33,7 +33,16 @@ One page overall introduction including sections 1.1 and 1.2 (ISO/IEC/IEEE 42010
 
 ### Client
 
-Identify the client and their contact details.
+Company: RedShield
+
+Contact: Kirk Jackson <br>
+Email: 	kirk@redshield.co <br>
+Address: <br>
+    RedShield <br>
+    Level 12 <br>
+    RedShield House <br>
+    79 Boulcott St <br>
+
 
 ### 1.1 Purpose
 
