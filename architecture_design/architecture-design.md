@@ -165,6 +165,20 @@ As Stated in Section 5.2.1, as of writing this document, there is no budget requ
 
 Identify the ten most important project risks: their type, likelihood, impact, and mitigation strategies (3 pages).
 
+| Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
+| ---------|  ------  | ------------ | -------- | ---------- |
+|Code being deleted |Technical |  Likely | Moderate-Significant (depending on amount/importance of code)| Use Gitlab to ensure code is backed up and restore it|
+|Code being overwritten | Technical |  Very Likely | Moderate| Use Mattermost to notify others of commits and if code is overwritten, use Gitlab to ensure it can be restored |
+|Team member unable to contribute for unforeseen reasons |Teamwork |  Possible | Moderate-Significant(depending on project stage)| Keep good documentation of what has been done and what needs to be done so others can pick up tasks without too much hassle |
+|Team member has other commitments which cause them to not be available  |Teamwork |  Very Likely  |Minor| Keep good documentation of what is done and what needs to be done so others can pick up tasks without too much hassle and ensure no one is out of the loop. Ensure the team has good communication so if someone is unavailable the rest of the team knows. |
+|Team member has not done their specified work| Teamwork |Possible| Significant | Regularly meet up and contact team members to ensure everyone is on track. Refer back to the team contract to ensure everyone is doing their part and what happens if someone isn't.  |
+|COVID Lockdown|  |Very Likely| Significant | Ensure everyone can connect online and that all work is online |
+|Misunderstanding about the project requirements| Requirements |Likely| Moderate | Ensure constant communication with the client and clear up any uncertainties promptly. |
+|Changes to project requirements| Requirements | Possible | Significant | Ensure there is a clear understanding of what is required from the team from the beginning and ensure constant communication with the client. |
+|Bugs within code go undetected| Technical |Very Likely| Significant | Create tests for the program to test different aspects of it and minimize the number of errors that go undetected. |
+|Team members burning out| Teamwork |Likely| Significant | Ensure everyone is communicating with each other so the team knows if someone is doing too much work and ensure all work is evenly divided. |
+
+
 ### 5.4 Health and Safety
 
 **Occupational Overuse**
