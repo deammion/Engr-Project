@@ -156,7 +156,32 @@ Identify the ten most important project risks: their type, likelihood, impact, a
 
 ### 5.4 Health and Safety
 
-Document here project requirements for Health and Safety.
+**Occupational Overuse**
+Occupational Overuse is a type of overuse injury that may result in Muscle pains, hot or cold flushes, numbness or a restricted range of movement. To prevent this from happening team members will be encouraged to take regular breaks away from their work and personal devices. Furthermore realistic deadlines and workloads will be set to discourage overworking, alongside getting the team to practice good time management to prevent overuse to meet deadlines.
+Additionally, team members will have ergonomic workspaces so that any required equipment will be nearby and easily accessible. This will also encompass ensuring desks are at the correct height to encourage correct posture and reduce straining. Correct postures will be promoted and ensured for all team members and the team will use comfortable chairs which if possible, will have back support. This will reduce straining and incorrect postures in a work environment, mitigating occupational overuse and its potential symptoms.
+https://www.southerncross.co.nz/group/medical-library/occupational-overuse-syndrome-oos
+
+**Eye Strain**
+Eye strain occurs when a person has been staring at a computer for large periods without having any breaks away from technology. Insufficient lighting and screen flickering can also contribute to eye strain. As with the Occupational Overuse, the team will be encouraged to take regular breaks away from their work and personal devices. The team will also be encouraged to work in environments that have a sufficient level of lighting, for example not working in the dark with the screen as your only light. The team will also make sure that text displayed in any of the work produced is easily readable to avoid eye strain from having to read small text.
+
+**Electrical Saftey**
+Since we are dealing with technology there is the risk of receiving electrical shocks from any appliances that are used in the process of working on this project. This could pose a small risk to the health of team members when they are dealing with electrical appliances such as laptops, desktop computers, monitors, electrical jugs, and the associated cables for these appliances.  As per the AS/NZS 3760 Standard, to minimise the risk of any electrical shocks the team should be encouraged to only use appliances which have been through the Test and Tag process in the last 12 months.
+
+**Cable Management**
+Unmanaged cables are a safety risk as team members or nearby people can get caught on them and/or trip on them. To manage this risk, all team members will ensure that any cables they use will be kept underneath their desk, mitigating the possibility of someone getting caught on them. Furthermore, all cables which are not being used will be stored away in a cupboard or bag to further mitigate the risk unmanaged cables pose.
+
+**COVID-19 Outbreak and/or Lockdown**
+To manage the safety risk of another Covid-19 outbreak or lockdown, team members will ensure all work is saved online using Gitlab so access to the University labs is not mandatory. Furthermore, everyone involved in the project will ensure they have a way to contact each other online. This will ensure all members of the team can work from home. This will mitigate this safety risk as it ensures that if there was a Covid-19 outbreak or lockdown, members do not need to expose themselves to any additional Covid-19 risks to do this project.
+
+**Natural Disaster**
+To manage the safety risk of earthquakes, cyclones, or tsunamis team members will ensure that they each have an understanding of the basic Natural Disaster responses that should be carried out in the event of any of the above mentioned natural disasters so that our team maximises their chances of getting through the disasters without injury. This basic knowledge should include what to do in the initial stage of a natural disaster as well as where to go and what to do after a natural disaster has occurred.
+
+**Health and Safety at External Workplaces**
+The project does not require any work or testing to be held off-campus. However, there is a possibility that some meetings will be held at Red Shield’s office. To receive a Health and Safety induction for this external workplace, team members will get in contact with the client to arrange this, before any work being done at the clients' office.
+
+**Human or Animal Test Subjects**
+
+This project does not include any human or animal subjects. This is because all testing can and will be done by the team, using different web applications.
 
 #### 5.4.1 Safety Plans
 
