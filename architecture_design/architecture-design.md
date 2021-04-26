@@ -56,7 +56,7 @@ The purpose of this project is to create a working prototype of a proxy plugin p
 
 ### 1.2 Scope
 
-One paragraph describing the scope of the system.
+The scope of this project is to create a proxy plugin capable of reading and interpreting HTTP responses to determine what script tags are safe and unsafe. This program will implement script fingerprinting for non-variable, and non-inline script tags, to prevent XSS attacks. Python unit tests will be used to ensure the validity of the program we create.
 
 ### 1.3 Changes to requirements
 
