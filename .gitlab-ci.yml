@@ -18,4 +18,4 @@ unit_testing:
 #     - shell
   script:
    - echo "test"
-  allow_failure: true
+  allow_failure: false
