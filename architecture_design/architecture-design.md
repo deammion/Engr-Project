@@ -46,7 +46,7 @@ Address: <br>
 
 ### 1.1 Purpose
 
-One sentence describing the purpose of the system.
+The purpose of this project is to create a working prototype of a proxy plugin program. This program will be capable of reading, interpreting, and analyzing HTTP source code, with the intended purpose of preventing XSS from using CSP nonce tags.
 
 ### 1.2 Scope
 
