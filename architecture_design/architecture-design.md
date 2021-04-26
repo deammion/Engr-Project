@@ -255,7 +255,17 @@ Below is a list of assumptions and dependencies for this project:<br>
 
 ### 6.2 Acronyms and abbreviations
 
-One page glossary as required 
+CSP - Content Security Policy
+
+MITM  - Man In The Middle
+
+DOM - Document Object Model
+
+HTML - Hyper-Text Markup Language
+
+HTTP - Hyper-Text Transfer Protocol
+
+XSS - Cross Site Scripting
 
 ## 7. Contributions
 
