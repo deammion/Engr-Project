@@ -60,7 +60,22 @@ The scope of this project is to create a proxy plugin capable of reading and int
 
 ### 1.3 Changes to requirements
 
-If the requirement have changed significantly since the requirements document, outline the changes here. Changes must be justified and supported by evidences, i.e., they must be substantiated. (max one page, only if required)
+After meeting with the client, Redshield, and having them read the project requirements some minor changes have been noted. These changes are based more around clarification of functionality, rather than changing the required functionality of the project. These changes will have little to no effect on the project moving forward.<br>
+
+The most substantial change is clarification of the stages of the program’s functionality. Initially the project team had stated that there were two stages: a collections stage and an operational stage. In the initial report the collection stage was responsible for collecting HTML responses from the website owners’ server and analysing these responses for script tags. <br>
+
+This stage has been split into two distinct phases: collection and analysis. The collection stage in this scenario is still responsible for the collection and storage of the HTML responses. With the analysis stage being responsible for the parsing, analysis, and updating the percentages relative to the perceived safety of the script tags within the HTML. <br>
+
+The operational stage will operate as described in the product requirements documents, this being parsing the HTML responses, checking percentages of found script tags, and applying nonce to those scripts deemed safe. <br>
+
+This distinction does not change how the proxy plugin operates, but rather gives a clear distinction between collection and analysis. As noted by the client, the ideal outcome of the proxy plugin would be to have all three stages operating simultaneously. Meaning the plugin will continue to update the relative percentages during operational mode. <br>
+
+By having these three stages all operating as an independent process, the plugin could function in this manner.  This has no effect on the website user or the website owner, as the plugin will still operate in the same manner. The website user will still have no interaction with the plugin, unless trying to enter an invalid script tag. The client will still implement the plugin in the same manner by first initiating the proxy in collection mode, where it will collect HTML responses and analysis said responses to get a baseline percentage of included scripts. Then switching to operational mode where the program will continue to collect and analysis HTML responses and in addition apply nonce to ‘safe’ script tags. Essentially, this distinction allows for greater functionality of the plugin. <br>
+
+Another change is clarification on what is considered a ‘safe’ script tag. In the initial report, a script was deemed safe by having a high percentage (occurrence/Total HTML responses per page). However, a script with a low occurrence could be deemed ‘safe’ using this logic creating a possible security exploit. Because of this the plugin will also need to account for scripts total occurrence to mitigate the possibility of ‘unsafe’ scripts being inserted using this exploit. <br>
+
+The last change is the implementation of a ‘whitelist’ of ‘safe’ scripts regardless of context, such as google analytics as these can be regarded as safe regardless of occurrence. By utilising this approach, the plugin can process HTML responses with more efficiency. <br>
+
 
 ## 2. References
 
