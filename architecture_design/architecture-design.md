@@ -121,7 +121,7 @@ Identify the architectural viewpoints you will use to present your system's arch
 
 **Physical:** The physical viewpoint involves the topology of software components on the physical layer and the physical connections between these components. 
 
-**Scenarios:** The scenarios viewpoint describes the architecture of the systen through use cases. 
+**Scenarios:** The scenarios viewpoint describes the architecture of the system through use cases. 
 
 **Circuit Architecture:** The circuit architecture viewpoint involve any circuitry involved with the project. Since this is a software project, there will be no circuitry involved.  
 
