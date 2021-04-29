@@ -184,7 +184,14 @@ Each architectural view should include at least one architectural model. If arch
 ...
 
 ### 4.5 Scenarios
-...
+
+The two most important scenarios for our MVP are:
+
+* The website is able to run in the collection phase, with no disruptions to the user of the website, and collect the HTML of the website.
+
+* The website is able to run in the operation phase, with no disruptions unless an unsafe script tag has been entered into the site.
+
+In both of these use cases, each time the website is accessed, information about each script tag within the page is stored and updated. As such, the analysis phase will be utilised to do this.
 
 ## 5. Development Schedule
 
