@@ -181,7 +181,9 @@ Each architectural view should include at least one architectural model. If arch
 ...
 
 ### 4.4 Physical 
-...
+This project is software project that is done entirely on a computer. There are no hardware components to the system as it is fully a software project, therefore concers for hardware availability, reliability, performance and scaleability are not needed to be taken into consideration. 
+
+In a larger system, this project does have hardware components as it is meant as a over-the-counter countermeasure against Cross site scripting attacks against a companies computer infrastructure. That being said, this project could have concerns against the physical effects of a companies servers if a successful Cross site scripting attack were to be successful against a company.
 
 ### 4.5 Scenarios
 
