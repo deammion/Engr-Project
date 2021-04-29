@@ -75,8 +75,8 @@ By having these three stages all operating as an independent process, the plugin
 Another change is to the extension of the program to include a different definition regarding what is considered a ‘safe’ script tag. <br>
 
 In the initial project requirements, it was stated that:
-For the MVP, any script tag found in the collection phase would be to be deemed as safe.
-For the extended functionality, a script tag having a low occurrence would be deemed as unsafe. 
+* For the MVP, any script tag found in the collection phase would be to be deemed as safe.
+* For the extended functionality, a script tag having a low occurrence would be deemed as unsafe. 
 
 However, after a discussion with the client, it has been decided that a more optimal way to carry out the extension of the project, is to determine whether the occurrence of a script is greater than a precalculated amount. This will also mean that if an unsafe script tag has been entered into a website during the collection phase, we can account for this and still prevent the script tag from being executed. <br>
 
