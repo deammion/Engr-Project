@@ -181,9 +181,10 @@ Each architectural view should include at least one architectural model. If arch
 ...
 
 ### 4.4 Physical 
-This project is software project that is done entirely on a computer. There are no hardware components to the system as it is fully a software project, therefore concers for hardware availability, reliability, performance and scaleability are not needed to be taken into consideration. 
+This project is solely software-based and therefore this means that there are no physical requirements. The only requirement this project has is that there must be access to a computer to run the program. Furthermore, the computer must have Python installed on it. The computer must be able to run Python version 3.0 or higher.  Section 4.4 discusses how software deals with the hardware availability, reliability, performance and scalability of the system. Therefore, as previously stated above due to the fact that project is completely software based the physical concerns that do not need to be considered. 
+ 
+However this project is part of a larger system that does include hardware components. For this software project there may be hardware concerns when dealing with the larger system. For this project there will interaction with a disk. During the collection phase data will be both sent and extracted from the disk. This is a hardware concern that might be considered when the software integrates with hardware. This is not a concern that directly concerns  this software project, however it may need to be considered when working with larger systems.  
 
-In a larger system, this project does have hardware components as it is meant as a over-the-counter countermeasure against Cross site scripting attacks against a companies computer infrastructure. That being said, this project could have concerns against the physical effects of a companies servers if a successful Cross site scripting attack were to be successful against a company.
 
 ### 4.5 Scenarios
 
