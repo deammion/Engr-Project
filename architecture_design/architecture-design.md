@@ -173,7 +173,7 @@ Each architectural view should include at least one architectural model. If arch
 
 ### 4.1 Logical
 The proxy will be designed and function independently without any interaction or input from the website user. The website owner will also have limited interactions with the proxy. If the project is made open source the website owners only interactions with the proxy plugin will be switching between modes. If the program is not made open source, then the client Redshield will be handling this implementation. <br>
-![Alt-Text](architecture-design/Logical_View_Project_Group_14.png)
+![Alt-Text](Logical_View_Project_Group_14.png)
 
 
 ### 4.2 Development
