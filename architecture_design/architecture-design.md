@@ -183,9 +183,11 @@ The proxy will be designed and function independently without any interaction or
 ...
 
 ### 4.4 Physical 
-This project is solely software-based and therefore this means that there are no physical requirements. The only requirement this project has is that there must be access to a computer to run the program. Furthermore, the computer must have Python installed on it. The computer must be able to run Python version 3.0 or higher.  Section 4.4 discusses how software deals with the hardware availability, reliability, performance and scalability of the system. Therefore, as previously stated above due to the fact that project is completely software based the physical concerns that do not need to be considered. 
+
+This project is solely software-based and therefore this meant that there were no physical requirements that had to be considered. The only requirement outlined for this project was that there must be access to a computer to run the program. Furthermore, the computer must have Python installed on it. The computer must be able to run Python version 3.0 or higher.  In the architecture document section 4.4 discusses how software deals with the hardware availability, reliability, performance and scalability of the system. Therefore, as previously stated above due to the fact that project is completely software based there are no physical concerns that need to be considered. 
  
-However this project is part of a larger system that does include hardware components. For this software project there may be hardware concerns when dealing with the larger system. For this project there will interaction with a disk. During the collection phase data will be both sent and extracted from the disk. This is a hardware concern that might be considered when the software integrates with hardware. This is not a concern that directly concerns  this software project, however it may need to be considered when working with larger systems.  
+However, it is important to note that this project is part of a larger system that not only includes hardware components but also interacts with hardware components. For this software project there may be hardware concerns when it comes to dealing with the larger system in terms of how the software interacts and incorporates with the hardware. 
+There will interaction with a disk. During the collection phase data will be both sent and extracted from the disk. This is a hardware concern that might be considered when the software integrates with hardware. This is not a concern that directly concerns  this software project, however it may need to be considered when working with larger systems.  
 
 
 ### 4.5 Scenarios
