@@ -172,7 +172,7 @@ As appropriate you should include the following viewpoints:
 Each architectural view should include at least one architectural model. If architectural models are shared across views, refer back to the first occurrence of that model in your document, rather than including a separate section for the architectural models.
 
 ### 4.1 Logical
-...
+The proxy will be designed and function independently without any interaction or input from the website user. The website owner will also have limited interactions with the proxy. If the project is made open source the website owners only interactions with the proxy plugin will be switching between modes. If the program is not made open source, then the client Redshield will be handling this implementation. <br>
 
 ### 4.2 Development
 ...
@@ -322,7 +322,7 @@ An one page statement of contributions, including a list of each member of the g
 | ------        |  ---------- |
 |    Dylan      |             |
 |    Isabella   |             |
-|    Damien     |             |
+|    Damien     |     1, 1.1, 1.2, 1.3, 4.1        |
 |    James      |             |
 |    Jaya       |             |
 |    Nathan     |             |
