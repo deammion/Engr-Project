@@ -338,7 +338,7 @@ An one page statement of contributions, including a list of each member of the g
 |    Isabella   |             |
 |    Damien     |     1, 1.1, 1.2, 1.3, 4.1        |
 |    James      |  5, 3.2, 4.3 |
-|    Jaya       |             |
+|    Jaya       |  4.4, 5.3, 6.1     |
 |    Nathan     |             |
 |    Timothy    |             |
 
