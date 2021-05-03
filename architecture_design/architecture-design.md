@@ -181,10 +181,10 @@ The proxy will be designed and function independently without any interaction or
 
 ### 4.3 Process
 The process viewpoints outlines the operations that take place when the system is run on a webserver. It shows how all
-the entities in the (???)HTTP connection(???) interact with the proxy during the different phases and the order in which they happen. 
+the entities in the HTTP connection interact with the proxy during the different phases and the order in which they happen. 
 
 The following sequence model diagram is set up to outline the phase execution order. The user trying to connect to a webpage
-with the proxy installed is shown on the left of the diagram along with the other entites of the (???)HTTP connection(???). The
+with the proxy installed is shown on the left of the diagram along with the other entites of the HTTP connection. The
 arrows between the entities and the user show when they interact with each other and include a defintion that explains what is 
 happening during the interaction.
 
