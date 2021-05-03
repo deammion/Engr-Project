@@ -80,8 +80,6 @@ In the initial project requirements, it was stated that:
 
 However, after a discussion with the client, it has been decided that a more optimal way to carry out the extension of the project, is to determine whether the occurrence of a script is greater than a precalculated amount. This will also mean that if an unsafe script tag has been entered into a website during the collection phase, we can account for this and still prevent the script tag from being executed. <br>
 
-Another change is clarification on what is considered a ‘safe’ script tag. In the initial project requirements, a script was deemed safe by having a high percentage (occurrence/Total HTML responses per page). However, a script with a low occurrence could be deemed ‘safe’ using this logic creating a possible security exploit. Because of this the plugin will also need to account for scripts total occurrence to mitigate the possibility of ‘unsafe’ scripts being inserted using this exploit. <br>
-
 The last change is the implementation of a ‘whitelist’ of ‘safe’ scripts regardless of context, such as google analytics as these can be regarded as safe regardless of occurrence. By utilising this approach, the plugin can process HTML responses with more efficiency. <br>
 
 
@@ -173,11 +171,13 @@ Each architectural view should include at least one architectural model. If arch
 
 ### 4.1 Logical
 The proxy will be designed and function independently without any interaction or input from the website user. The website owner will also have limited interactions with the proxy. If the project is made open source the website owners only interactions with the proxy plugin will be switching between modes. If the program is not made open source, then the client Redshield will be handling this implementation. <br>
-![Alt-Text](Logical_View_Project_Group_14.png)
+
+![Logical View Diagram](Logical_View_Project_Group_14.png)
 
 
 ### 4.2 Development
-...
+
+![Development Diagram](developmentView.PNG)
 
 ### 4.3 Process
 The process viewpoints outlines the operations that take place when the system is run on a webserver. It shows how all
@@ -206,9 +206,15 @@ The two most important scenarios for our MVP are:
 
 * The website is able to run in the collection phase, with no disruptions to the user of the website, and collect the HTML of the website.
 
+![Collection Scenario Diagram](collectionScenario.PNG)
+
 * The website is able to run in the operation phase, with no disruptions unless an unsafe script tag has been entered into the site.
 
+![Operational Scenario Diagram](operationalScenario.PNG)
+
 In both of these use cases, each time the website is accessed, information about each script tag within the page is stored and updated. As such, the analysis phase will be utilised to do this.
+
+![Implementation of analysis phase](proxyScenario.PNG)
 
 ## 5. Development Schedule
 
@@ -335,8 +341,8 @@ An one page statement of contributions, including a list of each member of the g
 | Contributors  | Sections    |
 | ------        |  ---------- |
 |    Dylan      |             |
-|    Isabella   |             |
-|    Damien     |     1, 1.1, 1.2, 1.3, 4.1        |
+|    Isabella   | 1, 1.1, 1.2, 1.3, 4.2, 4.5, 5.3, 5.4 |
+|    Damien     | 1, 1.1, 1.2, 1.3, 4.1 |
 |    James      |  5, 3.2, 4.3 |
 |    Jaya       |  4.4, 5.3, 6.1     |
 |    Nathan     |             |
