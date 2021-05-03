@@ -179,6 +179,14 @@ The proxy will be designed and function independently without any interaction or
 
 ![Development Diagram](developmentView.PNG)
 
+The diagram represents the relationships between the systems that our project involves, along with the necessary interfaces.
+Most, if not all the development process is managed entirely by GitLab. GitLab will therefore be the solution to version control as it is able to log commits allowing for the prevention of loss of work. One of the risks that we identified was the loss of work and data whether that be from deletion or overridden. This was observed to be prevented by backing up the code on GitLab so that it can be reverted when needed.<br>
+
+Furthermore, we have decided to use branches to ensure that each team member is not overwriting code in the master. The master branch will have a functioning version at all times and separate branches for development will be crated for code that has work in progress. The separate branches are able to be merged into master through the use of a merge request. The merge requests can be merged into master when all team members approve the merge if everything is in order. This provides us with the ability to review all code and work before it is merged into the master branch. The approval process requires that at least two members approve the code before it is merged into the master branch.<br>
+
+Lastly, we are using the Issues feature in GitLab to manage what specific parts of the project are needing to be completed or have been completed. It also allows the team to manage what each team member is doing and can even out the contributions to the project. This ensures that each team member is doing an even workload. Issues are also able to assign team members to issues so that members do not accidentally start work on a section that a different team member is already working on. This tool helps the team members manage their time and see what is currently being worked on and what has been completed.
+
+
 ### 4.3 Process
 The process viewpoints outlines the operations that take place when the system is run on a webserver. It shows how all
 the entities in the HTTP connection interact with the proxy during the different phases and the order in which they happen. 
