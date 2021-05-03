@@ -197,6 +197,8 @@ This project is solely software-based and therefore this meant that there were n
 However, it is important to note that this project is part of a larger system that not only includes hardware components but also interacts with hardware components. For this software project there may be hardware concerns when it comes to dealing with the larger system in terms of how the software interacts and incorporates with the hardware. 
 There will interaction with a disk. During the collection phase data will be both sent and extracted from the disk. This is a hardware concern that might be considered when the software integrates with hardware. This is not a concern that directly concerns  this software project, however it may need to be considered when working with larger systems.  
 
+![Alt-Text](Deploy.png)
+
 
 ### 4.5 Scenarios
 
