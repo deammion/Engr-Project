@@ -188,7 +188,7 @@ with the proxy installed is shown on the left of the diagram along with the othe
 arrows between the entities and the user show when they interact with each other and include a defintion that explains what is 
 happening during the interaction.
 
-
+![Alt-Text](sequenceDiagram.png)
 
 ### 4.4 Physical 
 
