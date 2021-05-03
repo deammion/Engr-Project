@@ -318,11 +318,10 @@ Project requirements do not involve risk of death, serious harm, harm or injury.
 
 ### 6.1 Assumptions and dependencies 
 
-One page on assumptions and dependencies (9.5.7) 
 Below is a list of assumptions and dependencies for this project:<br>
 
 * It is assumed that during the collection phase, the websites scanned (HTML being parsed) will be clean. <br>
-* It is assumed that if the scripts are hosted on a different domain, they have not been modified after the original application developer determining they are safe to include in their application. <br>
+* It is assumed that if the scripts are hosted on a different domain, they have not been modified after the original application developer determined that they are safe to include in their application. <br>
 * It is assumed that users of this program will have access to either of the following browsers: Edge, Chrome or Firefox.<br>
 * It is assumed that users have access to a technological device (i.e. computer, cellular phone, tablet).<br>
 * It is assumed that users have internet access to run this program.<br>
