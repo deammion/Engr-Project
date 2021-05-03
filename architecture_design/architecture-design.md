@@ -236,10 +236,10 @@ Identify dates for key project deliverables:
 
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
-| Architectural Prototype|   Friday 7th May |
-| Minimum Viable Product |   Monday 16th August |
-| Further Releases       |   Friday 8th October |
-| Final Project          |   Saturday 6th November |
+| Architectural Prototype|   Friday 7th May <br> This was was the day after the final lab before the Performance Assessment.|
+| Minimum Viable Product |   Monday 16th August <br> This is the final day of Trimester 1 and a good estimation of when it can be complete.|
+| Further Releases       |   Friday 8th October <br> 8th October is the final teaching day of Trimester 2. The project should be mostly finished at this point based on time estimates and constraints.|
+| Final Project          |   Saturday 6th November <br> This is the final day of Trimester 2 End of Year assessment period. This is the last week scheduled for the lab.|
 
 Dates are subject to change as the project continues
 
