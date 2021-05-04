@@ -197,6 +197,9 @@ Each architectural view should include at least one architectural model. If arch
 ### 4.1 Logical
 The proxy will be designed and function independently without any interaction or input from the website user. The website owner will also have limited interactions with the proxy. If the project is made open-source, the website owners only interactions with the proxy plugin will be switching between modes. If the program is not made open source, then the client Redshield will be handling this implementation. <br>
 
+![alternative text]
+(http://www.plantuml.com/plantuml/png/tLPHRzis47xNhpZaAG4g0tijKgE1csm5wYMeFVHX6G96EjjSA58ZgQI2qV--CobHPAaEtSCme2wAIlo-Etwy-tZLMsEPjbqZYaemO-1QrhyPrCFR9tmqt69H3CjGBk5Egyyzl8OjUq83J0AhB5VoNiBBWLS7q6WwOGrmGk2NxVOEFk9V7HfRh9GGwCXmMOwvATC6PGsTn9fUwp74j4eQB6vRrEmKmiJt1nKjgvxO7htMOr40_L1QRdk_z715CfuPHNhCdtRDk3owzo_nydjPgORBlTl3uUvNbk7nR7j0Q2WQAaMxo8u9qKE0AtzkDA2zGbUtUY9eNo1QDR0JwWNKuvyKOCxcDlEOuyrgMQCzg1gg0rPF1lZEroRWBZytm88OK3gJChkpItb3yTk-nVEBk58hLod3dd5imd5Ey698lpZL2QMTE2tA6oxmNAZAjViYG2-QMzmgX_fKCpitgkQxVjhx7pStT9060oN1MgKdLGThsyMfV6FYHKEc3yb31TDQVEKmEFlf34hg2vFzcVCOkNSL-MJer4xfUvdusBXqBcAnJ6tusbqgJW8W8X4hBKJ6Iv9uPUNI_HltxYIGf9cY-3BTfUds7ejXF6mE74KTtObRN-sgqngb7TC5-4fhrd_Wnj86dlhx7s0gpLkxPNip5TQWhCVeztAdgC01gfWyaMaflwfnho9P6wlfp72oqAyiwdnus6CGUwDLuxmsigUjkxPc5bVfuKX79gDbsaGN8TucYyx579Yi1JwumMpP_joWsBq2Ude5p5fjBhvcKh4INaOWsMo0Juy13xn4y7dUfb3hZ0oNYqLIzfpYVEcjulneEoqDlBjTmxsyEn7hF86dkyWqbn_y9e-8hNebcUWDDyVK6-iF6yiiDYWj8QavHiy6nbpNlkcxdHiVikedpt5fmV86pLNR8jDOH-QssnY8FB3Fe7olS5yoVrFhLzDS3Gd3wcmsjhFOVsIM4gJYOmIAMFqcGYBn5HDL9vZ560_behy-Ize8r-9mf6XUpL6NKw4pPfuqrX_FmTWfqUV5qGyr8ZBnuFtt7mosCBt6bRGbGK3ix_zla3afwJJx0OPPVaww83kkcmToBXxJxntgrlLd2ZT9VTBAX4cOzoubfpFHBV_BmHZ7X1pVCI8ZqplxRApI9Fdo7RFiaHbSBkdSz6VuJ7RtQGpUi6SyyG8OPmwWavTyHPJBMIO9_AIvHLA8sfqgeS5b-Qsmdz4Q24UY4ms5AD-yMSQAunXtK0TEaLC1oh9SXlykHdQTqe6RUmdFo5y8UUp17d0AMQiQY_16oQA9CdG2hcjkXwJ5Mrhe6l4t)
+
 ![Logical View Diagram](Logical_View_Project_Group_14.png)
 
 
@@ -259,7 +262,8 @@ Identify dates for key project deliverables:
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
 | Architectural Prototype|   Friday 7th May <br> This was was the day after the final lab before the Performance Assessment.|
-| Minimum Viable Product |   Monday 16th August <br> This is the final day of the fisrt half of Trimester 2 a good estimation of when it can be complete.|
+| Application - Basic Implementation |   Monday 16th August <br> This is the final day of the fisrt half of Trimester 2. To be on track a version of the application produced will be provided, that can do the basic operations outlined in the project requirements document. |
+| Documentation - Basic Implementation |  Monday 16th August <br> This is the final day of the fisrt half of Trimester 2. Documentation describing the operation and setup of the program and it's basic functionality will be provided. 
 | Further Releases       |   Friday 8th October <br> 8th October is the final teaching day of Trimester 2. The project should be mostly finished at this point based on time estimates and constraints.|
 | Final Project          |   Saturday 6th November <br> This is the final day of Trimester 2 End of Year assessment period. This is the last week scheduled for the lab.|
 
@@ -369,7 +373,7 @@ An one page statement of contributions, including a list of each member of the g
 
 | Contributors  | Sections    |
 | ------        |  ---------- |
-|    Dylan      | 1.1, 5.4, 6, proofreading (4.2, 4.3, 4.4)           |
+|    Dylan      | 1.1, 5.4, 6, 4.1 proofreading (4.2, 4.3, 4.4)           |
 |    Isabella   | 1, 1.1, 1.2, 1.3, 4.2, 4.5, 5.3, 5.4 |
 |    Damien     | 1, 1.1, 1.2, 1.3, 4.1                |
 |    James      |  5, 3.2, 4.3                         |
