@@ -376,7 +376,7 @@ An one page statement of contributions, including a list of each member of the g
 | ------        |  ---------- |
 |    Dylan      | 1.1, 5.4, 6, 4.1 proofreading (4.2, 4.3, 4.4)           |
 |    Isabella   | 1, 1.1, 1.2, 1.3, 4.2, 4.5, 5.3, 5.4 |
-|    Damien     | 1, 1.1, 1.2, 1.3, 4.1                |
+|    Damien     | 1, 1.1, 1.2, 1.3, 4.1, 5.2.1, 5.2.2  |
 |    James      |  5, 3.2, 4.3                         |
 |    Jaya       |  4.4, 5.3, 6.1                       |
 |    Nathan     |  2, 4.2, 5.1                         |
