@@ -344,7 +344,7 @@ An one page statement of contributions, including a list of each member of the g
 
 | Contributors  | Sections    |
 | ------        |  ---------- |
-|    Dylan      |             |
+|    Dylan      | 1.1, 5.4, 6, proofreading (4.2, 4.3, 4.4)           |
 |    Isabella   | 1, 1.1, 1.2, 1.3, 4.2, 4.5, 5.3, 5.4 |
 |    Damien     | 1, 1.1, 1.2, 1.3, 4.1                |
 |    James      |  5, 3.2, 4.3                         |
