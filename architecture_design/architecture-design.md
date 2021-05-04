@@ -179,31 +179,28 @@ The proxy will be designed and function independently without any interaction or
 
 ![Development Diagram](developmentView.PNG)
 
-The diagram represents the relationships between the systems that our project involves, along with the necessary interfaces.
+The above diagram represents the relationships between the systems that our project involves, along with the necessary interfaces.
 Most, if not all the development process is managed entirely by GitLab. GitLab will therefore be the solution to version control as it is able to log commits allowing for the prevention of loss of work. One of the risks that we identified was the loss of work and data whether that be from deletion or overridden. This was observed to be prevented by backing up the code on GitLab so that it can be reverted when needed.<br>
 
-Furthermore, we have decided to use branches to ensure that each team member is not overwriting code in the master. The master branch will have a functioning version at all times and separate branches for development will be crated for code that has work in progress. The separate branches are able to be merged into master through the use of a merge request. The merge requests can be merged into master when all team members approve the merge if everything is in order. This provides us with the ability to review all code and work before it is merged into the master branch. The approval process requires that at least two members approve the code before it is merged into the master branch.<br>
+Furthermore, we have decided to use branches to ensure that each team member is not overwriting code in the master. The master branch will have a functioning version at all times and separate branches for development will be created for code that has work in progress. The separate branches are able to be merged into master through the use of a merge request. The merge requests can be merged into master when all team members approve the merge if everything is in order. This provides us with the ability to review all code and work before it is merged into the master branch. The approval process requires that at least two members approve the code before it is merged into the master branch.<br>
 
 Lastly, we are using the Issues feature in GitLab to manage what specific parts of the project are needing to be completed or have been completed. It also allows the team to manage what each team member is doing and can even out the contributions to the project. This ensures that each team member is doing an even workload. Issues are also able to assign team members to issues so that members do not accidentally start work on a section that a different team member is already working on. This tool helps the team members manage their time and see what is currently being worked on and what has been completed.
 
 
 ### 4.3 Process
-The process viewpoints outlines the operations that take place when the system is run on a webserver. It shows how all
-the entities in the HTTP connection interact with the proxy during the different phases and the order in which they happen. 
+The process viewpoints outline the operations that take place when the system is run on a webserver. It shows how all entities in an HTTP connection interact with the proxy during the different phases of the program. As well as the order they happen in. 
 
 The following sequence model diagram is set up to outline the phase execution order. The user trying to connect to a webpage
-with the proxy installed is shown on the left of the diagram along with the other entites of the HTTP connection. The
-arrows between the entities and the user show when they interact with each other and include a defintion that explains what is 
-happening during the interaction.
+with the proxy installed is shown on the left of the diagram along with the other entities of the HTTP connection. The
+arrows between the entities and the user show when they interact with each other. A definition that explains what is happening during the interaction is also included.
 
 ![Alt-Text](sequenceDiagram.png)
 
 ### 4.4 Physical 
 
-This project is solely software-based and therefore this meant that there were no physical requirements that had to be considered. The only requirement outlined for this project was that there must be access to a computer to run the program. Furthermore, the computer must have Python installed on it. The computer must be able to run Python version 3.0 or higher.  In the architecture document section 4.4 discusses how software deals with the hardware availability, reliability, performance and scalability of the system. Therefore, as previously stated above due to the fact that project is completely software based there are no physical concerns that need to be considered. 
- 
-However, it is important to note that this project is part of a larger system that not only includes hardware components but also interacts with hardware components. For this software project there may be hardware concerns when it comes to dealing with the larger system in terms of how the software interacts and incorporates with the hardware. 
-There will interaction with a disk. During the collection phase data will be both sent and extracted from the disk. This is a hardware concern that might be considered when the software integrates with hardware. This is not a concern that directly concerns  this software project, however it may need to be considered when working with larger systems.  
+This project is solely software-based. Therefore this meant that there were no physical requirements that have to be considered. The only requirement outlined for this project was that there must be access to a computer to run the program. Furthermore, the computer must have Python installed on it. The computer must be able to run Python version 3.0 or higher. Architecture document section 4.4 discusses how the software deals with the hardware availability, reliability, performance and scalability of the system. Therefore, as previously stated above due to the fact that the project is completely software-based there are no physical concerns that need to be considered.
+
+However, it is important to note that this project is part of a larger system that not only includes hardware components but also interacts with hardware components. For this software project, there may be hardware concerns when it comes to dealing with the larger system in terms of how the software interacts and incorporates with the hardware. There will interaction with a disk. During the collection phase, data will be both sent and extracted from the disk. This is a hardware concern that might be considered when the software integrates with hardware. This is not a concern that directly concerns this software project, however, it may need to be considered when working with larger systems.
 
 ![Alt-Text](Deploy.png)
 
