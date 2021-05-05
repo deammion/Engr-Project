@@ -58,15 +58,17 @@ The purpose of this project is to create a working prototype of a proxy plugin p
 
 After meeting with the client, Redshield, and having them read the project requirements, some minor changes have been noted. These changes are based more on clarification of functionality rather than changing the required functionality of the project. These changes will have little to no effect on the project moving forward.<br>
 
-The most substantial change is the clarification of the stages of the program’s functionality. Initially, the project team had stated that there were two stages: a collections stage and an operational stage. In the initial report, the collection stage was responsible for collecting HTML responses from the website owners’ server and analysing these responses for script tags. <br>
+### 1.3 Change to Requirements
 
-This stage has been split into two distinct phases: collection and analysis. The collection stage, in this scenario, is still responsible for the collection and storage of the HTML responses. However, the analysis stage will be responsible for parsing, analysing, and updating the percentages relative to the perceived safety of the script tags within the HTML. <br>
+The most substantial change is the clarification of the phases of the program’s functionality. Initially, the project team had stated that there were two phases: a collections phase and an operational phase. In the initial report, the collection phase was responsible for collecting HTML responses from the website owners’ server and analysing these responses for script tags. <br>
 
-The operational stage will operate as described in the project requirements documents. This operation being parsing the HTML responses, checking the percentages of found script tags, and applying nonce to those scripts deemed safe. <br>
+This phase has been split into two distinct phases: collection and analysis. The collection phase, in this scenario, is still responsible for the collection and storage of the HTML responses. However, the analysis phase will be responsible for parsing, analysing, and updating the percentages relative to the perceived safety of the script tags within the HTML. <br>
 
-This distinction does not change how the proxy plugin operates but rather clarifies collection and analysis. As noted by the client, the ideal outcome of the proxy plugin would be to have all three stages operating simultaneously. Meaning the plugin will continue to update the relative percentages during the operational mode. <br>
+The operational phase will operate as described in the project requirements documents. This operation being parsing the HTML responses, checking the percentages of found script tags, and applying nonce to those scripts deemed safe. <br>
 
-By having these three stages operating as an independent process, the plugin could function in this manner. This does not affect the website user or the website owner, as the plugin will still operate in the same manner. The website user will still have no interaction with the plugin unless entering an invalid script tag. The client will still implement the plugin in the same manner by first initiating the proxy in collection mode, where it will collect HTML responses and analyse said responses to get a baseline percentage of included scripts. Then switching to the operational mode where the program will continue to analyse HTML responses and, in addition, apply nonce to ‘safe’ script tags. Essentially, this distinction allows for greater functionality of the plugin. <br>
+This distinction does not change how the proxy plugin operates but rather clarifies collection and analysis. As noted by the client, the ideal outcome of the proxy plugin would be to have all three phases operating simultaneously. Meaning the plugin will continue to update the relative percentages during the operational mode. <br>
+
+By having these three phases operating as an independent process, the plugin could function in this manner. This does not affect the website user or the website owner, as the plugin will still operate in the same manner. The website user will still have no interaction with the plugin unless entering an invalid script tag. The client will still implement the plugin in the same manner by first initiating the proxy in collection mode, where it will collect HTML responses and analyse said responses to get a baseline percentage of included scripts. Then switching to the operational mode where the program will continue to analyse HTML responses and, in addition, apply nonce to ‘safe’ script tags. Essentially, this distinction allows for greater functionality of the plugin. <br>
 
 Another change is the program's extension to include a different definition regarding what is considered a ‘safe’ script tag. <br>
 
@@ -110,14 +112,6 @@ References to other documents or standards. Follow the IEEE Citation Reference s
 
 ## 3. Architecture
 
-Describe your system's architecture according to ISO/IEC/IEEE 42010:2011(E), ISO/IEC/IEEE 12207, ISO/IEC/IEEE 15289 and ISO/IEC/IEEE 15288.
-
-Note in particular the note to clause 5 of 42010:
-
-_"The verb include when used in Clause 5 indicates that either the information is present in the architecture description or reference to that information is provided therein."_
-
-This means that you should refer to information (e.g. risks, requirements, models) in this or other documents rather than repeat information.
-
 ### 3.1 Stakeholders
 
 Concerns relevant to stakeholders include the portability of the solution Elixir, potential privacy laws and licensing requirements. Less technical requirements are reducing or removing workflow interruptions and preserving ease of use through development. Minimising the attack surface, preserving the confidentiality, integrity, availability of data are also concerns.  Finally, there is the language requirement (Python) and the final delivery of the product to the client. Suitability, feasibility, maintainability and risk factor into each concern.
@@ -155,11 +149,8 @@ Concerns relevant to stakeholders include the portability of the solution Elixir
 |                               | Language Requirement: (Python) Python is an unfamiliar language to the group; development within it may introduce additional challenges for some.                                                                                                     | Fair - Python has an abundance of libraries developed to support it and integrates with the tool MITMproxy, which will be used within the project, however as an unfamiliar language, there may be some additional issues faced in development.                                                     | High - Fair - Python is a verbose and straightforward language with robust documentation. It is entirely feasible to learn for the development of this project.                                                                                                                           | Fair - Some may face challenges learning the language while under additional strain from other workloads.                                                                                                                                              | High - (See Redshield:  Maintainer - Portability)                                                                                                                                                        |
 
 ### 3.2 Architectural Viewpoints
-(1 page, 42010 5.4) 
 
-Identify the architectural viewpoints you will use to present your system's architecture. Write one sentence to outline each viewpoint. Show which viewpoint frames which architectural concern.
-
-**Logical:** The logical viewpoint involves the functionality that system provides to the end user. 
+**Logical:** The logical viewpoint involves the functionality that the system provides to the end user. 
 
 **Development:** The development viewpoint illustrates the system from a developers perspective and involves the software mananagement of the project.   
 
@@ -169,30 +160,11 @@ Identify the architectural viewpoints you will use to present your system's arch
 
 **Scenarios:** The scenarios viewpoint describes the architecture of the system through use cases. 
 
-**Circuit Architecture:** The circuit architecture viewpoint involve any circuitry involved with the project. Since this is a software project, there will be no circuitry involved.  
+**Circuit Architecture:** The circuit architecture viewpoint involves any circuitry involved with the project. Since this is a software project, there will be no circuitry involved.  
 
-**Hardware Architecture:** The hardware architecture viewpoint involve any circuitry involved with the project. Since this is a software project, there will be no hardware involved. 
+**Hardware Architecture:** The hardware architecture viewpoint involves any hardware involved with the project. Since this is a software project, there will be no hardware involved. 
 
 ### 4. Architectural Views
-
-(5 sub-sections of 2 pages each sub-section, per 42010, 5.5, 5.6, with reference to Annex F of both 12207 and 15288) 
-
-Describe your system's architecture in a series of architectural views, each view corresponding to one viewpoint.
-
-You should include views from the following viewpoints (from Kruchten's 4+1 model):
-
- * Logical
- * Development
- * Process
- * Physical 
- * Scenarios - present scenarios illustrating how two of your most important use cases are supported by your architecture
-
-As appropriate you should include the following viewpoints:
-
- * Circuit Architecture
- * Hardware Architecture
-
-Each architectural view should include at least one architectural model. If architectural models are shared across views, refer back to the first occurrence of that model in your document, rather than including a separate section for the architectural models.
 
 ### 4.1 Logical
 The proxy will be designed and function independently without any interaction or input from the website user. The website owner will also have limited interactions with the proxy. If the project is made open-source, the website owners only interactions with the proxy plugin will be switching between modes. If the program is not made open source, then the client Redshield will be handling this implementation. <br>
@@ -201,9 +173,9 @@ The diagram below shows the logical interactions of the proxy. It shows how each
 
 ![alternative text](http://www.plantuml.com/plantuml/png/tLPHRzis47xNhpZaAG4g0tijKg61csm5wYMeFVHX6G96EjjSA58ZgQI2qV--CobHPEaEtSCme2wAIlo-Etwy-tZLMsEPjdqhYbemO-1QDhyPrEFR9tmqt69HZCjGbXNSQVLvWDUmOKzeW4bWjULAtajusVDw3nfDBwm1JWZyijdSmKVygqTZYwKI0XqPBiifEMLQesoWbzZGQpE5c4v9WyLjXveTGvZu_g2YO_KJsw7NUYWAe1zAo-tWbnwkICOpeqYF-UEk69S7z_ubNdulQzLokNDxEDpzoZ8ydcts22r5Gwre5zap8GO8SEtFZGQqL-Zgrim4xGj4gmQsGhs0UloJ0ipPgSqyvdWdjQpGxbK3zHxh9mDywsiJS9UV6s1132YTIJcviqjvG_6ReSFpYxXIIrSfmvvnQiBXbE35c7vnh1DAEtCwb3TSuBbGjMltHO1UDBUuKGxrgKxitAg6RuTvxt_StD11MWoK1EkKdbNjhUqMn_9DYHSjcJua3nLCQl6rm-3ifpCegIzC3cVEO-JUPUIJiLDRfUzbucFZqhc8HPNQyBMxL9m4G4GYLbg8Z9SaySegzq_SkgC-KcQAuijybURBUoZ6yR3USnHDT2LkVR7hNckKTaeNu2kjsV216qiRUEhlVu2fDU_iXktCN5U3ifcYtykjele6g6RoIAQb_AR6hOfahQsc8yFHGR-ogF7XOOT1x8rMhRFQn9wtxhk6MLocXoCTcOoEQHFTWtYRB3eNisUo4VZW1hDbktE3OliAwEaLC6krkVYQYR99U1c1PBCHFZu6FF0ImUTvcqAjCp9SBXP9sNEAiwMtYhEZxRKqyEvs1VVoxaXiyWIUxYBJN7xkcpmYjkgLP68mt1nIRwm-h2spsAAqXAJcc3mR6AUwzatVRTtqaFKmUuvB2vQtQAww3fd69ZAttSH0v85T1kLxXVkI-PjQlvp7QaWOLazcOrkBmqTcAK4gFaQWYDMl8oGINpDHzu9PZF5GBlhhiwIDS2qEHuh6rIbgDHSwPsP9O_tn68oT4drT7FnG8o8J3zv__y5W2zDhMabR4WJ4_lx_1fcJaawp7s6OPUUa2xBbkdqWv-8X_ToXRbr_fd2JrYUjJ9Y4MUzoSfY9VlbV3iOu9kJuZX4PcTxPPssL9icNxvXbZynWLT6vwS_ubUpkqnIyPizuv0KmP8v19o_vYYYhaqmI-4bpYwGGjJjLGeFBybjXFwCr48v49neBKRvvKyMAunXtK0VEaNC1ohAimdyN4xj9wS3DlOHdv2-4F0vWzpY7h5I3HNWhgtYYZ9s0wuRRCMdnbXRwLlmD)
 
-As stated above the proxys three phases: collection, operational, and analysis, all operate independently from each other. The diagram below shows how the proxy operators relative to what phase it is in, and the logical flow of how the proxy will operate depending on the certain conditions. NOTE: the red circles are start and end conditions. The blue diamonds are branching decisions. The green boxes are conditionial responses depending on those decisions and the white squares occur regradless of those decisions. <br>
+As stated above the proxy's three phases all operate independently from each other. The diagram below shows how the proxy operates relative to what phase it is in, and the logical flow of how the proxy will operate depending on certain conditions. NOTE: the red circles are start and end conditions. The blue diamonds are branching decisions. The green boxes are conditionial responses depending on those decisions and the white squares occur regradless of those decisions. <br>
 
-![State Diagram](State_Diagram.jpeg)
+![State Diagram](State_Diagram.jpg)
 
 ### 4.2 Development
 
@@ -212,13 +184,13 @@ As stated above the proxys three phases: collection, operational, and analysis, 
 The above diagram represents the relationships between the systems that our project involves, along with the necessary interfaces.
 Most, if not all, the development process is managed entirely by GitLab. GitLab will therefore be the solution to version control as it can log commits allowing for the prevention of loss of work. One of the risks that we identified was the loss of work and data, whether from deletion or overridden. This loss was observed to be prevented by backing up the code on GitLab to be reverted when needed.<br>
 
-Furthermore, we have decided to use branches to ensure that each team member is not overwriting code in the master. The master branch will always have a functioning version, and separate branches for development will be created for development. The separate branches can be merged into master through the use of a merge request. The merge requests can be merged into master when all team members approve the merge if everything is in order. This branch management provides us with the ability to review all code and work before merging into the master branch. The approval process requires that at least two members approve the code before merging into the master branch.<br>
+The master branch will always have a functioning version, and separate branches will be created for development. The use branches will ensure that functional code in the master is not overwritten. The separate branches can be merged into master through the use of a merge request. The merge requests functionality can be used to ensure functional code is committed to the master. This branch management provides us with the ability to review all code before merging into the master branch. The approval process requires at least two members to approve the code before merging into the master branch.<br>
 
-Lastly, we are using the Issues feature in GitLab to manage what specific parts of the project need to be completed or have been completed. It also allows the team to manage what each team member is doing and can even contribute to the project. This ensures that each team member is doing an even workload. Issues can also be assigned to team members so that members do not accidentally start work on a section that a different team member is already working on. This tool helps the team members manage their time and see what is currently being worked on and what has been completed.
+The Issues feature in GitLab allows management of specific parts of the project that need to be completed or have been completed. It allows the team to manage workload and ensures a fair distribution of the workload. Issues can be assigned to team members to prevent overlaps of work. The use of this tool will assist with time management and development progress.
 
 
 ### 4.3 Process
-The process viewpoints outline the operations that take place when the system is run on a webserver. It shows how all entities in an HTTP connection interact with the proxy during the different phases of the program. As well as the order they happen in. 
+The process viewpoints outline the operations that take place when the system is run on a webserver. It shows how all entities in a HTTP connection interact with the proxy during the different phases of its life-cycle. 
 
 The following sequence model diagram is set up to outline the phase execution order. The user trying to connect to a webpage
 with the proxy installed is shown on the left of the diagram along with the other entities of the HTTP connection. The
@@ -228,9 +200,9 @@ arrows between the entities and the user show when they interact with each other
 
 ### 4.4 Physical 
 
-This project is solely software-based. Therefore this meant that there were no physical requirements that have to be considered. The only requirement outlined for this project was that there must be access to a computer to run the program. Furthermore, the computer must have Python installed on it. The computer must be able to run Python version 3.0 or higher. Architecture document section 4.4 discusses how the software deals with the system's hardware availability, reliability, performance, and scalability. Therefore, as previously stated above, because the project is entirely software-based, there are no physical concerns that need to be considered.
+This project is solely software-based. Therefore there are no physical requirements that have to be considered. The only requirement outlined for this project was that there must be access to a computer to run the proxy program. Furthermore, the computer must be able to run Python code of version 3.0 or higher. The physical viewpoint outlines how the software deals with the system's hardware availability, reliability, performance, and scalability. Because the project is entirely software-based, there are no physical concerns to be considered.
 
-However, it is essential to note that this project is part of a more extensive system that includes hardware components and interacts with hardware components. For this software project, there may be hardware concerns when dealing with the larger system in terms of how the software interacts and incorporates with the hardware. The interaction between functions will occur on the local disk storage. During the collection phase, data will be both sent and extracted from the disk. This is a hardware concern that might be considered when the software integrates with hardware. This is not a concern that directly concerns this software project; however, it may need to be considered when working with larger systems.
+It is essential to note that this project is part of a more extensive system that includes hardware components and interactions with hardware components. For this software project, there may be hardware concerns when dealing with the larger system in terms of how the software interacts and incorporates with the hardware. The interaction between functions will occur on local disk storage. During the collection phase, data will be both sent. This is a hardware concern that might be considered when the software interacts with hardware. This is not a direct concern of this software project but it may need to be considered when working with larger systems.
 
 ![Alt-Text](Deploy.png)
 
@@ -239,7 +211,7 @@ However, it is essential to note that this project is part of a more extensive s
 
 The two most important scenarios for our MVP are:
 
-* The website can run in the collection phase, with no disruptions to the user of the website, and collect the HTML of the website.
+* The website can run in the collection phase, with no disruptions to the user, and collect the HTML response of the website.
 
 ![Collection Scenario Diagram](collectionScenario.PNG)
 
@@ -247,29 +219,25 @@ The two most important scenarios for our MVP are:
 
 ![Operational Scenario Diagram](operationalScenario.PNG)
 
-Each time the website is accessed in both of these use cases, information about each script tag within the page is stored and updated. As such, the analysis phase will be utilised to do this.
+Each time the website is accessed in both cases, information about each script tag within the page is stored and updated. The analysis phase will be utilised to do this.
 
 ![Implementation of analysis phase](proxyScenario.PNG)
 
 ## 5. Development Schedule
 
-_For each subsection, make clear what (if anything) has changed from the requirements document._ If unchanged, these sections should be copied over from the requirements document, not simply cross-referenced.
-
-Schedules must be justified and supported by evidences; they must be either direct client requirements or direct consequences of client requirements. If the requirements document did not contain justifications or supporting evidences, then both must be provided here.
-
 ### 5.1 Schedule
 
-Identify dates for key project deliverables:
+Dates for key project deliverables:
 
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
-| Architectural Prototype|   Friday 7th May <br> This was was the day after the final lab before the Performance Assessment.|
+| Architectural Prototype|   Friday 14th May <br> This was was the day after the final lab before the Performance Assessment.|
 | Application - Basic Implementation |   Monday 16th August <br> This is the final day of the fisrt half of Trimester 2. To be on track a version of the application produced will be provided, that can do the basic operations outlined in the project requirements document. |
 | Documentation - Basic Implementation |  Monday 16th August <br> This is the final day of the fisrt half of Trimester 2. Documentation describing the operation and setup of the program and it's basic functionality will be provided. 
-| Further Releases       |   Friday 8th October <br> 8th October is the final teaching day of Trimester 2. The project should be mostly finished at this point based on time estimates and constraints.|
+| Further Releases       |   Friday 8th October <br> This is the final teaching day of Trimester 2. The project should be mostly finished at this point based on time estimates and constraints.|
 | Final Project          |   Saturday 6th November <br> This is the final day of Trimester 2 End of Year assessment period. This is the last week scheduled for the lab.|
 
-Dates are subject to change as the project continues
+Dates are subject to change as project continues
 
 
 ### 5.2 Budget and Procurement
@@ -282,7 +250,7 @@ Dates are subject to change as the project continues
 | Hardware |  nil   |
 | Travel   |  nil   |
 
-This project does not require a budget as it makes use of open-source programs such as MITM. Accessing this can be done using personal computers or the computers available at Victoria University of Wellington.<br>
+This project does not require a budget as it makes use of open-source programs such as MITM. This can be done using personal computers or the computers available at Victoria University of Wellington.<br>
 
 The client is local and has indicated they can travel to Victoria University of Wellington for meetings.<br>
 
@@ -292,20 +260,19 @@ As Stated in Section 5.2.1, as of writing this document, there is no budget requ
 
 ### 5.3 Risks 
 
-Identify the ten most important project risks: their type, likelihood, impact, and mitigation strategies (3 pages).
 
 | Risks    | Type     |  Likelihood  |  Impact  | Mitigation |
 | ---------|  ------  | ------------ | -------- | ---------- |
 |Code being deleted |Technical |  Likely | Moderate-Significant (depending on amount/importance of code)| Use Gitlab to ensure code is backed up and restore it|
-|Code being overwritten | Technical |  Very Likely | Moderate| Use Mattermost to notify others of commits and if code is overwritten, use Gitlab to ensure it can be restored |
-|Team member unable to contribute for unforeseen reasons |Teamwork |  Possible | Moderate-Significant(depending on project stage)| Keep good documentation of what has been done and what needs to be done so others can pick up tasks without too much hassle |
+|Code being overwritten | Technical |  Very Likely | Moderate| Use Mattermost to notify others of commits and if code is overwritten, use Gitlab to ensure it can be restored. |
+|Team member unable to contribute for unforeseen reasons |Teamwork |  Possible | Moderate-Significant(depending on project stage)| Keep good documentation of what has been done and what needs to be done so others can pick up tasks without too much hassle. |
 |Team member has other commitments which cause them to not be available  |Teamwork |  Very Likely  |Minor| Keep good documentation of what is done and what needs to be done so others can pick up tasks without too much hassle and ensure no one is out of the loop. Ensure the team has good communication so if someone is unavailable the rest of the team knows. |
 |Team member has not done their specified work| Teamwork |Possible| Significant | Regularly meet up and contact team members to ensure everyone is on track. Refer back to the team contract to ensure everyone is doing their part and what happens if someone isn't.  |
-|COVID Lockdown| Teamwork |Very Likely| Significant | Ensure everyone can connect online and that all work is online |
+|COVID Lockdown| Teamwork |Very Likely| Significant | Ensure everyone can connect online and that all work is online. |
 |Misunderstanding about the project requirements| Requirements |Likely| Moderate | Ensure constant communication with the client and clear up any uncertainties promptly. |
 |Changes to project requirements| Requirements | Possible | Significant | Ensure there is a clear understanding of what is required from the team from the beginning and ensure constant communication with the client. |
-|Bugs within code go undetected| Technical |Very Likely| Significant | Create tests for the program to test different aspects of it and minimize the number of errors that go undetected. |
-|Team members burning out| Teamwork |Likely| Significant | Ensure everyone is communicating with each other so the team knows if someone is doing too much work and ensure all work is evenly divided. |
+|Bugs within code going undetected| Technical |Very Likely| Significant | Create robust tests for the program for different aspects of it to minimize the number of errors that go undetected. |
+|Team members burning out| Teamwork |Likely| Significant | Ensure everyone is communicating and all work is evenly divided. |
 
 
 ### 5.4 Health and Safety
@@ -339,8 +306,7 @@ This project does not include any human or animal subjects. This is because all 
 
 #### 5.4.1 Safety Plans
 
-Project requirements do not involve risk of death, serious harm, harm or injury.
-
+Project does not involve risk of death, serious harm, harm or injury.
 
 ## 6. Appendices
 
@@ -377,8 +343,8 @@ An one page statement of contributions, including a list of each member of the g
 | ------        |  ---------- |
 |    Dylan      | 1.1, 5.4, 6, 4.1 proofreading (4.2, 4.3, 4.4)           |
 |    Isabella   | 1, 1.1, 1.2, 1.3, 4.2, 4.5, 5.3, 5.4 |
-|    Damien     | 1, 1.1, 1.2, 1.3, 4.1, 5.2.1, 5.2.2  |
-|    James      |  5, 3.2, 4.3                         |
+|    Damien     | 1, 1.1, 1.2, 1.3, 4.1, 5.2.1, 5.2.2, proofreading(Whole document)  |
+|    James      |  5, 3.2, 4.3, proofreading(Whole document)                         |
 |    Jaya       |  4.4, 5.3, 6.1                       |
 |    Nathan     |  2, 4.2, 5.1                         |
 |    Timothy    |  3.1, proofreading (1, 1.1, 1.2, 1.3, 3.2, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 5.4)        |
