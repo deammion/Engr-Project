@@ -260,7 +260,7 @@ The client is local and has indicated they can travel to Victoria University of 
 
 #### 5.2.2 Procurement
 
-As Stated in Section 5.2.1, as of writing this document, there is no budget requirements for this project. Therefore, there are no procurement requirements. <br> 
+As stated in Section 5.2.1, as of writing this document, there is no budget requirements for this project. Therefore, there are no procurement requirements. <br> 
 
 ### 5.3 Risks 
 
