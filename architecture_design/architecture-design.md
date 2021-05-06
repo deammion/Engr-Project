@@ -209,6 +209,8 @@ It is essential to note that this project is part of a more extensive system tha
 
 ### 4.5 Scenarios
 
+The proxy plug-in program has different scenarios depending on the phase in which the website is in. The diagram below, outlines a broad overview of the proxy program and how it works. 
+
 ![Proxy Scenario Diagram](proxyScenario.PNG)
 
 The two most important scenarios for our MVP are:
