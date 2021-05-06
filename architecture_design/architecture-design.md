@@ -209,19 +209,21 @@ It is essential to note that this project is part of a more extensive system tha
 
 ### 4.5 Scenarios
 
+![Proxy Scenario Diagram](proxyScenario.PNG)
+
 The two most important scenarios for our MVP are:
 
 * The website can run in the collection phase, with no disruptions to the user, and collect the HTML response of the website.
 
-![Collection Scenario Diagram](collectionScenario.PNG)
+![Collection Diagram](collectionUseCases.PNG)
 
 * The website can run in the operation phase, with no disruptions unless an unsafe script tag has been entered into the site.
 
-![Operational Scenario Diagram](operationalScenario.PNG)
+![Operational Diagram](operationalUseCases.PNG)
 
 Each time the website is accessed in both cases, information about each script tag within the page is stored and updated. The analysis phase will be utilised to do this.
 
-![Implementation of analysis phase](proxyScenario.PNG)
+![Implementation of analysis phase](analysisUseCases.PNG)
 
 ## 5. Development Schedule
 
