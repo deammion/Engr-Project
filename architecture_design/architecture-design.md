@@ -204,7 +204,7 @@ This project is solely software-based. Therefore there are no physical requireme
 
 It is essential to note that this project is part of a more extensive system that includes hardware components and interactions with hardware components. For this software project, there may be hardware concerns when dealing with the larger system in terms of how the software interacts and incorporates with the hardware. The interaction between functions will occur on local disk storage. During the collection phase, data will be both sent. This is a hardware concern that might be considered when the software interacts with hardware. This is not a direct concern of this software project but it may need to be considered when working with larger systems.
 
-![Alt-Text](Deploy.png)
+![Deployment Diagram](Deploy.png)
 
 
 ### 4.5 Scenarios
