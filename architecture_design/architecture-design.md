@@ -350,7 +350,7 @@ An one page statement of contributions, including a list of each member of the g
 |    Damien     | 1, 1.1, 1.2, 1.3, 4.1, 5.2.1, 5.2.2, proofreading(Whole document)  |
 |    James      |  5, 3.2, 4.3, proofreading(Whole document)                         |
 |    Jaya       |  4.4, 5.3, 6.1                       |
-|    Nathan     |  2, 4.2, 5.1                         |
+|    Nathan     |  2, 4.2, 5.1   proofreading (Section 5)                      |
 |    Timothy    |  3.1, proofreading (1, 1.1, 1.2, 1.3, 3.2, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 5.4)        |
 
 ---
