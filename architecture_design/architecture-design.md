@@ -152,7 +152,7 @@ Concerns relevant to stakeholders include the portability of the solution Elixir
 
 **Logical:** The logical viewpoint involves the functionality that the system provides to the end user. 
 
-**Development:** The development viewpoint illustrates the system from a developers perspective and involves the software mananagement of the project.   
+**Development:** The development viewpoint illustrates the system from a developers perspective and involves the software management of the project.   
 
 **Process:** The process viewpoint involves the system processes and how they communicate and run. This view addresses the concurrency, distribution, integrator, performance and scalability of the project.
 
