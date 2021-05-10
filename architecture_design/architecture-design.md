@@ -236,8 +236,8 @@ Dates for key project deliverables:
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
 | Architectural Prototype|   Friday 14th May <br> This was was the day after the final lab before the Performance Assessment.|
-| Application - Basic Implementation |   Monday 16th August <br> This is the final day of the fisrt half of Trimester 2. To be on track a version of the application produced will be provided, that can do the basic operations outlined in the project requirements document. |
-| Documentation - Basic Implementation |  Monday 16th August <br> This is the final day of the fisrt half of Trimester 2. Documentation describing the operation and setup of the program and it's basic functionality will be provided. 
+| Application - Basic Implementation |   Monday 16th August <br> This is the final day of the first half of Trimester 2. To be on track a version of the application produced will be provided, that can do the basic operations outlined in the project requirements document. |
+| Documentation - Basic Implementation |  Monday 16th August <br> This is the final day of the first half of Trimester 2. Documentation describing the operation and setup of the program and it's basic functionality will be provided. 
 | Further Releases       |   Friday 8th October <br> This is the final teaching day of Trimester 2. The project should be mostly finished at this point based on time estimates and constraints.|
 | Final Project          |   Saturday 6th November <br> This is the final day of Trimester 2 End of Year assessment period. This is the last week scheduled for the lab.|
 
