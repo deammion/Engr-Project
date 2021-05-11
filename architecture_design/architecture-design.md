@@ -294,7 +294,7 @@ https://www.southerncross.co.nz/group/medical-library/occupational-overuse-syndr
 **Eye Strain**
 Eye strain occurs when a person has been staring at a computer for long periods without having any breaks away from technology. Insufficient lighting and screen flickering can also contribute to eye strain. As with the Occupational Overuse, the team will be encouraged to take regular breaks away from their work and personal devices. The team will also be encouraged to work in environments with a sufficient lighting level, for example, not working in the dark with the screen as the only light. The team will also make sure that text displayed in any of the work produced is easily readable to avoid eye strain from reading small text.
 
-**Electrical Saftey**
+**Electrical Safety**
 Since we are dealing with technology, there is the risk of receiving electrical shocks from any appliances used in the process of working on this project. Electrical safety could pose a small risk to the health of team members when they are dealing with electrical appliances such as laptops, desktop computers, monitors, electrical jugs, and the associated cables for these appliances.  As per the AS/NZS 3760 Standard, to minimise the risk of any electrical shocks, the team should be encouraged to only use appliances which have been through the Test and Tag process in the last 12 months.
 
 **Cable Management**
