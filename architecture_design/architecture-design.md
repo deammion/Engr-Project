@@ -114,7 +114,7 @@ References to other documents or standards. Follow the IEEE Citation Reference s
 
 ### 3.1 Stakeholders
 
-Concerns relevant to stakeholders include the portability of the solution Elixir, potential privacy laws and licensing requirements. Less technical requirements are reducing or removing workflow interruptions and preserving ease of use through development. Minimising the attack surface, preserving the confidentiality, integrity, availability of data are also concerns.  Finally, there is the language requirement (Python) and the final delivery of the product to the client. Suitability, feasibility, maintainability and risk factor into each concern.
+Concerns relevant to stakeholders include the portability of the solution Elixir, potential privacy laws, and licensing requirements. Less technical requirements are reducing or removing workflow interruptions and preserving ease of use through development. Minimising the attack surface, preserving the confidentiality, integrity, availability of data are also concerns.  Finally, there is the language requirement (Python) and the final delivery of the product to the client. Suitability, feasibility, maintainability, and risk factor into each concern.
 
 | Stakeholder                   | Concern                                                                                                                                                                                                                                              | Suitability                                                                                                                                                                                                                                                                                       | Feasibility                                                                                                                                                                                                                                                                           | Risk                                                                                                                                                                                                                                                 | Maintainability                                                                                                                                                                                        |
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -150,15 +150,15 @@ Concerns relevant to stakeholders include the portability of the solution Elixir
 
 ### 3.2 Architectural Viewpoints
 
-**Logical:** The logical viewpoint involves the functionality that the system provides to the end user. 
+**Logical:** The logical viewpoint involves the functionality that the system provides to the end-user. 
 
-**Development:** The development viewpoint illustrates the system from a developers perspective and involves the software management of the project.   
+**Development:** The development viewpoint illustrates the system from a developer's perspective and involves the software management of the project.   
 
-**Process:** The process viewpoint involves the system processes and how they communicate and run. This view addresses the concurrency, distribution, integrator, performance and scalability of the project.
+**Process:** The process viewpoint involves the system processes and how they communicate and run. This view addresses the concurrency, distribution, integrator, performance, and scalability of the project.
 
 **Physical:** The physical viewpoint involves the topology of software components on the physical layer and the physical connections between these components. 
 
-**Scenarios:** The scenarios viewpoint describes the architecture of the system through use cases. 
+**Scenarios:** The scenario viewpoint describes the architecture of the system through use cases. 
 
 **Circuit Architecture:** The circuit architecture viewpoint involves any circuitry involved with the project. Since this is a software project, there will be no circuitry involved.  
 
@@ -169,11 +169,11 @@ Concerns relevant to stakeholders include the portability of the solution Elixir
 ### 4.1 Logical
 The proxy will be designed and function independently without any interaction or input from the website user. The website owner will also have limited interactions with the proxy. If the project is made open-source, the website owners only interactions with the proxy plugin will be switching between modes. If the program is not made open source, then the client Redshield will be handling this implementation. <br>
 
-The diagram below shows the logical interactions of the proxy. It shows how each phase: collection, analyse, and operational all act independently from each other, and how they function relative to the end user, depending on what stage the proxy is set too. <br>
+The diagram below shows the logical interactions of the proxy. It shows how each phase: collection, analyse, and operational all act independently from each other, and how they function relative to the end-user, depending on what stage the proxy is set to. <br>
 
 ![alternative text](http://www.plantuml.com/plantuml/png/tLPHRzis47xNhpZaAG4g0tijKg61csm5wYMeFVHX6G96EjjSA58ZgQI2qV--CobHPEaEtSCme2wAIlo-Etwy-tZLMsEPjdqhYbemO-1QDhyPrEFR9tmqt69HZCjGbXNSQVLvWDUmOKzeW4bWjULAtajusVDw3nfDBwm1JWZyijdSmKVygqTZYwKI0XqPBiifEMLQesoWbzZGQpE5c4v9WyLjXveTGvZu_g2YO_KJsw7NUYWAe1zAo-tWbnwkICOpeqYF-UEk69S7z_ubNdulQzLokNDxEDpzoZ8ydcts22r5Gwre5zap8GO8SEtFZGQqL-Zgrim4xGj4gmQsGhs0UloJ0ipPgSqyvdWdjQpGxbK3zHxh9mDywsiJS9UV6s1132YTIJcviqjvG_6ReSFpYxXIIrSfmvvnQiBXbE35c7vnh1DAEtCwb3TSuBbGjMltHO1UDBUuKGxrgKxitAg6RuTvxt_StD11MWoK1EkKdbNjhUqMn_9DYHSjcJua3nLCQl6rm-3ifpCegIzC3cVEO-JUPUIJiLDRfUzbucFZqhc8HPNQyBMxL9m4G4GYLbg8Z9SaySegzq_SkgC-KcQAuijybURBUoZ6yR3USnHDT2LkVR7hNckKTaeNu2kjsV216qiRUEhlVu2fDU_iXktCN5U3ifcYtykjele6g6RoIAQb_AR6hOfahQsc8yFHGR-ogF7XOOT1x8rMhRFQn9wtxhk6MLocXoCTcOoEQHFTWtYRB3eNisUo4VZW1hDbktE3OliAwEaLC6krkVYQYR99U1c1PBCHFZu6FF0ImUTvcqAjCp9SBXP9sNEAiwMtYhEZxRKqyEvs1VVoxaXiyWIUxYBJN7xkcpmYjkgLP68mt1nIRwm-h2spsAAqXAJcc3mR6AUwzatVRTtqaFKmUuvB2vQtQAww3fd69ZAttSH0v85T1kLxXVkI-PjQlvp7QaWOLazcOrkBmqTcAK4gFaQWYDMl8oGINpDHzu9PZF5GBlhhiwIDS2qEHuh6rIbgDHSwPsP9O_tn68oT4drT7FnG8o8J3zv__y5W2zDhMabR4WJ4_lx_1fcJaawp7s6OPUUa2xBbkdqWv-8X_ToXRbr_fd2JrYUjJ9Y4MUzoSfY9VlbV3iOu9kJuZX4PcTxPPssL9icNxvXbZynWLT6vwS_ubUpkqnIyPizuv0KmP8v19o_vYYYhaqmI-4bpYwGGjJjLGeFBybjXFwCr48v49neBKRvvKyMAunXtK0VEaNC1ohAimdyN4xj9wS3DlOHdv2-4F0vWzpY7h5I3HNWhgtYYZ9s0wuRRCMdnbXRwLlmD)
 
-As stated above the proxy's three phases all operate independently from each other. The diagram below shows how the proxy operates relative to what phase it is in, and the logical flow of how the proxy will operate depending on certain conditions. NOTE: the red circles are start and end conditions. The blue diamonds are branching decisions. The green boxes are conditionial responses depending on those decisions and the white squares occur regradless of those decisions. <br>
+As stated above the proxy's three phases all operate independently from each other. The diagram below shows how the proxy operates relative to what phase it is in, and the logical flow of how the proxy will operate depending on certain conditions. NOTE: the red circles are start and end conditions. The blue diamonds are branching decisions. The green boxes are conditional responses depending on those decisions and the white squares occur regardless of those decisions. <br>
 
 ![State Diagram](State_Diagram.jpg)
 
@@ -181,21 +181,21 @@ As stated above the proxy's three phases all operate independently from each oth
 
 ![Development Diagram](developmentView.PNG)
 
-The diagram above represents the relationship between the ProxyPlugin code that is stored on GitLab, the FileStore and the Server. <br>
+The diagram above represents the relationship between the ProxyPlugin code that is stored on GitLab, the FileStore, and the Server. <br>
 
-Within the ProxyPlugin the Collection and Operational Python files have a tandem relationship with the proxy. For the proxy to function correctly, both the collection and operational files must provide the correct information. The information gathered by the collection and operational files must be readable such that the proxy is able to complete its functions on them. Additionally the analysis phase relies on the collection and operational as well.<br>
+Within the ProxyPlugin the Collection and Operational Python files have a tandem relationship with the proxy. For the proxy to function correctly, both the collection and operational files must provide the correct information. The information gathered by the collection and operational files must be readable such that the proxy can complete its functions on them. Additionally, the analysis phase relies on the collection and operational as well.<br>
 
-The FileStore contains the HTML responses and script data that was generated by the analysis of the collection and operational code. Once the HTTP response captured by the ProxyPlugin is processed, it is passed into the FileStore and send to the end user.
+The FileStore contains the HTML responses and script data that was generated by the analysis of the collection and operational code. Once the HTTP response captured by the ProxyPlugin is processed, it is passed into the FileStore and send to the end-user.
 
 Most, if not all, the development process is managed entirely by GitLab. GitLab will therefore be the solution to version control as it can log commits allowing for the prevention of loss of work. One of the risks that we identified was the loss of work and data, whether from deletion or overridden. This loss was observed to be prevented by backing up the code on GitLab to be reverted when needed.<br>
 
-The master branch will always have a functioning version, and separate branches will be created for development. The use branches will ensure that functional code in the master is not overwritten. The separate branches can be merged into master through the use of a merge request. The merge requests functionality can be used to ensure functional code is committed to the master. This branch management provides us with the ability to review all code before merging into the master branch. The approval process requires at least two members to approve the code before merging into the master branch.<br>
+The master branch will always have a functioning version, and separate branches will be created for development. The use of branches will ensure that the functional code in the master is not overwritten. The separate branches can be merged into master through the use of a merge request. The merge requests functionality can be used to ensure functional code is committed to the master. This branch management provides us with the ability to review all code before merging into the master branch. The approval process requires at least two members to approve the code before merging into the master branch.<br>
 
-The Issues feature in GitLab allows management of specific parts of the project that need to be completed or have been completed. It allows the team to manage workload and ensures a fair distribution of the workload. Issues can be assigned to team members to prevent overlaps of work. The use of this tool will assist with time management and development progress.
+The Issues feature in GitLab allows management of specific parts of the project that need to be completed or have been completed. It allows the team to manage the workload and ensures a fair distribution of the workload. Issues can be assigned to team members to prevent overlaps of work. The use of this tool will assist with time management and development progress.
 
 
 ### 4.3 Process
-The process viewpoints outline the operations that take place when the system is run on a webserver. It shows how all entities in a HTTP connection interact with the proxy during the different phases of its life-cycle. 
+The process viewpoints outline the operations that take place when the system is run on a webserver. It shows how all entities in an HTTP connection interact with the proxy during the different phases of its life cycle. 
 
 The following sequence model diagram is set up to outline the phase execution order. The user trying to connect to a webpage
 with the proxy installed is shown on the left of the diagram along with the other entities of the HTTP connection. The
@@ -214,7 +214,7 @@ It is essential to note that this project is part of a more extensive system tha
 
 ### 4.5 Scenarios
 
-The proxy plug-in program has different scenarios depending on the phase in which the website is in. The diagram below, outlines a broad overview of the proxy program and how it works. 
+The proxy plug-in program has different scenarios depending on the phase in which the website is in. The diagram below outlines a broad overview of the proxy program and how it works. 
 
 ![Proxy Scenario Diagram](proxyScenario.PNG)
 
@@ -242,11 +242,11 @@ Dates for key project deliverables:
 | ---------------------- |  ------  |
 | Architectural Prototype|   Friday 14th May <br> This was was the day after the final lab before the Performance Assessment.|
 | Application - Basic Implementation |   Monday 16th August <br> This is the final day of the first half of Trimester 2. To be on track a version of the application produced will be provided, that can do the basic operations outlined in the project requirements document. |
-| Documentation - Basic Implementation |  Monday 16th August <br> This is the final day of the first half of Trimester 2. Documentation describing the operation and setup of the program and it's basic functionality will be provided. 
+| Documentation - Basic Implementation |  Monday 16th August <br> This is the final day of the first half of Trimester 2. Documentation describing the operation and setup of the program and its basic functionality will be provided. 
 | Further Releases       |   Friday 8th October <br> This is the final teaching day of Trimester 2. The project should be mostly finished at this point based on time estimates and constraints.|
-| Final Project          |   Saturday 6th November <br> This is the final day of Trimester 2 End of Year assessment period. This is the last week scheduled for the lab.|
+| Final Project          |   Saturday 6th November <br> This is the final day of the Trimester 2 End of Year assessment period. This is the last week scheduled for the lab.|
 
-Dates are subject to change as project continues
+Dates are subject to change as the project continues
 
 
 ### 5.2 Budget and Procurement
@@ -265,7 +265,7 @@ The client is local and has indicated they can travel to Victoria University of 
 
 #### 5.2.2 Procurement
 
-As stated in Section 5.2.1, as of writing this document, there is no budget requirements for this project. Therefore, there are no procurement requirements. <br> 
+As stated in Section 5.2.1, as of writing this document, there are no budget requirements for this project. Therefore, there are no procurement requirements. <br> 
 
 ### 5.3 Risks 
 
@@ -287,7 +287,7 @@ As stated in Section 5.2.1, as of writing this document, there is no budget requ
 ### 5.4 Health and Safety
 
 **Occupational Overuse**
-Occupational overuse is a type of overuse injury that may result in Muscle pains, hot or cold flushes, numbness or a restricted range of movement. Team members will be encouraged to take regular breaks away from their work and personal devices to prevent occupation overuse from occurring. Furthermore, realistic deadlines and workloads will be set to discourage overworking, alongside getting the team to practice good time management to prevent individual overuse as an effort to meet deadlines.
+Occupational overuse is a type of overuse injury that may result in Muscle pains, hot or cold flushes, numbness, or a restricted range of movement. Team members will be encouraged to take regular breaks away from their work and personal devices to prevent occupation overuse from occurring. Furthermore, realistic deadlines and workloads will be set to discourage overworking, alongside getting the team to practice good time management to prevent individual overuse as an effort to meet deadlines.
 Additionally, team members will have ergonomic workspaces so that any required equipment will be nearby and easily accessible. This will also encompass ensuring desks are at the correct height to encourage correct posture and reduce straining. Correct postures will be promoted and ensured for all team members, and the team will use comfortable chairs, which, if possible, will have back support. This will reduce straining and incorrect postures in a work environment, mitigating occupational overuse and its potential symptoms.
 https://www.southerncross.co.nz/group/medical-library/occupational-overuse-syndrome-oos
 
@@ -325,10 +325,10 @@ Below is a list of assumptions and dependencies for this project:<br>
 
 * It is assumed that during the collection phase, the websites scanned (HTML being parsed) will be clean. <br>
 * It is assumed that if the scripts are hosted on a different domain, they have not been modified after the original application developer determined that they are safe to include in their application. <br>
-* It is assumed that users of this program will have access to either of the following browsers: Edge, Chrome or Firefox.<br>
+* It is assumed that users of this program will have access to either of the following browsers: Edge, Chrome, or Firefox.<br>
 * It is assumed that users have access to a technological device (i.e. computer, cellular phone, tablet).<br>
 * It is assumed that users have internet access to run this program.<br>
-* A dependency is that the browsers used must either be Edge, Chrome or Firefox to gain the full benefits of security from CSP being inforced client-side. <br>
+* A dependency is that the browsers used must either be Edge, Chrome, or Firefox to gain the full benefits of security from CSP being inforced client-side. <br>
 
 ### 6.2 Acronyms and abbreviations
 
@@ -342,7 +342,7 @@ HTML - Hyper-Text Markup Language
 
 HTTP - Hyper-Text Transfer Protocol
 
-XSS - Cross Site Scripting
+XSS - Cross-Site Scripting
 
 ## 7. Contributions
 
