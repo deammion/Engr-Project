@@ -264,8 +264,11 @@ Dates for key project deliverables:
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
 | Architectural Prototype|   Friday 14th May <br> This was was the day after the final lab before the Performance Assessment.|
-| Application - Basic Implementation |   Monday 16th August <br> This is the final day of the first half of Trimester 2. To be on track a version of the application produced will be provided, that can do the basic operations outlined in the project requirements document. |
-| Documentation - Basic Implementation |  Monday 16th August <br> This is the final day of the first half of Trimester 2. Documentation describing the operation and setup of the program and its basic functionality will be provided. 
+| Collection Phase - Minimum Viable Product|   Tuesday 20th July <br> This is the end of the first sprint in Trimester 2. Basic implementation of the collection phase will be completed|
+| Analysis Phase - Minimum Viable Produc|   Tuesday 3rd August <br> This is the end of the second sprint in Trimester 2. Basic implementation of the analysis phase will be completed|
+| Operation Phase - Minimum Viable Produc|   Tuesday 17th August <br> This is the end of the third sprint in Trimester 2. Basic implementation of the operation phase will be completed|
+| Application - Basic Implementation |   Friday 13th August <br> This is the final day of the first half of Trimester 2. To be on track a version of the application produced will be provided, that can do the basic operations outlined in the project requirements document. |
+| Documentation - Basic Implementation |  Friday 13th August <br> This is the final day of the first half of Trimester 2. Documentation describing the operation and setup of the program and its basic functionality will be provided. 
 | Further Releases       |   Friday 8th October <br> This is the final teaching day of Trimester 2. The project should be mostly finished at this point based on time estimates and constraints.|
 | Final Project          |   Saturday 6th November <br> This is the final day of the Trimester 2 End of Year assessment period. This is the last week scheduled for the lab.|
 
@@ -376,7 +379,7 @@ An one page statement of contributions, including a list of each member of the g
 |    Dylan      | 1.1, 5.4, 6, 4.1 proofreading (4.2, 4.3, 4.4)           |
 |    Isabella   | 1, 1.1, 1.2, 1.3, 4.2, 4.5, 5.3, 5.4 |
 |    Damien     | 1, 1.1, 1.2, 1.3, 4.1, 5.2.1, 5.2.2, proofreading(Whole document)  |
-|    James      |  5, 3.2, 4.3, proofreading(Whole document)                         |
+|    James      |  5.1, 3.2, 4.3, proofreading(Whole document)                         |
 |    Jaya       |  4.4, 5.3, 6.1  proofreading and grammar(Whole document)           |
 |    Nathan     |  2, 4.2, 5.1   proofreading (Section 5)                      |
 |    Timothy    |  3.1, proofreading (Whole document)        |
