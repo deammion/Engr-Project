@@ -179,6 +179,16 @@ As stated above the proxy's three phases all operate independently from each oth
 
 ![State Diagram](State_Diagram.jpg)
 
+Some examples of how this diagram shows the process of our program are described below:
+
+Scenario 1:
+* A user requests a website which is in the collection phase. The proxy forwards the response from the website to the user and goes through the following stages of the above diagram:
+1 -> 2 (the website is in the collection phase) -> 3 -> 11 -> 12 -> 13
+
+Scenario 1:
+* A user requests a website which is in the operational phase. The proxy forwards the response from the website to the user amd this response contains a script tag which has never been seen before. The program goes through the following stages of the above diagram:
+1 -> 2 (the website is in the operational phase) -> 4 -> 5 -> 7 -> 8 -> 9-> 10 -> 13
+
 ### 4.2 Development
 
 ![Development Diagram](developmentView.PNG)
