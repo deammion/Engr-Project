@@ -6,16 +6,16 @@ stages:
 
 build:
   stage: Build
-#   tags:
-#     - shell
+  tags:
+     - shell
   script:
     - echo "build"
   allow_failure: false
 
 unit_testing:
   stage: Test
-#   tags:
-#     - shell
+  tags:
+     - shell
   script:
    - echo "test"
-  allow_failure: true
+  allow_failure: false
