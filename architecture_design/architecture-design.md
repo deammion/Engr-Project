@@ -139,7 +139,7 @@ Concerns relevant to stakeholders include the portability of the solution to Eli
 
 **Hardware Architecture:** The hardware architecture viewpoint involves any hardware involved with the project. Since this is a software project, there will be no hardware involved. 
 
-### 4. Architectural Views
+## 4. Architectural Views
 
 ### 4.1 Logical
 The proxy will be designed and function independently, without any interaction or input from the website user. The website owner will also have limited interactions with the proxy. If the project is made open-source, the website owners only interactions with the proxy plugin will be switching between phases. If the program is not made open-source, then the client, Redshield, will be handling this implementation. <br>
@@ -159,6 +159,7 @@ Following this logic, using the example of a normal use of the website i.e., no 
  * During both phases, the analysis phase will run. The proxy will capture the HTTP response (1). Then regardless of collection or operational decision (3 or 4), the proxy will analyse the script tags that were found during the collection or operational phases (11). These scripts will then have their percentages updated (occurrence/per page access) (12).<br>
 <br>
 Using the example of an attempted XSS attack, the website user will send the HTTP request with the XSS embedded in it. The proxy will forward it to the host website. The host website will send the HTTP response. From here:<br>
+
  * During the collection phase, the proxy will follow the same path as if it were normal access to the website i.e., 1, 3, 13.<br>
  * During the operational phase, the proxy will: capture the HTTP response (1). Parse the HTML response and check for script tags (4). The proxy will then check all the found script tags and check them against their percentage determined by the analysis phase. Since there is an unknown or malicious script, the proxy will identify this script as having a low percentage (5). The script will remain in the HTML, but a nonce tag will not be applied to it. Thus, it will not be executed by the browser (7). The browser will trigger a warning (when the HTTP is returned to the website user) (8). The browser will also report the script to report-uri.com (9). All other scripts found (assuming they have a high percentage) will have nonce tags applied to them (6). The HTML, with the unedited malicious script and the edited safe scripts, will have CSP added to it (10) and then be sent to the website user (13). <br>
  * Similarly to the previous example, the analysis phase will operate during both these phases. It will still analyse the scripts found in the HTML (11) and update their percentages (12). The malicious script will be analysed and have a percentage assigned to it. However, due to its low percentage, the program will still deem it as unsafe due to a low percentage.<br> 
