@@ -73,7 +73,7 @@ Download FoxyProxy
 5. Enter the URL for a website which you would like to direct traffic through our program
 6. Then you can enable FoxyProxy just for the patterns we have set up
 ```
-Everything should work as normal in your browser - you should be able to go to google.com. The only sites that won't work are the sites you have added as patterns to FoxyProxy, because we haven't started up the mitm proxy.
+Everything should work as normal in your browser. The only sites that won't work are the sites you have added as patterns to FoxyProxy, because you haven't started up the mitm proxy. Once the proxy is started these sites will be accessable.
 
 Setting up the Proxy
 ```
