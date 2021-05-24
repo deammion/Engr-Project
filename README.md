@@ -9,16 +9,10 @@ Lab Times: Tuesday 1pm - 3pm & Thursday 9am - 1pm
 
 readme
 
-test
+Our project is to implement a proxy to prevent XSS attacks on webpages.
 
-```plantuml
-@startuml
-Alice->Alice: This is a signal to self.\nIt also demonstrates\nmultiline \ntext
-@enduml
-```
+Collection Phase 
 
-test
+Analysis Phase
 
-test
-
-test
+Operation Phase
