@@ -1,0 +1,119 @@
+HTTP/1.1 200 OK
+Date: Wed, 14 Jul 2021 22:26:53 GMT
+Server: Kestrel
+Content-Type: text/html; charset=utf-8
+Cache-Control: no-cache, no-store
+Pragma: no-cache
+Connection: close
+Content-Length: 5044
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details - Deal-a-Day</title>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700" rel="stylesheet">
+    
+    
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+<meta name="x-stylesheet-fallback-test" content="" class="sr-only" /><script>!function(a,b,c,d){var e,f=document,g=f.getElementsByTagName("SCRIPT"),h=g[g.length-1].previousElementSibling,i=f.defaultView&&f.defaultView.getComputedStyle?f.defaultView.getComputedStyle(h):h.currentStyle;if(i&&i[a]!==b)for(e=0;e<c.length;e++)f.write('<link href="'+c[e]+'" '+d+"/>")}("position","absolute",["\/lib\/bootstrap\/dist\/css\/bootstrap.min.css"], "rel=\u0022stylesheet\u0022 ");</script>
+        <link rel="stylesheet" href="/css/site.min.css?v=RZUArno2bMotIyQdIwYjKr6FUODJyvAj22K5pfPqKJY" />
+    
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="/images/deal_a_day_logo.svg" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                    <li><a href="/API">API</a></li>
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+    <li><a href="/ShoppingCart/Step1">Cart</a></li>
+</ul>
+                
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/Account/Register">Register</a></li>
+        <li><a href="/Account/Login">Log in</a></li>
+    </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        
+
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">Product</li>
+        </ol>
+        <h1>Trip of a lifetime to Barbados</h1>
+
+        <p>
+            Working with our travel partners, we have secured a once in a lifetime package deal for flights and 6 nights accommodation to beautiful Barbados. This deal will sell quickly, book in some relaxation time today. 
+        </p>
+        <p>
+            <b>Price:</b> $2800.00
+        </p>
+        <form action="/ShoppingCart/AddProduct" method="post">
+            <input data-val="true" data-val-required="The ProductId field is required." id="ProductId" name="ProductId" type="hidden" value="1" />
+            <input type="submit" class="btn btn-primary" value="Add to cart">
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IFXsBQJ1VxIol6qSArWEPPs4Dz-WQmiOAH18n4PlW5gmetkcNZ9X75skR1D5tns23wb_31DL6JGgnf0yBTXkh7m_yzlhBDz86y1GI1y5QRmnowRe0HHO2R7D6KM6QDFi9wHGJYP-dv-oe43C_--CKI" /></form>
+
+        
+
+
+
+<h4>Add a comment:</h4>
+
+    <p>
+        Please log in to add a comment.
+    </p>
+
+
+    </div>
+</div>
+
+
+        
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">&copy; 2021 - RedShield Security Ltd</p>
+        </div>
+    </footer>
+
+    
+    
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js" crossorigin="anonymous" integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+<script>(window.jQuery||document.write("\u003Cscript src=\u0022\/lib\/jquery\/dist\/jquery.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-K\u002BctZQ\u002BLL8q6tP7I94W\u002BqzQsfRV2a\u002BAfHIi9k8z8l9ggpc8X\u002BYtst4yBo\/hH\u002B8Fk\u0022\u003E\u003C\/script\u003E"));</script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js" crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+<script>(window.jQuery && window.jQuery.fn && window.jQuery.fn.modal||document.write("\u003Cscript src=\u0022\/lib\/bootstrap\/dist\/js\/bootstrap.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\u0022\u003E\u003C\/script\u003E"));</script>
+        <script src="/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"></script>
+    
+
+    
+</body>
+</html>
