@@ -1,5 +1,4 @@
 
-
 def print_hi(name):
     """
     Print passed argument
