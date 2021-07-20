@@ -1,10 +1,10 @@
 from mitmproxy import http
-import uuid; uuid.uuid4()
+import uuid
 
 
 class Collection:
     """
-    Collection object contains the collected data
+    Collection object contains individual sample data
     """
 
     def __init__(self, flow):
@@ -19,7 +19,7 @@ class Collection:
 
 def request(flow: http.HTTPFlow) -> None:
     """
-
+    Run automatically by mitmproxy on requests
     :param flow:
     :return:
     """
@@ -28,4 +28,8 @@ def request(flow: http.HTTPFlow) -> None:
 
 
 def collate():
+    """
+    Collate collected samples/get dir path
+    :return: Path to sample container
+    """
     return 1

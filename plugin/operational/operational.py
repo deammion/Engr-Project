@@ -1,5 +1,6 @@
 from mitmproxy import http
 
+
 class Monitor:
     """
     Monitor object contains whitelisted & blacklisted scripts as well as a flow to watch
@@ -13,9 +14,8 @@ class Monitor:
 
 def response(flow: http.HTTPFlow):
     """
-
+    Run automatically by mitmproxy on requests
     :param flow:
     :return:
     """
     print("response")
-

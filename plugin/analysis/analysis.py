@@ -3,7 +3,6 @@ import re
 
 
 class Analysis:
-
     """
     Corresponds to collection object
     """
@@ -16,6 +15,10 @@ class Analysis:
         self.get_tags()
 
     def get_tags(self):
+        """
+        Identify & strip tags from collection object
+        :return:
+        """
         response = open(self.html)
         text = response.read()
         text = text.replace('\n', '')
