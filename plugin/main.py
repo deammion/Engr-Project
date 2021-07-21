@@ -1,5 +1,4 @@
 from analysis.analysis import Analysis
-from collection.collection import Collection, collate
 from operational.operational import Monitor
 from utilities.util import print_header
 
@@ -26,23 +25,9 @@ class Instance:
         """
         try:
             print_header("STARTING COLLECTION")
-            self._samples = collate()
             self.set_phase(self._phase + 1)
         except FileNotFoundError as e:
             print("Error collating samples ", e)
-
-    def analyse(self):
-        """
-        Create whitelist & blacklist
-        Take directory path containing sample html, parse script tags, identify & hash safe scripts
-        :return: Path of file containing script whitelist
-        """
-        try:
-            print_header("STARTING ANALYSIS")
-            self._whitelist, self._blacklist = Analysis("samples/samples/dev.unshielded.red/1-response.txt")
-            self.set_phase(self._phase + 1)
-        except IndexError as e:
-            print("Error analysing samples ", e)
 
     def operate(self):
         """
@@ -68,12 +53,9 @@ def load(self, loader):
 
     try:
         phase = program.get_phase()
-
         if phase == 0:
             program.collect()
         elif phase == 1:
-            program.analyse()
-        elif phase == 3:
             program.operate()
     except IOError as e:
         print("Error reading phase in main ", e)

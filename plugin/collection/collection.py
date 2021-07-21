@@ -1,15 +1,25 @@
 from mitmproxy import http
 import uuid
 
+from analysis.analysis import Analysis
+from utilities.util import print_header
 
-class Collection:
+
+class Sample:
     """
-    Collection object contains individual sample data
+    Sample object contains individual sample data
     """
 
     def __init__(self, flow):
-        self._samples = None
+        self._sample = None
         self._flow = flow
+        self._path = None
+
+    def get_path(self):
+        return self._path
+
+    def set_path(self, x):
+        self._path = x
 
     def toDisk(self):
         file = open(str(uuid.uuid4()), "a")
@@ -24,12 +34,12 @@ def request(flow: http.HTTPFlow) -> None:
     :return:
     """
     print("request")
-    Collection(flow)
+    s = Sample(flow)
+    s.toDisk()
+    s.set_path("plugin/data/samples/dev.unshielded.red/1-request.txt")
 
-
-def collate():
-    """
-    Collate collected samples/get dir path
-    :return: Path to sample container
-    """
-    return 1
+    try:
+        print_header("STARTING ANALYSIS")
+        Analysis(s.get_path())
+    except IndexError as e:
+        print("Error analysing samples ", e)
