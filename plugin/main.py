@@ -1,6 +1,6 @@
 from analysis.analysis import Analysis
 from operational.operational import Monitor
-from utilities.util import print_header
+from utilities.util import print_header, print_sub
 
 
 class Instance:
@@ -25,10 +25,10 @@ class Instance:
         """
         try:
             print_header("STARTING COLLECTION")
-            input("PRESS ENTER TO CONTINUE  TO  NEXT PHASE")
+            input(" PRESS ENTER TO CONTINUE TO NEXT PHASE ")
 
             self.set_phase(self._phase + 1)
-            print(self._phase)
+            print_sub("Phase: " + str(self._phase))
             run(self)
         except FileNotFoundError as e:
             print("Error collating samples ", e)
@@ -42,6 +42,10 @@ class Instance:
         """
         Monitor(self._whitelist, self._blacklist)
         print_header("STARTING OPERATION")
+        input(" PRESS ENTER TO CONTINUE TO NEXT PHASE ")
+
+        self.set_phase(self._phase + 1)
+        print_sub("Phase: " + str(self._phase))
         pass
 
 
