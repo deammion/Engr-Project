@@ -43,7 +43,14 @@ def request(flow: http.HTTPFlow) -> None:
         Analysis(s.get_path())
     except IndexError as e:
         print("Error analysing samples ", e)
+
+
 def response(flow: http.HTTPFlow):
+    """
+    Run automatically by mitmproxy on responses
+    :param flow:
+    :return:
+    """
     print("response")
     file = open("html.txt", "a")
     file.write(flow.response.text + "\n")
