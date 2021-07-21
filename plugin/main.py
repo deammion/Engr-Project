@@ -24,10 +24,12 @@ class Instance:
         :return: Path of directory for analysis
         """
         try:
+            print_sub("Phase: " + str(self._phase))
             print_header("STARTING COLLECTION")
             input(" PRESS ENTER TO CONTINUE TO NEXT PHASE ")
 
             self.set_phase(self._phase + 1)
+            print("\n\n")
             print_sub("Phase: " + str(self._phase))
             run(self)
         except FileNotFoundError as e:
@@ -45,7 +47,7 @@ class Instance:
         input(" PRESS ENTER TO CONTINUE TO NEXT PHASE ")
 
         self.set_phase(self._phase + 1)
-        print_sub("Phase: " + str(self._phase))
+        print("\n\n")
         pass
 
 
@@ -56,7 +58,6 @@ def load(self, loader):
     :param loader:
     :return:
     """
-    print_header("TESTING")
     program = Instance()
 
     run(program)
