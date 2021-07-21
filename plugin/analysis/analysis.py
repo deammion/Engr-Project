@@ -3,6 +3,9 @@ import re
 
 
 class Analysis:
+    """
+    Corresponds to collection object
+    """
 
     def __init__(self, html):
         # self.path = path
@@ -12,6 +15,10 @@ class Analysis:
         self.get_tags()
 
     def get_tags(self):
+        """
+        Identify & strip tags from collection object
+        :return:
+        """
         response = open(self.html)
         text = response.read()
         text = text.replace('\n', '')
@@ -21,10 +28,3 @@ class Analysis:
             self.scripts = scripts
             for x in self.scripts:
                 print(x)
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    test = Analysis("samples/samples/dev.unshielded.red/1-response.txt")
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
