@@ -25,7 +25,11 @@ class Instance:
         """
         try:
             print_header("STARTING COLLECTION")
+            input("PRESS ENTER TO CONTINUE  TO  NEXT PHASE")
+
             self.set_phase(self._phase + 1)
+            print(self._phase)
+            run(self)
         except FileNotFoundError as e:
             print("Error collating samples ", e)
 
@@ -51,6 +55,10 @@ def load(self, loader):
     print_header("TESTING")
     program = Instance()
 
+    run(program)
+
+
+def run(program):
     try:
         phase = program.get_phase()
         if phase == 0:
