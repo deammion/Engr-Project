@@ -43,3 +43,9 @@ def request(flow: http.HTTPFlow) -> None:
         Analysis(s.get_path())
     except IndexError as e:
         print("Error analysing samples ", e)
+def response(flow: http.HTTPFlow):
+    print("response")
+    file = open("html.txt", "a")
+    file.write(flow.response.text + "\n")
+    file.close()
+    print(flow.request.pretty_url)
