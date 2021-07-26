@@ -1,6 +1,6 @@
 from mitmproxy import http
 import uuid
-
+import os
 from analysis.analysis import Analysis
 from utilities.util import print_header
 
@@ -56,7 +56,11 @@ def response(flow: http.HTTPFlow):
     if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg"):
         data = url.split("/")
         data = data[2:]
-        print(data)
+        root_path = os.getcwd()
+        for folder in data:
+            root_path = os.path.join(root_path, folder)
+            if not os.path.exists(root_path):
+                os.mkdir(root_path)
 
     file = open("html.txt", "a")
     file.write(flow.response.text + "\n")
