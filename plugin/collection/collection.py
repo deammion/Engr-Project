@@ -52,6 +52,12 @@ def response(flow: http.HTTPFlow):
     :return:
     """
     print("response")
+    url = flow.request.pretty_url
+    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg"):
+        data = url.split("/")
+        data = data[2:]
+        print(data)
+
     file = open("html.txt", "a")
     file.write(flow.response.text + "\n")
     file.close()
