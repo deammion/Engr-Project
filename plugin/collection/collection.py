@@ -1,8 +1,31 @@
 from mitmproxy import http
+import time
+
 import uuid
 import os
-from analysis.analysis import Analysis
-from utilities.util import print_header
+
+def response(flow: http.HTTPFlow):
+    """
+    Run automatically by mitmproxy on responses
+    :param flow:
+    :return:
+    """
+    print("response")
+    current_time = time.time()
+    url = flow.request.pretty_url
+    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png"):
+        data = url.split("/")
+        data = data[2:]
+        root_path = os.getcwd()
+        for folder in data:
+            root_path = os.path.join(root_path, folder)
+            if not os.path.exists(root_path):
+                os.mkdir(root_path)
+
+        file_path = os.path.join(root_path, str(current_time))
+        file = open(file_path, "w")
+        file.write(flow.response.text + "\n")
+        file.close()
 
 
 class Sample:
@@ -25,44 +48,3 @@ class Sample:
         file = open(str(uuid.uuid4()), "a")
         file.write(self._flow.request.pretty_url + "\n")
         file.close()
-
-
-def request(flow: http.HTTPFlow) -> None:
-    """
-    Run automatically by mitmproxy on requests
-    :param flow:
-    :return:
-    """
-    print("request")
-    s = Sample(flow)
-    s.toDisk()
-    s.set_path("plugin/data/samples/dev.unshielded.red/1-request.txt")
-
-    try:
-        print_header("STARTING ANALYSIS")
-        Analysis(s.get_path())
-    except IndexError as e:
-        print("Error analysing samples ", e)
-
-
-def response(flow: http.HTTPFlow):
-    """
-    Run automatically by mitmproxy on responses
-    :param flow:
-    :return:
-    """
-    print("response")
-    url = flow.request.pretty_url
-    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg"):
-        data = url.split("/")
-        data = data[2:]
-        root_path = os.getcwd()
-        for folder in data:
-            root_path = os.path.join(root_path, folder)
-            if not os.path.exists(root_path):
-                os.mkdir(root_path)
-
-    file = open("html.txt", "a")
-    file.write(flow.response.text + "\n")
-    file.close()
-    print(flow.request.pretty_url)
