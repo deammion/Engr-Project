@@ -3,6 +3,9 @@ import time
 
 import os
 
+from analysis.analysis import Analysis
+
+
 def response(flow: http.HTTPFlow):
     """
     Run automatically by mitmproxy on responses
@@ -26,7 +29,8 @@ class Sample:
         self._url = flow.request.pretty_url
         self._path = None
         self._file_name = str(time.time())
-        self.toDisk()
+        self.to_disk()
+        self.call_analysis()
 
     def get_path(self):
         return self._path
@@ -34,7 +38,10 @@ class Sample:
     def set_path(self, x):
         self._path = x
 
-    def toDisk(self):
+    def call_analysis(self):
+        Analysis(self.get_path())
+
+    def to_disk(self):
         data = self._url.split("/")
         data = data[2:]
         root_path = os.getcwd()
