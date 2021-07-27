@@ -25,7 +25,7 @@ class Analysis:
                 """
         os.chdir(self.html)
         for file in os.listdir():
-            if file.endswith("response.txt"):
+            if not file.endswith("data.txt"):
                 read = f"{os.getcwd()}/{file}"
                 self.get_tags(read)
         for x in self.scripts:
@@ -57,19 +57,22 @@ class Analysis:
             i += 1
 
     def write_to_file(self):
-        save_path = 'data/outputs/actual'
-        file_name = str(uuid.uuid4()) + ".txt"
-        dir_root = os.path.dirname(__file__) + '/../'
-        file_path = os.path.join(save_path, file_name)
-        with open(os.path.join(dir_root, file_path), "w") as output:
-            output.writelines(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
-                              + str(round((self.scriptToCount[key]/len(self.scripts))*100, 2))
-                              + "%" + "\n" for key in self.scriptToCount)
 
-        # f = open("whiteList.txt", "w+")
-        # for key in self.scriptToCount:
-        #     f.write(key + ": " + str(self.scriptToCount[key]) + "\n")
-        # f.close()
+        # save_path = 'data/outputs/actual'
+        # file_name = str(uuid.uuid4()) + ".txt"
+        # dir_root = os.path.dirname(__file__) + '/../'
+        # file_path = os.path.join(save_path, file_name)
+        # with open(os.path.join(dir_root, file_path), "w") as output:
+        #     output.writelines(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
+        #                       + str(round((self.scriptToCount[key]/len(self.scripts))*100, 2))
+        #                       + "%" + "\n" for key in self.scriptToCount)
+
+        f = open("data.txt", "w+")
+        for key in self.scriptToCount:
+            f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
+                              + str(round((self.scriptToCount[key]/len(self.scripts))*100, 2))
+                              + "%" + "\n")
+        f.close()
 
 
 # Press the green button in the gutter to run the script.
