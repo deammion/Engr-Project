@@ -67,7 +67,7 @@ class Analysis:
         f = open("data.txt", "w+")
         for key in self.scriptToCount:
             f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
-                    + str(round((self.scriptToCount[key] / len(os.listdir(self.html))-1) * 100, 2))
+                    + str(round((self.scriptToCount[key] / (len(os.listdir(self.html))-1)) * 100, 2))
                     + "%" + "\n")
         f.close()
 
