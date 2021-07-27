@@ -1,7 +1,0 @@
-HTTP/1.1 302 Found
-Date: Wed, 14 Jul 2021 22:28:23 GMT
-Server: Kestrel
-Content-Length: 0
-Location: /Product/Details/1
-Connection: close
-
