@@ -1,6 +1,5 @@
 import re
 import os
-import uuid
 
 
 class Analysis:
@@ -28,8 +27,6 @@ class Analysis:
             if not file.endswith("data.txt"):
                 read = f"{os.getcwd()}/{file}"
                 self.get_tags(read)
-        for x in self.scripts:
-            print(x)
 
     # find all script tags store to array
     def get_tags(self, file):
@@ -70,8 +67,8 @@ class Analysis:
         f = open("data.txt", "w+")
         for key in self.scriptToCount:
             f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
-                              + str(round((self.scriptToCount[key]/len(self.scripts))*100, 2))
-                              + "%" + "\n")
+                    + str(round((self.scriptToCount[key] / len(os.listdir(self.html))-1) * 100, 2))
+                    + "%" + "\n")
         f.close()
 
 
