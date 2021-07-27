@@ -46,6 +46,7 @@ class Analysis:
         if scripts:
             for x in scripts:
                 self.scripts.append(x)
+        response.close()
 
     # count all script tags in scripts, assign to dictionary(map in java)
     def get_script_count(self):
@@ -53,13 +54,22 @@ class Analysis:
         while i < len(self.scripts):
             count = self.scripts.count(self.scripts[i])
             self.scriptToCount.update({self.scripts[i]: count})
+            i += 1
 
     def write_to_file(self):
-        os.chdir(self.html)
-        f = open("test.txt", "w")
-        for key in self.scriptToCount:
-            f.write(key + ": " + self.scriptToCount[key] + "\n")
-        f.close()
+        save_path = 'data/outputs/actual'
+        file_name = str(uuid.uuid4()) + ".txt"
+        dir_root = os.path.dirname(__file__) + '/../'
+        file_path = os.path.join(save_path, file_name)
+        with open(os.path.join(dir_root, file_path), "w") as output:
+            output.writelines(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
+                              + str(round((self.scriptToCount[key]/len(self.scripts))*100, 2))
+                              + "%" + "\n" for key in self.scriptToCount)
+
+        # f = open("whiteList.txt", "w+")
+        # for key in self.scriptToCount:
+        #     f.write(key + ": " + str(self.scriptToCount[key]) + "\n")
+        # f.close()
 
 
 # Press the green button in the gutter to run the script.
