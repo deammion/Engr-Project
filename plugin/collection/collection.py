@@ -1,7 +1,6 @@
 from mitmproxy import http
 import time
 
-import uuid
 import os
 
 def response(flow: http.HTTPFlow):
@@ -11,21 +10,9 @@ def response(flow: http.HTTPFlow):
     :return:
     """
     print("response")
-    current_time = time.time()
     url = flow.request.pretty_url
     if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png"):
-        data = url.split("/")
-        data = data[2:]
-        root_path = os.getcwd()
-        for folder in data:
-            root_path = os.path.join(root_path, folder)
-            if not os.path.exists(root_path):
-                os.mkdir(root_path)
-
-        file_path = os.path.join(root_path, str(current_time))
-        file = open(file_path, "w")
-        file.write(flow.response.text + "\n")
-        file.close()
+        Sample(flow)
 
 
 class Sample:
@@ -36,7 +23,10 @@ class Sample:
     def __init__(self, flow):
         self._sample = None
         self._flow = flow
+        self._url = flow.request.pretty_url
         self._path = None
+        self._file_name = str(time.time())
+        self.toDisk()
 
     def get_path(self):
         return self._path
@@ -45,6 +35,15 @@ class Sample:
         self._path = x
 
     def toDisk(self):
-        file = open(str(uuid.uuid4()), "a")
-        file.write(self._flow.request.pretty_url + "\n")
+        data = self._url.split("/")
+        data = data[2:]
+        root_path = os.getcwd()
+        for folder in data:
+            root_path = os.path.join(root_path, folder)
+            if not os.path.exists(root_path):
+                os.mkdir(root_path)
+        self.set_path(root_path)
+        file_path = os.path.join(root_path, self._file_name)
+        file = open(file_path, "w")
+        file.write(self._flow.response.text + "\n")
         file.close()
