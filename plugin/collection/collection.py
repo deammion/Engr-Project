@@ -17,7 +17,7 @@ def response(flow: http.HTTPFlow):
     print("response")
     url = flow.request.pretty_url
     if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png")\
-            and not url.endswith("gstatic.com"):
+            and not url.__contains__("www.gstatic.com"):
         Sample(flow)
 
 

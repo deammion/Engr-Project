@@ -1,4 +1,3 @@
-from analysis.analysis import Analysis
 from operational.operational import Monitor
 from utilities.util import print_header, print_sub
 

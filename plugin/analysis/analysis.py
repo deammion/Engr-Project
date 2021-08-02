@@ -54,16 +54,6 @@ class Analysis:
             i += 1
 
     def write_to_file(self):
-
-        # save_path = 'data/outputs/actual'
-        # file_name = str(uuid.uuid4()) + ".txt"
-        # dir_root = os.path.dirname(__file__) + '/../'
-        # file_path = os.path.join(save_path, file_name)
-        # with open(os.path.join(dir_root, file_path), "w") as output:
-        #     output.writelines(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
-        #                       + str(round((self.scriptToCount[key]/len(self.scripts))*100, 2))
-        #                       + "%" + "\n" for key in self.scriptToCount)
-
         f = open("data.txt", "w+")
         for key in self.scriptToCount:
             f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
