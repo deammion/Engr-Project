@@ -1,0 +1,11 @@
+HTTP/1.1 302 Found
+Date: Wed, 14 Jul 2021 22:27:43 GMT
+Server: Kestrel
+Content-Length: 0
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: -1
+Location: /
+Set-Cookie: .AspNetCore.Identity.Application=admin%40redshield.co; path=/; samesite=lax; httponly
+Connection: close
+

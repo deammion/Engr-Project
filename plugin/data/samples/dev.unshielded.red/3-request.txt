@@ -1,0 +1,11 @@
+GET /API HTTP/1.1
+Host: dev.unshielded.red
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://dev.unshielded.red/Home/About
+Connection: close
+Cookie: .AspNetCore.Antiforgery.9TtSrW0hzOs=CfDJ8IFXsBQJ1VxIol6qSArWEPO9S90fYZtZCIz6tdJmnMtuNNtuJSRBszzjeqN2204xbi5YtX9XvDW3iDjz0EV0YvIM797G5MRoIeDkM-tq42SQmHsOba00KCveJNRmrxZGTtZW950E55_76n8Y5AH2zqw
+Upgrade-Insecure-Requests: 1
+
