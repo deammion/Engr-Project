@@ -1,7 +1,9 @@
 from mitmproxy import http
 import time
-
 import os
+import sys
+
+sys.path.append(os.path.abspath(os.getcwd()))
 
 from analysis.analysis import Analysis
 
@@ -14,7 +16,8 @@ def response(flow: http.HTTPFlow):
     """
     print("response")
     url = flow.request.pretty_url
-    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png"):
+    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png")\
+            and not url.endswith("gstatic.com"):
         Sample(flow)
 
 
