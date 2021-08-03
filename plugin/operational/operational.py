@@ -1,4 +1,5 @@
 from mitmproxy import http
+import re
 import time
 import os
 import sys
@@ -19,6 +20,10 @@ class Monitor:
         self._path = None
         self._file_name = str(time.time())
         self.to_disk()
+        self.operation_scripts = []
+        self.data_scripts = []
+        self.safe_scripts = []
+        self.unsafe_scripts = []
         self.calculate_safe_tags()
         self.call_analysis()
 
@@ -49,7 +54,31 @@ class Monitor:
         file.close()
 
     def calculate_safe_tags(self):
-        print("Calculate Safe Script Tags")
+        """
+                    Identify safe tags from response file
+                    :return:
+                    """
+        os.chdir(self._path)
+        for file in os.listdir():
+            if file.endswith("data.txt") or self._file_name:
+
+                file = open(file)
+                text = file.read()
+                text = text.replace('\n', '')
+                text = text.replace('\t', '')
+                scripts = re.findall('(<script.+?</script>)', text.strip())
+                if scripts:
+                    if file == "data.txt":
+                        for x in scripts:
+                            self.data_scripts.append(x)
+                    elif file == self._file_name:
+                        for x in scripts:
+                            self.operation_scripts.append(x)
+        for x in self.operation_scripts:
+            if self.data_scripts.__contains__(x):
+                self.safe_scripts.append(x)
+
+
 
 
 def response(flow: http.HTTPFlow):
