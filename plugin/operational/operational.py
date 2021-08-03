@@ -19,6 +19,7 @@ class Monitor:
         self._path = None
         self._file_name = str(time.time())
         self.to_disk()
+        self.calculate_safe_tags()
         self.call_analysis()
 
     def get_path(self):
@@ -46,6 +47,9 @@ class Monitor:
         file = open(file_path, "w")
         file.write(self._flow.response.text + "\n")
         file.close()
+
+    def calculate_safe_tags(self):
+        print("Calculate Safe Script Tags")
 
 
 def response(flow: http.HTTPFlow):
