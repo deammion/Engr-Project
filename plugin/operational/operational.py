@@ -13,6 +13,7 @@ class Monitor:
     """
     Object contains individual sample data
        """
+
     def __init__(self, flow):
         self._sample = None
         self._flow = flow
@@ -61,24 +62,21 @@ class Monitor:
         os.chdir(self._path)
         for file in os.listdir():
             if file.endswith("data.txt") or self._file_name:
-
                 file = open(file)
                 text = file.read()
                 text = text.replace('\n', '')
                 text = text.replace('\t', '')
                 scripts = re.findall('(<script.+?</script>)', text.strip())
                 if scripts:
-                    if file == "data.txt":
+                    if file.name == "data.txt":
                         for x in scripts:
                             self.data_scripts.append(x)
-                    elif file == self._file_name:
+                    elif file.name == self._file_name:
                         for x in scripts:
                             self.operation_scripts.append(x)
         for x in self.operation_scripts:
-            if self.data_scripts.__contains__(x):
+            if x in self.data_scripts:
                 self.safe_scripts.append(x)
-
-
 
 
 def response(flow: http.HTTPFlow):
@@ -89,6 +87,6 @@ def response(flow: http.HTTPFlow):
     """
     print("response")
     url = flow.request.pretty_url
-    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png")\
+    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png") \
             and not url.__contains__("www.gstatic.com"):
         Monitor(flow)
