@@ -77,6 +77,8 @@ class Monitor:
         for x in self.operation_scripts:
             if x in self.data_scripts:
                 self.safe_scripts.append(x)
+            else:
+                self.unsafe_scripts.append(x)
 
 
 def response(flow: http.HTTPFlow):
