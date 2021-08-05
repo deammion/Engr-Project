@@ -21,7 +21,7 @@ pylint:
   script:
   - cd ..
   - pylint -d C0301 plugin/*/*.py --rcfile  plugin/.pylintrc
-  allow_failure: true
+  allow_failure: false
 
 dockerhub:
   stage: Image
@@ -35,6 +35,7 @@ dockerhub:
     - cd plugin
     - docker build -t txmm/engr300_redshield:testing .
     - docker push txmm/engr300_redshield:testing
+  allow_failure: false
 
 
 pytest:
@@ -44,3 +45,4 @@ pytest:
   - echo diff
   - diff /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/expected/analysis.txt /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/actual/analysis.txt
   - python3 -m pytest -vs
+  allow_failure: false
