@@ -57,6 +57,7 @@ def load(self, loader):
     :param loader:
     :return:
     """
+
     program = Instance()
 
     run(program)

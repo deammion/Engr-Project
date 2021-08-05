@@ -1,5 +1,7 @@
 import re
 import os
+import requests
+import bs4
 
 
 class Analysis:
@@ -36,13 +38,14 @@ class Analysis:
             """
         print("Reading File: " + file)
         response = open(file)
+
         text = response.read()
-        text = text.replace('\n', '')
-        text = text.replace('\t', '')
-        scripts = re.findall('(<script.+?</script>)', text.strip())
+        soup = bs4.BeautifulSoup(text, features='html.parser')
+        scripts = soup.find_all('script')
         if scripts:
-            for x in scripts:
-                self.scripts.append(x)
+            for script in scripts:
+                self.scripts.append(str(script))
+
         response.close()
 
     # count all script tags in scripts, assign to dictionary(map in java)
@@ -57,7 +60,7 @@ class Analysis:
         f = open("data.txt", "w+")
         for key in self.scriptToCount:
             f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
-                    + str(round((self.scriptToCount[key] / (len(os.listdir(self.html))-1)) * 100, 2))
+                    + str(round((self.scriptToCount[key] / (len(os.listdir(self.html)) - 1)) * 100, 2))
                     + "%" + "\n")
         f.close()
 
