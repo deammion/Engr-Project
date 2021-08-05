@@ -1,10 +1,10 @@
-import os
-import bs4
-
 """
     Corresponds to collection object.
     Runs the analysis phase and saves data to file
     """
+
+import os
+import bs4
 
 
 class Analysis:
@@ -19,7 +19,7 @@ class Analysis:
             """
         self.html = html
         self.scripts = []
-        self.script_To_Count = {}
+        self.script_to_count = {}
         self.read_directory()
         self.get_script_count()
         self.write_to_file()
@@ -64,7 +64,7 @@ class Analysis:
         i = 0
         while i < len(self.scripts):
             count = self.scripts.count(self.scripts[i])
-            self.script_To_Count.update({self.scripts[i]: count})
+            self.script_to_count.update({self.scripts[i]: count})
             i += 1
 
     def write_to_file(self):
@@ -73,9 +73,9 @@ class Analysis:
         :return:
         """
         file = open("data.txt", "w+")
-        for key in self.script_To_Count:
-            file.write(key + " Frequency: " + str(self.script_To_Count[key]) + " Probability: "
-                       + str(round((self.script_To_Count[key] / (len(os.listdir(self.html)) - 1)) * 100, 2))
+        for key in self.script_to_count:
+            file.write(key + " Frequency: " + str(self.script_to_count[key]) + " Probability: "
+                       + str(round((self.script_to_count[key] / (len(os.listdir(self.html)) - 1)) * 100, 2))
                        + "%" + "\n")
         file.close()
 
