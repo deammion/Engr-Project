@@ -1,2 +1,12 @@
+"""
+Test Collection Phase
+"""
+
+
 def test_match():
-    assert 1 == 1
+    """
+    Placeholder method
+    :return: -
+    """
+
+    assert True
