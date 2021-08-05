@@ -1,6 +1,9 @@
 from operational.operational import Monitor
 from utilities.util import print_header, print_sub
 
+"""
+New instance of the Red Shield Program
+"""
 
 class Instance:
     """
@@ -27,14 +30,14 @@ class Instance:
         """
         return self._phase
 
-    def set_phase(self, x):
+    def set_phase(self, new_phase):
         """
         Sets the phase for the current instance
         :param self:
         :param x:
         :return:
         """
-        self._phase = x
+        self._phase = new_phase
 
     def collect(self):
         """
@@ -52,8 +55,8 @@ class Instance:
             print("\n\n")
             print_sub("Phase: " + str(self._phase))
             run(self)
-        except FileNotFoundError as e:
-            print("Error collating samples ", e)
+        except FileNotFoundError as error:
+            print("Error collating samples ", error)
 
     def operate(self):
         """
@@ -63,20 +66,16 @@ class Instance:
         :param self:
         :return:
         """
-        Monitor(self._whitelist, self._blacklist)
         print_header("STARTING OPERATION")
         input(" PRESS ENTER TO CONTINUE TO NEXT PHASE ")
 
         self.set_phase(self._phase + 1)
         print("\n\n")
-        pass
 
 
-def load(self, loader):
+def load():
     """
     On script load, run in phase.
-    :param self:
-    :param loader:
     :return:
     """
     program = Instance()
@@ -96,8 +95,8 @@ def run(program):
             program.collect()
         elif phase == 1:
             program.operate()
-    except IOError as e:
-        print("Error reading phase in main ", e)
+    except IOError as error:
+        print("Error reading phase in main ", error)
 
 
 # Press the green button in the gutter to run the script.

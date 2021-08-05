@@ -7,6 +7,9 @@ sys.path.append(os.path.abspath(os.getcwd()))
 
 from analysis.analysis import Analysis
 
+"""
+Class which collects information about requests and responses
+"""
 
 def response(flow: http.HTTPFlow):
     """
@@ -20,13 +23,15 @@ def response(flow: http.HTTPFlow):
             and not url.__contains__("www.gstatic.com"):
         Sample(flow)
 
-
 class Sample:
     """
     Sample object contains individual sample data
     """
 
     def __init__(self, flow):
+        """
+        Initialise the collection object
+        """
         self._sample = None
         self._flow = flow
         self._url = flow.request.pretty_url
@@ -36,15 +41,36 @@ class Sample:
         self.call_analysis()
 
     def get_path(self):
+        """
+        Get the path of the file
+        :param self:
+        :return: the path of the file
+        """
         return self._path
 
-    def set_path(self, x):
-        self._path = x
+    def set_path(self, file_path):
+        """
+        Set the path of the file
+        :param self:
+        "param file_path:
+        :return:
+        """
+        self._path = file_path
 
     def call_analysis(self):
+        """
+        Calls the analysis class
+        :param self:
+        :return:
+        """
         Analysis(self.get_path())
 
     def to_disk(self):
+        """
+        Saves information to a file on the disk
+        :param self:
+        :return:
+        """
         data = self._url.split("/")
         data = data[2:]
         root_path = os.getcwd()
