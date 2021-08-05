@@ -82,5 +82,3 @@ class Analysis:
                            round((self.script_to_count[key] / (len(os.listdir(
                                self.html)) - 1)) * 100, 2)) + "%" + "\n")
         file.close()
-        
-
