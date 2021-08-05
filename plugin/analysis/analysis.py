@@ -81,9 +81,8 @@ class Analysis:
 
 
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    """
-            Run analysis on all files in the sample data directory
-            :return:
-            """
-    Analysis('../data/samples/dev.unshielded.red')
+# if __name__ == '__main__':
+#     """
+#             Run analysis on all files in the sample data directory
+#             :return:"""
+#     Analysis('../data/samples/dev.unshielded.red')
