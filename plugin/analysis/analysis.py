@@ -2,7 +2,8 @@
     Corresponds to collection object.
     Runs the analysis phase and saves data to file
     """
-
+from __future__ import absolute_import
+from builtins import round
 import os
 import bs4
 
@@ -74,11 +75,11 @@ class Analysis:
         """
         file = open("data.txt", "w+")
         for key in self.script_to_count:
-            file.write(key + " Frequency: " + str(self.script_to_count[key]) + " Probability: "
-                       + str(round((self.script_to_count[key] / (len(os.listdir(self.html)) - 1)) * 100, 2))
-                       + "%" + "\n")
+            file.write(key + " Frequency: " + str(self.script_to_count[key]) +
+                       " Probability: " + str(
+                           round((self.script_to_count[key](len(os.listdir(
+                               self.html)) - 1)) * 100, 2)) + "%" + "\n")
         file.close()
-
 
 # Press the green button in the gutter to run the script.
 # if __name__ == '__main__':

@@ -1,17 +1,21 @@
-from operational.operational import Monitor
-from utilities.util import print_header, print_sub
-
 """
 New instance of the Red Shield Program
 """
+from __future__ import absolute_import
+
+import sys
+
+from utilities.util import print_header
+
 
 class Instance:
     """
     Creates a new instance of the program
     """
-    def __init__(self, phase=0):
+
+    def __init__(self, phase=False):
         """
-        Initialiases the current instance
+        Initialises the current instance
         :param self:
         :param phase:
         :return:
@@ -21,6 +25,19 @@ class Instance:
         self._whitelist = None
         self._blacklist = None
         self._watching = None
+
+    def progression(self, stage):
+        """
+        Progress Phase on User Input
+        -- Here for Demonstration
+        :param stage: stage to print in heading
+        :return: -
+        """
+        print_header("Starting " + stage)
+        print(" Press enter to continue to the next phase ")
+        sys.stdin.readline()
+        self.set_phase(self._phase + 1)
+        print("\n\n")
 
     def get_phase(self):
         """
@@ -34,7 +51,7 @@ class Instance:
         """
         Sets the phase for the current instance
         :param self:
-        :param x:
+        :param new_phase:
         :return:
         """
         self._phase = new_phase
@@ -47,13 +64,7 @@ class Instance:
         :return: Path of directory for analysis
         """
         try:
-            print_sub("Phase: " + str(self._phase))
-            print_header("STARTING COLLECTION")
-            input(" PRESS ENTER TO CONTINUE TO NEXT PHASE ")
-
-            self.set_phase(self._phase + 1)
-            print("\n\n")
-            print_sub("Phase: " + str(self._phase))
+            self.progression("Collection")
             run(self)
         except FileNotFoundError as error:
             print("Error collating samples ", error)
@@ -61,16 +72,12 @@ class Instance:
     def operate(self):
         """
         Create watcher
-        Monitor traffic, identify scripts in responses, check against whitelist, block unsafe scripts & create
-        report uri & browser popup, add nonce to safe scripts
+        Monitor traffic, identify scripts in responses, check against whitelist, block unsafe
+        scripts & create report uri & browser popup, add nonce to safe scripts
         :param self:
         :return:
         """
-        print_header("STARTING OPERATION")
-        input(" PRESS ENTER TO CONTINUE TO NEXT PHASE ")
-
-        self.set_phase(self._phase + 1)
-        print("\n\n")
+        self.progression("Operation")
 
 
 def load():
@@ -101,4 +108,4 @@ def run(program):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    load(1, 2)
+    load()

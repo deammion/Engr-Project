@@ -1,64 +1,78 @@
-from mitmproxy import http
+"""
+Perform blocking and reporting on scripts, add nonces to , and allow, safe scripts
+"""
+
+from __future__ import absolute_import
 import re
 import time
 import os
 import sys
+from mitmproxy import http
 
-sys.path.append(os.path.abspath(os.getcwd()))
-
+from utilities import util
+from utilities.util import root_dir
 from analysis.analysis import Analysis
+
+sys.path.append(root_dir())
+
+
+def response(flow: http.HTTPFlow):
+    """
+    Run automatically by mitmproxy on responses during operational phase
+    :param flow:  active http flow
+    :return: -
+    """
+    print("response")
+
+    if util.correct_filetype(flow):
+        Monitor(flow)
 
 
 class Monitor:
     """
-    Object contains individual sample data
-       """
+    Object watches a stream
+    """
 
     def __init__(self, flow):
         self._sample = None
         self._flow = flow
-        self._url = flow.request.pretty_url
         self._path = None
         self._file_name = str(time.time())
-        self.to_disk()
-        self.operation_scripts = []
-        self.data_scripts = []
-        self.safe_scripts = []
-        self.unsafe_scripts = []
+        self.set_path(util.to_disk(self._flow, self._file_name))
+        # @TODO This should be a multi dimensional array, occupies too many attributes
+        self._scripts = [[]]  # Whitelist [0] blacklist [1]
+        self._operation_scripts = []
+        self._data_scripts = []
         self.calculate_safe_tags()
-        self.call_analysis()
-
-    def get_path(self):
-        return self._path
-
-    def set_path(self, x):
-        self._path = x
-
-    def get_filename(self):
-        return self._file_name
-
-    def call_analysis(self):
         Analysis(self.get_path())
 
-    def to_disk(self):
-        data = self._url.split("/")
-        data = data[2:]
-        root_path = os.getcwd()
-        for folder in data:
-            root_path = os.path.join(root_path, folder)
-            if not os.path.exists(root_path):
-                os.mkdir(root_path)
-        self.set_path(root_path)
-        file_path = os.path.join(root_path, self._file_name)
-        file = open(file_path, "w")
-        file.write(self._flow.response.text + "\n")
-        file.close()
+    def get_path(self):
+        """
+        Get the path of the object
+        :return: object path
+        """
+        return self._path
+
+    def set_path(self, path):
+        """
+        Set the path of the object
+        :param path: new path
+        :return: -
+        """
+        self._path = path
+
+    def get_filename(self):
+        """
+        Get the name of the file from the object
+        :return: file name
+        """
+        return self._file_name
 
     def calculate_safe_tags(self):
         """
-                    Identify safe tags from response file
-                    :return:
-                    """
+        Identify safe tags from response file
+        :return:
+        """
         os.chdir(self._path)
         for file in os.listdir():
             if file.endswith("data.txt") or self._file_name:
@@ -69,26 +83,15 @@ class Monitor:
                 scripts = re.findall('(<script.+?</script>)', text.strip())
                 if scripts:
                     if file.name == "data.txt":
-                        for x in scripts:
-                            self.data_scripts.append(x)
+                        for script in scripts:
+                            self._data_scripts.append(script)
                     elif file.name == self._file_name:
-                        for x in scripts:
-                            self.operation_scripts.append(x)
-        for x in self.operation_scripts:
-            if x in self.data_scripts:
-                self.safe_scripts.append(x)
+                        for script in scripts:
+                            self._operation_scripts.append(script)
+        for script in self._operation_scripts:
+            if script in self._data_scripts:
+                # Safe Scripts
+                self._scripts[0].append(script)
             else:
-                self.unsafe_scripts.append(x)
-
-
-def response(flow: http.HTTPFlow):
-    """
-    Run automatically by mitmproxy on responses
-    :param flow:
-    :return:
-    """
-    print("response")
-    url = flow.request.pretty_url
-    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png") \
-            and not url.__contains__("www.gstatic.com"):
-        Monitor(flow)
+                # Unsafe scripts
+                self._scripts[1].append(script)
