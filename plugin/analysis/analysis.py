@@ -89,3 +89,4 @@ class Analysis:
 #             Run analysis on all files in the sample data directory
 #             :return:"""
 #     Analysis('../data/samples/dev.unshielded.red')
+
