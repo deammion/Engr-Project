@@ -3,7 +3,16 @@ from utilities.util import print_header, print_sub
 
 
 class Instance:
+    """
+    Creates a new instance of the program
+    """
     def __init__(self, phase=0):
+        """
+        Initialiases the current instance
+        :param self:
+        :param phase:
+        :return:
+        """
         self._phase = phase
         self._samples = None
         self._whitelist = None
@@ -11,15 +20,27 @@ class Instance:
         self._watching = None
 
     def get_phase(self):
+        """
+        Returns the phase the current instance is in
+        :param self:
+        :return: the current phase
+        """
         return self._phase
 
     def set_phase(self, x):
+        """
+        Sets the phase for the current instance
+        :param self:
+        :param x:
+        :return:
+        """
         self._phase = x
 
     def collect(self):
         """
         Collect Samples
         Log html from visited sites and write to a file
+        :param self:
         :return: Path of directory for analysis
         """
         try:
@@ -39,6 +60,7 @@ class Instance:
         Create watcher
         Monitor traffic, identify scripts in responses, check against whitelist, block unsafe scripts & create
         report uri & browser popup, add nonce to safe scripts
+        :param self:
         :return:
         """
         Monitor(self._whitelist, self._blacklist)
@@ -57,13 +79,17 @@ def load(self, loader):
     :param loader:
     :return:
     """
-
     program = Instance()
 
     run(program)
 
 
 def run(program):
+    """
+    Returns the phase the current instance is in
+    :param program:
+    :return:
+    """
     try:
         phase = program.get_phase()
         if phase == 0:
