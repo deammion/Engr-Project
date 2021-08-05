@@ -1,19 +1,25 @@
-import re
 import os
-import requests
 import bs4
 
-
-class Analysis:
-    """
+"""
     Corresponds to collection object.
     Runs the analysis phase and saves data to file
     """
 
+
+class Analysis:
+    """
+        Corresponds to collection object.
+        Runs the analysis phase and saves data to file
+        """
+
     def __init__(self, html):
+        """
+            Runs analysis object
+            """
         self.html = html
         self.scripts = []
-        self.scriptToCount = {}
+        self.script_To_Count = {}
         self.read_directory()
         self.get_script_count()
         self.write_to_file()
@@ -58,7 +64,7 @@ class Analysis:
         i = 0
         while i < len(self.scripts):
             count = self.scripts.count(self.scripts[i])
-            self.scriptToCount.update({self.scripts[i]: count})
+            self.script_To_Count.update({self.scripts[i]: count})
             i += 1
 
     def write_to_file(self):
@@ -66,12 +72,12 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
-        f = open("data.txt", "w+")
-        for key in self.scriptToCount:
-            f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
-                    + str(round((self.scriptToCount[key] / (len(os.listdir(self.html)) - 1)) * 100, 2))
-                    + "%" + "\n")
-        f.close()
+        file = open("data.txt", "w+")
+        for key in self.script_To_Count:
+            file.write(key + " Frequency: " + str(self.script_To_Count[key]) + " Probability: "
+                       + str(round((self.script_To_Count[key] / (len(os.listdir(self.html)) - 1)) * 100, 2))
+                       + "%" + "\n")
+        file.close()
 
 
 # Press the green button in the gutter to run the script.
