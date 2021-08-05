@@ -20,7 +20,7 @@ pylint:
   stage: Static Analysis
   script:
   - cd ..
-  - pylint -d C0301 plugin/*.py
+  - pylint -d C0301 plugin/*/*.py
   allow_failure: true
 
 dockerhub:
