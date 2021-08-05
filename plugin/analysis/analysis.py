@@ -6,7 +6,8 @@ import bs4
 
 class Analysis:
     """
-    Corresponds to collection object
+    Corresponds to collection object.
+    Runs the analysis phase and saves data to file
     """
 
     def __init__(self, html):
@@ -21,9 +22,9 @@ class Analysis:
     # change to search for existing doc, if yes - convert to dictionary(MAP)
     def read_directory(self):
         """
-                Read all response text files in the given directory
-                :return:
-                """
+        Read all response text files in the given directory
+        :return:
+        """
         os.chdir(self.html)
         for file in os.listdir():
             if not file.endswith("data.txt"):
@@ -33,9 +34,9 @@ class Analysis:
     # find all script tags store to array
     def get_tags(self, file):
         """
-            Identify & strip tags from response files
-            :return:
-            """
+        Identify & strip tags from response files
+        :return:
+        """
         print("Reading File: " + file)
         response = open(file)
 
@@ -50,6 +51,10 @@ class Analysis:
 
     # count all script tags in scripts, assign to dictionary(map in java)
     def get_script_count(self):
+        """
+        Calculate the frequency of a script
+        :return:
+        """
         i = 0
         while i < len(self.scripts):
             count = self.scripts.count(self.scripts[i])
@@ -57,6 +62,10 @@ class Analysis:
             i += 1
 
     def write_to_file(self):
+        """
+        Write Script data (frequency and probability)to file
+        :return:
+        """
         f = open("data.txt", "w+")
         for key in self.scriptToCount:
             f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
