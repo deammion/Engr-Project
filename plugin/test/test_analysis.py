@@ -23,3 +23,6 @@ def test_match():
 
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
     print("DELTA:", delta)
+
+if __name__ == '__main__':
+    test_match()

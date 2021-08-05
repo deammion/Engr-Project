@@ -3,6 +3,8 @@
     Runs the analysis phase and saves data to file
     """
 from __future__ import absolute_import
+from __future__ import division
+
 from builtins import round
 import os
 import bs4
@@ -77,7 +79,7 @@ class Analysis:
         for key in self.script_to_count:
             file.write(key + " Frequency: " + str(self.script_to_count[key]) +
                        " Probability: " + str(
-                           round((self.script_to_count[key](len(os.listdir(
+                           round((self.script_to_count[key] / (len(os.listdir(
                                self.html)) - 1)) * 100, 2)) + "%" + "\n")
         file.close()
 
