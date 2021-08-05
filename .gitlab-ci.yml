@@ -1,21 +1,46 @@
-# image: gradle:alpine
+# This file is a template, and might need editing before it works on your project.
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/python/tags/
+default:
+  tags: 
+  - docker
+  image: python:3.7
+
+before_script:
+  - python --version
+  - cd plugin
+  - pip3 install -r requirements.txt
 
 stages:
-  - Build
+  - Static Analysis
+  - Image
   - Test
 
-build:
-  stage: Build
-  tags:
-     - shell
+pylint:
+  stage: Static Analysis
   script:
-    - echo "build"
-  allow_failure: false
+  - cd ..
+  - pylint -d C0301 plugin/*.py
+  allow_failure: true
 
-unit_testing:
-  stage: Test
+dockerhub:
+  stage: Image
   tags:
-     - shell
+    - shell
+
+  before_script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    
   script:
-   - echo "test"
-  allow_failure: false
+    - cd plugin
+    - docker build -t txmm/engr300_redshield:testing .
+    - docker push txmm/engr300_redshield:testing
+
+
+pytest:
+  stage: Test
+  image: txmm/engr300_redshield:testing
+  script:
+  - echo diff
+  - diff /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/expected/analysis.txt /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/actual/analysis.txt
+  - python3 -m pytest -vs
