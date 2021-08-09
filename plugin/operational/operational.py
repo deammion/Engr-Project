@@ -28,20 +28,6 @@ def response(flow: http.HTTPFlow):
         Monitor(flow)
 
 
-def report(self):
-    """
-    Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
-    :return: -
-    """
-    csp_report_uri = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
-    if len(self.unsafe_scripts) == 0:
-        print("List is empty")
-    else:
-        for script in self.unsafe_scripts:
-            if script in self._url:
-                script = csp_report_uri
-                print(script + "This is an unsafe script")
-
 
 class Monitor:
     """
@@ -110,3 +96,18 @@ class Monitor:
             else:
                 # Unsafe scripts
                 self._scripts[1].append(script)
+
+    def report(self, flow):
+        """
+        Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
+        :return: -
+        """
+        url = flow.request.pretty_url
+        csp_report_uri = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
+        if len(self._scripts[1]) == 0:
+            print("List is empty")
+        else:
+            for script in self._scripts[1]:
+                if script in url:
+                    script = csp_report_uri
+                    print(script + "This is an unsafe script")
