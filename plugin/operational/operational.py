@@ -4,6 +4,7 @@ Perform blocking and reporting on scripts, add nonces to , and allow, safe scrip
 
 from __future__ import absolute_import
 import re
+import secrets
 import time
 import os
 import sys
@@ -37,6 +38,7 @@ class Monitor:
         self._sample = None
         self._flow = flow
         self._path = None
+        self._nonce = None
         self._file_name = str(time.time())
         self.set_path(util.to_disk(self._flow, self._file_name))
         # @TODO This should be a multi dimensional array, occupies too many attributes
@@ -68,12 +70,24 @@ class Monitor:
         """
         return self._file_name
 
+    def generate_nonce(self):
+        """
+        Generate nonce using secrets. Secrets is a
+        CSPRNG. Creates a 256 bit (32 byte)token
+        encoded in Base64
+        Returns: Base64 encoded nonce.
+
+        """
+        self._nonce = secrets.token_urlsafe(32)
+        return self._nonce
+
     def calculate_safe_tags(self):
         """
         Identify safe tags from response file
         :return:
         """
         os.chdir(self._path)
+        print(self._nonce)
         for file in os.listdir():
             if file.endswith("data.txt") or self._file_name:
                 file = open(file)
