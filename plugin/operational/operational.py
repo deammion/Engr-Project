@@ -27,20 +27,22 @@ def response(flow: http.HTTPFlow):
     if util.correct_filetype(flow):
         Monitor(flow)
 
+
 def report(self):
     """
-    Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri. 
-    :param flow: 
+    Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
     :return: -
     """
-    CSP_REPORT_URI = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
+    csp_report_uri = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
     if len(self.unsafe_scripts) == 0:
         print("List is empty")
     else:
         for script in self.unsafe_scripts:
             if script in self._url:
-                script = CSP_REPORT_URI
+                script = csp_report_uri
                 print(script + "This is an unsafe script")
+
+
 class Monitor:
     """
     Object watches a stream
