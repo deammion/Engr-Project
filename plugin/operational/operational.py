@@ -84,7 +84,6 @@ class Monitor:
         :return:
         """
         os.chdir(self._path)
-        print(self._nonce)
         for file in os.listdir():
             if file.endswith("data.txt") or self._file_name:
                 file = open(file)
