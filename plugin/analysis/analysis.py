@@ -39,6 +39,10 @@ class Analysis:
         self.write_to_file()
 
     def check_for_database(self):
+        """
+        Checks if there is a data.txt file, calls appropriate methods if there is
+        :return:
+        """
         os.chdir(self.html)
         for file in os.listdir():
             if file.endswith("data.txt"):
@@ -57,13 +61,14 @@ class Analysis:
         self.database_size = len([name for name in os.listdir('.') if os.path.isfile(name)])
         for file in os.listdir():
             if not file.endswith("data.txt"):
-                ##read = f"{os.getcwd()}/{file}"
                 self.filenames.append(str(file))
 
     def parse_htmls(self, filenames):
+        # sorts the filenames by timestamp, maybe in wrong order
         self.filenames_sorted = sorted(filenames, key=lambda x: time.time(), reverse=True)
         if self.update_data:
-            while self.htmls_checked < self.database_size:
+            # if data.txt file exists, gets the latest HTML first and calls get_tags
+            while self.htmls_checked <= self.database_size:
                 filename = self.filenames_sorted.pop()
                 file = f"{os.getcwd()}/{filename}"
                 self.get_tags(file)
@@ -93,25 +98,36 @@ class Analysis:
 
     # get the total occurrence of a HTML caught by the proxy
     def get_html_occurrence(self, file):
+        """
+        Gets the total times the HTML has been captured from data.txt
+        :param file:
+        :return:
+        """
         text = open(file)
         occurrence_str = text.readline()
         self.htmls_checked = int(re.search(r'/d+', occurrence_str).group())
 
     def get_database_scripts(self, file):
-        #text = open(file)
-        #text = file.read()
-        #text = text.replace('\n', '')
-        #text = text.replace('\t', '')
-        #self.db_scripts = re.findall('(<script.+?</script>)', text.strip())
+        """
+        reads the data.txt file, and turns it into a dictionary
+        :param file:
+        :return:
+        """
         with open(file) as f:
+            # skip first line i.e HTML occurrence
             next(f)
             self.db_scripts = f.readline()
         for entry in self.db_scripts:
+            # new array to sort the frequency and the percentage
             freq_per = []
             script_tag = re.findall('(<script.+?</script>)', entry.strip())
-            for word in entry.split():
-                if word.isdigit():
+            # remove script tag from entry for ease of parsing
+            new_entry = {entry.replace(str(script_tag),'')}
+            # finds ints in remaining string
+            for word in new_entry:
+                if isinstance(word, int):
                     freq_per.append(int(word))
+            # freq_per.pop should get first number i.e. the frequency
             self.db_script_to_count.update({script_tag: freq_per.pop()})
 
     # count all script tags in scripts, assign to dictionary(map in java)
@@ -126,6 +142,7 @@ class Analysis:
             self.script_to_count.update({self.scripts[i]: count})
             i += 1
 
+        # merges db_script_to_count and script_to_count if required
         if self.update_data:
             for key in self.script_to_count:
                 if key in self.db_script_to_count:
