@@ -127,7 +127,11 @@ class Analysis:
             i += 1
 
         if self.update_data:
-
+            for key in self.script_to_count:
+                if key in self.db_script_to_count:
+                    self.script_to_count[key] = self.db_script_to_count[key] + self.script_to_count[key]
+                else:
+                    pass
 
     def write_to_file(self):
         """
