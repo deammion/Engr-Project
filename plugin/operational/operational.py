@@ -90,9 +90,8 @@ class Monitor:
             if file.endswith("data.txt") or self._file_name:
                 file = open(file)
                 text = file.read()
-                text = text.replace('\n', '')
-                text = text.replace('\t', '')
-                scripts = re.findall('(<script.+?</script>)', text.strip())
+                soup = bs4.BeautifulSoup(text, 'html.parser')
+                scripts = soup.find_all('script')
                 if scripts:
                     if file.name == "data.txt":
                         for script in scripts:
@@ -121,5 +120,5 @@ class Monitor:
         for script in scripts:
             if script in self._scripts[2]:
                 script.attrs['nonce'] = self._nonce
-            
+
         return final_html
