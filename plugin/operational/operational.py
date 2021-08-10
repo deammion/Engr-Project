@@ -3,7 +3,6 @@ Perform blocking and reporting on scripts, add nonces to , and allow, safe scrip
 """
 
 from __future__ import absolute_import
-import re
 import secrets
 import time
 import os
