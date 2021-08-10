@@ -38,6 +38,7 @@ Install with git
 To deploy this project run
 
 ```
+pip install -e .
 mitmproxy -s /path-to/main.py
 ```
 
