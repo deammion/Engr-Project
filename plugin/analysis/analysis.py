@@ -72,7 +72,6 @@ class Analysis:
                 filename = self.filenames_sorted.pop()
                 file = f"{os.getcwd()}/{filename}"
                 self.get_tags(file)
-                self.htmls_checked += 1
         else:
             for filename in filenames:
                 file = f"{os.getcwd()}/{filename}"
@@ -95,6 +94,7 @@ class Analysis:
                 self.scripts.append(str(script))
 
         response.close()
+        self.htmls_checked += 1
 
     # get the total occurrence of a HTML caught by the proxy
     def get_html_occurrence(self, file):
