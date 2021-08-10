@@ -9,6 +9,7 @@ import time
 import os
 import sys
 from mitmproxy import http
+import bs4
 
 from utilities import util
 from utilities.util import root_dir
@@ -43,6 +44,7 @@ class Monitor:
         self.set_path(util.to_disk(self._flow, self._file_name))
         self._scripts = [[]]  # Whitelist [0] blacklist [1]   operation scripts[2] Data scripts = [3]
         self.calculate_safe_tags()
+        self.add_nonce_to_html()
         Analysis(self.get_path())
 
     def get_path(self):
@@ -105,3 +107,19 @@ class Monitor:
             else:
                 # Unsafe scripts
                 self._scripts[1].append(script)
+
+    def add_nonce_to_html(self):
+        """
+        Add the nonce tags to each safe script tag
+        :param self:
+        :return: the html with the added nonce tags
+        """
+        original_html = self._flow.response.text
+
+        final_html = bs4.BeautifulSoup(original_html, 'html.parser')
+        scripts = final_html.findAll('script')
+        for script in scripts:
+            if script in self._scripts[2]:
+                script.attrs['nonce'] = self._nonce
+            
+        return final_html
