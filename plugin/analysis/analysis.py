@@ -58,7 +58,9 @@ class Analysis:
         """
         text = open(file)
         occurrence_str = text.readline()
-        self.htmls_checked = int(re.search(r'/d+', occurrence_str).group())
+        data = occurrence_str.split(" ")
+        self.htmls_checked = int(data[1])
+        #self.htmls_checked = int(re.search(r'/d+', occurrence_str).group())
 
     def get_database_scripts(self, file):
         """
@@ -98,10 +100,11 @@ class Analysis:
 
     def parse_htmls(self, filenames):
         # sorts the filenames by timestamp, maybe in wrong order
+        # TODO test order
         self.filenames_sorted = sorted(filenames, key=lambda x: time.time(), reverse=True)
         if self.update_data:
             # if data.txt file exists, gets the latest HTML first and calls get_tags
-            while self.htmls_checked <= self.database_size:
+            while self.htmls_checked < self.database_size:
                 filename = self.filenames_sorted.pop()
                 file = f"{os.getcwd()}/{filename}"
                 self.get_tags(file)
@@ -141,6 +144,7 @@ class Analysis:
             i += 1
 
         # merges db_script_to_count and script_to_count if required
+        # TODO - check merge occurs correctly
         if self.update_data:
             for key in self.script_to_count:
                 if key in self.db_script_to_count:
