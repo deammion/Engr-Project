@@ -26,9 +26,8 @@ def response(flow: http.HTTPFlow):
     print("response")
 
     if util.correct_filetype(flow):
-        #flow.response.text = "<h1>test</h1>"
-        #flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{random}'"
-        Monitor(flow)
+        operation = Monitor(flow)
+        flow.response.text = operation.add_nonce_to_html()
 
 class Monitor:
     """
@@ -42,6 +41,7 @@ class Monitor:
         self._file_name = str(time.time())
         self.set_path(util.to_disk(self._flow, self._file_name))
         self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self.generate_nonce()
         self.retrieve_safe_tags()
         self.determine_safe_tags()
         Analysis(self.get_path())
@@ -52,6 +52,14 @@ class Monitor:
         :return: object path
         """
         return self._path
+
+    def get_nonce(self):
+        """
+        Get the nonce of the object
+        :return: object nonce
+        """
+        return self._nonce
+
 
     def set_path(self, path):
         """
@@ -74,7 +82,6 @@ class Monitor:
         CSPRNG. Creates a 256 bit (32 byte)token
         encoded in Base64
         Returns: Base64 encoded nonce.
-
         """
         self._nonce = secrets.token_urlsafe(32)
         return self._nonce
