@@ -26,17 +26,14 @@ def response(flow: http.HTTPFlow):
     print("response")
 
     if util.correct_filetype(flow):
-        flow.response.text = "<h1>test</h1>"
-        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{random}'"
+        #flow.response.text = "<h1>test</h1>"
+        #flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{random}'"
         Monitor(flow)
-
-
 
 class Monitor:
     """
     Object watches a stream
     """
-
     def __init__(self, flow):
         self._sample = None
         self._flow = flow
@@ -44,9 +41,9 @@ class Monitor:
         self._nonce = None
         self._file_name = str(time.time())
         self.set_path(util.to_disk(self._flow, self._file_name))
-        self._scripts = [[]]  # Whitelist [0] blacklist [1]   operation scripts[2] Data scripts = [3]
-        self.calculate_safe_tags()
-        self.add_nonce_to_html()
+        self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self.retrieve_safe_tags()
+        self.determine_safe_tags()
         Analysis(self.get_path())
 
     def get_path(self):
@@ -82,32 +79,37 @@ class Monitor:
         self._nonce = secrets.token_urlsafe(32)
         return self._nonce
 
-    def calculate_safe_tags(self):
+    def retrieve_safe_tags(self):
         """
-        Identify safe tags from response file
-        :return:
+        Retrieve the script tags which are deemed as safe from the data.txt file
         """
-        os.chdir(self._path)
-        for file in os.listdir():
-            if file.endswith("data.txt") or self._file_name:
-                file = open(file)
-                text = file.read()
-                soup = bs4.BeautifulSoup(text, 'html.parser')
-                scripts = soup.find_all('script')
-                if scripts:
-                    if file.name == "data.txt":
-                        for script in scripts:
-                            self._scripts[2].append(script)
-                    elif file.name == self._file_name:
-                        for script in scripts:
-                            self._scripts[3].append(script)
-        for script in self._scripts[3]:
-            if script in self._scripts[2]:
-                # Safe Scripts
-                self._scripts[0].append(script)
-            else:
-                # Unsafe scripts
-                self._scripts[1].append(script)
+        root_path = os.path.join(self._path, "data.txt")
+        if os.path.isfile(root_path):
+            file = open(root_path, "r")
+            file_data = file.read()
+            soup = bs4.BeautifulSoup(file_data, 'html.parser')
+            scripts = soup.find_all('script')
+            if scripts:
+                for script in scripts:
+                    self._scripts[2].append(script)
+
+    def determine_safe_tags(self):
+        """
+        Determine which script tags are safe and unsafe in the HTML
+        """
+        root_path = os.path.join(self._path, self._file_name)
+        if os.path.isfile(root_path):
+            file = open(root_path, "r")
+            file_data = file.read()
+            soup = bs4.BeautifulSoup(file_data, 'html.parser')
+            scripts = soup.find_all('script')
+            for script in scripts:
+                if script in self._scripts[2]:
+                    # Safe Scripts
+                    self._scripts[1].append(script)
+                else:
+                    # Unsafe scripts
+                    self._scripts[0].append(script)
 
     def add_nonce_to_html(self):
         """
