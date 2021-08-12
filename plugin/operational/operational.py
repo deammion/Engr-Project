@@ -30,6 +30,7 @@ def response(flow: http.HTTPFlow):
         flow.response.text = operation.add_nonce_to_html()
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}'"
 
+
 class Monitor:
     """
     Object watches a stream
@@ -133,7 +134,7 @@ class Monitor:
             if script in self._scripts[2]:
                 script.attrs['nonce'] = self._nonce
 
-        return final_html
+        return str(final_html)
 
     def report(self, flow):
         """
