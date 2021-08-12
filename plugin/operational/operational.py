@@ -28,7 +28,7 @@ def response(flow: http.HTTPFlow):
     if util.correct_filetype(flow):
         flow.response.text = "<h1>test</h1>"
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{random}'"
-        mon = Monitor(flow)
+        Monitor(flow)
 
 
 class Monitor:
