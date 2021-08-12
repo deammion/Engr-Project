@@ -28,6 +28,7 @@ def response(flow: http.HTTPFlow):
     if util.correct_filetype(flow):
         operation = Monitor(flow)
         flow.response.text = operation.add_nonce_to_html()
+        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}'"
 
 class Monitor:
     """
