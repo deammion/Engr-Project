@@ -28,7 +28,8 @@ def response(flow: http.HTTPFlow):
     if util.correct_filetype(flow):
         operation = Monitor(flow)
         flow.response.text = operation.add_nonce_to_html()
-        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}'"
+        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
+            "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
 
 
 class Monitor:
