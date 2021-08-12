@@ -42,12 +42,8 @@ class Monitor:
         self._file_name = str(time.time())
         self.set_path(util.to_disk(self._flow, self._file_name))
         self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-        self.retrieved_scripts = []
-        self.safe_scripts = []
-        self.unsafe_scripts = []
         self.retrieve_safe_tags()
         self.determine_safe_tags()
-        #self.add_nonce_to_html()
         Analysis(self.get_path())
 
     def get_path(self):
@@ -84,6 +80,9 @@ class Monitor:
         return self._nonce
 
     def retrieve_safe_tags(self):
+        """
+        Retrieve the script tags which are deemed as safe from the data.txt file
+        """
         root_path = os.path.join(self._path, "data.txt")
         if os.path.isfile(root_path):
             file = open(root_path, "r")
@@ -95,6 +94,9 @@ class Monitor:
                     self._scripts[2].append(script)
 
     def determine_safe_tags(self):
+        """
+        Determine which script tags are safe and unsafe in the HTML
+        """
         root_path = os.path.join(self._path, self._file_name)
         if os.path.isfile(root_path):
             file = open(root_path, "r")
