@@ -26,7 +26,8 @@ def response(flow: http.HTTPFlow):
     print("response")
 
     if util.correct_filetype(flow):
-        Monitor(flow)
+        flow.response.text = "<h1>test</h1>"
+        mon = Monitor(flow)
 
 
 class Monitor:
