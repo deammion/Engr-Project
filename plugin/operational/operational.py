@@ -44,7 +44,7 @@ class Monitor:
         self._nonce = None
         self._file_name = str(time.time())
         self.set_path(util.to_disk(self._flow, self._file_name))
-        self._scripts = [[]]  # Whitelist [0] blacklist [1]   operation scripts[2] Data scripts = [3]
+        self._scripts = [[[]]]  # Whitelist [0] blacklist [1]   operation scripts[2] Data scripts = [3]
         self.calculate_safe_tags()
         self.add_nonce_to_html()
         Analysis(self.get_path())
