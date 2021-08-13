@@ -1,16 +1,28 @@
-import re
+"""
+    Corresponds to collection object.
+    Runs the analysis phase and saves data to file
+    """
+from __future__ import absolute_import
+from __future__ import division
+
+from builtins import round
 import os
+import bs4
 
 
 class Analysis:
     """
-    Corresponds to collection object
-    """
+        Corresponds to collection object.
+        Runs the analysis phase and saves data to file
+        """
 
     def __init__(self, html):
+        """
+            Runs analysis object
+            """
         self.html = html
         self.scripts = []
-        self.scriptToCount = {}
+        self.script_to_count = {}
         self.read_directory()
         self.get_script_count()
         self.write_to_file()
@@ -19,9 +31,9 @@ class Analysis:
     # change to search for existing doc, if yes - convert to dictionary(MAP)
     def read_directory(self):
         """
-                Read all response text files in the given directory
-                :return:
-                """
+        Read all response text files in the given directory
+        :return:
+        """
         os.chdir(self.html)
         for file in os.listdir():
             if not file.endswith("data.txt"):
@@ -31,41 +43,42 @@ class Analysis:
     # find all script tags store to array
     def get_tags(self, file):
         """
-            Identify & strip tags from response files
-            :return:
-            """
+        Identify & strip tags from response files
+        :return:
+        """
         print("Reading File: " + file)
         response = open(file)
+
         text = response.read()
-        text = text.replace('\n', '')
-        text = text.replace('\t', '')
-        scripts = re.findall('(<script.+?</script>)', text.strip())
+        soup = bs4.BeautifulSoup(text, features='html.parser')
+        scripts = soup.find_all('script')
         if scripts:
-            for x in scripts:
-                self.scripts.append(x)
+            for script in scripts:
+                self.scripts.append(str(script))
+
         response.close()
 
     # count all script tags in scripts, assign to dictionary(map in java)
     def get_script_count(self):
+        """
+        Calculate the frequency of a script
+        :return:
+        """
         i = 0
         while i < len(self.scripts):
             count = self.scripts.count(self.scripts[i])
-            self.scriptToCount.update({self.scripts[i]: count})
+            self.script_to_count.update({self.scripts[i]: count})
             i += 1
 
     def write_to_file(self):
-        f = open("data.txt", "w+")
-        for key in self.scriptToCount:
-            f.write(key + " Frequency: " + str(self.scriptToCount[key]) + " Probability: "
-                    + str(round((self.scriptToCount[key] / (len(os.listdir(self.html))-1)) * 100, 2))
-                    + "%" + "\n")
-        f.close()
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    """
-            Run analysis on all files in the sample data directory
-            :return:
-            """
-    Analysis('../data/samples/dev.unshielded.red')
+        """
+        Write Script data (frequency and probability)to file
+        :return:
+        """
+        file = open("data.txt", "w+")
+        for key in self.script_to_count:
+            file.write(key + " Frequency: " + str(self.script_to_count[key]) +
+                       " Probability: " + str(
+                           round((self.script_to_count[key] / (len(os.listdir(
+                               self.html)) - 1)) * 100, 2)) + "%" + "\n")
+        file.close()

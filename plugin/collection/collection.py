@@ -1,59 +1,67 @@
-from mitmproxy import http
+"""
+Class which collects information about requests and responses
+"""
+
+from __future__ import absolute_import
 import time
-import os
 import sys
+from mitmproxy import http
 
-sys.path.append(os.path.abspath(os.getcwd()))
-
+from utilities import util
+from utilities.util import root_dir
 from analysis.analysis import Analysis
+
+sys.path.append(root_dir())
 
 
 def response(flow: http.HTTPFlow):
     """
-    Run automatically by mitmproxy on responses
-    :param flow:
-    :return:
+    Run automatically by mitmproxy on responses during collection phase
+    :param flow: active http flow
+    :return: -
     """
     print("response")
-    url = flow.request.pretty_url
-    if not url.endswith(".css") and not url.endswith(".js") and not url.endswith(".jpg") and not url.endswith(".png")\
-            and not url.__contains__("www.gstatic.com"):
+    if util.correct_filetype(flow):
         Sample(flow)
 
 
 class Sample:
     """
-    Sample object contains individual sample data
+    Sample object
     """
 
     def __init__(self, flow):
+        """
+        Initialise the collection object
+        """
         self._sample = None
         self._flow = flow
         self._url = flow.request.pretty_url
+        self._filename = str(time.time())
         self._path = None
-        self._file_name = str(time.time())
-        self.to_disk()
+        self.set_path()
         self.call_analysis()
 
     def get_path(self):
+        """
+        Get the path of the file
+        :param self:
+        :return: the path of the file
+        """
         return self._path
 
-    def set_path(self, x):
-        self._path = x
+    def set_path(self):
+        """
+        Set the path of the file
+        :param self:
+        :return:
+        """
+        self._path = util.to_disk(self._flow, self._filename)
 
     def call_analysis(self):
+        """
+        Calls the analysis class
+        :param self:
+        :return:
+        """
         Analysis(self.get_path())
-
-    def to_disk(self):
-        data = self._url.split("/")
-        data = data[2:]
-        root_path = os.getcwd()
-        for folder in data:
-            root_path = os.path.join(root_path, folder)
-            if not os.path.exists(root_path):
-                os.mkdir(root_path)
-        self.set_path(root_path)
-        file_path = os.path.join(root_path, self._file_name)
-        file = open(file_path, "w")
-        file.write(self._flow.response.text + "\n")
-        file.close()
