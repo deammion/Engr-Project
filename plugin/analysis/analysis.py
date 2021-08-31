@@ -9,110 +9,97 @@ import time
 from builtins import round
 import os
 import bs4
-import re
 
 
 class Analysis:
+    DATA_FILENAME = "data.txt"
+
     """
         Corresponds to collection object.
         Runs the analysis phase and saves data to file
         """
-
-    def __init__(self, html):
+    def __init__(self, file_path):
         """
             Runs analysis object
             """
-        self.html = html
+        self.file_path = file_path
         self.htmls_checked = 0
-        self.database_size = 0
         self.update_data = False
         self.scripts = []
-        self.db_scripts = []
-        self.filenames = []
         self.filenames_sorted = []
         self.db_script_to_count = {}
         self.script_to_count = {}
-        self.check_for_database()
+        self.analyse_data()
+
+    def analyse_data(self):
+        if os.path.isfile(self.file_path + "/" + self.DATA_FILENAME):
+            self.update_data = True
+            self.get_html_occurrence()
+            self.get_database_scripts()
+
         self.read_directory()
-        self.parse_htmls(self.filenames)
+        self.parse_htmls()
         self.get_script_count()
         self.write_to_file()
 
-    def check_for_database(self):
-        """
-        Checks if there is a data.txt file, calls appropriate methods if there is
-        :return:
-        """
-        os.chdir(self.html)
-        for file in os.listdir():
-            if file.endswith("data.txt"):
-                self.update_data = True
-                self.get_html_occurrence(file)
-                self.get_database_scripts(file)
-
-    def get_html_occurrence(self, file):
+    def get_html_occurrence(self):
         """
         Gets the total times the HTML has been captured from data.txt
-        :param file:
         :return:
         """
-        text = open(file)
+        text = open(self.file_path + self.DATA_FILENAME)
         occurrence_str = text.readline()
         data = occurrence_str.split(":")
         self.htmls_checked = int(data[1])
+        text.close()
 
-    def get_database_scripts(self, file):
+    def get_database_scripts(self):
         """
         reads the data.txt file, and turns it into a dictionary
-        :param file:
         :return:
         """
-        with open(file) as f:
-            # skip first line i.e HTML occurrence
-            next(f)
-            lines = f.readlines()
+        file = open(self.file_path + self.DATA_FILENAME)
+        # ignore the first line which is the HTML occurrence
+        next(file)
+        lines = file.readlines()
+        file.close()
+
         for line in lines:
             soup = bs4.BeautifulSoup(line, features='html.parser')
             script = soup.find('script')
-            self.db_scripts.append(script)
-            # new array to sort the frequency and the percentage
-            freq_per = []
-            # remove script tag from entry for ease of parsing
-            new_entry = line.replace(str(script), '')
-            # finds ints in remaining string
-            data = str(new_entry).split(" ")
-            for word in data:
-                if word.isdigit():
-                    freq_per.append(int(word))
-            # freq_per.pop should get first number i.e. the frequency
-            self.db_script_to_count.update({str(script): freq_per.pop()})
 
-    # opens all files, calls get_tags - stand in function
-    # change to search for existing doc, if yes - convert to dictionary(MAP)
+            # find frequency in remaining string
+            data = line.split("Frequency: ")
+            data = data[1].split(" ")
+
+            if data[0].isdigit():
+                # add the script with its frequency to the map
+                self.db_script_to_count.update({str(script): int(data[0])})
+
     def read_directory(self):
         """
         Read all response text files in the given directory
         :return:
         """
-        os.chdir(self.html)
-        self.database_size = len([name for name in os.listdir('.') if os.path.isfile(name)])
-        for file in os.listdir():
-            if not file.endswith("data.txt"):
-                self.filenames.append(str(file))
+        filenames = os.listdir(self.file_path)
 
-    def parse_htmls(self, filenames):
-        # sorts the filenames by timestamp, maybe in wrong order
-        # TODO test order
+        if self.DATA_FILENAME in filenames:
+            filenames.remove(self.DATA_FILENAME)
+
         self.filenames_sorted = sorted(filenames, key=lambda x: time.time(), reverse=True)
+
+    def parse_htmls(self):
         if self.update_data:
+            num_files = len(self.filenames_sorted)
+
             # if data.txt file exists, gets the latest HTML first and calls get_tags
-            while self.htmls_checked < len(self.filenames):
+            while self.htmls_checked < num_files:
                 filename = self.filenames_sorted.pop()
-                file = f"{os.getcwd()}/{filename}"
+                file = self.file_path + filename
                 self.get_tags(file)
         else:
-            for filename in filenames:
-                file = f"{os.getcwd()}/{filename}"
+            for filename in self.filenames_sorted:
+                file = self.file_path + filename
                 self.get_tags(file)
 
     # find all script tags store to array
@@ -146,7 +133,6 @@ class Analysis:
             i += 1
 
         # merges db_script_to_count and script_to_count if required
-        # TODO - check merge occurs correctly
         if self.update_data:
             for key in self.script_to_count:
                 if key in self.db_script_to_count:
@@ -159,7 +145,7 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
-        file = open("data.txt", "w+")
+        file = open(self.file_path + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         for key in self.script_to_count:
             file.write(key + " Frequency: " + str(self.script_to_count[key]) +
