@@ -42,9 +42,11 @@ class Analysis:
             self.get_database_scripts()
 
         self.read_directory()
-        self.parse_htmls()
-        self.get_script_count()
-        self.write_to_file()
+
+        if not self.htmls_checked == len(self.filenames_sorted):
+            self.parse_htmls()
+            self.get_script_count()
+            self.write_to_file()
 
     def get_html_occurrence(self):
         """
@@ -119,6 +121,9 @@ class Analysis:
         response = open(file)
 
         text = response.read()
+        text = text.replace('\n', '')
+        text = text.replace('\t', '')
+
         soup = bs4.BeautifulSoup(text, features='html.parser')
         scripts = soup.find_all('script')
         if scripts:
