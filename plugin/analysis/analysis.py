@@ -102,11 +102,11 @@ class Analysis:
             # if data.txt file exists, gets the latest HTML first and calls get_tags
             while self.htmls_checked < num_files:
                 filename = self.filenames_sorted.pop()
-                file = self.file_path + filename
+                file = self.file_path + "/" + filename
                 self.get_tags(file)
         else:
             for filename in self.filenames_sorted:
-                file = self.file_path + filename
+                file = self.file_path + "/" + filename
                 self.get_tags(file)
 
     def get_tags(self, file):
