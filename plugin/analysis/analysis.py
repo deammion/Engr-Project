@@ -51,7 +51,7 @@ class Analysis:
         Gets the total times the HTML has been captured from data.txt
         :return:
         """
-        text = open(self.file_path + self.DATA_FILENAME)
+        text = open(self.file_path + "/" + self.DATA_FILENAME)
         occurrence_str = text.readline()
         data = occurrence_str.split(":")
         self.htmls_checked = int(data[1])
@@ -62,7 +62,7 @@ class Analysis:
         reads the data.txt file, and turns it into a dictionary
         :return:
         """
-        file = open(self.file_path + self.DATA_FILENAME)
+        file = open(self.file_path + "/" + self.DATA_FILENAME)
         # ignore the first line which is the HTML occurrence
         next(file)
         lines = file.readlines()
@@ -153,7 +153,7 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
-        file = open(self.file_path + self.DATA_FILENAME, "w+")
+        file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         for key in self.script_to_count:
             file.write(key + " Frequency: " + str(self.script_to_count[key])
