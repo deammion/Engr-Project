@@ -58,7 +58,7 @@ class Analysis:
         """
         text = open(file)
         occurrence_str = text.readline()
-        data = occurrence_str.split(" ")
+        data = occurrence_str.split(":")
         self.htmls_checked = int(data[1])
         #self.htmls_checked = int(re.search(r'/d+', occurrence_str).group())
 
@@ -71,19 +71,21 @@ class Analysis:
         with open(file) as f:
             # skip first line i.e HTML occurrence
             next(f)
-            self.db_scripts = f.readline()
-        for entry in self.db_scripts:
+            lines = f.readlines()
+        for line in lines:
+            self.db_scripts.append(re.findall('(<script.+?</script>)', line.strip()))
             # new array to sort the frequency and the percentage
             freq_per = []
-            script_tag = re.findall('(<script.+?</script>)', entry.strip())
+            script_tag = re.findall('(<script.+?</script>)', line.strip())
             # remove script tag from entry for ease of parsing
-            new_entry = {entry.replace(str(script_tag), '')}
+            new_entry = line.replace(str(script_tag), '')
             # finds ints in remaining string
-            for word in new_entry:
-                if isinstance(word, int):
+            data = str(new_entry).split(" ")
+            for word in data:
+                if word.isdigit():
                     freq_per.append(int(word))
             # freq_per.pop should get first number i.e. the frequency
-            self.db_script_to_count.update({script_tag: freq_per.pop()})
+            self.db_script_to_count.update({str(script_tag): freq_per.pop()})
 
     # opens all files, calls get_tags - stand in function
     # change to search for existing doc, if yes - convert to dictionary(MAP)
