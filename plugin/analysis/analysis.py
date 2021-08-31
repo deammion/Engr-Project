@@ -60,7 +60,6 @@ class Analysis:
         occurrence_str = text.readline()
         data = occurrence_str.split(":")
         self.htmls_checked = int(data[1])
-        #self.htmls_checked = int(re.search(r'/d+', occurrence_str).group())
 
     def get_database_scripts(self, file):
         """
@@ -73,19 +72,20 @@ class Analysis:
             next(f)
             lines = f.readlines()
         for line in lines:
-            self.db_scripts.append(re.findall('(<script.+?</script>)', line.strip()))
+            soup = bs4.BeautifulSoup(line, features='html.parser')
+            script = soup.find('script')
+            self.db_scripts.append(script)
             # new array to sort the frequency and the percentage
             freq_per = []
-            script_tag = re.findall('(<script.+?</script>)', line.strip())
             # remove script tag from entry for ease of parsing
-            new_entry = line.replace(str(script_tag), '')
+            new_entry = line.replace(str(script), '')
             # finds ints in remaining string
             data = str(new_entry).split(" ")
             for word in data:
                 if word.isdigit():
                     freq_per.append(int(word))
             # freq_per.pop should get first number i.e. the frequency
-            self.db_script_to_count.update({str(script_tag): freq_per.pop()})
+            self.db_script_to_count.update({str(script): freq_per.pop()})
 
     # opens all files, calls get_tags - stand in function
     # change to search for existing doc, if yes - convert to dictionary(MAP)
@@ -106,7 +106,7 @@ class Analysis:
         self.filenames_sorted = sorted(filenames, key=lambda x: time.time(), reverse=True)
         if self.update_data:
             # if data.txt file exists, gets the latest HTML first and calls get_tags
-            while self.htmls_checked < self.database_size:
+            while self.htmls_checked < len(self.filenames):
                 filename = self.filenames_sorted.pop()
                 file = f"{os.getcwd()}/{filename}"
                 self.get_tags(file)
@@ -164,6 +164,5 @@ class Analysis:
         for key in self.script_to_count:
             file.write(key + " Frequency: " + str(self.script_to_count[key]) +
                        " Probability: " + str(
-                round((self.script_to_count[key] / (len(os.listdir(
-                    self.html)) - 1)) * 100, 2)) + "%" + "\n")
+                round((self.script_to_count[key] / self.htmls_checked) * 100, 2)) + "%" + "\n")
         file.close()
