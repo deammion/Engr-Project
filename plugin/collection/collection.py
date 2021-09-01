@@ -22,12 +22,11 @@ def response(flow: http.HTTPFlow):
     """
     print("response")
     if util.correct_filetype(flow):
-        Sample(flow)
+        Collection(flow)
 
-
-class Sample:
+class Collection:
     """
-    Sample object
+    Collection object
     """
 
     def __init__(self, flow):
