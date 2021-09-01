@@ -34,6 +34,3 @@ class Request:
                 self.url.__contains__("www.gstatic.com")):
             return True
         return False
-
-
-
