@@ -1,16 +1,30 @@
-class request:
+"""
+Class which stores and processes the request information
+"""
 
-    def __init__(self,flow):
+
+class Request:
+    """
+    Request object
+    """
+
+    def __init__(self, flow):
+        """
+        Initialise the Request information
+        """
         self.flow = flow
         self.url = flow.request.pretty_url
 
-    def getUrl(self):
+    def get_url(self):
+        """
+        Get the url associated with the request
+        :return: The request URL
+        """
         return self.url
 
     def correct_filetype(self):
         """
         Check file extension matches allowed types
-        :param flow: http flow to check file extensions upon
         :return: True if extension matches allowed type
         """
         if not (self.url.endswith(".css") or
@@ -20,5 +34,6 @@ class request:
                 self.url.__contains__("www.gstatic.com")):
             return True
         return False
+
 
 
