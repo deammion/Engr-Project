@@ -1,20 +1,20 @@
 """
-Perform blocking and reporting on scripts, add nonces to , and allow, safe scripts
+Perform blocking and reporting on scripts, add nonces to, and allow, safe scripts
 """
 
 from __future__ import absolute_import
 import secrets
-import time
 import os
 import sys
 from mitmproxy import http
 import bs4
 
 from utilities import util
-from utilities.util import root_dir
+from utilities.response import Response
+from utilities.request import Request
 from analysis.analysis import Analysis
 
-sys.path.append(root_dir())
+sys.path.append(util.root_dir())
 
 
 def response(flow: http.HTTPFlow):
@@ -23,27 +23,27 @@ def response(flow: http.HTTPFlow):
     :param flow:  active http flow
     :return: -
     """
-    print("response")
 
     if util.correct_filetype(flow):
-        operation = Monitor(flow)
+        operation = Operational(flow)
         flow.response.text = operation.add_nonce_to_html()
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
             "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
 
 
-class Monitor:
+class Operational:
     """
     Object watches a stream
     """
     def __init__(self, flow):
-        self._sample = None
-        self._flow = flow
+        self._request = Request(flow)
+        self._response = Response(flow)
         self._path = None
         self._nonce = None
-        self._file_name = str(time.time())
-        self.set_path(util.to_disk(self._flow, self._file_name))
+        self._file_name = self._response.get_time()
         self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+
+        self.set_path(util.to_disk(flow, self._file_name))
         self.generate_nonce()
         self.retrieve_safe_tags()
         self.determine_safe_tags()
@@ -62,7 +62,6 @@ class Monitor:
         :return: object nonce
         """
         return self._nonce
-
 
     def set_path(self, path):
         """
@@ -95,10 +94,7 @@ class Monitor:
         """
         root_path = os.path.join(self._path, "data.txt")
         if os.path.isfile(root_path):
-            file = open(root_path, "r")
-            file_data = file.read()
-            soup = bs4.BeautifulSoup(file_data, 'html.parser')
-            scripts = soup.find_all('script')
+            scripts = util.get_scripts(root_path)
             if scripts:
                 for script in scripts:
                     self._scripts[2].append(script)
@@ -109,10 +105,7 @@ class Monitor:
         """
         root_path = os.path.join(self._path, self._file_name)
         if os.path.isfile(root_path):
-            file = open(root_path, "r")
-            file_data = file.read()
-            soup = bs4.BeautifulSoup(file_data, 'html.parser')
-            scripts = soup.find_all('script')
+            scripts = util.get_scripts(root_path)
             for script in scripts:
                 if script in self._scripts[2]:
                     # Safe Scripts
@@ -127,7 +120,7 @@ class Monitor:
         :param self:
         :return: the html with the added nonce tags
         """
-        original_html = self._flow.response.text
+        original_html = self._response.get_response_content()
 
         final_html = bs4.BeautifulSoup(original_html, 'html.parser')
         scripts = final_html.findAll('script')
@@ -137,12 +130,12 @@ class Monitor:
 
         return str(final_html)
 
-    def report(self, flow):
+    def report(self):
         """
         Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
         :return: -
         """
-        url = flow.request.pretty_url
+        url = self._request.get_url()
         csp_report_uri = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
         browser_warning = "<script> window.alert(\"Unsafe Script(s) detected\");</script>"
         if len(self._scripts[1]) == 0:
