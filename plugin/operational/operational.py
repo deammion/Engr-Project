@@ -1,5 +1,5 @@
 """
-Perform blocking and reporting on scripts, add nonces to , and allow, safe scripts
+Perform blocking and reporting on scripts, add nonces to, and allow, safe scripts
 """
 
 from __future__ import absolute_import
