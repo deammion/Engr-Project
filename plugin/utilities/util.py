@@ -7,7 +7,6 @@ import hashlib
 import os
 
 
-
 def root_dir():
     """
     Get the root directory of the program
