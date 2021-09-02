@@ -3,16 +3,13 @@ Class which collects information about requests and responses
 """
 
 from __future__ import absolute_import
-import time
 import sys
 from mitmproxy import http
-
-from utilities import util
-from utilities.util import root_dir
 from analysis.analysis import Analysis
-
 from utilities.response import Response
 from utilities.request import Request
+from utilities import util
+from utilities.util import root_dir
 
 sys.path.append(root_dir())
 
