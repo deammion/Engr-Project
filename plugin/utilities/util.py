@@ -8,7 +8,6 @@ import os
 import bs4
 
 
-
 def root_dir():
     """
     Get the root directory of the program
