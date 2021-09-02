@@ -10,12 +10,11 @@ from mitmproxy import http
 import bs4
 
 from utilities import util
-from utilities.util import root_dir
 from utilities.response import Response
 from utilities.request import Request
 from analysis.analysis import Analysis
 
-sys.path.append(root_dir())
+sys.path.append(util.root_dir())
 
 
 def response(flow: http.HTTPFlow):
@@ -95,10 +94,7 @@ class Operational:
         """
         root_path = os.path.join(self._path, "data.txt")
         if os.path.isfile(root_path):
-            file = open(root_path, "r")
-            file_data = file.read()
-            soup = bs4.BeautifulSoup(file_data, 'html.parser')
-            scripts = soup.find_all('script')
+            scripts = util.get_scripts(root_path)
             if scripts:
                 for script in scripts:
                     self._scripts[2].append(script)
@@ -109,10 +105,7 @@ class Operational:
         """
         root_path = os.path.join(self._path, self._file_name)
         if os.path.isfile(root_path):
-            file = open(root_path, "r")
-            file_data = file.read()
-            soup = bs4.BeautifulSoup(file_data, 'html.parser')
-            scripts = soup.find_all('script')
+            scripts = util.get_scripts(root_path)
             for script in scripts:
                 if script in self._scripts[2]:
                     # Safe Scripts
@@ -137,7 +130,7 @@ class Operational:
 
         return str(final_html)
 
-    def report(self, flow):
+    def report(self):
         """
         Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
         :return: -
