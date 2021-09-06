@@ -17,12 +17,17 @@ def test_match():
     Analysis(root_dir() + '/data/samples/dev.unshielded.red')
 
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/analysis.txt'))
-    actual = open(os.path.join(root_dir(), 'data/outputs/actual/analysis.txt'))
+    actual = open(os.path.join(root_dir(), 'data/samples/dev.unshielded.red/data.txt'))
 
     diff = difflib.ndiff(expected.readlines(), actual.readlines())
 
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
-    print("DELTA:", delta)
+
+    if not delta:
+        assert True
+    else:
+        assert False
+
 
 if __name__ == '__main__':
     test_match()
