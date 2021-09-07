@@ -2,7 +2,6 @@
 Test Collection Phase
 """
 from __future__ import absolute_import
-
 import os
 from utilities.response import Response
 
@@ -21,7 +20,6 @@ class CollectionTest:
         self._response = None
         self._filename = None
         self._path = "collection_saving_tests"
-
         filenames = os.listdir(test_directory)
         os.chdir(test_directory)
         for f in filenames:
@@ -31,7 +29,6 @@ class CollectionTest:
             elif f.endswith("response.txt"):
                 self.response_files.append(file)
             file.close()
-
         for i in range(len(self.request_files)):
             self.collection_test(self.request_files[i], self.response_files[i], i)
 
@@ -50,10 +47,8 @@ class CollectionTest:
         Tests that filename syntax matches previously saved files
         :return: if filename follows syntax
         """
-
         # if len(self._filename) == 18:
         #     print("Filename matches syntax")
-
         assert len(self._filename) == 18
 
     def test_content_match(self, index):
