@@ -31,3 +31,23 @@ def test_match():
 
 if __name__ == '__main__':
     test_match()
+
+
+def test_no_correct_files():
+    Analysis(root_dir() + '/data/samples/no_script_tags_sample')
+
+    expected = open(os.path.join(root_dir(), 'data/outputs/expected/script_analysis.txt'))
+    actual = open(os.path.join(root_dir(), 'data/samples/no_script_tags_sample/data.txt'))
+
+    diff = difflib.ndiff(expected.readlines(), actual.readlines())
+
+    delta = ''.join(x[2:] for x in diff if x.startswith('- '))
+
+    if not delta:
+        assert True
+    else:
+        assert False
+
+
+if __name__ == '__main__':
+    test_no_correct_files()
