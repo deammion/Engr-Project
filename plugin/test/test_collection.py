@@ -3,16 +3,14 @@ Test Collection Phase
 """
 import os
 from utilities.response import Response
-from utilities.request import Request
-import re
 
 
-class collectionTest:
+class CollectionTest:
 
     def __init__(self, test_directory):
-        self.filePath = test_directory
-        self.requestFiles = []
-        self.responseFiles = []
+        self.file_path = test_directory
+        self.request_files = []
+        self.response_files = []
         self._request = None
         self._response = None
         self._filename = None
@@ -24,19 +22,20 @@ class collectionTest:
         for f in filenames:
             file = open(f)
             if f.endswith("request.txt"):
-                self.requestFiles.append(file)
+                self.request_files.append(file)
             elif f.endswith("response.txt"):
-                self.responseFiles.append(file)
+                self.response_files.append(file)
             file.close()
 
-        for i in range(len(self.requestFiles)):
+        for i in range(len(self.request_files)):
             self.index = i
-            self.collection_test(self.requestFiles[i], self.responseFiles[i])
+            self.collection_test(self.request_files[i], self.response_files[i])
 
     def collection_test(self, test_request_file, test_response_file):
         """
         Initialise the collection object
         """
+        self._request = test_request_file
         self._response = Response(test_response_file)
         self._filename = self._response.get_time()
         self.test_filename()
@@ -61,8 +60,8 @@ class collectionTest:
         """
         # if self._response.get_response() == self.responseFiles[self.index]:
         #     print("Content matches")
-        assert self._response.get_response() == self.responseFiles[self.index]
+        assert self._response.get_response() == self.response_files[self.index]
 
 
 # if __name__ == "__main__":
-#     collectionTest("../data/samples/dev.unshielded.red")
+#     CollectionTest("../data/samples/dev.unshielded.red")
