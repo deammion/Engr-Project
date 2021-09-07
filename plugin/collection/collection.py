@@ -64,4 +64,3 @@ class Collection:
         :return:
         """
         Analysis(self.get_path())
-
