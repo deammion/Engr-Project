@@ -1,11 +1,17 @@
 """
 Test Collection Phase
 """
+from __future__ import absolute_import
+
 import os
 from utilities.response import Response
 
 
 class CollectionTest:
+    """
+            Corresponds to collection testing object.
+            Runs the file name and response gathering parts of collection
+            """
 
     def __init__(self, test_directory):
         self.file_path = test_directory
@@ -15,7 +21,6 @@ class CollectionTest:
         self._response = None
         self._filename = None
         self._path = "collection_saving_tests"
-        self.index = 0
 
         filenames = os.listdir(test_directory)
         os.chdir(test_directory)
@@ -28,10 +33,9 @@ class CollectionTest:
             file.close()
 
         for i in range(len(self.request_files)):
-            self.index = i
-            self.collection_test(self.request_files[i], self.response_files[i])
+            self.collection_test(self.request_files[i], self.response_files[i], i)
 
-    def collection_test(self, test_request_file, test_response_file):
+    def collection_test(self, test_request_file, test_response_file, index):
         """
         Initialise the collection object
         """
@@ -39,7 +43,7 @@ class CollectionTest:
         self._response = Response(test_response_file)
         self._filename = self._response.get_time()
         self.test_filename()
-        self.test_content_match()
+        self.test_content_match(index)
 
     def test_filename(self):
         """
@@ -47,21 +51,21 @@ class CollectionTest:
         :return: if filename follows syntax
         """
 
-        assert len(self._filename) == 18
-
         # if len(self._filename) == 18:
         #     print("Filename matches syntax")
 
-    def test_content_match(self):
+        assert len(self._filename) == 18
+
+    def test_content_match(self, index):
         """
         Tests that the contents of the response and requests objects are
         the same as initial test data
         :return: if contents match test data
         """
-        # if self._response.get_response() == self.responseFiles[self.index]:
+        # if self._response.get_response() == self.response_files[index]:
         #     print("Content matches")
-        assert self._response.get_response() == self.response_files[self.index]
+        assert self._response.get_response() == self.response_files[index]
 
 
-# if __name__ == "__main__":
-#     CollectionTest("../data/samples/dev.unshielded.red")
+if __name__ == "__main__":
+    CollectionTest("../data/samples/dev.unshielded.red")
