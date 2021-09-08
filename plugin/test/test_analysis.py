@@ -34,6 +34,10 @@ if __name__ == '__main__':
 
 
 def test_no_correct_files():
+    """
+        Test for correct output with files without script tags
+        :return: -
+    """
     Analysis(root_dir() + '/data/samples/no_script_tags_sample')
 
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/script_analysis.txt'))
