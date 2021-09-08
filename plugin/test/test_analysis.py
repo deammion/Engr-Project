@@ -38,9 +38,12 @@ def test_no_correct_files():
         Test for correct output with files without script tags
         :return: -
     """
+    print("HELLO")
     Analysis(root_dir() + '/data/samples/no_script_tags_sample')
 
+    print("HIII")
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/script_analysis.txt'))
+    print("MORNING")
     actual = open(os.path.join(root_dir(), 'data/samples/no_script_tags_sample/data.txt'))
 
     diff = difflib.ndiff(expected.readlines(), actual.readlines())
@@ -48,8 +51,10 @@ def test_no_correct_files():
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
     if not delta:
+        print("123")
         assert True
     else:
+        print("!!!!!!")
         assert False
 
 
