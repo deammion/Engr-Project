@@ -43,6 +43,6 @@ pytest:
   image: txmm/engr300_redshield:testing
   script:
   - echo diff
-  - diff /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/expected/analysis.txt /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/actual/analysis.txt
+ # - diff /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/expected/analysis.txt /builds/course-work/engr300/2021/group14/group-14/plugin/data/outputs/actual/analysis.txt
   - python3 -m pytest -vs
   allow_failure: false
