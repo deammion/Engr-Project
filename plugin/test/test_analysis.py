@@ -47,7 +47,6 @@ def test_no_correct_files():
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
     print("delta: " + delta)
-    
     if not delta:
         print("not delta")
         assert True
