@@ -14,6 +14,11 @@ def test_match():
     Test output from analysis matches expected output for a given sample output delta difference
     :return: -
     """
+    file_path = root_dir() + '/data/samples/dev.unshielded.red/data.txt'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
     Analysis(root_dir() + '/data/samples/dev.unshielded.red')
 
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/analysis.txt'))
@@ -24,10 +29,8 @@ def test_match():
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
     if not delta:
-        print("not delta")
         assert True
     else:
-        print("delta")
         assert False
 
 
@@ -36,6 +39,11 @@ def test_no_correct_files():
         Test for correct output with files without script tags
         :return: -
     """
+    file_path = root_dir() + 'data/samples/no_scripts_tags_sample/data.txt'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
     Analysis(root_dir() + '/data/samples/no_scripts_tags_sample')
 
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/script_analysis.txt'))
@@ -43,15 +51,11 @@ def test_no_correct_files():
 
     diff = difflib.ndiff(expected.readlines(), actual.readlines())
 
-    print("difference: ")
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
-    print("delta: " + delta)
     if not delta:
-        print("not delta")
         assert True
     else:
-        print("delta")
         assert False
 
 
