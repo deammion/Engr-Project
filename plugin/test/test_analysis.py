@@ -59,6 +59,23 @@ def test_no_correct_files():
         assert False
 
 
+def test_correct_file_order():
+    """
+        Tests that analysis correctly orders the files
+        :return: -
+    """
+    analysis = Analysis(root_dir() + '/data/samples/script_tags_sample')
+
+    correct_order = ['1630982908', '1630986508', '1632109708', '1632368908', '1632714508']
+
+    for i, filename in enumerate(correct_order):
+        if filename != analysis.filenames_sorted[i]:
+            assert False
+
+    assert True
+
+
 if __name__ == '__main__':
     test_match()
     test_no_correct_files()
+    test_correct_file_order()
