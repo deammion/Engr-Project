@@ -24,13 +24,11 @@ def test_match():
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
     if not delta:
+        print("not delta")
         assert True
     else:
+        print("delta")
         assert False
-
-
-if __name__ == '__main__':
-    test_match()
 
 
 def test_no_correct_files():
@@ -38,25 +36,26 @@ def test_no_correct_files():
         Test for correct output with files without script tags
         :return: -
     """
-    print("HELLO")
-    Analysis(root_dir() + '/data/samples/no_script_tags_sample')
+    Analysis(root_dir() + '/data/samples/no_scripts_tags_sample')
 
-    print("HIII")
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/script_analysis.txt'))
-    print("MORNING")
-    actual = open(os.path.join(root_dir(), 'data/samples/no_script_tags_sample/data.txt'))
+    actual = open(os.path.join(root_dir(), 'data/samples/no_scripts_tags_sample/data.txt'))
 
     diff = difflib.ndiff(expected.readlines(), actual.readlines())
 
+    print("difference: ")
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
+    print("delta: " + delta)
+    
     if not delta:
-        print("123")
+        print("not delta")
         assert True
     else:
-        print("!!!!!!")
+        print("delta")
         assert False
 
 
 if __name__ == '__main__':
+    test_match()
     test_no_correct_files()
