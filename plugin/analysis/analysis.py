@@ -5,7 +5,6 @@
 from __future__ import absolute_import
 from __future__ import division
 
-import time
 from builtins import round
 import os
 import bs4
@@ -92,7 +91,14 @@ class Analysis:
         if self.DATA_FILENAME in filenames:
             filenames.remove(self.DATA_FILENAME)
 
-        self.filenames_sorted = sorted(filenames, key=lambda x: time.time(), reverse=True)
+        filenames_ints = []
+        for filename in filenames:
+            filenames_ints.append(int(filename))
+
+        filenames = sorted(filenames_ints)
+
+        for filename in filenames:
+            self.filenames_sorted.append(str(filename))
 
     def parse_htmls(self):
         """
