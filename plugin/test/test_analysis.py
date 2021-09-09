@@ -68,7 +68,6 @@ def test_correct_file_order():
 
     correct_order = ['1630982908', '1630986508', '1632109708', '1632368908', '1632714508']
 
-    print(analysis.filenames_sorted)
     for i, filename in enumerate(correct_order):
         if filename != analysis.filenames_sorted[i]:
             assert False
