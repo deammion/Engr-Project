@@ -92,7 +92,7 @@ class Analysis:
         if self.DATA_FILENAME in filenames:
             filenames.remove(self.DATA_FILENAME)
 
-        self.filenames_sorted = sorted(filenames, key=lambda x: time.time(), reverse=True)
+        self.filenames_sorted = sorted(filenames, key=lambda x: int(x), reverse=False)
 
     def parse_htmls(self):
         """
