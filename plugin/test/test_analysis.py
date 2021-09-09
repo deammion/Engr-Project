@@ -14,15 +14,15 @@ def test_match():
     Test output from analysis matches expected output for a given sample output delta difference
     :return: -
     """
-    file_path = root_dir() + '/data/samples/dev.unshielded.red/data.txt'
+    file_path = root_dir() + '/data/samples/script_tags_sample/data.txt'
 
     if os.path.exists(file_path):
         os.remove(file_path)
 
-    Analysis(root_dir() + '/data/samples/dev.unshielded.red')
+    Analysis(root_dir() + '/data/samples/script_tags_sample')
 
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/analysis.txt'))
-    actual = open(os.path.join(root_dir(), 'data/samples/dev.unshielded.red/data.txt'))
+    actual = open(os.path.join(root_dir(), 'data/samples/script_tags_sample/data.txt'))
 
     diff = difflib.ndiff(expected.readlines(), actual.readlines())
 
@@ -68,6 +68,7 @@ def test_correct_file_order():
 
     correct_order = ['1630982908', '1630986508', '1632109708', '1632368908', '1632714508']
 
+    print(analysis.filenames_sorted)
     for i, filename in enumerate(correct_order):
         if filename != analysis.filenames_sorted[i]:
             assert False
@@ -76,6 +77,5 @@ def test_correct_file_order():
 
 
 if __name__ == '__main__':
-    test_match()
     test_no_correct_files()
     test_correct_file_order()
