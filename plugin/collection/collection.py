@@ -3,13 +3,13 @@ Class which collects information about requests and responses
 """
 
 from __future__ import absolute_import
-import time
 import sys
 from mitmproxy import http
-
+from analysis.analysis import Analysis
+from utilities.response import Response
+from utilities.request import Request
 from utilities import util
 from utilities.util import root_dir
-from analysis.analysis import Analysis
 
 sys.path.append(root_dir())
 
@@ -22,22 +22,21 @@ def response(flow: http.HTTPFlow):
     """
     print("response")
     if util.correct_filetype(flow):
-        Sample(flow)
+        Collection(flow)
 
 
-class Sample:
+class Collection:
     """
-    Sample object
+    Collection object
     """
 
     def __init__(self, flow):
         """
         Initialise the collection object
         """
-        self._sample = None
-        self._flow = flow
-        self._url = flow.request.pretty_url
-        self._filename = str(time.time())
+        self._request = Request(flow)
+        self._response = Response(flow)
+        self._filename = self._response.get_time()
         self._path = None
         self.set_path()
         self.call_analysis()
@@ -56,7 +55,7 @@ class Sample:
         :param self:
         :return:
         """
-        self._path = util.to_disk(self._flow, self._filename)
+        self._path = util.to_disk(self._response.get_response(), self._filename)
 
     def call_analysis(self):
         """

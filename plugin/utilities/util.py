@@ -5,7 +5,7 @@ from __future__ import absolute_import
 from __future__ import division
 import hashlib
 import os
-
+import bs4
 
 
 def root_dir():
@@ -89,3 +89,16 @@ def dump_output(content, subdir, name):
     with open(os.path.join(root_dir(), file_path), "w") as output:
         output.writelines(str(content[i]) + "\n" for i in range(len(content)))
     output.close()
+
+
+def get_scripts(filename):
+    """
+    Reads the HTML from a file and gets a list of all the script tags in the file
+    :return: a list of all the script tags in the file
+    """
+    file = open(filename, "r")
+    file_data = file.read()
+    soup = bs4.BeautifulSoup(file_data, 'html.parser')
+    scripts = soup.find_all('script')
+    file.close()
+    return scripts
