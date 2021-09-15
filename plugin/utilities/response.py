@@ -37,4 +37,4 @@ class Response:
         Get the response content
         :return: The response content
         """
-        return self.flow.response.text
+        return self.flow.response.headers + "\n" + self.flow.response.text
