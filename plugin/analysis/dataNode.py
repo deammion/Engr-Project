@@ -15,48 +15,42 @@ class DataNode:
         self.htmls_checked = h
         self.probability = round((f / h) * 100, 2)
 
-    """
-            Gets the script associated with the data node
-            """
-
     def get_script(self):
+        """
+                    Gets the script associated with the data node
+                    """
         return self.script
 
-    """
-            Gets the script frequency of the data node
-            """
-
     def get_frequency(self):
+        """
+                    Gets the script frequency of the data node
+                    """
         return self.frequency
 
-    """
-            Gets the script probability of the data node
-            """
-
     def get_probability(self):
+        """
+                    Gets the script probability of the data node
+                    """
         return self.probability
 
-    """
-            sets the script frequency of the data node
-            """
-
     def set_frequency(self, f):
+        """
+                    sets the script frequency of the data node
+                    """
         self.frequency = f
         self.probability = round((f / self.htmls_checked) * 100, 2)
 
-    """
-            sets the htmls checked of the data node
-            """
-
     def set_htmls_checked(self, html):
+        """
+                    sets the htmls checked of the data node
+                    """
         self.htmls_checked = html
         self.probability = round((self.frequency / html) * 100, 2)
 
-    """
-            To string that is used for writing data to data.txt
-            """
-
     def to_string(self):
+        """
+                    To string that is used for writing data to data.txt
+                    """
         return self.script + " Frequency: " + str(self.frequency) \
                + " Probability: " + str(self.probability) + "%" + "\n"
         # return "==============================" + "\n" + self.script + "\n" + " Frequency: " + str(self.frequency) \
