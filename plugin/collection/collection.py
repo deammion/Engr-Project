@@ -38,8 +38,9 @@ class Collection:
         self._response = Response(flow)
         self._filename = self._response.get_time()
         self._path = None
-        self.set_path()
-        self.call_analysis()
+        if self._response.check_content_type():
+            self.set_path()
+            self.call_analysis()
 
     def get_path(self):
         """

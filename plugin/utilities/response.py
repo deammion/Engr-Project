@@ -17,6 +17,7 @@ class Response:
         """
         self.flow = flow
         self.time = str(time.time())
+        self.headers = flow.response.headers.items()
 
     def get_time(self):
         """
@@ -38,3 +39,14 @@ class Response:
         :return: The response content
         """
         return self.flow.response.headers + "\n" + self.flow.response.text
+
+    def check_content_type(self):
+        """
+        Check content type of response
+        :return: true if content type is text/html
+        """
+        for k, v in self.headers:
+            if k.upper() == "CONTENT-TYPE" and v == "text/html":
+                return True
+            else:
+                return False

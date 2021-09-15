@@ -14,6 +14,7 @@ class Request:
         """
         self.flow = flow
         self.url = flow.request.pretty_url
+        self.headers = flow.request.headers.items()
 
     def get_url(self):
         """
@@ -34,3 +35,14 @@ class Request:
                 self.url.__contains__("www.gstatic.com")):
             return True
         return False
+
+    def check_content_type(self):
+        """
+        Check content type of request
+        :return: true if content type is text/html
+        """
+        for k, v in self.headers:
+            if k.upper() == "CONTENT-TYPE" and v == "text/html":
+                return True
+            else:
+                return False
