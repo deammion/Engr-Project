@@ -5,6 +5,9 @@ from __future__ import division
 
 
 class DataNode:
+    """
+    Data node class
+    """
 
     def __init__(self, s, f, h):
         """
@@ -51,7 +54,7 @@ class DataNode:
         """
                     To string that is used for writing data to data.txt
                     """
-        return self.script + " Frequency: " + str(self.frequency) \
-               + " Probability: " + str(self.probability) + "%" + "\n"
-        # return "==============================" + "\n" + self.script + "\n" + " Frequency: " + str(self.frequency) \
-        #        + "\n" + " Probability: " + str(self.probability) + "%" + "\n"
+        # return self.script + " Frequency: " + str(self.frequency) \
+        #        + " Probability: " + str(self.probability) + "%" + "\n"
+        return "==============================" + "\n" + self.script + "\n" + "Frequency: " + str(self.frequency) \
+               + "\n" + "Probability: " + str(self.probability) + "%" + "\n"

@@ -24,6 +24,7 @@ def response(flow: http.HTTPFlow):
     if util.correct_filetype(flow):
         Collection(flow)
 
+
 class Collection:
     """
     Collection object
