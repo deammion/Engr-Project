@@ -45,6 +45,6 @@ class Response:
         Check content type of response
         :return: true if content type is text/html
         """
-        for k, v in self.headers:
-            if k.upper() == "CONTENT-TYPE" and v == "text/html":
+        for key, value in self.headers:
+            if key.upper() == "CONTENT-TYPE" and value == "text/html":
                 return True
