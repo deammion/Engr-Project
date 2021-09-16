@@ -40,12 +40,3 @@ class Response:
         """
         return self.flow.response.headers + "\n" + self.flow.response.text
 
-    def check_content_type(self):
-        """
-        Check content type of response
-        :return: true if content type is text/html
-        """
-        for key, value in self.headers:
-            if key.upper() == "CONTENT-TYPE" and value == "text/html":
-                return True
-            return None

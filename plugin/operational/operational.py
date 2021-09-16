@@ -42,7 +42,7 @@ class Operational:
         self._nonce = None
         self._file_name = self._response.get_time()
         self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-        if self._response.check_content_type():
+        if util.check_content_type(flow):
             self.set_path(util.to_disk(flow, self._file_name))
             self.generate_nonce()
             self.retrieve_safe_tags()
