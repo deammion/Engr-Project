@@ -39,4 +39,3 @@ class Response:
         :return: The response content
         """
         return self.flow.response.headers + "\n" + self.flow.response.text
-
