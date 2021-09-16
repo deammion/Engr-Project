@@ -44,5 +44,3 @@ class Request:
         for k, v in self.headers:
             if k.upper() == "CONTENT-TYPE" and v == "text/html":
                 return True
-            else:
-                return False
