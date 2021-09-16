@@ -48,3 +48,4 @@ class Response:
         for key, value in self.headers:
             if key.upper() == "CONTENT-TYPE" and value == "text/html":
                 return True
+            return None
