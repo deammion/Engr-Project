@@ -29,7 +29,6 @@ class Analysis:
         self.filenames_sorted = []
         self.db_script_to_count = {}
         self.script_to_count = {}
-        self.data_nodes = []
         self.analyse_data()
 
     def analyse_data(self):
@@ -162,21 +161,22 @@ class Analysis:
                                                 + self.script_to_count[key]
                 else:
                     pass
-        for key in self.script_to_count:
-            self.data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
 
     def write_to_file(self):
         """
         Write Script data (frequency and probability)to file
         :return:
         """
+        data_nodes = []
+        for key in self.script_to_count:
+            data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
         file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         # for key in self.script_to_count:
         #     file.write(key + " Frequency: " + str(self.script_to_count[key])
         #                + " Probability: " + str(round((self.script_to_count[key] /
         #                                                self.htmls_checked) * 100, 2)) + "%" + "\n")
-        for nodes in self.data_nodes:
+        for nodes in data_nodes:
             file.write(nodes.to_string())
         file.close()
 
