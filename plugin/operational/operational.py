@@ -42,8 +42,26 @@ class Operational:
         self._nonce = None
         self._file_name = self._response.get_time()
         self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-
         self.set_path(util.to_disk(flow, self._file_name))
+        self.operate()
+
+    """
+    Method to initialize an object for the test so that filepath can be set
+    """
+    def __init__(self, flow, filepath):
+        self._request = Request(flow)
+        self._response = Response(flow)
+        self._path = None
+        self._nonce = None
+        self._file_name = self._response.get_time()
+        self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self.set_path(filepath)
+        self.operate()
+
+    def operate(self):
+        """
+        Method to call the appropriate methods required to perform the operational phase
+        """
         self.generate_nonce()
         self.retrieve_safe_tags()
         self.determine_safe_tags()
