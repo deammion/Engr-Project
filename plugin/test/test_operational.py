@@ -31,7 +31,7 @@ def test_match():
     Create a test to check that nonce tags are correctly added to all safe script tags
     """
     flow = load_flow(root_dir() + '\\flowInfo.txt')
-    operational = Operational(flow)
+    operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
     operational._nonce = "THIS_IS_NONCE"
 
     # write the created output to a file for later comparison

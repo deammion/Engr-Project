@@ -55,7 +55,7 @@ class Operational:
         self._nonce = None
         self._file_name = self._response.get_time()
         self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-        self.set_path(filepath)
+        self.set_path(util.to_disk(flow, filepath, self._file_name))
         self.operate()
 
     def operate(self):
