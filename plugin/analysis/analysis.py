@@ -7,7 +7,7 @@ from __future__ import division
 
 import os
 import bs4
-from dataNode import DataNode
+from data_node import DataNode
 
 
 class Analysis:
