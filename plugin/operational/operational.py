@@ -25,7 +25,7 @@ def response(flow: http.HTTPFlow):
     """
 
     if util.correct_filetype(flow):
-        operation = Operational(flow)
+        operation = Operational(flow, None)
         flow.response.text = operation.add_nonce_to_html()
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
             "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
@@ -33,20 +33,7 @@ def response(flow: http.HTTPFlow):
 
 class Operational:
     """
-    Object watches a stream
-    """
-    def __init__(self, flow):
-        self._request = Request(flow)
-        self._response = Response(flow)
-        self._path = None
-        self._nonce = None
-        self._file_name = self._response.get_time()
-        self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-        self.set_path(util.to_disk(flow, self._file_name))
-        self.operate()
-
-    """
-    Method to initialize an object for the test so that filepath can be set
+    Method to initialize an operation object
     """
     def __init__(self, flow, filepath):
         self._request = Request(flow)

@@ -56,27 +56,6 @@ def correct_filetype(flow):
     return False
 
 
-def to_disk(flow, filename):
-    """
-        Saves information to a file on the disk
-        :param flow: object
-        :param filename name of file
-        :return: new root path
-        """
-    data = flow.request.pretty_url.split("/")
-    data = data[2:]
-    root_path = os.getcwd()
-    for folder in data:
-        root_path = os.path.join(root_path, folder)
-        if not os.path.exists(root_path):
-            os.mkdir(root_path)
-    file_path = os.path.join(root_path, filename)
-    file = open(file_path, "w")
-    file.write(flow.response.text + "\n")
-    file.close()
-    return root_path
-
-
 def to_disk(flow, filepath, filename):
     """
         Saves information to a file on the disk
@@ -87,7 +66,10 @@ def to_disk(flow, filepath, filename):
         """
     data = flow.request.pretty_url.split("/")
     data = data[2:]
-    root_path = filepath
+    if filepath is None:
+        root_path = os.getcwd()
+    else:
+        root_path = filepath
     for folder in data:
         root_path = os.path.join(root_path, folder)
         if not os.path.exists(root_path):
