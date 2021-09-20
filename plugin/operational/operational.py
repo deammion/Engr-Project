@@ -89,6 +89,14 @@ class Operational:
         """
         self._path = path
 
+    def set_nonce(self, nonce):
+        """
+        Set the nonce of the object
+        This method is only used for testing purposes
+        :param nonce: new nonce
+        """
+        self._nonce = nonce
+
     def get_filename(self):
         """
         Get the name of the file from the object
