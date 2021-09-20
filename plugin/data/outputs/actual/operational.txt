@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Jack Walton-France</title>
+<!-- Bootstrap -->
+<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" rel="stylesheet"/>
+<link href="assets/css/animate.css" rel="stylesheet"/>
+<link href="css/bootstrap-4.4.1.css" rel="stylesheet"/>
+<link href="assets/css/carousel.css" rel="stylesheet"/>
+<link href="css/mainPage.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light offset-lg-0 col-lg-12 blueBackground"> <a class="navbar-brand" href="#">Jack Walton-France       </a>
+<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"> <span class="navbar-toggler-icon"></span> </button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mr-auto offset-lg-7">
+<li class="nav-item"> <a class="nav-link active" href="index.html"> Home <span class="sr-only">(current)</span></a> </li>
+<li class="nav-item active"> <a class="nav-link" href="aboutMePage.html">About Us</a> </li>
+<li class="nav-item dropdown"> <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" id="navbarDropdown" role="button"> Services </a>
+<div aria-labelledby="navbarDropdown" class="dropdown-menu"> <a class="dropdown-item" href="servicesOffered.html">What's Offered</a> <a class="dropdown-item" href="pricingPage.html">Pricing</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="/contactPage.html">Ask a question</a> </div>
+</li>
+<li class="nav-item active"> <a class="nav-link" href="contactPage.html">Contact Us</a> </li>
+</ul>
+</div>
+</nav>
+<header>
+<div class="jumbotron backgroundPhoto">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<h1 class="text-center whiteText">Personalised Training, Coaching and Programs </h1>
+<h4 class="text-center whiteText"><b>By Jack Walton-France    </b></h4>
+<p> </p>
+<p class="text-center"><a class="btn btn-primary btn-lg" href="#services" role="button">Learn more</a> </p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section>
+<div class="container">
+<div class="row">
+<div class="col-12 mb-2 text-center">
+<h2 id="services">SERVICES</h2>
+</div>
+</div>
+<div class="row wow fadeInUp">
+<div class="col-sm-6 col-lg-4">
+<h3>Personal Training</h3>
+<p> Come train with me 1 on 1 at Cityfitness Thorndon. Together we can set goals and take the best approach to find success for you. As well as refine your technique and smash through plateaus. Alongside the 1 on 1 coaching, personal training includes a personalised training plan, nutritional consultation and someone to push you through every session.  me for a free consultation session. </p>
+<p><a class="btn btn-link" href="servicesOffered.html#personaltraining">View details »</a></p>
+</div>
+<div class="col-sm-6 col-lg-4">
+<h3>Online Coaching</h3>
+<p> The perfect option for more independent trainee’s looking for guidance and direction to meet their training and nutritional goals. Online coaching includes weekly check-ins (email and text whenever you need), personalised training plan, diet plan outlining calories and macros (with meal recommendations) as well cardio and ab routines. All tailored to meeting your individual needs and goals. </p>
+<p><a class="btn btn-link" href="servicesOffered.html#onlinecoaching">View details »</a></p>
+</div>
+<div class="col-sm-6 col-lg-4">
+<h3>Workout Programs</h3>
+<p> I offer personalised workout plans all tailored to match your individual goals and needs. Whether you workout 3 to 6 times per week, have fat loss, strength or muscle building goals, I can tailor the perfect program to you. </p>
+<p><a class="btn btn-link" href="servicesOffered.html#workoutprograms">View details »</a></p>
+</div>
+</div>
+</div>
+<div class="jumbotron">
+<div class="container">
+<div class="row">
+<div class="text-center col-md-8 col-12 mx-auto wow fadeInLeft">
+<p class="lead whiteText">Interested and want to learn more!</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-primary" href="contactPage.html" title="">Enquire now!</a> </div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-sm-12 mt-4 mb-2 text-center">
+<h2>TESTIMONIALS</h2>
+</div>
+</div>
+<!-- Top content -->
+<div class="top-content">
+<div class="container-fluid">
+<div class="carousel slide" data-ride="carousel" id="carousel-example">
+<div class="carousel-inner row w-100 mx-auto" role="listbox">
+<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active"> <img alt="img1" class="img-fluid mx-auto d-block" src="assets/img/backgrounds/aryanTest1.jpg"/> </div>
+<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3"> <img alt="img2" class="img-fluid mx-auto d-block" src="assets/img/backgrounds/aryanTest2.jpg"/> </div>
+<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3"> <img alt="img1" class="img-fluid mx-auto d-block" src="assets/img/backgrounds/aryanTest1.jpg"/> </div>
+<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3"> <img alt="img2" class="img-fluid mx-auto d-block" src="assets/img/backgrounds/aryanTest2.jpg"/> </div>
+<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3"> <img alt="img1" class="img-fluid mx-auto d-block" src="assets/img/backgrounds/aryanTest1.jpg"/> </div>
+<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3"> <img alt="img2" class="img-fluid mx-auto d-block" src="assets/img/backgrounds/aryanTest2.jpg"/> </div>
+</div>
+<a class="carousel-control-prev" data-slide="prev" href="#carousel-example" role="button"> <span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" data-slide="next" href="#carousel-example" role="button"> <span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="sr-only">Next</span> </a> </div>
+</div>
+</div>
+</div>
+</section>
+<p> </p>
+<footer class="text-center blackFooter">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<hr/>
+<p>Copyright © Jack Walton-France. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script nonce="THIS_IS_NONCE" src="assets/js/jquery-3.3.1.min.js"></script>
+<script nonce="THIS_IS_NONCE" src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" nonce="THIS_IS_NONCE" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" nonce="THIS_IS_NONCE" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script nonce="THIS_IS_NONCE" src="assets/js/jquery.backstretch.min.js"></script>
+<script nonce="THIS_IS_NONCE" src="assets/js/wow.min.js"></script>
+<script nonce="THIS_IS_NONCE" src="assets/js/scripts.js"></script>
+</body>
+</html>
