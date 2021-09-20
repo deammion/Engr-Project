@@ -167,18 +167,18 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
-        data_nodes = []
-        for key in self.script_to_count:
-            data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
+        # data_nodes = []
+        # for key in self.script_to_count:
+        #     data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
+        # for nodes in data_nodes:
+        #     file.write(nodes.to_string())
+        # file.close()
         file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
-        # for key in self.script_to_count:
-        #     file.write(key + " Frequency: " + str(self.script_to_count[key])
-        #                + " Probability: " + str(round((self.script_to_count[key] /
-        #                                                self.htmls_checked) * 100, 2)) + "%" + "\n")
-        for nodes in data_nodes:
-            file.write(nodes.to_string())
-        file.close()
+        for key in self.script_to_count:
+            file.write(key + " Frequency: " + str(self.script_to_count[key])
+                       + " Probability: " + str(round((self.script_to_count[key] /
+                                                       self.htmls_checked) * 100, 2)) + "%" + "\n")
 
 
 if __name__ == "__main__":
