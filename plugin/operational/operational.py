@@ -1,170 +1,96 @@
 """
-Perform blocking and reporting on scripts, add nonces to, and allow, safe scripts
+Test Operation Phase
 """
 
 from __future__ import absolute_import
-import secrets
 import os
-import sys
-from mitmproxy import http
-import bs4
+from mitmproxy import io, http
+from mitmproxy.exceptions import FlowReadException
 
-from utilities import util
-from utilities.response import Response
-from utilities.request import Request
-from analysis.analysis import Analysis
-
-sys.path.append(util.root_dir())
+from operational.operational import Operational
+from utilities.util import root_dir
 
 
-def response(flow: http.HTTPFlow):
+def load_flow(filename):
     """
-    Run automatically by mitmproxy on responses during operational phase
-    :param flow:  active http flow
-    :return: -
+    Create a method to load a flow so the operation class can be created
+    Code taken directly from https://docs.mitmproxy.org/stable/addons-examples/
+    :param filename: file name of the file to load
+    :return: the flow
     """
+    with open(filename, "rb") as logfile:
+        f_reader = io.FlowReader(logfile)
+        try:
+            for flow in f_reader.stream():
+                if isinstance(flow, http.HTTPFlow):
+                    return flow
+        except FlowReadException as exception:
+            print(f"Flow file corrupted: {exception}")
+    return None
 
-    if util.correct_filetype(flow):
-        operation = Operational(flow, None)
-        flow.response.text = operation.add_nonce_to_html()
-        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
-            "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
 
-
-class Operational:
+def test_nonce_tags_added():
     """
-    Method to initialize an operation object
+    Create a test to check that nonce tags are correctly added to all safe script tags
     """
-    def __init__(self, flow, filepath):
-        self._request = Request(flow)
-        self._response = Response(flow)
-        self._path = None
-        self._nonce = None
-        self._file_name = self._response.get_time()
-        self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-        self.set_path(util.to_disk(flow, filepath, self._file_name))
-        self.operate()
+    flow = load_flow(root_dir() + '\\flowInfo.txt')
+    operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
+    operational.set_nonce("THIS_IS_NONCE")
 
-    def operate(self):
-        """
-        Method to call the appropriate methods required to perform the operational phase
-        """
-        self.generate_nonce()
-        self.retrieve_safe_tags()
-        self.determine_safe_tags()
-        Analysis(self.get_path())
+    # write the created output to a file for later comparison
+    file = open(root_dir() + '/data/outputs/actual/operational.txt', "w")
+    file.write(operational.add_nonce_to_html())
+    file.close()
 
-    def get_path(self):
-        """
-        Get the path of the object
-        :return: object path
-        """
-        return self._path
+    # read both the expected and actual files to compare them
+    expected = open(os.path.join(root_dir(), 'data/outputs/expected/operational.txt')).read()
+    actual = open(os.path.join(root_dir(), 'data/outputs/actual/operational.txt')).read()
 
-    def get_nonce(self):
-        """
-        Get the nonce of the object
-        :return: object nonce
-        """
-        return self._nonce
+    if expected == actual:
+        assert True
+    else:
+        assert False
 
-    def set_path(self, path):
-        """
-        Set the path of the object
-        :param path: new path
-        :return: -
-        """
-        self._path = path
 
-    def set_nonce(self, nonce):
-        """
-        Set the nonce of the object
-        This method is only used for testing purposes
-        :param nonce: new nonce
-        """
-        self._nonce = nonce
+def test_determines_safe_tags():
+    """
+    Create a test to check that the program correctly determines which script tags are safe and unsafe
+    """
+    flow = load_flow(root_dir() + '\\flowInfo.txt')
+    operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
 
-    def get_filename(self):
-        """
-        Get the name of the file from the object
-        :return: file name
-        """
-        return self._file_name
+    actual_safe_scripts = operational.get_scripts()[1]
+    actual_unsafe_scripts = operational.get_scripts()[0]
 
-    def generate_nonce(self):
-        """
-        Generate nonce using secrets. Secrets is a
-        CSPRNG. Creates a 256 bit (32 byte)token
-        encoded in Base64
-        Returns: Base64 encoded nonce.
-        """
-        self._nonce = secrets.token_urlsafe(32)
-        return self._nonce
+    expected_safe_scripts = ['<script src="assets/js/jquery-3.3.1.min.js"></script>',
+                             '<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>',
+                             '<script crossorigin="anonymous" '
+                             'integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" '
+                             'src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js">'
+                             '</script>',
+                             '<script crossorigin="anonymous" '
+                             'integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" '
+                             'src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>',
+                             '<script src="assets/js/jquery.backstretch.min.js"></script>']
+    expected_unsafe_scripts = ['<script src="assets/js/wow.min.js"></script>',
+                               '<script src="assets/js/scripts.js"></script>']
 
-    def retrieve_safe_tags(self):
-        """
-        Retrieve the script tags which are deemed as safe from the data.txt file
-        """
-        root_path = os.path.join(self._path, "data.txt")
-        if os.path.isfile(root_path):
-            scripts = util.get_scripts(root_path)
-            if scripts:
-                for script in scripts:
-                    self._scripts[2].append(script)
+    if len(actual_safe_scripts) != len(expected_safe_scripts) \
+            or len(actual_unsafe_scripts) != len(expected_unsafe_scripts):
+        print("length error")
+        assert False
+    else:
+        for i, script in enumerate(actual_safe_scripts):
+            if str(script) != expected_safe_scripts[i]:
+                print("safe error")
+                assert False
+        for i, script in enumerate(actual_unsafe_scripts):
+            if str(script) != expected_unsafe_scripts[i]:
+                print("unsafe error")
+                assert False
 
-    def determine_safe_tags(self):
-        """
-        Determine which script tags are safe and unsafe in the HTML
-        """
-        root_path = os.path.join(self._path, self._file_name)
-        if os.path.isfile(root_path):
-            scripts = util.get_scripts(root_path)
-            for script in scripts:
-                if script in self._scripts[2]:
-                    # Safe Scripts
-                    self._scripts[1].append(script)
-                else:
-                    # Unsafe scripts
-                    self._scripts[0].append(script)
+    assert True
 
-    def add_nonce_to_html(self):
-        """
-        Add the nonce tags to each safe script tag
-        :param self:
-        :return: the html with the added nonce tags
-        """
-        original_html = self._response.get_response_content()
 
-        final_html = bs4.BeautifulSoup(original_html, 'html.parser')
-        scripts = final_html.findAll('script')
-        for script in scripts:
-            if script in self._scripts[2]:
-                script.attrs['nonce'] = self._nonce
-
-        return str(final_html)
-
-    def report(self):
-        """
-        Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
-        :return: -
-        """
-        url = self._request.get_url()
-        csp_report_uri = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
-        browser_warning = "<script> window.alert(\"Unsafe Script(s) detected\");</script>"
-        if len(self._scripts[1]) == 0:
-            print("List is empty")
-        else:
-            for script in self._scripts[1]:
-                if script in url:
-                    script = csp_report_uri
-                    print(script + "This is an unsafe script")
-            with open(self._file_name, "r") as f:
-                content = f.readlines()
-                content.insert(len(content) - 4, browser_warning)
-                to_write = ""
-                f.close()
-            with open(self._file_name, "w") as f:
-                for line in content:
-                    to_write = to_write + line
-                print(to_write)
-                f.write(to_write)
+test_determines_safe_tags()
+test_nonce_tags_added()
