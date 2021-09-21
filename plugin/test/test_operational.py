@@ -92,5 +92,25 @@ def test_determines_safe_tags():
     assert True
 
 
+def test_determine_data_tags():
+    flow = load_flow(root_dir() + '\\blankFlow.txt')
+    operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
+
+    actual_data_scripts = operational.get_scripts()[2]
+
+    expected_data_scripts = ['<script src="script1"></script>',
+                             '<script src="script2"></script>']
+    if len(actual_data_scripts) != len(expected_data_scripts):
+        print("Length error")
+        assert False
+    else:
+        for i, script in enumerate(actual_data_scripts):
+            if str(script) != expected_data_scripts[i]:
+                print("Safe error")
+                assert False
+    assert True
+
+
 test_determines_safe_tags()
 test_nonce_tags_added()
+test_determine_data_tags()
