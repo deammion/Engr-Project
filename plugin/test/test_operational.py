@@ -29,7 +29,7 @@ def load_flow(filename):
     return None
 
 
-def test_match():
+def test_nonce_tags_added():
     """
     Create a test to check that nonce tags are correctly added to all safe script tags
     """
@@ -52,4 +52,45 @@ def test_match():
         assert False
 
 
-test_match()
+def test_determines_safe_tags():
+    """
+    Create a test to check that the program correctly determines which script tags are safe and unsafe
+    """
+    flow = load_flow(root_dir() + '\\flowInfo.txt')
+    operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
+
+    actual_safe_scripts = operational.get_scripts()[1]
+    actual_unsafe_scripts = operational.get_scripts()[0]
+
+    expected_safe_scripts = ['<script src="assets/js/jquery-3.3.1.min.js"></script>',
+                             '<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>',
+                             '<script crossorigin="anonymous" '
+                             'integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" '
+                             'src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js">'
+                             '</script>',
+                             '<script crossorigin="anonymous" '
+                             'integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" '
+                             'src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>',
+                             '<script src="assets/js/jquery.backstretch.min.js"></script>']
+    expected_unsafe_scripts = ['<script src="assets/js/wow.min.js"></script>',
+                               '<script src="assets/js/scripts.js"></script>']
+
+    if len(actual_safe_scripts) != len(expected_safe_scripts) \
+            or len(actual_unsafe_scripts) != len(expected_unsafe_scripts):
+        print("length error")
+        assert False
+    else:
+        for i, script in enumerate(actual_safe_scripts):
+            if str(script) != expected_safe_scripts[i]:
+                print("safe error")
+                assert False
+        for i, script in enumerate(actual_unsafe_scripts):
+            if str(script) != expected_unsafe_scripts[i]:
+                print("unsafe error")
+                assert False
+
+    assert True
+
+
+test_determines_safe_tags()
+test_nonce_tags_added()
