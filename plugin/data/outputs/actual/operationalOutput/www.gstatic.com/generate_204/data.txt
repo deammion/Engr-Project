@@ -1,0 +1,3 @@
+HTML Occurrence: 1
+<script src="script1"></script> Frequency: 1 Probability: 100.0%
+<script src="script2"></script> Frequency: 1 Probability: 100.0%
