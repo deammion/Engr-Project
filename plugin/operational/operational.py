@@ -41,7 +41,7 @@ class Operational:
         self._path = None
         self._nonce = None
         self._file_name = self._response.get_time()
-        self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self._scripts = [[], [], []] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
         self.set_path(util.to_disk(flow, filepath, self._file_name))
         self.operate()
 
@@ -60,6 +60,13 @@ class Operational:
         :return: object path
         """
         return self._path
+
+    def get_scripts(self):
+        """
+        Get the scripts of the object
+        :return: object scripts
+        """
+        return self._scripts
 
     def get_nonce(self):
         """
