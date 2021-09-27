@@ -56,9 +56,11 @@ def test_determines_safe_tags():
     """
     Create a test to check that the program correctly determines which script tags are safe and unsafe
     """
+    # Create the flow and operational class
     flow = load_flow(root_dir() + '\\flowInfo.txt')
     operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
 
+    # Get the operational script tags
     actual_safe_scripts = operational.get_scripts()[1]
     actual_unsafe_scripts = operational.get_scripts()[0]
 
@@ -75,6 +77,7 @@ def test_determines_safe_tags():
     expected_unsafe_scripts = ['<script src="assets/js/wow.min.js"></script>',
                                '<script src="assets/js/scripts.js"></script>']
 
+    # compare the script tags to check that they are the same
     if len(actual_safe_scripts) != len(expected_safe_scripts) \
             or len(actual_unsafe_scripts) != len(expected_unsafe_scripts):
         print("length error")
@@ -93,13 +96,20 @@ def test_determines_safe_tags():
 
 
 def test_determine_data_tags():
+    """
+    Create a test to check that the program correctly reads script tags from the data file
+    """
+    # Create the flow and operational class
     flow = load_flow(root_dir() + '\\blankFlow.txt')
     operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
 
+    # Get the operational script tags
     actual_data_scripts = operational.get_scripts()[2]
 
     expected_data_scripts = ['<script src="script1"></script>',
                              '<script src="script2"></script>']
+
+    # compare the script tags to check that they are the same
     if len(actual_data_scripts) != len(expected_data_scripts):
         print("Length error")
         assert False
