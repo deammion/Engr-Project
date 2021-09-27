@@ -5,9 +5,9 @@
 from __future__ import absolute_import
 from __future__ import division
 
-from builtins import round
 import os
 import bs4
+from data_node import DataNode
 
 
 class Analysis:
@@ -79,6 +79,7 @@ class Analysis:
 
             if data[0].isdigit():
                 # add the script with its frequency to the map
+                # self.data_nodes.append(DataNode(str(script), int(data[0]), self.htmls_checked))
                 self.db_script_to_count.update({str(script): int(data[0])})
 
     def read_directory(self):
@@ -139,6 +140,8 @@ class Analysis:
 
         response.close()
         self.htmls_checked += 1
+        # for data in self.data_nodes:
+        #     data.set_htmls_checked(self.htmls_checked)
 
     def get_script_count(self):
         """
@@ -165,10 +168,19 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
+        # data_nodes = []
+        # for key in self.script_to_count:
+        #     data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
+        # for nodes in data_nodes:
+        #     file.write(nodes.to_string())
+        # file.close()
         file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         for key in self.script_to_count:
             file.write(key + " Frequency: " + str(self.script_to_count[key])
                        + " Probability: " + str(round((self.script_to_count[key] /
                                                        self.htmls_checked) * 100, 2)) + "%" + "\n")
-        file.close()
+
+
+if __name__ == "__main__":
+    Analysis("../data/samples/script_tags_sample")
