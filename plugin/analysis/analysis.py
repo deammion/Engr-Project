@@ -91,11 +91,12 @@ class Analysis:
         if self.DATA_FILENAME in filenames:
             filenames.remove(self.DATA_FILENAME)
 
-        filenames_ints = []
+        filenames_floats = []
         for filename in filenames:
-            filenames_ints.append(int(filename))
+            if not os.path.isdir(self.file_path + "/" + filename):
+                filenames_floats.append(float(filename))
 
-        filenames = sorted(filenames_ints)
+        filenames = sorted(filenames_floats)
 
         for filename in filenames:
             self.filenames_sorted.append(str(filename))
