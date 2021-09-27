@@ -112,6 +112,6 @@ def check_content_type(flow):
     """
     headers = flow.response.headers.items()
     for key, value in headers:
-        if key.upper() == "CONTENT-TYPE" and value == "text/html":
+        if key.upper() == 'CONTENT-TYPE' and "text/html;" in value:
             return True
-        return None
+    return None

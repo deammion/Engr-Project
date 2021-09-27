@@ -21,7 +21,7 @@ def response(flow: http.HTTPFlow):
     :return: -
     """
     print("response")
-    if util.correct_filetype(flow):
+    if util.check_content_type(flow):
         Collection(flow)
 
 
@@ -38,9 +38,8 @@ class Collection:
         self._response = Response(flow)
         self._filename = self._response.get_time()
         self._path = None
-        if util.check_content_type(flow):
-            self.set_path()
-            self.call_analysis()
+        self.set_path()
+        self.call_analysis()
 
     def get_path(self):
         """

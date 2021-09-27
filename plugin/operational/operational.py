@@ -24,7 +24,7 @@ def response(flow: http.HTTPFlow):
     :return: -
     """
 
-    if util.correct_filetype(flow):
+    if util.check_content_type(flow):
         operation = Operational(flow)
         flow.response.text = operation.add_nonce_to_html()
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
@@ -42,12 +42,11 @@ class Operational:
         self._nonce = None
         self._file_name = self._response.get_time()
         self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-        if util.check_content_type(flow):
-            self.set_path(util.to_disk(flow, self._file_name))
-            self.generate_nonce()
-            self.retrieve_safe_tags()
-            self.determine_safe_tags()
-            Analysis(self.get_path())
+        self.set_path(util.to_disk(flow, self._file_name))
+        self.generate_nonce()
+        self.retrieve_safe_tags()
+        self.determine_safe_tags()
+        Analysis(self.get_path())
 
     def get_path(self):
         """
