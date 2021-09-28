@@ -44,9 +44,9 @@ def test_nonce_tags_added():
 
     # read both the expected and actual files to compare them
     expected = open(
-        os.path.join(root_dir(), 'data/outputs/expected/operational.txt'), encoding="utf-8", errors='ignore').read()
+        os.path.join(root_dir(), 'data/outputs/expected/operational.txt'), encoding="windows-1252").read()
     actual = open(
-        os.path.join(root_dir(), 'data/outputs/actual/operational.txt'), encoding="utf-8", errors='ignore').read()
+        os.path.join(root_dir(), 'data/outputs/actual/operational.txt'), encoding="windows-1252").read()
 
     if expected == actual:
         assert True
