@@ -118,9 +118,9 @@ class Analysis:
         :return:
         """
         print("Reading File: " + file)
-        response = open(file)
-
+        response = open(file, mode="r", encoding="utf-8", errors='ignore')
         text = response.read()
+        print(text)
         text = text.replace('\n', '')
         text = text.replace('\t', '')
 
