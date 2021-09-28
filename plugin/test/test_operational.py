@@ -34,7 +34,7 @@ def test_nonce_tags_added():
     Create a test to check that nonce tags are correctly added to all safe script tags
     """
     flow = load_flow(root_dir() + '/flowInfo.txt')
-    operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
+    operational = Operational(flow, root_dir() + '/data/outputs/actual/testingNonceTags')
     operational.set_nonce("THIS_IS_NONCE")
 
     # write the created output to a file for later comparison
