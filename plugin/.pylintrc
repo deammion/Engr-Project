@@ -86,12 +86,6 @@ enable=c-extension-no-member,
        typecheck,
        variables,
 
-
-
-
-
-
-
 [REPORTS]
 
 # Python expression which should return a score less than or equal to 10. You
@@ -525,3 +519,6 @@ min-public-methods=2
 # "BaseException, Exception".
 overgeneral-exceptions=BaseException,
                        Exception
+
+# disable "round built-in referenced" as the built-in round is used within the code
+disable=W1633
