@@ -106,3 +106,16 @@ def get_scripts(filename):
     scripts = soup.find_all('script')
     file.close()
     return scripts
+
+
+def check_content_type(flow):
+    """
+    Check content type of response HTTP
+    :param flow:
+    :return: Boolean true is content type is text/html
+    """
+    headers = flow.response.headers.items()
+    for key, value in headers:
+        if key.upper() == 'CONTENT-TYPE' and "text/html;" in value:
+            return True
+    return None

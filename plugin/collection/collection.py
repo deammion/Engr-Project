@@ -21,8 +21,9 @@ def response(flow: http.HTTPFlow):
     :return: -
     """
     print("response")
-    if util.correct_filetype(flow):
+    if util.check_content_type(flow):
         Collection(flow)
+
 
 class Collection:
     """
