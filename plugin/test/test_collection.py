@@ -31,24 +31,32 @@ def load_flow(filename):
 
 
 def test_content_type():
-    flow = load_flow(root_dir() + "flowInfo.txt")
-    # collection = Collection(flow, root_dir() + "/data/samples/dev.unshielded.red")
+    """
+    Tests that collection is saving the correct content type
+    """
+    flow = load_flow(root_dir() + "/flowInfo.txt")
     assert util.check_content_type(flow)
 
 
 def test_filename():
-    flow = load_flow(root_dir() + "flowInfo.txt")
-    collection = Collection(flow)
+    """
+    Tests the filename sizes matches what should be epected
+    """
+    flow = load_flow(root_dir() + "/flowInfo.txt")
     response_filename = Collection(flow).get_filename()
-    assert len(response_filename) == 18
+    assert len(response_filename) >= 15
 
 
 def test_response_unedited():
-    flow = load_flow(root_dir() + "flowInfo.txt")
-    collection = Collection(flow)
-    collection_response = open(root_dir() + collection.get_path())
-    expected_response = open(root_dir() + 'data/outputs/expected/collection.txt')
-    assert collection_response == expected_response
+    """
+    Tests that the collected response matches the expected response
+    """
+    flow = load_flow(root_dir() + "/flowInfo.txt")
+    collection_response = open(Collection(flow).get_path() + Collection(flow).get_filename(), 'r')
+    expected_response = open(root_dir() + '/data/outputs/expected/collection.txt', 'r')
+    assert len(collection_response.readlines()) == len(expected_response.readlines())
+    for x in range(len(collection_response.readlines())):
+        assert collection_response.readlines().pop() == expected_response.readlines().pop()
 
 
 if __name__ == "__main__":
