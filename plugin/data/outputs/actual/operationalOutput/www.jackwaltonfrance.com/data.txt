@@ -1,4 +1,4 @@
-HTML Occurrence: 2
+HTML Occurrence: 3
 <script src="assets/js/jquery-3.3.1.min.js"></script> Frequency: 2 Probability: 100.0%
 <script src="assets/js/jquery-migrate-3.0.0.min.js"></script> Frequency: 2 Probability: 100.0%
 <script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script> Frequency: 2 Probability: 100.0%
