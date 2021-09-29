@@ -25,7 +25,7 @@ def response(flow: http.HTTPFlow):
     """
 
     if util.check_content_type(flow):
-        operation = Operational(flow)
+        operation = Operational(flow, None)
         flow.response.text = operation.add_nonce_to_html()
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
             "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
@@ -41,7 +41,7 @@ class Operational:
         self._path = None
         self._nonce = None
         self._file_name = self._response.get_time()
-        self._scripts = [[], [], []] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self._scripts = [[], [], []]  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
         self.set_path(util.to_disk(flow, filepath, self._file_name))
         self.operate()
 
