@@ -57,6 +57,9 @@ class Collection:
         """
         self._path = util.to_disk(self._response.get_response(), None, self._filename)
 
+    def get_filename(self):
+        return self._filename
+
     def call_analysis(self):
         """
         Calls the analysis class
