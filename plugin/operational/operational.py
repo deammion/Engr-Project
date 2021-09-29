@@ -25,7 +25,7 @@ def response(flow: http.HTTPFlow):
     """
 
     if util.check_content_type(flow):
-        operation = Operational(flow)
+        operation = Operational(flow, None)
         flow.response.text = operation.add_nonce_to_html()
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
             "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
@@ -33,16 +33,22 @@ def response(flow: http.HTTPFlow):
 
 class Operational:
     """
-    Object watches a stream
+    Method to initialize an operation object
     """
-    def __init__(self, flow):
+    def __init__(self, flow, filepath):
         self._request = Request(flow)
         self._response = Response(flow)
         self._path = None
         self._nonce = None
         self._file_name = self._response.get_time()
-        self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
-        self.set_path(util.to_disk(flow, self._file_name))
+        self._scripts = [[], [], []]  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self.set_path(util.to_disk(flow, filepath, self._file_name))
+        self.operate()
+
+    def operate(self):
+        """
+        Method to call the appropriate methods required to perform the operational phase
+        """
         self.generate_nonce()
         self.retrieve_safe_tags()
         self.determine_safe_tags()
@@ -54,6 +60,13 @@ class Operational:
         :return: object path
         """
         return self._path
+
+    def get_scripts(self):
+        """
+        Get the scripts of the object
+        :return: object scripts
+        """
+        return self._scripts
 
     def get_nonce(self):
         """
@@ -69,6 +82,14 @@ class Operational:
         :return: -
         """
         self._path = path
+
+    def set_nonce(self, nonce):
+        """
+        Set the nonce of the object
+        This method is only used for testing purposes
+        :param nonce: new nonce
+        """
+        self._nonce = nonce
 
     def get_filename(self):
         """

@@ -55,7 +55,7 @@ class Collection:
         :param self:
         :return:
         """
-        self._path = util.to_disk(self._response.get_response(), self._filename)
+        self._path = util.to_disk(self._response.get_response(), None, self._filename)
 
     def call_analysis(self):
         """

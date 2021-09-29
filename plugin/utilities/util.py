@@ -56,16 +56,20 @@ def correct_filetype(flow):
     return False
 
 
-def to_disk(flow, filename):
+def to_disk(flow, filepath, filename):
     """
         Saves information to a file on the disk
         :param flow: object
+        :param filepath: file path of the file
         :param filename name of file
         :return: new root path
         """
     data = flow.request.pretty_url.split("/")
     data = data[2:]
-    root_path = os.getcwd()
+    if filepath is None:
+        root_path = os.getcwd()
+    else:
+        root_path = filepath
     for folder in data:
         root_path = os.path.join(root_path, folder)
         if not os.path.exists(root_path):

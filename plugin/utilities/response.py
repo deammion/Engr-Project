@@ -17,7 +17,7 @@ class Response:
         """
         self.flow = flow
         self.time = str(time.time())
-        self.headers = flow.response.headers.items()
+        self.content = flow.response.text
 
     def get_time(self):
         """
@@ -38,4 +38,4 @@ class Response:
         Get the response content
         :return: The response content
         """
-        return self.flow.response.headers + "\n" + self.flow.response.text
+        return self.content
