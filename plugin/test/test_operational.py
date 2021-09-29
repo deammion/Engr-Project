@@ -10,7 +10,6 @@ from mitmproxy.exceptions import FlowReadException
 from operational.operational import Operational
 from utilities import util
 from utilities.util import root_dir
-import filecmp
 
 
 def load_flow(filename):
