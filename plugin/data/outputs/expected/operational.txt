@@ -14,7 +14,7 @@
 <link href="css/mainPage.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light offset-lg-0 col-lg-12 blueBackground"> <a class="navbar-brand" href="#">Jack Walton-France       </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light offset-lg-0 col-lg-12 blueBackground"> <a class="navbar-brand" href="#">Jack Walton-Franceâ€  â€   â€ â€ </a>
 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"> <span class="navbar-toggler-icon"></span> </button>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navbar-nav mr-auto offset-lg-7">
@@ -34,9 +34,9 @@
 <div class="container">
 <div class="row">
 <div class="col-12">
-<h1 class="text-center whiteText">Personalised Training, Coaching and Programs </h1>
-<h4 class="text-center whiteText"><b>By Jack Walton-France    </b></h4>
-<p> </p>
+<h1 class="text-center whiteText">Personalised Training, Coaching and Programsâ€ </h1>
+<h4 class="text-center whiteText"><b>By Jack Walton-Franceâ€  â€ â€ </b></h4>
+<p>â€ </p>
 <p class="text-center"><a class="btn btn-primary btn-lg" href="#services" role="button">Learn more</a> </p>
 </div>
 </div>
@@ -54,17 +54,17 @@
 <div class="col-sm-6 col-lg-4">
 <h3>Personal Training</h3>
 <p> Come train with me 1 on 1 at Cityfitness Thorndon. Together we can set goals and take the best approach to find success for you. As well as refine your technique and smash through plateaus. Alongside the 1 on 1 coaching, personal training includes a personalised training plan, nutritional consultation and someone to push you through every session.  me for a free consultation session. </p>
-<p><a class="btn btn-link" href="servicesOffered.html#personaltraining">View details »</a></p>
+<p><a class="btn btn-link" href="servicesOffered.html#personaltraining">View details Âª</a></p>
 </div>
 <div class="col-sm-6 col-lg-4">
 <h3>Online Coaching</h3>
-<p> The perfect option for more independent trainee’s looking for guidance and direction to meet their training and nutritional goals. Online coaching includes weekly check-ins (email and text whenever you need), personalised training plan, diet plan outlining calories and macros (with meal recommendations) as well cardio and ab routines. All tailored to meeting your individual needs and goals. </p>
-<p><a class="btn btn-link" href="servicesOffered.html#onlinecoaching">View details »</a></p>
+<p> The perfect option for more independent traineeÃ­s looking for guidance and direction to meet their training and nutritional goals. Online coaching includes weekly check-ins (email and text whenever you need), personalised training plan, diet plan outlining calories and macros (with meal recommendations) as well cardio and ab routines. All tailored to meeting your individual needs and goals. </p>
+<p><a class="btn btn-link" href="servicesOffered.html#onlinecoaching">View details Âª</a></p>
 </div>
 <div class="col-sm-6 col-lg-4">
 <h3>Workout Programs</h3>
 <p> I offer personalised workout plans all tailored to match your individual goals and needs. Whether you workout 3 to 6 times per week, have fat loss, strength or muscle building goals, I can tailor the perfect program to you. </p>
-<p><a class="btn btn-link" href="servicesOffered.html#workoutprograms">View details »</a></p>
+<p><a class="btn btn-link" href="servicesOffered.html#workoutprograms">View details Âª</a></p>
 </div>
 </div>
 </div>
@@ -103,13 +103,13 @@
 </div>
 </div>
 </section>
-<p> </p>
+<p>â€ </p>
 <footer class="text-center blackFooter">
 <div class="container">
 <div class="row">
 <div class="col-12">
 <hr/>
-<p>Copyright © Jack Walton-France. All rights reserved.</p>
+<p>Copyright Â© Jack Walton-France. All rights reserved.</p>
 </div>
 </div>
 </div>
