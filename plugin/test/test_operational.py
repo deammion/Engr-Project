@@ -8,7 +8,9 @@ from mitmproxy import io, http
 from mitmproxy.exceptions import FlowReadException
 
 from operational.operational import Operational
+from utilities import util
 from utilities.util import root_dir
+import filecmp
 
 
 def load_flow(filename):
@@ -42,16 +44,17 @@ def test_nonce_tags_added():
     file.write(operational.add_nonce_to_html())
     file.close()
 
-    # read both the expected and actual files to compare them
-    expected = open(
-        os.path.join(root_dir(), 'data/outputs/expected/operational.txt'), encoding="windows-1252").read()
-    actual = open(
-        os.path.join(root_dir(), 'data/outputs/actual/operational.txt'), encoding="windows-1252").read()
+    expected_script = util.get_scripts(os.path.join(root_dir(), 'data/outputs/expected/operational.txt'))
+    actual_script = util.get_scripts(os.path.join(root_dir(), 'data/outputs/actual/operational.txt'))
 
-    if expected == actual:
-        assert True
-    else:
+    if len(expected_script) != len(actual_script):
         assert False
+    else:
+        for i, script in enumerate(actual_script):
+            if expected_script[i] != script:
+                assert False
+
+    assert True
 
 
 def test_determines_safe_tags():
@@ -110,6 +113,7 @@ def test_determine_data_tags():
 
     expected_data_scripts = ['<script src="script1"></script>',
                              '<script src="script2"></script>']
+
 
     # compare the script tags to check that they are the same
     if len(actual_data_scripts) != len(expected_data_scripts):
