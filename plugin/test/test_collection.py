@@ -2,13 +2,12 @@
 Test Collection Phase
 """
 from __future__ import absolute_import
-import os
+
 from mitmproxy import io, http
 from mitmproxy.exceptions import FlowReadException
 
 from collection.collection import Collection
-from utilities import response, util
-from utilities.response import Response
+from utilities import util
 from utilities.util import root_dir
 
 
@@ -55,8 +54,8 @@ def test_response_unedited():
     collection_response = open(Collection(flow).get_path() + Collection(flow).get_filename(), 'r')
     expected_response = open(root_dir() + '/data/outputs/expected/collection.txt', 'r')
     assert len(collection_response.readlines()) == len(expected_response.readlines())
-    for x in range(len(collection_response.readlines())):
-        assert collection_response.readlines().pop() == expected_response.readlines().pop()
+    for response_line in collection_response.readlines():
+        assert response_line == expected_response.readlines().pop()
 
 
 if __name__ == "__main__":
