@@ -148,6 +148,13 @@ class Operational:
             if script in self._scripts[2]:
                 script.attrs['nonce'] = self._nonce
 
+        # add in script to generate browser warning if there are unsafe script tags detected
+        if len(self._scripts[1]) != 0:
+            new_script = final_html.new_tag('script')
+            new_script.attrs['nonce'] = self._nonce
+            new_script.string = "alert('Unsafe Script(s) detected');"
+            final_html.html.body.append(new_script)
+
         return str(final_html)
 
     def report(self):
