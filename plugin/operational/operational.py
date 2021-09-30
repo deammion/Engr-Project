@@ -28,7 +28,7 @@ def response(flow: http.HTTPFlow):
         operation = Operational(flow, None)
         flow.response.text = operation.add_nonce_to_html()
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-" + operation.get_nonce() + \
-            "'"
+            "'; report-uri https://51f4b3cde163f2b4c157f695e578432e.report-uri.com/r/d/csp/reportOnly;"
 
 
 class Operational:
@@ -156,29 +156,3 @@ class Operational:
             final_html.html.body.append(new_script)
 
         return str(final_html)
-
-    def report(self):
-        """
-        Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
-        :return: -
-        """
-        url = self._request.get_url()
-        csp_report_uri = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
-        browser_warning = "<script> window.alert(\"Unsafe Script(s) detected\");</script>"
-        if len(self._scripts[1]) == 0:
-            print("List is empty")
-        else:
-            for script in self._scripts[1]:
-                if script in url:
-                    script = csp_report_uri
-                    print(script + "This is an unsafe script")
-            with open(self._file_name, "r") as f:
-                content = f.readlines()
-                content.insert(len(content) - 4, browser_warning)
-                to_write = ""
-                f.close()
-            with open(self._file_name, "w") as f:
-                for line in content:
-                    to_write = to_write + line
-                print(to_write)
-                f.write(to_write)
