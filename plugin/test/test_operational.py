@@ -46,8 +46,8 @@ def test_determines_safe_tags():
     operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
 
     # Get the operational script tags
-    actual_safe_scripts = operational.get_scripts()[1]
-    actual_unsafe_scripts = operational.get_scripts()[0]
+    actual_safe_scripts = operational.get_scripts()[0]
+    actual_unsafe_scripts = operational.get_scripts()[1]
 
     expected_safe_scripts = ['<script src="assets/js/jquery-3.3.1.min.js"></script>',
                              '<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>',
