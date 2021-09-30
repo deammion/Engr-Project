@@ -126,7 +126,7 @@ def check_content_type(flow):
 def load_flow(filename):
     """
 
-    USED FOR COLLECTION PHASE TESTING
+    USED FOR COLLECTION AND OPERATION PHASE TESTING
 
     Create a method to load a flow so the operation class can be created
     Code taken directly from https://docs.mitmproxy.org/stable/addons-examples/

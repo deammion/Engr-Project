@@ -4,37 +4,18 @@ Test Operation Phase
 
 from __future__ import absolute_import
 import os
-from mitmproxy import io, http
-from mitmproxy.exceptions import FlowReadException
+
 
 from operational.operational import Operational
 from utilities import util
 from utilities.util import root_dir
 
 
-def load_flow(filename):
-    """
-    Create a method to load a flow so the operation class can be created
-    Code taken directly from https://docs.mitmproxy.org/stable/addons-examples/
-    :param filename: file name of the file to load
-    :return: the flow
-    """
-    with open(filename, "rb") as logfile:
-        f_reader = io.FlowReader(logfile)
-        try:
-            for flow in f_reader.stream():
-                if isinstance(flow, http.HTTPFlow):
-                    return flow
-        except FlowReadException as exception:
-            print(f"Flow file corrupted: {exception}")
-    return None
-
-
 def test_nonce_tags_added():
     """
     Create a test to check that nonce tags are correctly added to all safe script tags
     """
-    flow = load_flow(root_dir() + '/flowInfo.txt')
+    flow = util.load_flow(root_dir() + '/flowInfo.txt')
     operational = Operational(flow, root_dir() + '/data/outputs/actual/testingNonceTags')
     operational.set_nonce("THIS_IS_NONCE")
 
@@ -61,7 +42,7 @@ def test_determines_safe_tags():
     Create a test to check that the program correctly determines which script tags are safe and unsafe
     """
     # Create the flow and operational class
-    flow = load_flow(root_dir() + '/flowInfo.txt')
+    flow = util.load_flow(root_dir() + '/flowInfo.txt')
     operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
 
     # Get the operational script tags
@@ -104,7 +85,7 @@ def test_determine_data_tags():
     Create a test to check that the program correctly reads script tags from the data file
     """
     # Create the flow and operational class
-    flow = load_flow(root_dir() + '/blankFlow.txt')
+    flow = util.load_flow(root_dir() + '/blankFlow.txt')
     operational = Operational(flow, root_dir() + '/data/outputs/actual/operationalOutput')
 
     # Get the operational script tags
@@ -112,7 +93,6 @@ def test_determine_data_tags():
 
     expected_data_scripts = ['<script src="script1"></script>',
                              '<script src="script2"></script>']
-
 
     # compare the script tags to check that they are the same
     if len(actual_data_scripts) != len(expected_data_scripts):
