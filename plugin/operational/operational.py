@@ -27,8 +27,8 @@ def response(flow: http.HTTPFlow):
     if util.check_content_type(flow):
         operation = Operational(flow, None)
         flow.response.text = operation.add_nonce_to_html()
-        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
-            "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
+        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-" + operation.get_nonce() + \
+            "'"
 
 
 class Operational:
@@ -52,7 +52,7 @@ class Operational:
         self.generate_nonce()
         self.retrieve_safe_tags()
         self.determine_safe_tags()
-        Analysis(self.get_path())
+        # Analysis(self.get_path())
 
     def get_path(self):
         """
