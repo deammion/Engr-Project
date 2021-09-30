@@ -8,6 +8,8 @@ from __future__ import division
 import os
 import bs4
 
+from utilities.data_node import DataNode
+
 
 class Analysis:
     """
@@ -16,6 +18,7 @@ class Analysis:
         """
 
     DATA_FILENAME = "data.txt"
+    READABLE_DATA_FILENAME = "readable_data.txt"
 
     def __init__(self, file_path):
         """
@@ -90,6 +93,8 @@ class Analysis:
 
         if self.DATA_FILENAME in filenames:
             filenames.remove(self.DATA_FILENAME)
+        if self.READABLE_DATA_FILENAME in filenames:
+            filenames.remove(self.READABLE_DATA_FILENAME)
 
         filenames_floats = []
         for filename in filenames:
@@ -166,18 +171,22 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
-        # data_nodes = []
-        # for key in self.script_to_count:
-        #     data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
-        # for nodes in data_nodes:
-        #     file.write(nodes.to_string())
-        # file.close()
+        file = open(self.file_path + "/" + self.READABLE_DATA_FILENAME, "w+")
+        data_nodes = []
+        file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
+        for key in self.script_to_count:
+            data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
+        for nodes in data_nodes:
+            file.write(nodes.to_string())
+        file.close()
+
         file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         for key in self.script_to_count:
             file.write(key + " Frequency: " + str(self.script_to_count[key])
                        + " Probability: " + str(round((self.script_to_count[key] /
                                                        self.htmls_checked) * 100, 2)) + "%" + "\n")
+        file.close()
 
 
 if __name__ == "__main__":
