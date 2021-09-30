@@ -6,6 +6,8 @@ from __future__ import division
 import hashlib
 import os
 import bs4
+from mitmproxy import io, http
+from mitmproxy.exceptions import FlowReadException
 
 
 def root_dir():
@@ -118,4 +120,25 @@ def check_content_type(flow):
     for key, value in headers:
         if key.upper() == 'CONTENT-TYPE' and "text/html;" in value:
             return True
+    return None
+
+
+def load_flow(filename):
+    """
+
+    USED FOR COLLECTION PHASE TESTING
+
+    Create a method to load a flow so the operation class can be created
+    Code taken directly from https://docs.mitmproxy.org/stable/addons-examples/
+    :param filename: file name of the file to load
+    :return: the flow
+    """
+    with open(filename, "rb") as logfile:
+        f_reader = io.FlowReader(logfile)
+        try:
+            for flow in f_reader.stream():
+                if isinstance(flow, http.HTTPFlow):
+                    return flow
+        except FlowReadException as exception:
+            print(f"Flow file corrupted: {exception}")
     return None

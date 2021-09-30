@@ -58,6 +58,11 @@ class Collection:
         self._path = util.to_disk(self._response.get_response(), None, self._filename)
 
     def get_filename(self):
+        """
+        Get the filename
+        :param self:
+        :return:
+        """
         return self._filename
 
     def call_analysis(self):
