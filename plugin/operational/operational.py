@@ -12,7 +12,6 @@ import bs4
 from utilities import util
 from utilities.response import Response
 from utilities.request import Request
-from analysis.analysis import Analysis
 
 sys.path.append(util.root_dir())
 
