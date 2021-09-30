@@ -5,35 +5,33 @@ from __future__ import absolute_import
 import difflib
 import os
 
-import bs4
-
 from analysis.analysis import Analysis
 from utilities.util import root_dir
 
 
 def test_match():
-        """
-        Test output from analysis matches expected output for a given sample output delta difference
-        :return: -
-        """
-        file_path = root_dir() + '/data/samples/script_tags_sample/data.txt'
+    """
+    Test output from analysis matches expected output for a given sample output delta difference
+    :return: -
+    """
+    file_path = root_dir() + '/data/samples/script_tags_sample/data.txt'
 
-        if os.path.exists(file_path):
-            os.remove(file_path)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    Analysis(root_dir() + '/data/samples/script_tags_sample')
 
-        Analysis(root_dir() + '/data/samples/script_tags_sample')
+    expected = open(os.path.join(root_dir(), 'data/outputs/expected/analysis.txt'))
+    actual = open(os.path.join(root_dir(), 'data/samples/script_tags_sample/data.txt'))
 
-        expected = open(os.path.join(root_dir(), 'data/outputs/expected/analysis.txt'))
-        actual = open(os.path.join(root_dir(), 'data/samples/script_tags_sample/data.txt'))
+    diff = difflib.ndiff(expected.readlines(), actual.readlines())
 
-        diff = difflib.ndiff(expected.readlines(), actual.readlines())
+    delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
-        delta = ''.join(x[2:] for x in diff if x.startswith('- '))
-
-        if not delta:
-            assert True
-        else:
-            assert False
+    if not delta:
+        assert True
+    else:
+        assert False
 
 
 def test_no_correct_files():
@@ -72,9 +70,8 @@ def test_correct_file_order():
     print(len(analysis.filenames_sorted))
     for i, filename in enumerate(correct_order):
         if filename != analysis.filenames_sorted[i]:
-            #assert False
+            # assert False
             print(filename + '!= ' + analysis.filenames_sorted[i])
-
 
     assert True
 
