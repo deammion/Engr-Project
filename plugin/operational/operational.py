@@ -129,10 +129,10 @@ class Operational:
             for script in scripts:
                 if script in self._scripts[2]:
                     # Safe Scripts
-                    self._scripts[1].append(script)
+                    self._scripts[0].append(script)
                 else:
                     # Unsafe scripts
-                    self._scripts[0].append(script)
+                    self._scripts[1].append(script)
 
     def add_nonce_to_html(self):
         """
