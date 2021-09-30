@@ -18,7 +18,7 @@ def test_match():
 
     if os.path.exists(file_path):
         os.remove(file_path)
-        
+
     Analysis(root_dir() + '/data/samples/script_tags_sample')
 
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/analysis.txt'))
