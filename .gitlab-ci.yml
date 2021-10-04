@@ -48,7 +48,7 @@ pytest:
   only:
     - merge_requests
 
-merges:
+merge:
   stage: merge
   image: txmm/engr300_redshield:testing
   script:
