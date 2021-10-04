@@ -12,7 +12,6 @@ import bs4
 from utilities import util
 from utilities.response import Response
 from utilities.request import Request
-from analysis.analysis import Analysis
 
 sys.path.append(util.root_dir())
 
@@ -24,30 +23,35 @@ def response(flow: http.HTTPFlow):
     :return: -
     """
 
-    if util.correct_filetype(flow):
-        operation = Operational(flow)
+    if util.check_content_type(flow):
+        operation = Operational(flow, None)
         flow.response.text = operation.add_nonce_to_html()
-        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-{" + operation.get_nonce() + "}';" \
-            "  report-uri https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly"
+        flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-" + operation.get_nonce() + \
+            "'; report-uri https://51f4b3cde163f2b4c157f695e578432e.report-uri.com/r/d/csp/reportOnly;"
 
 
 class Operational:
     """
-    Object watches a stream
+    Method to initialize an operation object
     """
-    def __init__(self, flow):
+    def __init__(self, flow, filepath):
         self._request = Request(flow)
         self._response = Response(flow)
         self._path = None
         self._nonce = None
         self._file_name = self._response.get_time()
-        self._scripts = [[]] * 4  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self._scripts = [[], [], []]  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        self.set_path(util.to_disk(flow, filepath, self._file_name))
+        self.operate()
 
-        self.set_path(util.to_disk(flow, self._file_name))
+    def operate(self):
+        """
+        Method to call the appropriate methods required to perform the operational phase
+        """
         self.generate_nonce()
         self.retrieve_safe_tags()
         self.determine_safe_tags()
-        Analysis(self.get_path())
+        # Analysis(self.get_path())
 
     def get_path(self):
         """
@@ -55,6 +59,13 @@ class Operational:
         :return: object path
         """
         return self._path
+
+    def get_scripts(self):
+        """
+        Get the scripts of the object
+        :return: object scripts
+        """
+        return self._scripts
 
     def get_nonce(self):
         """
@@ -70,6 +81,14 @@ class Operational:
         :return: -
         """
         self._path = path
+
+    def set_nonce(self, nonce):
+        """
+        Set the nonce of the object
+        This method is only used for testing purposes
+        :param nonce: new nonce
+        """
+        self._nonce = nonce
 
     def get_filename(self):
         """
@@ -109,10 +128,10 @@ class Operational:
             for script in scripts:
                 if script in self._scripts[2]:
                     # Safe Scripts
-                    self._scripts[1].append(script)
+                    self._scripts[0].append(script)
                 else:
                     # Unsafe scripts
-                    self._scripts[0].append(script)
+                    self._scripts[1].append(script)
 
     def add_nonce_to_html(self):
         """
@@ -128,30 +147,11 @@ class Operational:
             if script in self._scripts[2]:
                 script.attrs['nonce'] = self._nonce
 
-        return str(final_html)
+        # add in script to generate browser warning if there are unsafe script tags detected
+        if len(self._scripts[1]) != 0:
+            new_script = final_html.new_tag('script')
+            new_script.attrs['nonce'] = self._nonce
+            new_script.string = "alert('Unsafe Script(s) detected');"
+            final_html.html.body.append(new_script)
 
-    def report(self):
-        """
-        Created a report method which goes through a list a unsafe script tags and if the tag is unsafe it will be sent to report uri.
-        :return: -
-        """
-        url = self._request.get_url()
-        csp_report_uri = '<https://ae939929c62b2dec1ba2ddee3176d018.report-uri.com/r/d/csp/reportOnly>'
-        browser_warning = "<script> window.alert(\"Unsafe Script(s) detected\");</script>"
-        if len(self._scripts[1]) == 0:
-            print("List is empty")
-        else:
-            for script in self._scripts[1]:
-                if script in url:
-                    script = csp_report_uri
-                    print(script + "This is an unsafe script")
-            with open(self._file_name, "r") as f:
-                content = f.readlines()
-                content.insert(len(content) - 4, browser_warning)
-                to_write = ""
-                f.close()
-            with open(self._file_name, "w") as f:
-                for line in content:
-                    to_write = to_write + line
-                print(to_write)
-                f.write(to_write)
+        return str(final_html)

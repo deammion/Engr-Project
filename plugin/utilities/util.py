@@ -6,6 +6,8 @@ from __future__ import division
 import hashlib
 import os
 import bs4
+from mitmproxy import io, http
+from mitmproxy.exceptions import FlowReadException
 
 
 def root_dir():
@@ -56,16 +58,20 @@ def correct_filetype(flow):
     return False
 
 
-def to_disk(flow, filename):
+def to_disk(flow, filepath, filename):
     """
         Saves information to a file on the disk
         :param flow: object
+        :param filepath: file path of the file
         :param filename name of file
         :return: new root path
         """
     data = flow.request.pretty_url.split("/")
     data = data[2:]
-    root_path = os.getcwd()
+    if filepath is None:
+        root_path = os.getcwd()
+    else:
+        root_path = filepath
     for folder in data:
         root_path = os.path.join(root_path, folder)
         if not os.path.exists(root_path):
@@ -102,3 +108,37 @@ def get_scripts(filename):
     scripts = soup.find_all('script')
     file.close()
     return scripts
+
+
+def check_content_type(flow):
+    """
+    Check content type of response HTTP
+    :param flow:
+    :return: Boolean true is content type is text/html
+    """
+    headers = flow.response.headers.items()
+    for key, value in headers:
+        if key.upper() == 'CONTENT-TYPE' and "text/html;" in value:
+            return True
+    return None
+
+
+def load_flow(filename):
+    """
+
+    USED FOR COLLECTION AND OPERATION PHASE TESTING
+
+    Create a method to load a flow so the operation class can be created
+    Code taken directly from https://docs.mitmproxy.org/stable/addons-examples/
+    :param filename: file name of the file to load
+    :return: the flow
+    """
+    with open(filename, "rb") as logfile:
+        f_reader = io.FlowReader(logfile)
+        try:
+            for flow in f_reader.stream():
+                if isinstance(flow, http.HTTPFlow):
+                    return flow
+        except FlowReadException as exception:
+            print(f"Flow file corrupted: {exception}")
+    return None

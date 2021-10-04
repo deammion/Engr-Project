@@ -21,7 +21,7 @@ def response(flow: http.HTTPFlow):
     :return: -
     """
     print("response")
-    if util.correct_filetype(flow):
+    if util.check_content_type(flow):
         Collection(flow)
 
 
@@ -55,7 +55,15 @@ class Collection:
         :param self:
         :return:
         """
-        self._path = util.to_disk(self._response.get_response(), self._filename)
+        self._path = util.to_disk(self._response.get_response(), None, self._filename)
+
+    def get_filename(self):
+        """
+        Get the filename
+        :param self:
+        :return:
+        """
+        return self._filename
 
     def call_analysis(self):
         """

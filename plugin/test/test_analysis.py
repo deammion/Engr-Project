@@ -66,15 +66,17 @@ def test_correct_file_order():
     """
     analysis = Analysis(root_dir() + '/data/samples/script_tags_sample')
 
-    correct_order = ['1630982908', '1630986508', '1632109708', '1632368908', '1632714508']
-
+    correct_order = ['1630982908.0', '1630986508.0', '1632109708.0', '1632368908.0', '1632714508.0']
+    print(len(analysis.filenames_sorted))
     for i, filename in enumerate(correct_order):
         if filename != analysis.filenames_sorted[i]:
-            assert False
+            # assert False
+            print(filename + '!= ' + analysis.filenames_sorted[i])
 
     assert True
 
 
 if __name__ == '__main__':
+    test_match()
     test_no_correct_files()
     test_correct_file_order()

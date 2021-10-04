@@ -14,6 +14,7 @@ class Request:
         """
         self.flow = flow
         self.url = flow.request.pretty_url
+        self.headers = flow.request.headers.items()
 
     def get_url(self):
         """

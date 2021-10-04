@@ -5,9 +5,10 @@
 from __future__ import absolute_import
 from __future__ import division
 
-from builtins import round
 import os
 import bs4
+
+from utilities.data_node import DataNode
 
 
 class Analysis:
@@ -17,6 +18,7 @@ class Analysis:
         """
 
     DATA_FILENAME = "data.txt"
+    READABLE_DATA_FILENAME = "readable_data.txt"
 
     def __init__(self, file_path):
         """
@@ -79,6 +81,7 @@ class Analysis:
 
             if data[0].isdigit():
                 # add the script with its frequency to the map
+                # self.data_nodes.append(DataNode(str(script), int(data[0]), self.htmls_checked))
                 self.db_script_to_count.update({str(script): int(data[0])})
 
     def read_directory(self):
@@ -90,12 +93,15 @@ class Analysis:
 
         if self.DATA_FILENAME in filenames:
             filenames.remove(self.DATA_FILENAME)
+        if self.READABLE_DATA_FILENAME in filenames:
+            filenames.remove(self.READABLE_DATA_FILENAME)
 
-        filenames_ints = []
+        filenames_floats = []
         for filename in filenames:
-            filenames_ints.append(int(filename))
+            if not os.path.isdir(self.file_path + "/" + filename):
+                filenames_floats.append(float(filename))
 
-        filenames = sorted(filenames_ints)
+        filenames = sorted(filenames_floats)
 
         for filename in filenames:
             self.filenames_sorted.append(str(filename))
@@ -124,8 +130,7 @@ class Analysis:
         :return:
         """
         print("Reading File: " + file)
-        response = open(file)
-
+        response = open(file, mode="r", encoding="utf-8", errors='ignore')
         text = response.read()
         text = text.replace('\n', '')
         text = text.replace('\t', '')
@@ -138,6 +143,8 @@ class Analysis:
 
         response.close()
         self.htmls_checked += 1
+        # for data in self.data_nodes:
+        #     data.set_htmls_checked(self.htmls_checked)
 
     def get_script_count(self):
         """
@@ -164,6 +171,15 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
+        file = open(self.file_path + "/" + self.READABLE_DATA_FILENAME, "w+")
+        data_nodes = []
+        file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
+        for key in self.script_to_count:
+            data_nodes.append(DataNode(key, self.script_to_count[key], self.htmls_checked))
+        for nodes in data_nodes:
+            file.write(nodes.to_string())
+        file.close()
+
         file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         for key in self.script_to_count:
@@ -171,3 +187,7 @@ class Analysis:
                        + " Probability: " + str(round((self.script_to_count[key] /
                                                        self.htmls_checked) * 100, 2)) + "%" + "\n")
         file.close()
+
+
+if __name__ == "__main__":
+    Analysis("../data/samples/script_tags_sample")
