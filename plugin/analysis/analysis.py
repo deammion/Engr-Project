@@ -91,7 +91,6 @@ class Analysis:
 
             if data[0].isdigit():
                 # add the script with its frequency to the map
-                # self.data_nodes.append(DataNode(str(script), int(data[0]), self.htmls_checked))
                 self.db_script_to_count.update({str(script): int(data[0])})
 
     def read_directory(self):
@@ -157,8 +156,6 @@ class Analysis:
 
         response.close()
         self.htmls_checked += 1
-        # for data in self.data_nodes:
-        #     data.set_htmls_checked(self.htmls_checked)
 
     def get_script_count(self):
         """
@@ -185,6 +182,7 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
+        # Write dataNodes to readable_data.txt file
         file = open(self.file_path + "/" + self.READABLE_DATA_FILENAME, "w+")
         data_nodes = []
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
@@ -194,6 +192,7 @@ class Analysis:
             file.write(nodes.to_string())
         file.close()
 
+        # write data to data.txt file
         file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         for key in self.script_to_count:
