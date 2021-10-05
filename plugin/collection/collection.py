@@ -1,5 +1,5 @@
 """
-Class which collects information about requests and responses
+Class which collects information regarding requests and responses
 """
 
 from __future__ import absolute_import
@@ -16,7 +16,7 @@ sys.path.append(root_dir())
 
 def response(flow: http.HTTPFlow):
     """
-    Run automatically by mitmproxy on responses during collection phase
+    Is run automatically by mitmproxy on responses during collection phase
     :param flow: active http flow
     :return: -
     """
@@ -27,7 +27,7 @@ def response(flow: http.HTTPFlow):
 
 class Collection:
     """
-    Collection object
+    The collection object
     """
 
     def __init__(self, flow):
@@ -43,7 +43,7 @@ class Collection:
 
     def get_path(self):
         """
-        Get the path of the file
+        Getter to get the path of the file
         :param self:
         :return: the path of the file
         """
@@ -51,17 +51,17 @@ class Collection:
 
     def set_path(self):
         """
-        Set the path of the file
+        Setter to set the path of the file
         :param self:
-        :return:
+        :return: -
         """
         self._path = util.to_disk(self._response.get_response(), None, self._filename)
 
     def get_filename(self):
         """
-        Get the filename
+        Getter to get the filename
         :param self:
-        :return:
+        :return: the filename of the file
         """
         return self._filename
 
@@ -69,6 +69,6 @@ class Collection:
         """
         Calls the analysis class
         :param self:
-        :return:
+        :return: - 
         """
         Analysis(self.get_path())
