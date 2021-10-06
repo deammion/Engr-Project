@@ -18,7 +18,9 @@ def test_content_type():
 
 def test_filename():
     """
-    Tests the filename sizes matches what should be epected
+    Tests the filename sizes matches what should be expected
+    Filenames themselves cannot be tested as they are based on
+    the timestamp of when Collection is run
     """
     flow = util.load_flow(root_dir() + "/flowInfo.txt")
     response_filename = Collection(flow).get_filename()
@@ -32,7 +34,9 @@ def test_response_unedited():
     flow = util.load_flow(root_dir() + "/flowInfo.txt")
     collection_response = open(Collection(flow).get_path() + Collection(flow).get_filename(), 'r')
     expected_response = open(root_dir() + '/data/outputs/expected/collection.txt', 'r')
+    # Ensures that the expected and actual file have the same number of lines
     assert len(collection_response.readlines()) == len(expected_response.readlines())
+    # Ensures that lines in the expected and actual match
     for response_line in collection_response.readlines():
         assert response_line == expected_response.readlines().pop()
 
