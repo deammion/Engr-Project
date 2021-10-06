@@ -69,6 +69,6 @@ class Collection:
         """
         Calls the analysis class
         :param self:
-        :return: 
+        :return: -
         """
         Analysis(self.get_path())
