@@ -13,7 +13,7 @@ class Response:
 
     def __init__(self, flow):
         """
-        Initialise the response information
+        Initialisation of the response information
         """
         self.flow = flow
         self.time = str(time.time())
@@ -21,21 +21,21 @@ class Response:
 
     def get_time(self):
         """
-        Get the time fo the response
+        Getter method that gets the time for the response
         :return: the time of the response as a string
         """
         return self.time
 
     def get_response(self):
         """
-        Get the response flow
-        :return: The response flow
+        Getter method that gets the response flow
+        :return: Response flow
         """
         return self.flow
 
     def get_response_content(self):
         """
-        Get the response content
-        :return: The response content
+        Getter method that gets the response content
+        :return: Response content
         """
         return self.content

@@ -1,5 +1,5 @@
 """
-Class which stores and processes the request information
+Class which stores and also processes the request information
 """
 
 
@@ -18,15 +18,15 @@ class Request:
 
     def get_url(self):
         """
-        Get the url associated with the request
-        :return: The request URL
+        Getter method that gets the url associated with the request
+        :return: Request URL
         """
         return self.url
 
     def correct_filetype(self):
         """
-        Check file extension matches allowed types
-        :return: True if extension matches allowed type
+        Check in place to see that the file extension matches allowed types
+        :return: If extension matches allowed type then true
         """
         if not (self.url.endswith(".css") or
                 self.url.endswith(".jpg") or
