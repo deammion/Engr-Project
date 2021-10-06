@@ -13,7 +13,7 @@ from utilities.util import root_dir
 
 def test_nonce_tags_added():
     """
-    Create a test to check that nonce tags are correctly added to all safe script tags
+    Test that checks that nonce tags are correctly added to all safe script tags.
     """
     flow = util.load_flow(root_dir() + '/flowInfo.txt')
     operational = Operational(flow, root_dir() + '/data/outputs/actual/testingNonceTags')
@@ -39,7 +39,7 @@ def test_nonce_tags_added():
 
 def test_determines_safe_tags():
     """
-    Create a test to check that the program correctly determines which script tags are safe and unsafe
+    Test that checks that the program correctly determines which script tags are safe and unsafe
     """
     # Create the flow and operational class
     flow = util.load_flow(root_dir() + '/flowInfo.txt')
@@ -82,7 +82,7 @@ def test_determines_safe_tags():
 
 def test_determine_data_tags():
     """
-    Create a test to check that the program correctly reads script tags from the data file
+    Test that checks that the program correctly reads script tags from the data file
     """
     # Create the flow and operational class
     flow = util.load_flow(root_dir() + '/blankFlow.txt')
