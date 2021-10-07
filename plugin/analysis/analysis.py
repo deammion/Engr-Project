@@ -25,11 +25,17 @@ class Analysis:
             Runs analysis object
             """
         self.file_path = file_path
+        # int used to identify how many of the HTML files have already been checked
         self.htmls_checked = 0
+        # boolean used to determine if a database file exists
         self.update_data = False
+        # array to hold all scripts found in the HTMLs
         self.scripts = []
+        # Array to hold filenames, once sorted. from latest to earliest
         self.filenames_sorted = []
+        # Dictionary to hold script to count of database scripts
         self.db_script_to_count = {}
+        # Dictionary to hold HTML script to count info
         self.script_to_count = {}
         self.analyse_data()
 
@@ -37,13 +43,17 @@ class Analysis:
         """
         Method to call the appropriate methods
         """
+        # check is a database file exists
         if os.path.isfile(self.file_path + "/" + self.DATA_FILENAME):
+            # trigger boolean to let program know a database already exist
             self.update_data = True
+            # Call methods to create database objects within the program
             self.get_html_occurrence()
             self.get_database_scripts()
 
         self.read_directory()
 
+        # Check if there are any new HTTP files to be check
         if not self.htmls_checked == len(self.filenames_sorted):
             self.parse_htmls()
             self.get_script_count()
@@ -51,7 +61,7 @@ class Analysis:
 
     def get_html_occurrence(self):
         """
-        Gets the total times the HTML has been captured from data.txt
+        Gets the total times the HTML has been captured by the proxy from the database (data.txt)
         :return:
         """
         text = open(self.file_path + "/" + self.DATA_FILENAME)
@@ -62,7 +72,7 @@ class Analysis:
 
     def get_database_scripts(self):
         """
-        reads the data.txt file, and turns it into a dictionary
+        reads the database (data.txt) file, and turns it into a dictionary
         :return:
         """
         file = open(self.file_path + "/" + self.DATA_FILENAME)
@@ -81,7 +91,6 @@ class Analysis:
 
             if data[0].isdigit():
                 # add the script with its frequency to the map
-                # self.data_nodes.append(DataNode(str(script), int(data[0]), self.htmls_checked))
                 self.db_script_to_count.update({str(script): int(data[0])})
 
     def read_directory(self):
@@ -101,8 +110,10 @@ class Analysis:
             if not os.path.isdir(self.file_path + "/" + filename):
                 filenames_floats.append(float(filename))
 
+        # sort files by time/data
         filenames = sorted(filenames_floats)
 
+        # add files to "sorted" array
         for filename in filenames:
             self.filenames_sorted.append(str(filename))
 
@@ -110,10 +121,12 @@ class Analysis:
         """
         Parse the script tags in all the files
         """
+        # If a database file exist:
         if self.update_data:
+            # check total number of files stored in local directory
             num_files = len(self.filenames_sorted)
 
-            # if data.txt file exists, gets the latest HTML first and calls get_tags
+            # Gets the latest HTML first and calls get_tags, will get all unchecked HTTP files
             while self.htmls_checked < num_files:
                 filename = self.filenames_sorted.pop()
                 file = self.file_path + "/" + filename
@@ -143,12 +156,10 @@ class Analysis:
 
         response.close()
         self.htmls_checked += 1
-        # for data in self.data_nodes:
-        #     data.set_htmls_checked(self.htmls_checked)
 
     def get_script_count(self):
         """
-        Calculate the frequency of a script
+        Calculate the frequency/occurrence of a script
         :return:
         """
         i = 0
@@ -171,6 +182,7 @@ class Analysis:
         Write Script data (frequency and probability)to file
         :return:
         """
+        # Write dataNodes to readable_data.txt file
         file = open(self.file_path + "/" + self.READABLE_DATA_FILENAME, "w+")
         data_nodes = []
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
@@ -180,6 +192,7 @@ class Analysis:
             file.write(nodes.to_string())
         file.close()
 
+        # write data to data.txt file
         file = open(self.file_path + "/" + self.DATA_FILENAME, "w+")
         file.write("HTML Occurrence: " + str(self.htmls_checked) + "\n")
         for key in self.script_to_count:

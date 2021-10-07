@@ -133,9 +133,8 @@ class Operational:
             # get all the scripts which are in the html file
             scripts = util.get_scripts(root_path)
             for script in scripts:
-                # for each script, if its also in the data scripts, then its safe
-                # and add it to the safe scripts
-                if script in self._scripts[2]:
+                str_script = str(script).replace("\n", ' ')
+                if str_script in str(self._scripts[2]):
                     # Safe Scripts
                     self._scripts[0].append(script)
                 # otherwise, the script is unsafe and add it to the unsafe list
@@ -157,7 +156,8 @@ class Operational:
 
         # for each script, if its a safe script, add a nonce to it
         for script in scripts:
-            if script in self._scripts[2]:
+            str_script = str(script).replace("\n", ' ')
+            if str_script in str(self._scripts[2]):
                 script.attrs['nonce'] = self._nonce
 
         # if there are any unsafe scripts in the html content, create a new script to generate browser warning

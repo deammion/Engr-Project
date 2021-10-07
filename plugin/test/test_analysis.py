@@ -18,14 +18,14 @@ def test_match():
 
     if os.path.exists(file_path):
         os.remove(file_path)
-
+    # Process sample data to compare with expected
     Analysis(root_dir() + '/data/samples/script_tags_sample')
-
+    # Do comparison
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/analysis.txt'))
     actual = open(os.path.join(root_dir(), 'data/samples/script_tags_sample/data.txt'))
 
     diff = difflib.ndiff(expected.readlines(), actual.readlines())
-
+    # Get changes between expected and actual files
     delta = ''.join(x[2:] for x in diff if x.startswith('- '))
 
     if not delta:
@@ -43,9 +43,9 @@ def test_no_correct_files():
 
     if os.path.exists(file_path):
         os.remove(file_path)
-
+    # Process sample data to compare with expected
     Analysis(root_dir() + '/data/samples/no_scripts_tags_sample')
-
+    # Check no scripts are found
     expected = open(os.path.join(root_dir(), 'data/outputs/expected/script_analysis.txt'))
     actual = open(os.path.join(root_dir(), 'data/samples/no_scripts_tags_sample/data.txt'))
 
@@ -64,8 +64,9 @@ def test_correct_file_order():
         Tests that analysis correctly orders the files
         :return: -
     """
+    # Run analysis with file containing ordered arguments
     analysis = Analysis(root_dir() + '/data/samples/script_tags_sample')
-
+    # Check scripts are in expected order
     correct_order = ['1630982908.0', '1630986508.0', '1632109708.0', '1632368908.0', '1632714508.0']
     print(len(analysis.filenames_sorted))
     for i, filename in enumerate(correct_order):
