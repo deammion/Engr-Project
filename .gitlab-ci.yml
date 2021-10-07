@@ -42,8 +42,6 @@ pytest:
   script:
   - python3 -m pytest -vs
   allow_failure: false
-  only:
-    - merge_requests
 
 merges:
   stage: Merge
