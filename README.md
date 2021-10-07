@@ -1,6 +1,6 @@
 <h1>Group 14: Redshield 👋</h1>
 <p align="center">
-![pipeline status](https://gitlab.ecs.vuw.ac.nz/course-work/engr300/2021/group14/group-14/badges/development/pipeline.svg)
+![pipeline status](https://gitlab.ecs.vuw.ac.nz/%{project_path}/badges/%{default_branch}/pipeline.svg)
 ![python](https://img.shields.io/badge/python-%2314354C.svg?style=flat&logo=python&logoColor=white)
 </p>
 
