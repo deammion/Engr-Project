@@ -35,7 +35,7 @@ git clone https://gitlab.ecs.vuw.ac.nz/course-work/engr300/2021/group14/group-14
 
 ## Usage
 
-To configure and use thhis project, follow the steps listed in [configuration.md](https://gitlab.ecs.vuw.ac.nz/course-work/engr300/2021/group14/group-14/-/blob/master/configuration.md).
+To configure and use this project, follow the steps listed in [configuration.md](https://gitlab.ecs.vuw.ac.nz/course-work/engr300/2021/group14/group-14/-/blob/master/configuration.md).
 
 Once the environment is configured, each phase can be started using:
 
