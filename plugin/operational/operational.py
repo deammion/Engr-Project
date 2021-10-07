@@ -25,7 +25,9 @@ def response(flow: http.HTTPFlow):
 
     if util.check_content_type(flow):
         operation = Operational(flow, None)
+        # change the response text to the one with nonce
         flow.response.text = operation.add_nonce_to_html()
+        # update the CSP header of the response
         flow.response.headers["Content-Security-Policy"] = "script-src 'nonce-" + operation.get_nonce() + \
             "'; report-uri https://51f4b3cde163f2b4c157f695e578432e.report-uri.com/r/d/csp/reportOnly;"
 
@@ -41,6 +43,7 @@ class Operational:
         self._nonce = None
         self._file_name = self._response.get_time()
         self._scripts = [[], [], []]  # Safe Script Tags = [0] Unsafe Script Tags = [1] Data scripts = [2]
+        # save the flow to disk, and store its filepath
         self.set_path(util.to_disk(flow, filepath, self._file_name))
         self.operate()
 
@@ -112,9 +115,11 @@ class Operational:
         Retrieve the script tags which are deemed as safe from the data.txt file
         """
         root_path = os.path.join(self._path, "data.txt")
+        # if there is a data file, get all the scripts in the data file
         if os.path.isfile(root_path):
             scripts = util.get_scripts(root_path)
             if scripts:
+                # for each script in the data file, add is to the data script variable
                 for script in scripts:
                     self._scripts[2].append(script)
 
@@ -122,14 +127,17 @@ class Operational:
         """
         Determine which script tags are safe and unsafe in the HTML
         """
+        # get the file which the HTML is stored in
         root_path = os.path.join(self._path, self._file_name)
         if os.path.isfile(root_path):
+            # get all the scripts which are in the html file
             scripts = util.get_scripts(root_path)
             for script in scripts:
                 str_script = str(script).replace("\n", ' ')
                 if str_script in str(self._scripts[2]):
                     # Safe Scripts
                     self._scripts[0].append(script)
+                # otherwise, the script is unsafe and add it to the unsafe list
                 else:
                     # Unsafe scripts
                     self._scripts[1].append(script)
@@ -142,18 +150,23 @@ class Operational:
         """
         original_html = self._response.get_response_content()
 
+        # use bs4 for get all the scripts in the html response
         final_html = bs4.BeautifulSoup(original_html, 'html.parser')
         scripts = final_html.findAll('script')
+
+        # for each script, if its a safe script, add a nonce to it
         for script in scripts:
             str_script = str(script).replace("\n", ' ')
             if str_script in str(self._scripts[2]):
                 script.attrs['nonce'] = self._nonce
 
-        # add in script to generate browser warning if there are unsafe script tags detected
+        # if there are any unsafe scripts in the html content, create a new script to generate browser warning
         if len(self._scripts[1]) != 0:
+            # create the new script tag, and add the nonce and body to it
             new_script = final_html.new_tag('script')
             new_script.attrs['nonce'] = self._nonce
             new_script.string = "alert('Unsafe Script(s) detected');"
+            # add the script tag to the html
             final_html.html.body.append(new_script)
 
         return str(final_html)
