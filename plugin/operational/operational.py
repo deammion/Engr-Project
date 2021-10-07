@@ -126,7 +126,8 @@ class Operational:
         if os.path.isfile(root_path):
             scripts = util.get_scripts(root_path)
             for script in scripts:
-                if script in self._scripts[2]:
+                str_script = str(script).replace("\n", ' ')
+                if str_script in str(self._scripts[2]):
                     # Safe Scripts
                     self._scripts[0].append(script)
                 else:
@@ -144,7 +145,8 @@ class Operational:
         final_html = bs4.BeautifulSoup(original_html, 'html.parser')
         scripts = final_html.findAll('script')
         for script in scripts:
-            if script in self._scripts[2]:
+            str_script = str(script).replace("\n", ' ')
+            if str_script in str(self._scripts[2]):
                 script.attrs['nonce'] = self._nonce
 
         # add in script to generate browser warning if there are unsafe script tags detected
