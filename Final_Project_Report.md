@@ -35,9 +35,7 @@ _A summary of the original timelines and a summary of deviations from the origin
 Dates are subject to change as the project continues
 
 ### Delivered Scope
-There were some deviations from the original plan in respect to implemtning each phase. This then resulted in the timeline of the minimum viable product to also be delayed. Furthermore, the minimum viable product, the further releases and final project all resulted in the same outcome. 
-
-The following table depcits the deviations from the original timeline plan.
+There were some deviations from the original plan in respect to when we finished implementing each phase. This then resulted in the timeline of the minimum viable product to also be delayed. Furthermore, the minimum viable product, the further releases and final project all resulted in being the same outcome. 
 
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
