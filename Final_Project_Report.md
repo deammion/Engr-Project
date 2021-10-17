@@ -1,20 +1,19 @@
 # Final Project Report
 
-**Project _N_:** _Short Project Title_<br>
-**Client:** _Firstname Lastname_<br>
-**Date:** 8 October 2021<br>
+**Project _Name_:** Shield all the things<br>
+**Client:** Kirk Jackson<br>
+**Date:** 18 October 2021<br>
 
 _This is not expected to be a long report and volume will not be rewarded! The purpose of the final report is to summarise and document anything within your project and other documentation that is tacit or implicit, and any assumptions or motivations which can't_ easily _be found elsewhere in your hand-over documentation. If you wish to follow the form of the example final report in the textbook, then you are welcome to do so. **This is primarily a client-facing document.**_
 
 _All text in italics in this template should be replaced by your answers (in regular font). This introductory paragraph should be deleted._
 
 ## Project Objective(s)
-
-_A short statement, 1-3 sentences, of project objective(s); a short abstract of project goals. Simply repeating the original description of the project from ENGR 301, or providing a bland and repetitive description is a waste of everyone's time. What is expected here is a summary of the project objectives as embodied in the_ as-delivered _project._
+Create a plugin for MITMproxy in python to collect, process, analyse and categorise scripts on a webpage to allow for the filtering of unsafe scripts. Filtering will be achieved through the use of CSP headers and Nonce Tags. Filtered/Blocked scripts should be blocked from execution and reported through report-uri.
 
 ## Summary of Project Results
 
-_A statement, summarising the results of the project; what actually resulted from project execution. This should convey to the reader those aspects of the project results which are not obvious from other documents._
+Full functionality achieved as per the objective stated above. The system is capable of watching traffic and collecting scripts as they pass through the plugin, then analysing them to learn which are common and/or safe before applying this information to assign nonces and block unsafe scripts. Blocked scripts are reported as per the objective.
 
 ## Original and Delivered Scope
 
@@ -26,7 +25,7 @@ _A summary of the original timelines and a summary of deviations from the origin
 
 ## Delivered Expenditure
 
-_How much was spent, as a single number. If there has been deviation from the original plan then this should be explained in summary. Projects with no expenditure should state “No expenditure” for this section._
+No expenditure
 
 ## Project Self-Assessment
 
@@ -38,6 +37,6 @@ _Lessons learned which are of significance, impact and priority to the client. T
 
 ## Procurement Summary
 
-_A description of procurements, naming major suppliers, stating where to find the procurement information in the project documents and flagging any unclosed procurements. Projects with no procurements should state "No procurements" for this section._
+No procurements
 
 ---
