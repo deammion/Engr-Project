@@ -58,8 +58,15 @@ No expenditure
 _A short statement of the team’s assessment of the delivered project, with a focus on the technical aspects. This should convey to the reader those aspects of the project results which are not obvious from other documents._
 
 ## Lessons Learned
+Throughout the project, as a group we learnt how to use Python. Only one member from the group had learn't how to use Python so the rest of us
+had to learn by ourselves. This was a challenge at the start because despite Python being similar to Java in the sense that it is effectively
+the same except with less syntax, it was still a hurdle to get around.<br>
+Furthermore we learn't how to use the Man-in-the-Middle proxy. This was an entirely new piece of kit that was provided to us by Kirk at RedShield.
+It was originally very difficult to get it working on all members of the groups' laptops. We found that the documentation was somewhat confusing
+however we managed to get it done in the end.<br>
+We also learn't how to use timelines and produce deliverables for a client. It was beneficial that we were ahead of the timelines before they were
+due which made polishing up the program easier as we had more time to do so. <br>
 
-_Lessons learned which are of significance, impact and priority to the client. The focus here is on the lessons-learned at the intersection of the technical and management aspects of your project which are relevant to the client. Projects which have encountered significant technical or non-technical issues which will be of particular relevance to the client or the client's organisation should document these in this section._
 
 ## Procurement Summary
 
