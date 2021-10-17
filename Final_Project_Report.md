@@ -4,16 +4,13 @@
 **Client:** Kirk Jackson<br>
 **Date:** 18 October 2021<br>
 
-_This is not expected to be a long report and volume will not be rewarded! The purpose of the final report is to summarise and document anything within your project and other documentation that is tacit or implicit, and any assumptions or motivations which can't_ easily _be found elsewhere in your hand-over documentation. If you wish to follow the form of the example final report in the textbook, then you are welcome to do so. **This is primarily a client-facing document.**_
-
-_All text in italics in this template should be replaced by your answers (in regular font). This introductory paragraph should be deleted._
-
 ## Project Objective(s)
-Create a plugin for MITMproxy in python to collect, process, analyse and categorise scripts on a webpage to allow for the filtering of unsafe scripts. Filtering will be achieved through the use of CSP headers and Nonce Tags. Filtered/Blocked scripts should be blocked from execution and reported through report-uri.
+
+The objective of this project is to create a working prototype of a proxy plugin program which will prevent cross site scripting (XSS) on websites. This plugin will be used with MITMproxy to collect, process, analyse and categorise scripts on a webpage to allow for the filtering of unsafe scripts. Filtering will be achieved through the use of Content Security Polciy (CSP) headers and Nonce Tags. Filtered/Blocked scripts should be blocked from execution and reported through report-uri. 
 
 ## Summary of Project Results
 
-Full functionality achieved as per the objective stated above. The system is capable of watching traffic and collecting scripts as they pass through the plugin, then analysing them to learn which are common and/or safe before applying this information to assign nonces and block unsafe scripts. Blocked scripts are reported as per the objective.
+Full functionality achieved as per the objective stated above. The system is capable of watching traffic and collecting scripts as they pass through the plugin, then analysing them to learn which are common and/or safe. Then, the program can apply this information to add CSP headers and assign nonces to safe script tags. This will result in unsafe script tags being blocked from executing, hence preventing XSS. Blocked scripts are also reported as per the objective.
 
 ## Original and Delivered Scope
 
@@ -22,6 +19,35 @@ _The things that are within scope of the delivered project; the things that the 
 ## Original and Actual Schedule
 
 _A summary of the original timelines and a summary of deviations from the original plan. This should convey to the reader those aspects of the project results which are not obvious from other documents._
+
+### Original Scope
+|  Project Deliverables  | Date     |
+| ---------------------- |  ------  |
+| Architectural Prototype|   14th May|
+| Collection Phase Implementation|   20th July |
+| Analysis Phase Implementation |   3rd August |
+| Operational Phase Implementation |   17th August |
+| Application - Minimum Viable Product |   17th August  |
+| Documentation - Minimum Viable Product |  13th August |
+| Further Releases       |   8th October |
+| Final Project          |   6th November |
+
+Dates are subject to change as the project continues
+
+### Delivered Scope
+There were some deviations from the original plan in respect to implemtning each phase. This then resulted in the timeline of the minimum viable product to also be delayed. Furthermore, the minimum viable product, the further releases and final project all resulted in the same outcome. 
+
+The following table depcits the deviations from the original timeline plan.
+
+|  Project Deliverables  | Date     |
+| ---------------------- |  ------  |
+| Collection Phase Implementation|   3rd August |
+| Analysis Phase Implementation |   17th August |
+| Operational Phase Implementation |   28th Septemeber |
+| Application - Minimum Viable Product |   7th October  |
+| Documentation - Minimum Viable Product |  7th October  |
+| Further Releases       |   7th October |
+| Final Project          |   8th October |
 
 ## Delivered Expenditure
 
