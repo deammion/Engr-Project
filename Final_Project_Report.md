@@ -22,8 +22,6 @@ In summary, our original project scope was to implement Content Security Policy 
 
 ## Original and Actual Schedule
 
-_A summary of the original timelines and a summary of deviations from the original plan. This should convey to the reader those aspects of the project results which are not obvious from other documents._
-
 ### Original Scope
 |  Project Deliverables  | Date     |
 | ---------------------- |  ------  |
@@ -58,8 +56,6 @@ The following table depcits the deviations from the original timeline plan.
 No expenditure
 
 ## Project Self-Assessment
-
-_A short statement of the team’s assessment of the delivered project, with a focus on the technical aspects. This should convey to the reader those aspects of the project results which are not obvious from other documents._
 
 The team was able to achieve all the objectives set by the client. The plugin can monitor traffic, capture and store HTTP flows (Collection class). From these flows the plugin can read these HTTP files, analyse the scripts within these files and produce a database of safe scripts (Analysis class). The plugin can then use this database to apply the CSP to the HTTP response (Operational class).<br>
 
