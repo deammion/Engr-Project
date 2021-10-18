@@ -14,7 +14,11 @@ Full functionality was achieved as per the objective stated above. The plugin is
 
 ## Original and Delivered Scope
 
-_The things that are within scope of the delivered project; the things that the delivered project can do. This should convey to the reader those aspects of the project results which are not obvious from other documents. If the project has a significant Issue backlog on delivery, a summary of the pending features, why these features were not completed and how they could be picked up by others if project work was to resume._
+The proxy delivers on all areas of our original scope. The project consists of the 3 phases outlined in the scope: Collection, Analysis and Operation. 
+
+Each phase has all the functionality outlined in our original scope. The Collection phase can gather the http intercepted by MITM and can writing that to a file, the naming and storing being based on the time the response was gathered and the domain of the website. The Analysis phase can extract the script data from the latest collected files, Calculate the frequency and probability related to those scripts and present the data in two database files, one that can be easily read by other phases and the other that can be readable by the client for debugging purposes. Finally, the operation phase can compare extracted scripts from HTTP responses to the data in the database files to determine the safe scripts. If all the scrips are safe, it applies the nonce tags and CSP headers. If it detects an unsafe script, it will alert the user and send a report to ReportURI. 
+
+In summary, our original project scope was to implement Content Security Policy (CSP) headers and nonce tags to websites through MITM Proxy and we have achieved that goal.
 
 ## Original and Actual Schedule
 
